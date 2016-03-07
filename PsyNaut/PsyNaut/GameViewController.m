@@ -8,7 +8,7 @@
 
 #import "GameViewController.h"
 #import "UIImage+sprite.h"
-#import "DEMazeGenerator.h"
+#import "MXMazeGenerator.h"
 
 #define SPEED 2
 #define PLAYER_SIZE 32
@@ -18,7 +18,7 @@
 
 @interface GameViewController()
 @property(nonatomic,strong) UIImageView *player;
-@property(nonatomic,strong) DEMazeGenerator *maze;
+@property(nonatomic,strong) MXMazeGenerator *maze;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,strong) NSMutableArray *sceneWalls;
 @property(nonatomic,strong) UISwipeGestureRecognizer *gesture1;
@@ -46,7 +46,7 @@
   [super viewDidLoad];
   self.view.backgroundColor = [UIColor blackColor];
   self.sceneWalls = [NSMutableArray array];
-  self.maze = [[DEMazeGenerator alloc] initWithRow:MAZ_ROW andCol:MAZ_COL withStartingPoint:CGPointMake(1, 1)];
+  self.maze = [[MXMazeGenerator alloc] initWithRow:MAZ_ROW andCol:MAZ_COL withStartingPoint:CGPointMake(1, 1)];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(update) userInfo:nil repeats:YES];
   
   //--- init gesturee ---//

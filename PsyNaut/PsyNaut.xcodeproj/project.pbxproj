@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D58F75D1C8D4F65006365EE /* DEMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* DEMazeGenerator.m */; };
+		1D58F75D1C8D4F65006365EE /* MXMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* MXMazeGenerator.m */; };
 		1D7670361C7B5B050065F110 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7670351C7B5B050065F110 /* AppDelegate.m */; };
 		1D76703B1C7B5B050065F110 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76703A1C7B5B050065F110 /* GameViewController.m */; };
 		1D76703E1C7B5B050065F110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D76703C1C7B5B050065F110 /* Main.storyboard */; };
@@ -19,8 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D58F75B1C8D4F65006365EE /* DEMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMazeGenerator.h; path = Sources/DEMazeGenerator.h; sourceTree = "<group>"; };
-		1D58F75C1C8D4F65006365EE /* DEMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMazeGenerator.m; path = Sources/DEMazeGenerator.m; sourceTree = "<group>"; };
+		1D58F75B1C8D4F65006365EE /* MXMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXMazeGenerator.h; path = Sources/MXMazeGenerator.h; sourceTree = "<group>"; };
+		1D58F75C1C8D4F65006365EE /* MXMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXMazeGenerator.m; path = Sources/MXMazeGenerator.m; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* Psynaut.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psynaut.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7670341C7B5B050065F110 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D7670351C7B5B050065F110 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,8 +50,8 @@
 		1D58F75A1C8D4F57006365EE /* Maze */ = {
 			isa = PBXGroup;
 			children = (
-				1D58F75B1C8D4F65006365EE /* DEMazeGenerator.h */,
-				1D58F75C1C8D4F65006365EE /* DEMazeGenerator.m */,
+				1D58F75B1C8D4F65006365EE /* MXMazeGenerator.h */,
+				1D58F75C1C8D4F65006365EE /* MXMazeGenerator.m */,
 			);
 			name = Maze;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DDD42561C7C3B2A004E65D3 /* UIImage+sprite.m in Sources */,
-				1D58F75D1C8D4F65006365EE /* DEMazeGenerator.m in Sources */,
+				1D58F75D1C8D4F65006365EE /* MXMazeGenerator.m in Sources */,
 				1D7670361C7B5B050065F110 /* AppDelegate.m in Sources */,
 				1D76703B1C7B5B050065F110 /* GameViewController.m in Sources */,
 			);
