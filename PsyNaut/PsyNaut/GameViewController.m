@@ -114,9 +114,6 @@
   {
     if (CGRectIntersectsRect(wall.frame, newRect))
     {
-      // 1. understand which is the component is generating the intersection
-      //    1.1. eventually minimize that component
-      //
       CGRect testRect_x = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y, PLAYER_SIZE, PLAYER_SIZE);
       if (CGRectIntersectsRect(wall.frame, testRect_x))
       {
