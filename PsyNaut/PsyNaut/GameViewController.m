@@ -29,6 +29,8 @@
 @property(nonatomic,assign) NSUInteger row;
 @property(nonatomic,assign) NSUInteger col;
 @property(nonatomic,strong) UIView *mazeView;
+@property IBOutlet UILabel *timeLabel;
+@property IBOutlet UILabel *scoreLabel;
 @end
 
 @implementation GameViewController
@@ -85,7 +87,7 @@
   self.mazeView = [[UIView alloc] initWithFrame:self.view.frame];
   [self.view addSubview:self.mazeView];
   [self.view sendSubviewToBack:self.mazeView];
-
+  
   [self initPlayer];
   [self renderMaze];
 }
@@ -111,10 +113,11 @@
       {
         if (item[r][c] == 1)
         {
-          UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
-          label.backgroundColor = [UIColor colorWithRed:255 green:0 blue:255 alpha:1];
-          [self.mazeView addSubview:label];
-          [self.sceneWalls addObject:label];
+          UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          //          label.backgroundColor = [UIColor colorWithRed:255 green:0 blue:255 alpha:1];
+          [wall setImage:[UIImage imageNamed:@"wall"]];
+          [self.mazeView addSubview:wall];
+          [self.sceneWalls addObject:wall];
         }
       }
     }
@@ -122,6 +125,11 @@
 }
 
 #pragma mark - Update Stuff
+- (void)refreshUI
+{
+  self.timeLabel.text = @"Time\n20";
+  self.scoreLabel.text = @"Score\n999";
+}
 
 - (void)update
 {
@@ -155,6 +163,8 @@
   self.player.frame = rect;
   
   self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2 -self.player.frame.origin.x, self.mazeView.frame.size.height / 2 -self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
+  
+  [self refreshUI];
 }
 
 #pragma mark - Gesture Recognizer Stuff

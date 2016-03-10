@@ -24,6 +24,7 @@
 		1D7670401C7B5B050065F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D76703F1C7B5B050065F110 /* Assets.xcassets */; };
 		1D7670431C7B5B050065F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D7670411C7B5B050065F110 /* LaunchScreen.storyboard */; };
 		1D7670501C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */; };
+		1D82C3FA1C91A6A700969B3F /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D82C3F91C91A6A700969B3F /* wall.png */; };
 		1DDD42561C7C3B2A004E65D3 /* UIImage+sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDD42551C7C3B2A004E65D3 /* UIImage+sprite.m */; };
 		1DDD42581C7C3CDF004E65D3 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD42571C7C3CDF004E65D3 /* GameViewController.xib */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		1D7670421C7B5B050065F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D7670441C7B5B050065F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZBrain_Walk_LefttoRight.png; path = Resources/ZBrain_Walk_LefttoRight.png; sourceTree = "<group>"; };
+		1D82C3F91C91A6A700969B3F /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/wall.png; sourceTree = "<group>"; };
 		1DDD42541C7C3B2A004E65D3 /* UIImage+sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+sprite.h"; path = "Sources/UIImage+sprite.h"; sourceTree = "<group>"; };
 		1DDD42551C7C3B2A004E65D3 /* UIImage+sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+sprite.m"; path = "Sources/UIImage+sprite.m"; sourceTree = "<group>"; };
 		1DDD42571C7C3CDF004E65D3 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController.xib; path = Sources/GameViewController.xib; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		1D7670511C7B5E0E0065F110 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1D82C3F91C91A6A700969B3F /* wall.png */,
 				1D2BB3B61C90920F0056A74F /* octopus.png */,
 				1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */,
 			);
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D7670431C7B5B050065F110 /* LaunchScreen.storyboard in Resources */,
+				1D82C3FA1C91A6A700969B3F /* wall.png in Resources */,
 				1D2BB3B71C90920F0056A74F /* octopus.png in Resources */,
 				1D7670501C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png in Resources */,
 				1D7670401C7B5B050065F110 /* Assets.xcassets in Resources */,
