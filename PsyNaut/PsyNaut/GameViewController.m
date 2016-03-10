@@ -76,8 +76,6 @@
   self.gesture4 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didMovePlayer:)];
   self.gesture4.direction = UISwipeGestureRecognizerDirectionDown;
   [self.view addGestureRecognizer:self.gesture4];
-  
-  self.player.userInteractionEnabled = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
