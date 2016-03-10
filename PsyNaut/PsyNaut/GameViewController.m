@@ -11,12 +11,9 @@
 #import "MXMazeGenerator.h"
 
 #define SPEED 2
-#define PLAYER_SIZE 32
-#define WALL_SIZE 32
-#define MAZ_COL 5
-#define MAZ_ROW 5
+#define TILE_SIZE 32
 
-@interface GameViewController()
+@interface GameViewController() <UIGestureRecognizerDelegate>
 @property(nonatomic,strong) UIImageView *player;
 @property(nonatomic,strong) MXMazeGenerator *maze;
 @property(nonatomic,strong) NSTimer *timer;
@@ -27,6 +24,11 @@
 @property(nonatomic,strong) UISwipeGestureRecognizer *gesture4;
 @property(nonatomic,assign) UISwipeGestureRecognizerDirection lastDirection;
 @property(nonatomic,assign) CGPoint velocity;
+@property(nonatomic,assign) NSUInteger tileWidth;
+@property(nonatomic,assign) NSUInteger tileHeight;
+@property(nonatomic,assign) NSUInteger row;
+@property(nonatomic,assign) NSUInteger col;
+@property(nonatomic,strong) UIView *mazeView;
 @end
 
 @implementation GameViewController
@@ -46,7 +48,15 @@
   [super viewDidLoad];
   self.view.backgroundColor = [UIColor blackColor];
   self.sceneWalls = [NSMutableArray array];
-  self.maze = [[MXMazeGenerator alloc] initWithRow:MAZ_ROW andCol:MAZ_COL withStartingPoint:CGPointMake(1, 1)];
+  
+  int width = [UIScreen mainScreen].bounds.size.width;
+  int height = [UIScreen mainScreen].bounds.size.height;
+  self.tileWidth = TILE_SIZE;
+  self.tileHeight = TILE_SIZE;
+  self.col = width / self.tileWidth;
+  self.row = height / self.tileHeight;
+  
+  self.maze = [[MXMazeGenerator alloc] initWithRow:self.row andCol:self.col withStartingPoint:CGPointMake(1, 1)];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(update) userInfo:nil repeats:YES];
   
   //--- init gesturee ---//
@@ -65,39 +75,44 @@
   self.gesture4 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didMovePlayer:)];
   self.gesture4.direction = UISwipeGestureRecognizerDirectionDown;
   [self.view addGestureRecognizer:self.gesture4];
+  
+  self.player.userInteractionEnabled = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+  self.mazeView = [[UIView alloc] initWithFrame:self.view.frame];
+  [self.view addSubview:self.mazeView];
+
   [self animateBrain];
   [self renderMaze];
 }
 
 - (void)animateBrain
 {
-  UIImage *spriteSheet = [UIImage imageNamed:@"ZBrain_Walk_LefttoRight"];
+  UIImage *spriteSheet = [UIImage imageNamed:@"octopus"];
   NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(64, 64)];
-  self.player = [[UIImageView alloc] initWithFrame:CGRectMake(WALL_SIZE, WALL_SIZE, PLAYER_SIZE, PLAYER_SIZE)];
+  self.player = [[UIImageView alloc] initWithFrame:CGRectMake(self.tileWidth, self.tileHeight, self.tileWidth, self.tileHeight)];
   [self.player setAnimationImages:arrayWithSprites];
-  self.player.animationDuration = 1.0f;
+  self.player.animationDuration = 0.2f;
   self.player.animationRepeatCount = 0;
   [self.player startAnimating];
-  [self.view addSubview:self.player];
+  [self.mazeView addSubview:self.player];
 }
 
 - (void)renderMaze
 {
   [self.maze arrayMaze:^(bool **item) {
-    for (int r = 0; r < MAZ_ROW * 2 + 1 ; r++)
+    for (int r = 0; r < self.row * 2 + 1 ; r++)
     {
-      for (int c = 0; c < MAZ_COL * 2 + 1 ; c++)
+      for (int c = 0; c < self.col * 2 + 1 ; c++)
       {
         if (item[r][c] == 1)
         {
-          UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(c * WALL_SIZE, r * WALL_SIZE, WALL_SIZE, WALL_SIZE)];
+          UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
           label.backgroundColor = [UIColor colorWithRed:255 green:0 blue:255 alpha:1];
-          [self.view addSubview:label];
+          [self.mazeView addSubview:label];
           [self.sceneWalls addObject:label];
         }
       }
@@ -108,19 +123,19 @@
 - (void)update
 {
   CGPoint tempVelocity = self.velocity;
-  CGRect newRect = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y + tempVelocity.y, PLAYER_SIZE, PLAYER_SIZE);
-
+  CGRect newRect = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y + tempVelocity.y, self.tileWidth, self.tileHeight);
+  
   for (UIView *wall in self.sceneWalls)
   {
     if (CGRectIntersectsRect(wall.frame, newRect))
     {
-      CGRect testRect_x = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y, PLAYER_SIZE, PLAYER_SIZE);
+      CGRect testRect_x = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y, self.tileWidth, self.tileHeight);
       if (CGRectIntersectsRect(wall.frame, testRect_x))
       {
         tempVelocity.x = 0;
       }
       
-      CGRect testRect_y = CGRectMake(self.player.frame.origin.x, self.player.frame.origin.y + tempVelocity.y, PLAYER_SIZE, PLAYER_SIZE);
+      CGRect testRect_y = CGRectMake(self.player.frame.origin.x, self.player.frame.origin.y + tempVelocity.y, self.tileWidth, self.tileHeight);
       if (CGRectIntersectsRect(wall.frame, testRect_y))
       {
         tempVelocity.y = 0;
@@ -132,9 +147,15 @@
   {
     self.velocity = tempVelocity;
   }
-
-  CGRect rect = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y + tempVelocity.y, PLAYER_SIZE, PLAYER_SIZE);
+  
+  CGRect rect = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y + tempVelocity.y, self.tileWidth, self.tileHeight);
   self.player.frame = rect;
+  
+  self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2 -self.player.frame.origin.x, self.mazeView.frame.size.height / 2 -self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+  return YES;
 }
 
 - (void)didMovePlayer:(UISwipeGestureRecognizer *)sender

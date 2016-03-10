@@ -39,7 +39,7 @@
   return retValue;
 }
 
-- (id)initWithRow:(int)row andCol:(int)col withStartingPoint:(CGPoint)position
+- (id)initWithRow:(NSUInteger)row andCol:(NSUInteger)col withStartingPoint:(CGPoint)position
 {
   if ((self = [super init]))
   {

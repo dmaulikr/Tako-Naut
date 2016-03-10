@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2BB3B71C90920F0056A74F /* octopus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D2BB3B61C90920F0056A74F /* octopus.png */; };
 		1D58F75D1C8D4F65006365EE /* MXMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* MXMazeGenerator.m */; };
 		1D7670361C7B5B050065F110 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7670351C7B5B050065F110 /* AppDelegate.m */; };
 		1D76703B1C7B5B050065F110 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76703A1C7B5B050065F110 /* GameViewController.m */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D2BB3B61C90920F0056A74F /* octopus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = octopus.png; path = Resources/octopus.png; sourceTree = "<group>"; };
 		1D58F75B1C8D4F65006365EE /* MXMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXMazeGenerator.h; path = Sources/MXMazeGenerator.h; sourceTree = "<group>"; };
 		1D58F75C1C8D4F65006365EE /* MXMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXMazeGenerator.m; path = Sources/MXMazeGenerator.m; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* Psynaut.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psynaut.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 		1D7670511C7B5E0E0065F110 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1D2BB3B61C90920F0056A74F /* octopus.png */,
 				1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */,
 			);
 			name = images;
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D7670431C7B5B050065F110 /* LaunchScreen.storyboard in Resources */,
+				1D2BB3B71C90920F0056A74F /* octopus.png in Resources */,
 				1D7670501C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png in Resources */,
 				1D7670401C7B5B050065F110 /* Assets.xcassets in Resources */,
 				1D76703E1C7B5B050065F110 /* Main.storyboard in Resources */,
