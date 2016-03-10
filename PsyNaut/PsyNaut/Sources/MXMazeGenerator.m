@@ -5,40 +5,43 @@
 #define WEST 'W'
 #define SOUTH 'S'
 
+@interface MXMazeGenerator()
+{
+@private
+  NSUInteger _width;
+  NSUInteger _height;
+  bool **_maze;
+  NSMutableArray *_moves;
+  CGPoint _start;
+}
+@end
+
 @implementation MXMazeGenerator
 
-- (id)initWithRow:(NSUInteger)row andCol:(NSUInteger)col withStartingPoint:(CGPoint)position
+- (id)initWithRow:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position
 {
   if ((self = [super init]))
   {
     _width	= col * 2 + 1;
     _height	= row * 2 + 1;
     _start = position;
+    _maze = (bool **)calloc(_height, sizeof(bool *));
     
-    [self initMaze];
+    for (int r = 0; r < _height;++r)
+    {
+      _maze[r] = (bool *)calloc(_width, sizeof(bool));
+      
+      for (int c = 0; c < _width; c++)
+      {
+        _maze[r][c] = true;
+      }
+    }
+    _maze[(int)_start.x][(int)_start.y] = false;
   }
-  
   return self;
 }
 
-- (void)initMaze
-{
-  _maze = (bool **)calloc(_height, sizeof(bool *));
-  
-  for (int r = 0; r < _height; r++)
-  {
-    _maze[r] = (bool *)calloc(_width, sizeof(bool));
-    
-    for (int c = 0; c < _width; c++)
-    {
-      _maze[r][c] = true;
-    }
-  }
-  
-  _maze[(int)_start.x][(int)_start.y] = false;
-}
-
-- (void)createMaze
+- (void)calculateMaze:(void (^)(bool **))completion
 {
   int back;
   int move;
@@ -116,16 +119,11 @@
       pos.y = back % _width;
     }
   }
-  
-  _response(_maze);
-}
 
-- (void)arrayMaze:(block)arrayMaze
-{
-  _response = nil;
-  _response = arrayMaze;
-  
-  [self createMaze];
+  if (completion)
+  {
+    completion(_maze);
+  }
 }
 
 - (void)logMatrix

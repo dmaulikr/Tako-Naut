@@ -57,8 +57,7 @@
   self.tileHeight = TILE_SIZE;
   self.col = width / self.tileWidth;
   self.row = height / self.tileHeight;
-  
-  self.maze = [[MXMazeGenerator alloc] initWithRow:self.row andCol:self.col withStartingPoint:CGPointMake(1, 1)];
+  self.maze = [[MXMazeGenerator alloc] initWithRow:self.row col:self.col startingPosition:CGPointMake(1, 1)];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(update) userInfo:nil repeats:YES];
   
   //--- init gesturee ---//
@@ -89,7 +88,7 @@
   [self.view sendSubviewToBack:self.mazeView];
   
   [self initPlayer];
-  [self renderMaze];
+  [self initMaze];
 }
 
 - (void)initPlayer
@@ -104,17 +103,17 @@
   [self.mazeView addSubview:self.player];
 }
 
-- (void)renderMaze
+- (void)initMaze
 {
-  [self.maze arrayMaze:^(bool **item) {
+  [self.maze calculateMaze:^(bool **maze)
+  {
     for (int r = 0; r < self.row * 2 + 1 ; r++)
     {
       for (int c = 0; c < self.col * 2 + 1 ; c++)
       {
-        if (item[r][c] == 1)
+        if (maze[r][c] == 1)
         {
           UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
-          //          label.backgroundColor = [UIColor colorWithRed:255 green:0 blue:255 alpha:1];
           [wall setImage:[UIImage imageNamed:@"wall"]];
           [self.mazeView addSubview:wall];
           [self.sceneWalls addObject:wall];
