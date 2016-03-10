@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1D2BB3B71C90920F0056A74F /* octopus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D2BB3B61C90920F0056A74F /* octopus.png */; };
+		1D36E0761C9147470043948F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D36E0751C9147470043948F /* Joystix.ttf */; };
+		1D36E0891C9147630043948F /* MXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0791C9147630043948F /* MXButton.m */; };
+		1D36E08A1C9147630043948F /* MXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E07B1C9147630043948F /* MXImageView.m */; };
+		1D36E08B1C9147630043948F /* MXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E07D1C9147630043948F /* MXLabel.m */; };
+		1D36E08C1C9147630043948F /* MXLocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E07F1C9147630043948F /* MXLocalizationManager.m */; };
+		1D36E08D1C9147630043948F /* MXUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0821C9147630043948F /* MXUtils.m */; };
+		1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0841C9147630043948F /* UIColor+MX.m */; };
+		1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0861C9147630043948F /* UIImage+MX.m */; };
+		1D36E0901C9147630043948F /* UIView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0881C9147630043948F /* UIView+MX.m */; };
 		1D58F75D1C8D4F65006365EE /* MXMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* MXMazeGenerator.m */; };
 		1D7670361C7B5B050065F110 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7670351C7B5B050065F110 /* AppDelegate.m */; };
 		1D76703B1C7B5B050065F110 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76703A1C7B5B050065F110 /* GameViewController.m */; };
@@ -21,6 +30,24 @@
 
 /* Begin PBXFileReference section */
 		1D2BB3B61C90920F0056A74F /* octopus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = octopus.png; path = Resources/octopus.png; sourceTree = "<group>"; };
+		1D36E0751C9147470043948F /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Joystix.ttf; path = Resources/Joystix.ttf; sourceTree = "<group>"; };
+		1D36E0781C9147630043948F /* MXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXButton.h; path = Sources/MXToolBox/MXButton.h; sourceTree = "<group>"; };
+		1D36E0791C9147630043948F /* MXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXButton.m; path = Sources/MXToolBox/MXButton.m; sourceTree = "<group>"; };
+		1D36E07A1C9147630043948F /* MXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXImageView.h; path = Sources/MXToolBox/MXImageView.h; sourceTree = "<group>"; };
+		1D36E07B1C9147630043948F /* MXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXImageView.m; path = Sources/MXToolBox/MXImageView.m; sourceTree = "<group>"; };
+		1D36E07C1C9147630043948F /* MXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXLabel.h; path = Sources/MXToolBox/MXLabel.h; sourceTree = "<group>"; };
+		1D36E07D1C9147630043948F /* MXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXLabel.m; path = Sources/MXToolBox/MXLabel.m; sourceTree = "<group>"; };
+		1D36E07E1C9147630043948F /* MXLocalizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXLocalizationManager.h; path = Sources/MXToolBox/MXLocalizationManager.h; sourceTree = "<group>"; };
+		1D36E07F1C9147630043948F /* MXLocalizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXLocalizationManager.m; path = Sources/MXToolBox/MXLocalizationManager.m; sourceTree = "<group>"; };
+		1D36E0801C9147630043948F /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXToolBox.h; path = Sources/MXToolBox/MXToolBox.h; sourceTree = "<group>"; };
+		1D36E0811C9147630043948F /* MXUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXUtils.h; path = Sources/MXToolBox/MXUtils.h; sourceTree = "<group>"; };
+		1D36E0821C9147630043948F /* MXUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXUtils.m; path = Sources/MXToolBox/MXUtils.m; sourceTree = "<group>"; };
+		1D36E0831C9147630043948F /* UIColor+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+MX.h"; path = "Sources/MXToolBox/UIColor+MX.h"; sourceTree = "<group>"; };
+		1D36E0841C9147630043948F /* UIColor+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MX.m"; path = "Sources/MXToolBox/UIColor+MX.m"; sourceTree = "<group>"; };
+		1D36E0851C9147630043948F /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MX.h"; path = "Sources/MXToolBox/UIImage+MX.h"; sourceTree = "<group>"; };
+		1D36E0861C9147630043948F /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MX.m"; path = "Sources/MXToolBox/UIImage+MX.m"; sourceTree = "<group>"; };
+		1D36E0871C9147630043948F /* UIView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+MX.h"; path = "Sources/MXToolBox/UIView+MX.h"; sourceTree = "<group>"; };
+		1D36E0881C9147630043948F /* UIView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+MX.m"; path = "Sources/MXToolBox/UIView+MX.m"; sourceTree = "<group>"; };
 		1D58F75B1C8D4F65006365EE /* MXMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXMazeGenerator.h; path = Sources/MXMazeGenerator.h; sourceTree = "<group>"; };
 		1D58F75C1C8D4F65006365EE /* MXMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXMazeGenerator.m; path = Sources/MXMazeGenerator.m; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* Psynaut.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psynaut.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +76,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D36E0741C91473A0043948F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1D36E0751C9147470043948F /* Joystix.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		1D36E0771C9147500043948F /* MXToolBox */ = {
+			isa = PBXGroup;
+			children = (
+				1D36E0801C9147630043948F /* MXToolBox.h */,
+				1D36E07C1C9147630043948F /* MXLabel.h */,
+				1D36E07D1C9147630043948F /* MXLabel.m */,
+				1D36E0781C9147630043948F /* MXButton.h */,
+				1D36E0791C9147630043948F /* MXButton.m */,
+				1D36E07A1C9147630043948F /* MXImageView.h */,
+				1D36E07B1C9147630043948F /* MXImageView.m */,
+				1D36E0811C9147630043948F /* MXUtils.h */,
+				1D36E0821C9147630043948F /* MXUtils.m */,
+				1D36E07E1C9147630043948F /* MXLocalizationManager.h */,
+				1D36E07F1C9147630043948F /* MXLocalizationManager.m */,
+				1D36E0831C9147630043948F /* UIColor+MX.h */,
+				1D36E0841C9147630043948F /* UIColor+MX.m */,
+				1D36E0851C9147630043948F /* UIImage+MX.h */,
+				1D36E0861C9147630043948F /* UIImage+MX.m */,
+				1D36E0871C9147630043948F /* UIView+MX.h */,
+				1D36E0881C9147630043948F /* UIView+MX.m */,
+			);
+			name = MXToolBox;
+			sourceTree = "<group>";
+		};
 		1D58F75A1C8D4F57006365EE /* Maze */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +149,7 @@
 				1D7670441C7B5B050065F110 /* Info.plist */,
 				1D76703F1C7B5B050065F110 /* Assets.xcassets */,
 				1D7670411C7B5B050065F110 /* LaunchScreen.storyboard */,
+				1D36E0741C91473A0043948F /* Fonts */,
 				1D7670511C7B5E0E0065F110 /* images */,
 			);
 			name = Resources;
@@ -106,6 +166,7 @@
 		1D76704B1C7B5C3A0065F110 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1D36E0771C9147500043948F /* MXToolBox */,
 				1D76704C1C7B5C530065F110 /* Engine */,
 				1D76704A1C7B5C2A0065F110 /* Gameplay */,
 				1D76704D1C7B5C590065F110 /* Gui */,
@@ -215,6 +276,7 @@
 				1D7670401C7B5B050065F110 /* Assets.xcassets in Resources */,
 				1D76703E1C7B5B050065F110 /* Main.storyboard in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* GameViewController.xib in Resources */,
+				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +290,15 @@
 				1DDD42561C7C3B2A004E65D3 /* UIImage+sprite.m in Sources */,
 				1D58F75D1C8D4F65006365EE /* MXMazeGenerator.m in Sources */,
 				1D7670361C7B5B050065F110 /* AppDelegate.m in Sources */,
+				1D36E08C1C9147630043948F /* MXLocalizationManager.m in Sources */,
 				1D76703B1C7B5B050065F110 /* GameViewController.m in Sources */,
+				1D36E0891C9147630043948F /* MXButton.m in Sources */,
+				1D36E08B1C9147630043948F /* MXLabel.m in Sources */,
+				1D36E0901C9147630043948F /* UIView+MX.m in Sources */,
+				1D36E08D1C9147630043948F /* MXUtils.m in Sources */,
+				1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */,
+				1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */,
+				1D36E08A1C9147630043948F /* MXImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

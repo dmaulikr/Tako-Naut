@@ -84,12 +84,13 @@
   [super viewDidAppear:animated];
   self.mazeView = [[UIView alloc] initWithFrame:self.view.frame];
   [self.view addSubview:self.mazeView];
+  [self.view sendSubviewToBack:self.mazeView];
 
-  [self animateBrain];
+  [self initPlayer];
   [self renderMaze];
 }
 
-- (void)animateBrain
+- (void)initPlayer
 {
   UIImage *spriteSheet = [UIImage imageNamed:@"octopus"];
   NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(64, 64)];
@@ -119,6 +120,8 @@
     }
   }];
 }
+
+#pragma mark - Update Stuff
 
 - (void)update
 {
@@ -153,6 +156,8 @@
   
   self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2 -self.player.frame.origin.x, self.mazeView.frame.size.height / 2 -self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
 }
+
+#pragma mark - Gesture Recognizer Stuff
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
   return YES;
