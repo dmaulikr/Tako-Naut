@@ -126,17 +126,6 @@
   }
 }
 
-- (void)logMatrix
-{
-  for (int x = 0; x < _height; x++)
-  {
-    for (int y = 0; y < _width; y++)
-    {
-      NSLog(@"[%d , %d] = %d", x, y, _maze[x][y]);
-    }
-  }
-}
-
 - (int)randIntMin:(int)min andMax:(int)max
 {
   return ((arc4random() % (max - min +1)) + min);
