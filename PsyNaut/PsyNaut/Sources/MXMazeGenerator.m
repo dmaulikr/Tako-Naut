@@ -5,39 +5,7 @@
 #define WEST 'W'
 #define SOUTH 'S'
 
-#define kNorthFlag 1
-#define kEastFlag 2
-#define kSouthFlag 4
-#define kWestFlag 8
-
 @implementation MXMazeGenerator
-
-+ (int)drawPathWithFlagsNorth:(bool)north south:(bool)south east:(bool)east west:(bool)west
-{
-  int retValue = 0;
-  
-  if (north)
-  {
-    retValue |= kNorthFlag;
-  }
-  
-  if (east)
-  {
-    retValue |= kEastFlag;
-  }
-  
-  if (south)
-  {
-    retValue |= kSouthFlag;
-  }
-  
-  if (west)
-  {
-    retValue |= kWestFlag;
-  }
-  
-  return retValue;
-}
 
 - (id)initWithRow:(NSUInteger)row andCol:(NSUInteger)col withStartingPoint:(CGPoint)position
 {
