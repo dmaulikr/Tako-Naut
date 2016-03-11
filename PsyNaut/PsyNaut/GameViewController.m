@@ -13,7 +13,7 @@
 #define SPEED 2
 #define TILE_SIZE 32
 
-@interface GameViewController() <UIGestureRecognizerDelegate>
+@interface GameViewController()
 @property(nonatomic,strong) UIImageView *player;
 @property(nonatomic,strong) MXMazeGenerator *maze;
 @property(nonatomic,strong) NSTimer *timer;
@@ -59,8 +59,8 @@
   self.row = height / self.tileHeight;
   self.maze = [[MXMazeGenerator alloc] initWithRow:self.row col:self.col startingPosition:CGPointMake(1, 1)];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(update) userInfo:nil repeats:YES];
-  
-  //--- init gesturee ---//
+
+  //--- setup gestures ---//
   self.gesture1 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didMovePlayer:)];
   self.gesture1.direction = UISwipeGestureRecognizerDirectionRight;
   [self.view addGestureRecognizer:self.gesture1];
@@ -165,10 +165,6 @@
 }
 
 #pragma mark - Gesture Recognizer Stuff
-
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
-  return YES;
-}
 
 - (void)didMovePlayer:(UISwipeGestureRecognizer *)sender
 {

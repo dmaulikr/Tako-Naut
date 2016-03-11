@@ -25,6 +25,7 @@
 		1D7670431C7B5B050065F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D7670411C7B5B050065F110 /* LaunchScreen.storyboard */; };
 		1D7670501C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */; };
 		1D82C3FA1C91A6A700969B3F /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D82C3F91C91A6A700969B3F /* wall.png */; };
+		1D9714801C921C7F001894CA /* GameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D97147F1C921C7F001894CA /* GameSession.m */; };
 		1DDD42561C7C3B2A004E65D3 /* UIImage+sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDD42551C7C3B2A004E65D3 /* UIImage+sprite.m */; };
 		1DDD42581C7C3CDF004E65D3 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD42571C7C3CDF004E65D3 /* GameViewController.xib */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,8 @@
 		1D7670441C7B5B050065F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZBrain_Walk_LefttoRight.png; path = Resources/ZBrain_Walk_LefttoRight.png; sourceTree = "<group>"; };
 		1D82C3F91C91A6A700969B3F /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/wall.png; sourceTree = "<group>"; };
+		1D97147E1C921C7F001894CA /* GameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSession.h; path = Sources/GameSession.h; sourceTree = "<group>"; };
+		1D97147F1C921C7F001894CA /* GameSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameSession.m; path = Sources/GameSession.m; sourceTree = "<group>"; };
 		1DDD42541C7C3B2A004E65D3 /* UIImage+sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+sprite.h"; path = "Sources/UIImage+sprite.h"; sourceTree = "<group>"; };
 		1DDD42551C7C3B2A004E65D3 /* UIImage+sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+sprite.m"; path = "Sources/UIImage+sprite.m"; sourceTree = "<group>"; };
 		1DDD42571C7C3CDF004E65D3 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController.xib; path = Sources/GameViewController.xib; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 		1D76704A1C7B5C2A0065F110 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				1D97147D1C921C05001894CA /* GameSession */,
 				1D58F75A1C8D4F57006365EE /* Maze */,
 			);
 			name = Gameplay;
@@ -214,6 +218,15 @@
 				1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		1D97147D1C921C05001894CA /* GameSession */ = {
+			isa = PBXGroup;
+			children = (
+				1D97147E1C921C7F001894CA /* GameSession.h */,
+				1D97147F1C921C7F001894CA /* GameSession.m */,
+			);
+			name = GameSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +316,7 @@
 				1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */,
 				1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */,
 				1D36E08A1C9147630043948F /* MXImageView.m in Sources */,
+				1D9714801C921C7F001894CA /* GameSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

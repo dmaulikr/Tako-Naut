@@ -6,27 +6,27 @@
 #define SOUTH 'S'
 
 @interface MXMazeGenerator()
-{
-@private
-  NSUInteger _width;
-  NSUInteger _height;
-  bool **_maze;
-  NSMutableArray *_moves;
-  CGPoint _start;
-}
+@property(nonatomic,assign) NSUInteger width;
+@property(nonatomic,assign) NSUInteger height;
+@property(nonatomic,assign) NSUInteger startX;
+@property(nonatomic,assign) NSUInteger startY;
+@property(nonatomic,assign) bool **maze;
+@property(nonatomic,strong) NSMutableArray *moves;
 @end
 
 @implementation MXMazeGenerator
 
-- (id)initWithRow:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position
+- (instancetype)initWithRow:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position
 {
   if ((self = [super init]))
   {
     _width	= col * 2 + 1;
     _height	= row * 2 + 1;
-    _start = position;
-    _maze = (bool **)calloc(_height, sizeof(bool *));
+    _startX = position.x;
+    _startY = position.y;
     
+    //--- init maze ---//
+    _maze = (bool **)calloc(_height, sizeof(bool *));
     for (int r = 0; r < _height;++r)
     {
       _maze[r] = (bool *)calloc(_width, sizeof(bool));
@@ -36,42 +36,47 @@
         _maze[r][c] = true;
       }
     }
-    _maze[(int)_start.x][(int)_start.y] = false;
+    _maze[_startX][_startY] = false;
   }
   return self;
 }
 
+- (void)dealloc
+{
+  free(_maze);
+}
+
 - (void)calculateMaze:(void (^)(bool **))completion
 {
+  int posX = (int)self.startX;
+  int posY = (int)self.startY;
+  NSString *possibleDirections;
   int back;
   int move;
-  NSString *possibleDirections;
-  CGPoint pos = _start;
   
-  _moves = [NSMutableArray new];
+  self.moves = [NSMutableArray new];
+  [self.moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
   
-  [_moves addObject:[NSNumber numberWithInt:pos.y + (pos.x * _width)]];
-  
-  while ([_moves count])
+  while ([self.moves count])
   {
     possibleDirections = @"";
     
-    if ((pos.x + 2 < _height ) && (_maze[(int)pos.x + 2][(int)pos.y] == true) && (pos.x + 2 != false) && (pos.x + 2 != _height - 1) )
+    if ((posX + 2 < self.height ) && (self.maze[posX + 2][posY] == true) && (posX + 2 != false) && (posX + 2 != self.height - 1) )
     {
       possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", SOUTH];
     }
     
-    if ((pos.x - 2 >= 0 ) && (_maze[(int)pos.x - 2][(int)pos.y] == true) && (pos.x - 2 != false) && (pos.x - 2 != _height - 1) )
+    if ((posX - 2 >= 0 ) && (self.maze[posX - 2][posY] == true) && (posX - 2 != false) && (posX - 2 != self.height - 1) )
     {
       possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", NORTH];
     }
     
-    if ((pos.y - 2 >= 0 ) && (_maze[(int)pos.x][(int)pos.y - 2] == true) && (pos.y - 2 != false) && (pos.y - 2 != _width - 1) )
+    if ((posY - 2 >= 0 ) && (self.maze[posX][posY - 2] == true) && (posY - 2 != false) && (posY - 2 != self.width - 1) )
     {
       possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", WEST];
     }
     
-    if ((pos.y + 2 < _width ) && (_maze[(int)pos.x][(int)pos.y + 2] == true) && (pos.y + 2 != false) && (pos.y + 2 != _width - 1) )
+    if ((posY + 2 < self.width ) && (self.maze[posX][posY + 2] == true) && (posY + 2 != false) && (posY + 2 != self.width - 1) )
     {
       possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", EAST];
     }
@@ -85,44 +90,44 @@
       switch (array[move])
       {
         case NORTH:
-          _maze[(int)pos.x - 2][(int)pos.y] = false;
-          _maze[(int)pos.x - 1][(int)pos.y] = false;
-          pos.x -=2;
+          self.maze[posX - 2][posY] = false;
+          self.maze[posX - 1][posY] = false;
+          posX -=2;
           break;
           
         case SOUTH:
-          _maze[(int)pos.x + 2][(int)pos.y] = false;
-          _maze[(int)pos.x + 1][(int)pos.y] = false;
-          pos.x +=2;
+          self.maze[posX + 2][posY] = false;
+          self.maze[posX + 1][posY] = false;
+          posX +=2;
           break;
           
         case WEST:
-          _maze[(int)pos.x][(int)pos.y - 2] = false;
-          _maze[(int)pos.x][(int)pos.y - 1] = false;
-          pos.y -=2;
+          self.maze[posX][posY - 2] = false;
+          self.maze[posX][posY - 1] = false;
+          posY -=2;
           break;
           
         case EAST:
-          _maze[(int)pos.x][(int)pos.y + 2] = false;
-          _maze[(int)pos.x][(int)pos.y + 1] = false;
-          pos.y +=2;
+          self.maze[posX][posY + 2] = false;
+          self.maze[posX][posY + 1] = false;
+          posY +=2;
           break;
       }
       
-      [_moves addObject:[NSNumber numberWithInt:pos.y + (pos.x * _width)]];
+      [self.moves addObject:[NSNumber numberWithLong:posY + (posX * _width)]];
     }
     else
     {
-      back = [[_moves lastObject] intValue];
-      [_moves removeLastObject];
-      pos.x = (int)(back / _width);
-      pos.y = back % _width;
+      back = [[self.moves lastObject] intValue];
+      [self.moves removeLastObject];
+      posX = (int)(back / self.width);
+      posY = back % self.width;
     }
   }
-
+  
   if (completion)
   {
-    completion(_maze);
+    completion(self.maze);
   }
 }
 
