@@ -10,7 +10,7 @@
 @property(nonatomic,assign) NSUInteger height;
 @property(nonatomic,assign) NSUInteger startX;
 @property(nonatomic,assign) NSUInteger startY;
-@property(nonatomic,assign) bool **maze;
+@property(nonatomic,assign) short **maze;
 @property(nonatomic,strong) NSMutableArray *moves;
 @end
 
@@ -26,17 +26,17 @@
     _startY = position.y;
     
     //--- init maze ---//
-    _maze = (bool **)calloc(_height, sizeof(bool *));
+    _maze = (short **)calloc(_height, sizeof(short *));
     for (int r = 0; r < _height;++r)
     {
-      _maze[r] = (bool *)calloc(_width, sizeof(bool));
+      _maze[r] = (short *)calloc(_width, sizeof(short));
       
       for (int c = 0; c < _width; c++)
       {
         _maze[r][c] = true;
       }
     }
-    _maze[_startX][_startY] = false;
+    _maze[_startX][_startY] = -1;
   }
   return self;
 }
@@ -46,11 +46,10 @@
   free(_maze);
 }
 
-- (void)calculateMaze:(void (^)(bool **))completion
+- (void)calculateMaze:(void (^)(short **))completion
 {
   int posX = (int)self.startX;
   int posY = (int)self.startY;
-  NSString *possibleDirections;
   int back;
   int move;
   
@@ -59,8 +58,7 @@
   
   while ([self.moves count])
   {
-    possibleDirections = @"";
-    
+    NSString *possibleDirections = @"";
     if ((posX + 2 < self.height ) && (self.maze[posX + 2][posY] == true) && (posX + 2 != false) && (posX + 2 != self.height - 1) )
     {
       possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", SOUTH];
@@ -114,13 +112,13 @@
           break;
       }
       
-      [self.moves addObject:[NSNumber numberWithLong:posY + (posX * _width)]];
+      [self.moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
     }
     else
     {
       back = [[self.moves lastObject] intValue];
       [self.moves removeLastObject];
-      posX = (int)(back / self.width);
+      posX = back / self.width;
       posY = back % self.width;
     }
   }

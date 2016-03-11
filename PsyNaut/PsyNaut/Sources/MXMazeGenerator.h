@@ -2,5 +2,5 @@
 
 @interface MXMazeGenerator : NSObject
 - (instancetype)initWithRow:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position;
-- (void)calculateMaze:(void (^)(bool **))completion;
+- (void)calculateMaze:(void (^)(short **))completion;
 @end
