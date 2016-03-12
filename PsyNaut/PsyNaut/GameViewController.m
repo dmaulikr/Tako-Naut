@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "UIImage+sprite.h"
 #import "MXMazeGenerator.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 #define SPEED 2
 #define TILE_SIZE 32
@@ -17,7 +18,7 @@
 
 @interface GameViewController()
 @property(nonatomic,strong) UIImageView *player;
-@property(nonatomic,strong) MXMazeGenerator *maze;
+@property(nonatomic,strong) MXMazeGenerator *mazeGenerator;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,strong) NSMutableArray *sceneWalls;
 @property(nonatomic,strong) UISwipeGestureRecognizer *gesture1;
@@ -31,8 +32,14 @@
 @property(nonatomic,assign) NSUInteger row;
 @property(nonatomic,assign) NSUInteger col;
 @property(nonatomic,strong) UIView *mazeView;
+
+// HUD
 @property IBOutlet UILabel *timeLabel;
 @property IBOutlet UILabel *scoreLabel;
+@property IBOutlet UILabel *firstCharLabel;
+@property IBOutlet UILabel *secondCharLabel;
+@property IBOutlet UILabel *thirdCharLabel;
+@property IBOutlet UILabel *fourthCharLabel;
 @end
 
 @implementation GameViewController
@@ -60,7 +67,7 @@
   self.tileHeight = TILE_SIZE;
   self.col = width / self.tileWidth;
   self.row = height / self.tileHeight;
-  self.maze = [[MXMazeGenerator alloc] initWithRow:self.row col:self.col startingPosition:CGPointMake(STARTING_X, STARTING_Y)];
+  self.mazeGenerator = [[MXMazeGenerator alloc] initWithRow:self.row col:self.col startingPosition:CGPointMake(STARTING_X, STARTING_Y)];
   
   //--- setup gestures ---//
   self.gesture1 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didMovePlayer:)];
@@ -81,6 +88,16 @@
   
   //--- setup timer ---//
   self.timer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(update) userInfo:nil repeats:YES];
+  
+  /*
+   MPMediaQuery *everything = [[MPMediaQuery alloc] init];
+   NSLog(@"Logging items from a generic query...");
+   NSArray *itemsFromGenericQuery = [everything items];
+   for (MPMediaItem *song in itemsFromGenericQuery) {
+   NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
+   NSLog (@"%@", songTitle);
+   }
+   */
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -90,26 +107,17 @@
   [self.view addSubview:self.mazeView];
   [self.view sendSubviewToBack:self.mazeView];
   
-  [self initPlayer];
+  [self initHud];
   [self initMaze];
+  [self initPlayer];
+  [self initOpponent];
 }
 
-- (void)initPlayer
-{
-  UIImage *spriteSheet = [UIImage imageNamed:@"octopus"];
-  NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(64, 64)];
-  self.player = [[UIImageView alloc] initWithFrame:CGRectMake(STARTING_Y * self.tileWidth, STARTING_X * self.tileHeight, self.tileWidth, self.tileHeight)];
-  [self.player setAnimationImages:arrayWithSprites];
-  self.player.animationDuration = 0.2f;
-  self.player.animationRepeatCount = 0;
-  [self.player startAnimating];
-  [self.mazeView addSubview:self.player];
-  [self.mazeView bringSubviewToFront:self.player];
-}
+#pragma mark - Init Stuff
 
 - (void)initMaze
 {
-  [self.maze calculateMaze:^(short **maze)
+  [self.mazeGenerator calculateMaze:^(short **maze)
    {
      for (int r = 0; r < self.row * 2 + 1 ; r++)
      {
@@ -133,6 +141,32 @@
        }
      }
    }];
+}
+
+- (void)initPlayer
+{
+  UIImage *spriteSheet = [UIImage imageNamed:@"octopus"];
+  NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(64, 64)];
+  self.player = [[UIImageView alloc] initWithFrame:CGRectMake(STARTING_Y * self.tileWidth, STARTING_X * self.tileHeight, self.tileWidth, self.tileHeight)];
+  [self.player setAnimationImages:arrayWithSprites];
+  self.player.animationDuration = 0.2f;
+  self.player.animationRepeatCount = 0;
+  [self.player startAnimating];
+  [self.mazeView addSubview:self.player];
+  [self.mazeView bringSubviewToFront:self.player];
+}
+
+- (void)initOpponent
+{
+  
+}
+
+- (void)initHud
+{
+  self.firstCharLabel.text = @"";
+  self.secondCharLabel.text = @"";
+  self.thirdCharLabel.text = @"";
+  self.fourthCharLabel.text = @"";
 }
 
 #pragma mark - Update Stuff
