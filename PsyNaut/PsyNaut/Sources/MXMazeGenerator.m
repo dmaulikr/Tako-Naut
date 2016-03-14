@@ -1,17 +1,18 @@
 #import "MXMazeGenerator.h"
 
-#define NORTH 'N'
-#define EAST 'E'
-#define WEST 'W'
-#define SOUTH 'S'
+typedef NS_ENUM(NSUInteger, DirectionType) {
+  DTNorth,
+  DTSouth,
+  DTEast,
+  DTWest
+};
 
 @interface MXMazeGenerator()
 @property(nonatomic,assign) NSUInteger width;
 @property(nonatomic,assign) NSUInteger height;
 @property(nonatomic,assign) NSUInteger startX;
 @property(nonatomic,assign) NSUInteger startY;
-@property(nonatomic,assign) short **maze;
-@property(nonatomic,strong) NSMutableArray *moves;
+@property(nonatomic,assign) MazeTyleType **maze;
 @end
 
 @implementation MXMazeGenerator
@@ -20,23 +21,23 @@
 {
   if ((self = [super init]))
   {
-    _width	= col * 2 + 1;
-    _height	= row * 2 + 1;
+    _width	= col;
+    _height	= row;
     _startX = position.x;
     _startY = position.y;
     
     //--- init maze ---//
-    _maze = (short **)calloc(_height, sizeof(short *));
+    _maze = (MazeTyleType **)calloc(_height, sizeof(MazeTyleType *));
     for (int r = 0; r < _height;++r)
     {
-      _maze[r] = (short *)calloc(_width, sizeof(short));
+      _maze[r] = (MazeTyleType *)calloc(_width, sizeof(MazeTyleType));
       
       for (int c = 0; c < _width; c++)
       {
-        _maze[r][c] = true;
+        _maze[r][c] = MTWall;
       }
     }
-    _maze[_startX][_startY] = -1;
+    _maze[_startX][_startY] = MTStart;
   }
   return self;
 }
@@ -46,78 +47,73 @@
   free(_maze);
 }
 
-- (void)calculateMaze:(void (^)(short **))completion
+- (void)calculateMaze:(void (^)(MazeTyleType **))completion
 {
   int posX = (int)self.startX;
   int posY = (int)self.startY;
-  int back;
-  int move;
   
-  self.moves = [NSMutableArray new];
-  [self.moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
+  NSMutableArray *moves = [NSMutableArray new];
+  [moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
   
-  while ([self.moves count])
+  while ([moves count])
   {
-    NSString *possibleDirections = @"";
-    if ((posX + 2 < self.height ) && (self.maze[posX + 2][posY] == true) && (posX + 2 != false) && (posX + 2 != self.height - 1) )
+    NSMutableArray<NSNumber *> *possibleDirections = [NSMutableArray<NSNumber *> array];
+    if ((posX - 2 >= 0) && (self.maze[posX - 2][posY] == MTWall))
     {
-      possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", SOUTH];
+      [possibleDirections addObject:@(DTNorth)];
     }
     
-    if ((posX - 2 >= 0 ) && (self.maze[posX - 2][posY] == true) && (posX - 2 != false) && (posX - 2 != self.height - 1) )
+    if ((posX + 2 < self.height) && (self.maze[posX + 2][posY] == MTWall))
     {
-      possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", NORTH];
+      [possibleDirections addObject:@(DTSouth)];
     }
     
-    if ((posY - 2 >= 0 ) && (self.maze[posX][posY - 2] == true) && (posY - 2 != false) && (posY - 2 != self.width - 1) )
+    if ((posY + 2 < self.width) && (self.maze[posX][posY + 2] == MTWall))
     {
-      possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", WEST];
+      [possibleDirections addObject:@(DTEast)];
     }
     
-    if ((posY + 2 < self.width ) && (self.maze[posX][posY + 2] == true) && (posY + 2 != false) && (posY + 2 != self.width - 1) )
+    if ((posY - 2 >= 0) && (self.maze[posX][posY - 2] == MTWall))
     {
-      possibleDirections = [possibleDirections stringByAppendingFormat:@"%c", EAST];
+      [possibleDirections addObject:@(DTWest)];
     }
     
-    if (possibleDirections.length > 0)
+    if (possibleDirections.count > 0)
     {
-      move = [self randIntMin:0 andMax:((int)possibleDirections.length - 1)];
-      
-      const char *array = [possibleDirections UTF8String];
-      
-      switch (array[move])
+      DirectionType direction = [possibleDirections[arc4random() % possibleDirections.count] shortValue];
+      switch (direction)
       {
-        case NORTH:
-          self.maze[posX - 2][posY] = false;
-          self.maze[posX - 1][posY] = false;
+        case DTNorth: {
+          self.maze[posX - 2][posY] = MTPath;
+          self.maze[posX - 1][posY] = MTPath;
           posX -=2;
           break;
-          
-        case SOUTH:
-          self.maze[posX + 2][posY] = false;
-          self.maze[posX + 1][posY] = false;
+        }
+        case DTSouth: {
+          self.maze[posX + 2][posY] = MTPath;
+          self.maze[posX + 1][posY] = MTPath;
           posX +=2;
           break;
-          
-        case WEST:
-          self.maze[posX][posY - 2] = false;
-          self.maze[posX][posY - 1] = false;
-          posY -=2;
-          break;
-          
-        case EAST:
-          self.maze[posX][posY + 2] = false;
-          self.maze[posX][posY + 1] = false;
+        }
+        case DTEast: {
+          self.maze[posX][posY + 2] = MTPath;
+          self.maze[posX][posY + 1] = MTPath;
           posY +=2;
           break;
+        }
+        case DTWest: {
+          self.maze[posX][posY - 2] = MTPath;
+          self.maze[posX][posY - 1] = MTPath;
+          posY -=2;
+          break;
+        }
       }
-      
-      [self.moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
+      [moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
     }
-    else
+    else //backtracking
     {
-      back = [[self.moves lastObject] intValue];
-      [self.moves removeLastObject];
+      int back = [[moves lastObject] intValue];
+      [moves removeLastObject];
       posX = back / self.width;
       posY = back % self.width;
     }
@@ -127,11 +123,6 @@
   {
     completion(self.maze);
   }
-}
-
-- (int)randIntMin:(int)min andMax:(int)max
-{
-  return ((arc4random() % (max - min +1)) + min);
 }
 
 @end

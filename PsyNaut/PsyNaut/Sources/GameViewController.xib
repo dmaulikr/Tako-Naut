@@ -8,7 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
                 <outlet property="firstCharLabel" destination="2Z9-M1-K2M" id="AQx-Fx-4UN"/>
+                <outlet property="fourthCharLabel" destination="4wb-aG-zdX" id="tnb-vr-hNs"/>
                 <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
+                <outlet property="secondCharLabel" destination="ek0-uA-nqt" id="YZ5-A6-aQz"/>
+                <outlet property="thirdCharLabel" destination="0hz-Ly-S0H" id="xwT-s5-Jmo"/>
                 <outlet property="timeLabel" destination="u2o-2h-dwV" id="3nl-zu-grV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tHD-d3-Hnh"/>
             </connections>

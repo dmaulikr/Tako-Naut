@@ -7,16 +7,18 @@
 //
 
 #import "GameViewController.h"
+#import "GameSession.h"
 #import "UIImage+sprite.h"
 #import "MXMazeGenerator.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 #define SPEED 2
 #define TILE_SIZE 32
-#define STARTING_X 5
+#define STARTING_X 1
 #define STARTING_Y 1
 
 @interface GameViewController()
+
 @property(nonatomic,strong) UIImageView *player;
 @property(nonatomic,strong) MXMazeGenerator *mazeGenerator;
 @property(nonatomic,strong) NSTimer *timer;
@@ -25,7 +27,6 @@
 @property(nonatomic,strong) UISwipeGestureRecognizer *gesture2;
 @property(nonatomic,strong) UISwipeGestureRecognizer *gesture3;
 @property(nonatomic,strong) UISwipeGestureRecognizer *gesture4;
-@property(nonatomic,assign) UISwipeGestureRecognizerDirection lastDirection;
 @property(nonatomic,assign) CGPoint velocity;
 @property(nonatomic,assign) NSUInteger tileWidth;
 @property(nonatomic,assign) NSUInteger tileHeight;
@@ -61,12 +62,10 @@
   self.sceneWalls = [NSMutableArray array];
   
   //--- setup maze ---//
-  int width = [UIScreen mainScreen].bounds.size.width;
-  int height = [UIScreen mainScreen].bounds.size.height;
   self.tileWidth = TILE_SIZE;
   self.tileHeight = TILE_SIZE;
-  self.col = width / self.tileWidth;
-  self.row = height / self.tileHeight;
+  self.col = 15;
+  self.row = 15;
   self.mazeGenerator = [[MXMazeGenerator alloc] initWithRow:self.row col:self.col startingPosition:CGPointMake(STARTING_X, STARTING_Y)];
   
   //--- setup gestures ---//
@@ -88,16 +87,6 @@
   
   //--- setup timer ---//
   self.timer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(update) userInfo:nil repeats:YES];
-  
-  /*
-   MPMediaQuery *everything = [[MPMediaQuery alloc] init];
-   NSLog(@"Logging items from a generic query...");
-   NSArray *itemsFromGenericQuery = [everything items];
-   for (MPMediaItem *song in itemsFromGenericQuery) {
-   NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
-   NSLog (@"%@", songTitle);
-   }
-   */
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -117,13 +106,13 @@
 
 - (void)initMaze
 {
-  [self.mazeGenerator calculateMaze:^(short **maze)
+  [self.mazeGenerator calculateMaze:^(MazeTyleType **maze)
    {
-     for (int r = 0; r < self.row * 2 + 1 ; r++)
+     for (int r = 0; r < self.row ; r++)
      {
-       for (int c = 0; c < self.col * 2 + 1 ; c++)
+       for (int c = 0; c < self.col; c++)
        {
-         if (maze[r][c] == 1)
+         if (maze[r][c] == MTWall)
          {
            UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
            [wall setImage:[UIImage imageNamed:@"wall"]];
@@ -131,10 +120,17 @@
            [self.sceneWalls addObject:wall];
            [self.mazeView sendSubviewToBack:wall];
          }
-         else if (maze[r][c] == -1)
+         else if (maze[r][c] == MTStart)
          {
            UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
            wall.backgroundColor = [UIColor redColor];
+           [self.mazeView addSubview:wall];
+           [self.mazeView sendSubviewToBack:wall];
+         }
+         else if (maze[r][c] == MTEnd)
+         {
+           UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+           wall.backgroundColor = [UIColor greenColor];
            [self.mazeView addSubview:wall];
            [self.mazeView sendSubviewToBack:wall];
          }
@@ -163,10 +159,10 @@
 
 - (void)initHud
 {
-  self.firstCharLabel.text = @"";
-  self.secondCharLabel.text = @"";
-  self.thirdCharLabel.text = @"";
-  self.fourthCharLabel.text = @"";
+  self.firstCharLabel.text = [@(arc4random() % 10) description];
+  self.secondCharLabel.text = [@(arc4random() % 10) description];
+  self.thirdCharLabel.text = [@(arc4random() % 10) description];
+  self.fourthCharLabel.text = [@(arc4random() % 10) description];
 }
 
 #pragma mark - Update Stuff
@@ -176,39 +172,57 @@
   self.scoreLabel.text = @"Score\n999";
 }
 
+- (void)checkCollisionFor:(CGPoint)velocity collideX:(BOOL *)collideX collideY:(BOOL *)collideY
+{
+  CGRect playerFrame = CGRectMake(self.player.frame.origin.x + velocity.x, self.player.frame.origin.y + velocity.y, self.tileWidth, self.tileHeight);
+  for (UIView *wall in self.sceneWalls)
+  {
+    if (CGRectIntersectsRect(wall.frame, playerFrame))
+    {
+      CGRect testRect_x = CGRectMake(self.player.frame.origin.x + velocity.x, self.player.frame.origin.y, self.tileWidth, self.tileHeight);
+      if (CGRectIntersectsRect(wall.frame, testRect_x))
+      {
+        *collideX = YES;
+      }
+      
+      CGRect testRect_y = CGRectMake(self.player.frame.origin.x, self.player.frame.origin.y + velocity.y, self.tileWidth, self.tileHeight);
+      if (CGRectIntersectsRect(wall.frame, testRect_y))
+      {
+        *collideY = YES;
+      }
+    }
+  }
+}
+
 - (void)update
 {
   CGPoint tempVelocity = self.velocity;
-  CGRect newRect = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y + tempVelocity.y, self.tileWidth, self.tileHeight);
+  BOOL collideX;
+  BOOL collideY;
+  [self checkCollisionFor:CGPointMake(tempVelocity.x, tempVelocity.y) collideX:&collideX collideY:&collideY];
   
-  for (UIView *wall in self.sceneWalls)
+  if (collideX)
   {
-    if (CGRectIntersectsRect(wall.frame, newRect))
-    {
-      CGRect testRect_x = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y, self.tileWidth, self.tileHeight);
-      if (CGRectIntersectsRect(wall.frame, testRect_x))
-      {
-        tempVelocity.x = 0;
-      }
-      
-      CGRect testRect_y = CGRectMake(self.player.frame.origin.x, self.player.frame.origin.y + tempVelocity.y, self.tileWidth, self.tileHeight);
-      if (CGRectIntersectsRect(wall.frame, testRect_y))
-      {
-        tempVelocity.y = 0;
-      }
-    }
+    tempVelocity.x = 0;
+  }
+  
+  if (collideY)
+  {
+    tempVelocity.y = 0;
   }
   
   if (tempVelocity.x == 0 && tempVelocity.y == 0)
   {
-    self.velocity = tempVelocity;
+    self.velocity = CGPointMake(0, 0);
   }
   
-  CGRect rect = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y + tempVelocity.y, self.tileWidth, self.tileHeight);
-  self.player.frame = rect;
+  //--- updating player frame ---//
+  self.player.frame = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y + tempVelocity.y, self.tileWidth, self.tileHeight);
   
+  //--- updating maze frame ---//
   self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2 -self.player.frame.origin.x, self.mazeView.frame.size.height / 2 -self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
   
+  //--- refreshing ui ---//
   [self refreshUI];
 }
 
@@ -216,8 +230,6 @@
 
 - (void)didMovePlayer:(UISwipeGestureRecognizer *)sender
 {
-  self.lastDirection = sender.direction;
-  
   if (sender.direction == UISwipeGestureRecognizerDirectionRight)
   {
     NSLog(@"UISwipeGestureRecognizerDirectionRight");
