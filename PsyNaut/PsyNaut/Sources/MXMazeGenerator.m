@@ -52,9 +52,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   int posX = (int)self.startX;
   int posY = (int)self.startY;
   
-  NSMutableArray *moves = [NSMutableArray new];
-  [moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
-  
+  NSMutableArray *moves = [@[[NSNumber numberWithLong:posY + (posX * self.width)]] mutableCopy];
   while ([moves count])
   {
     NSMutableArray<NSNumber *> *possibleDirections = [NSMutableArray<NSNumber *> array];
