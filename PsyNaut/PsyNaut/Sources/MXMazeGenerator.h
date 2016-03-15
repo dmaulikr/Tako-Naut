@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, MazeTyleType) {
-  MTPath,
   MTWall,
+  MTPath,
   MTStart,
   MTEnd
 };

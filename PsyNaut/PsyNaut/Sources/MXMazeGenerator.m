@@ -10,8 +10,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 @interface MXMazeGenerator()
 @property(nonatomic,assign) NSUInteger width;
 @property(nonatomic,assign) NSUInteger height;
-@property(nonatomic,assign) NSUInteger startX;
-@property(nonatomic,assign) NSUInteger startY;
+@property(nonatomic,assign) CGPoint start;
 @property(nonatomic,assign) MazeTyleType **maze;
 @end
 
@@ -23,21 +22,14 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   {
     _width	= col;
     _height	= row;
-    _startX = position.x;
-    _startY = position.y;
+    _start = position;
     
     //--- init maze ---//
     _maze = (MazeTyleType **)calloc(_height, sizeof(MazeTyleType *));
     for (int r = 0; r < _height;++r)
     {
       _maze[r] = (MazeTyleType *)calloc(_width, sizeof(MazeTyleType));
-      
-      for (int c = 0; c < _width; c++)
-      {
-        _maze[r][c] = MTWall;
-      }
     }
-    _maze[_startX][_startY] = MTStart;
   }
   return self;
 }
@@ -49,12 +41,15 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 
 - (void)calculateMaze:(void (^)(MazeTyleType **))completion
 {
-  int posX = (int)self.startX;
-  int posY = (int)self.startY;
+  int posX = (int)self.start.x;
+  int posY = (int)self.start.y;
   
-  NSMutableArray *moves = [@[[NSNumber numberWithLong:posY + (posX * self.width)]] mutableCopy];
-  while ([moves count])
+  self.maze[posX][posY] = MTStart;
+  
+  NSMutableArray *univistedCells = [@[@[@(posX), @(posY)]] mutableCopy];
+  while ([univistedCells count])
   {
+    //--- try to mine in some diretions ---//
     NSMutableArray<NSNumber *> *possibleDirections = [NSMutableArray<NSNumber *> array];
     if ((posX - 2 >= 0) && (self.maze[posX - 2][posY] == MTWall))
     {
@@ -84,36 +79,37 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
         case DTNorth: {
           self.maze[posX - 2][posY] = MTPath;
           self.maze[posX - 1][posY] = MTPath;
-          posX -=2;
+          posX -= 2;
           break;
         }
         case DTSouth: {
           self.maze[posX + 2][posY] = MTPath;
           self.maze[posX + 1][posY] = MTPath;
-          posX +=2;
+          posX += 2;
           break;
         }
         case DTEast: {
           self.maze[posX][posY + 2] = MTPath;
           self.maze[posX][posY + 1] = MTPath;
-          posY +=2;
+          posY += 2;
           break;
         }
         case DTWest: {
           self.maze[posX][posY - 2] = MTPath;
           self.maze[posX][posY - 1] = MTPath;
-          posY -=2;
+          posY -= 2;
           break;
         }
       }
-      [moves addObject:[NSNumber numberWithLong:posY + (posX * self.width)]];
+      
+      [univistedCells addObject:@[@(posX), @(posY)]];
     }
     else //backtracking
     {
-      int back = [[moves lastObject] intValue];
-      [moves removeLastObject];
-      posX = back / self.width;
-      posY = back % self.width;
+      NSArray *back = [univistedCells lastObject];
+      posX = [back[0] intValue];
+      posY = [back[1] intValue];
+      [univistedCells removeLastObject];
     }
   }
   
