@@ -7,6 +7,12 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   DTWest
 };
 
+@interface Tile : NSObject
+@property(nonatomic,assign) int x;
+@property(nonatomic,assign) int y;
+@property(nonatomic,assign) int stepsFromOrigin;
+@end
+
 @interface MXMazeGenerator()
 @property(nonatomic,assign) NSUInteger width;
 @property(nonatomic,assign) NSUInteger height;
@@ -46,6 +52,8 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   
   self.maze[posX][posY] = MTStart;
   
+  int stepsCount = 0;
+  NSMutableArray<Tile*> *frontierCells = [@[] mutableCopy];
   NSMutableArray *univistedCells = [@[@[@(posX), @(posY)]] mutableCopy];
   while ([univistedCells count])
   {
@@ -73,6 +81,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
     
     if (possibleDirections.count > 0)
     {
+      Tile *tile = [Tile new];
       DirectionType direction = [possibleDirections[arc4random() % possibleDirections.count] shortValue];
       switch (direction)
       {
@@ -101,8 +110,14 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
           break;
         }
       }
-      
       [univistedCells addObject:@[@(posX), @(posY)]];
+      
+      //--- adding current frontier tile ---//
+      stepsCount += 2;
+      tile.x = posX;
+      tile.y = posY;
+      tile.stepsFromOrigin = stepsCount;
+      [frontierCells addObject:tile];
     }
     else //backtracking
     {
@@ -110,8 +125,19 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
       posX = [back[0] intValue];
       posY = [back[1] intValue];
       [univistedCells removeLastObject];
+      stepsCount--;
     }
   }
+  
+  Tile *end = [Tile new];
+  for (Tile *tile in frontierCells)
+  {
+    if (tile.stepsFromOrigin >= end.stepsFromOrigin)
+    {
+      end = tile;
+    }
+  }
+  self.maze[end.x][end.y] = MTEnd;
   
   if (completion)
   {
@@ -119,4 +145,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   }
 }
 
+@end
+
+@implementation Tile
 @end
