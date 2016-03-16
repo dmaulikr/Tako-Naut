@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D2BB3B71C90920F0056A74F /* octopus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D2BB3B61C90920F0056A74F /* octopus.png */; };
 		1D36E0761C9147470043948F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D36E0751C9147470043948F /* Joystix.ttf */; };
 		1D36E0891C9147630043948F /* MXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0791C9147630043948F /* MXButton.m */; };
 		1D36E08A1C9147630043948F /* MXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E07B1C9147630043948F /* MXImageView.m */; };
@@ -18,18 +17,19 @@
 		1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0861C9147630043948F /* UIImage+MX.m */; };
 		1D36E0901C9147630043948F /* UIView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0881C9147630043948F /* UIView+MX.m */; };
 		1D58F75D1C8D4F65006365EE /* PNMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */; };
-		1D7670361C7B5B050065F110 /* PNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7670351C7B5B050065F110 /* PNAppDelegate.m */; };
-		1D76703B1C7B5B050065F110 /* PNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D76703A1C7B5B050065F110 /* PNGameViewController.m */; };
-		1D7670401C7B5B050065F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D76703F1C7B5B050065F110 /* Assets.xcassets */; };
-		1D7670431C7B5B050065F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D7670411C7B5B050065F110 /* LaunchScreen.storyboard */; };
-		1D7670501C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */; };
-		1D82C3FA1C91A6A700969B3F /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D82C3F91C91A6A700969B3F /* wall.png */; };
 		1D9714801C921C7F001894CA /* PNGameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D97147F1C921C7F001894CA /* PNGameSession.m */; };
+		1D9CB57B1C9A1CAB002B52AD /* PNItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9CB57A1C9A1CAB002B52AD /* PNItem.m */; };
+		1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9CB57D1C9A1CCE002B52AD /* PNAppDelegate.m */; };
+		1D9CB5811C9A1CCE002B52AD /* PNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */; };
+		1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5841C9A1D20002B52AD /* Assets.xcassets */; };
+		1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5871C9A1D30002B52AD /* octopus.png */; };
+		1D9CB58C1C9A1D30002B52AD /* wall.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5881C9A1D30002B52AD /* wall.PNG */; };
+		1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */; };
+		1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */; };
 		1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D2BB3B61C90920F0056A74F /* octopus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = octopus.png; path = Resources/octopus.png; sourceTree = "<group>"; };
 		1D36E0751C9147470043948F /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Joystix.ttf; path = Resources/Joystix.ttf; sourceTree = "<group>"; };
 		1D36E0781C9147630043948F /* MXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXButton.h; path = Sources/MXToolBox/MXButton.h; sourceTree = "<group>"; };
 		1D36E0791C9147630043948F /* MXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXButton.m; path = Sources/MXToolBox/MXButton.m; sourceTree = "<group>"; };
@@ -51,18 +51,21 @@
 		1D58F75B1C8D4F65006365EE /* PNMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMazeGenerator.h; path = Sources/PNMazeGenerator.h; sourceTree = "<group>"; };
 		1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMazeGenerator.m; path = Sources/PNMazeGenerator.m; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* Psynaut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psynaut.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D7670341C7B5B050065F110 /* PNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PNAppDelegate.h; sourceTree = "<group>"; };
-		1D7670351C7B5B050065F110 /* PNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PNAppDelegate.m; sourceTree = "<group>"; };
-		1D7670391C7B5B050065F110 /* PNGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PNGameViewController.h; sourceTree = "<group>"; };
-		1D76703A1C7B5B050065F110 /* PNGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PNGameViewController.m; sourceTree = "<group>"; };
-		1D76703F1C7B5B050065F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1D7670421C7B5B050065F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1D7670441C7B5B050065F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZBrain_Walk_LefttoRight.png; path = Resources/ZBrain_Walk_LefttoRight.png; sourceTree = "<group>"; };
-		1D82C3F91C91A6A700969B3F /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/wall.png; sourceTree = "<group>"; };
 		1D97147E1C921C7F001894CA /* PNGameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNGameSession.h; path = Sources/PNGameSession.h; sourceTree = "<group>"; };
 		1D97147F1C921C7F001894CA /* PNGameSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNGameSession.m; path = Sources/PNGameSession.m; sourceTree = "<group>"; };
 		1D9C61241C993207002B258C /* 1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024x1024.png; path = Resources/1024x1024.png; sourceTree = "<group>"; };
+		1D9CB5791C9A1CAB002B52AD /* PNItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNItem.h; path = Sources/PNItem.h; sourceTree = "<group>"; };
+		1D9CB57A1C9A1CAB002B52AD /* PNItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNItem.m; path = Sources/PNItem.m; sourceTree = "<group>"; };
+		1D9CB57C1C9A1CCE002B52AD /* PNAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNAppDelegate.h; path = Sources/PNAppDelegate.h; sourceTree = "<group>"; };
+		1D9CB57D1C9A1CCE002B52AD /* PNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNAppDelegate.m; path = Sources/PNAppDelegate.m; sourceTree = "<group>"; };
+		1D9CB57E1C9A1CCE002B52AD /* PNGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNGameViewController.h; path = Sources/PNGameViewController.h; sourceTree = "<group>"; };
+		1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNGameViewController.m; path = Sources/PNGameViewController.m; sourceTree = "<group>"; };
+		1D9CB5821C9A1CF1002B52AD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		1D9CB5841C9A1D20002B52AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		1D9CB5871C9A1D30002B52AD /* octopus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = octopus.png; path = Resources/Images/octopus.png; sourceTree = "<group>"; };
+		1D9CB5881C9A1D30002B52AD /* wall.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.PNG; path = Resources/Images/wall.PNG; sourceTree = "<group>"; };
+		1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZBrain_Walk_LefttoRight.png; path = Resources/Images/ZBrain_Walk_LefttoRight.png; sourceTree = "<group>"; };
+		1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PNGameViewController.xib; path = Sources/PNGameViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,11 +150,11 @@
 		1D7670311C7B5B050065F110 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1D7670441C7B5B050065F110 /* Info.plist */,
-				1D76703F1C7B5B050065F110 /* Assets.xcassets */,
-				1D7670411C7B5B050065F110 /* LaunchScreen.storyboard */,
+				1D9CB5821C9A1CF1002B52AD /* Info.plist */,
+				1D9CB5841C9A1D20002B52AD /* Assets.xcassets */,
+				1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */,
 				1D36E0741C91473A0043948F /* Fonts */,
-				1D7670511C7B5E0E0065F110 /* images */,
+				1D7670511C7B5E0E0065F110 /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				1D97147D1C921C05001894CA /* GameSession */,
+				1D9CB5781C9A1C85002B52AD /* Items */,
 				1D58F75A1C8D4F57006365EE /* Maze */,
 			);
 			name = Gameplay;
@@ -179,8 +183,8 @@
 		1D76704D1C7B5C590065F110 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
-				1D7670391C7B5B050065F110 /* PNGameViewController.h */,
-				1D76703A1C7B5B050065F110 /* PNGameViewController.m */,
+				1D9CB57E1C9A1CCE002B52AD /* PNGameViewController.h */,
+				1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */,
 				1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */,
 			);
 			name = Gui;
@@ -189,21 +193,21 @@
 		1D76704E1C7B5C620065F110 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				1D7670341C7B5B050065F110 /* PNAppDelegate.h */,
-				1D7670351C7B5B050065F110 /* PNAppDelegate.m */,
+				1D9CB57C1C9A1CCE002B52AD /* PNAppDelegate.h */,
+				1D9CB57D1C9A1CCE002B52AD /* PNAppDelegate.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
 		};
-		1D7670511C7B5E0E0065F110 /* images */ = {
+		1D7670511C7B5E0E0065F110 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				1D9C61241C993207002B258C /* 1024x1024.png */,
-				1D82C3F91C91A6A700969B3F /* wall.png */,
-				1D2BB3B61C90920F0056A74F /* octopus.png */,
-				1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */,
+				1D9CB5871C9A1D30002B52AD /* octopus.png */,
+				1D9CB5881C9A1D30002B52AD /* wall.PNG */,
+				1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */,
 			);
-			name = images;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		1D97147D1C921C05001894CA /* GameSession */ = {
@@ -213,6 +217,15 @@
 				1D97147F1C921C7F001894CA /* PNGameSession.m */,
 			);
 			name = GameSession;
+			sourceTree = "<group>";
+		};
+		1D9CB5781C9A1C85002B52AD /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				1D9CB5791C9A1CAB002B52AD /* PNItem.h */,
+				1D9CB57A1C9A1CAB002B52AD /* PNItem.m */,
+			);
+			name = Items;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,13 +285,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7670431C7B5B050065F110 /* LaunchScreen.storyboard in Resources */,
-				1D82C3FA1C91A6A700969B3F /* wall.png in Resources */,
-				1D2BB3B71C90920F0056A74F /* octopus.png in Resources */,
-				1D7670501C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png in Resources */,
-				1D7670401C7B5B050065F110 /* Assets.xcassets in Resources */,
+				1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */,
+				1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */,
+				1D9CB58C1C9A1D30002B52AD /* wall.PNG in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
+				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
 				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
+				1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,14 +303,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D58F75D1C8D4F65006365EE /* PNMazeGenerator.m in Sources */,
-				1D7670361C7B5B050065F110 /* PNAppDelegate.m in Sources */,
 				1D36E08C1C9147630043948F /* MXLocalizationManager.m in Sources */,
-				1D76703B1C7B5B050065F110 /* PNGameViewController.m in Sources */,
 				1D36E0891C9147630043948F /* MXButton.m in Sources */,
 				1D36E08B1C9147630043948F /* MXLabel.m in Sources */,
 				1D36E0901C9147630043948F /* UIView+MX.m in Sources */,
+				1D9CB57B1C9A1CAB002B52AD /* PNItem.m in Sources */,
+				1D9CB5811C9A1CCE002B52AD /* PNGameViewController.m in Sources */,
 				1D36E08D1C9147630043948F /* MXUtils.m in Sources */,
 				1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */,
+				1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */,
 				1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */,
 				1D36E08A1C9147630043948F /* MXImageView.m in Sources */,
 				1D9714801C921C7F001894CA /* PNGameSession.m in Sources */,
@@ -305,17 +319,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1D7670411C7B5B050065F110 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D7670421C7B5B050065F110 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D7670451C7B5B050065F110 /* Debug */ = {
@@ -404,7 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Psynaut/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PsyNaut/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mugx.Psynaut;
@@ -416,7 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Psynaut/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PsyNaut/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mugx.Psynaut;
