@@ -65,6 +65,7 @@
 		1D82C3F91C91A6A700969B3F /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/wall.png; sourceTree = "<group>"; };
 		1D97147E1C921C7F001894CA /* GameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSession.h; path = Sources/GameSession.h; sourceTree = "<group>"; };
 		1D97147F1C921C7F001894CA /* GameSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameSession.m; path = Sources/GameSession.m; sourceTree = "<group>"; };
+		1D9C61241C993207002B258C /* 1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024x1024.png; path = Resources/1024x1024.png; sourceTree = "<group>"; };
 		1DDD42541C7C3B2A004E65D3 /* UIImage+sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+sprite.h"; path = "Sources/UIImage+sprite.h"; sourceTree = "<group>"; };
 		1DDD42551C7C3B2A004E65D3 /* UIImage+sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+sprite.m"; path = "Sources/UIImage+sprite.m"; sourceTree = "<group>"; };
 		1DDD42571C7C3CDF004E65D3 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController.xib; path = Sources/GameViewController.xib; sourceTree = "<group>"; };
@@ -214,6 +215,7 @@
 		1D7670511C7B5E0E0065F110 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1D9C61241C993207002B258C /* 1024x1024.png */,
 				1D82C3F91C91A6A700969B3F /* wall.png */,
 				1D2BB3B61C90920F0056A74F /* octopus.png */,
 				1D76704F1C7B5E0B0065F110 /* ZBrain_Walk_LefttoRight.png */,

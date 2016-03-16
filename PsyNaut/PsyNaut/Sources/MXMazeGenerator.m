@@ -7,12 +7,6 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   DTWest
 };
 
-@interface Tile : NSObject
-@property(nonatomic,assign) int x;
-@property(nonatomic,assign) int y;
-@property(nonatomic,assign) int stepsFromOrigin;
-@end
-
 @interface MXMazeGenerator()
 @property(nonatomic,assign) NSUInteger width;
 @property(nonatomic,assign) NSUInteger height;
@@ -49,15 +43,15 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 {
   int posX = (int)self.start.x;
   int posY = (int)self.start.y;
-  
+
+  //--- taking start tile ---//
   self.maze[posX][posY] = MTStart;
-  
-  int stepsCount = 0;
-  NSMutableArray<Tile*> *frontierCells = [@[] mutableCopy];
-  NSMutableArray *univistedCells = [@[@[@(posX), @(posY)]] mutableCopy];
-  while ([univistedCells count])
+
+  NSMutableArray<NSDictionary *> *visitedTiles = [@[] mutableCopy];
+  NSMutableArray *currentPath = [@[@{@"x" : @(posX), @"y" : @(posY)}] mutableCopy];
+  while ([currentPath count])
   {
-    //--- try to mine in some diretions ---//
+    //--- digging in some diretions ---//
     NSMutableArray<NSNumber *> *possibleDirections = [NSMutableArray<NSNumber *> array];
     if ((posX - 2 >= 0) && (self.maze[posX - 2][posY] == MTWall))
     {
@@ -79,9 +73,8 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
       [possibleDirections addObject:@(DTWest)];
     }
     
-    if (possibleDirections.count > 0)
+    if (possibleDirections.count > 0) // forward
     {
-      Tile *tile = [Tile new];
       DirectionType direction = [possibleDirections[arc4random() % possibleDirections.count] shortValue];
       switch (direction)
       {
@@ -110,42 +103,34 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
           break;
         }
       }
-      [univistedCells addObject:@[@(posX), @(posY)]];
-      
-      //--- adding current frontier tile ---//
-      stepsCount += 2;
-      tile.x = posX;
-      tile.y = posY;
-      tile.stepsFromOrigin = stepsCount;
-      [frontierCells addObject:tile];
+      [currentPath addObject:@{@"x" : @(posX), @"y" : @(posY)}];
+      [visitedTiles addObject:@{@"x" : @(posX), @"y" : @(posY), @"steps" : @(currentPath.count * 2)}];
     }
     else //backtracking
     {
-      NSArray *back = [univistedCells lastObject];
-      posX = [back[0] intValue];
-      posY = [back[1] intValue];
-      [univistedCells removeLastObject];
-      stepsCount--;
+      NSDictionary *back = [currentPath lastObject];
+      posX = [back[@"x"] intValue];
+      posY = [back[@"y"] intValue];
+      [currentPath removeLastObject];
     }
   }
   
-  Tile *end = [Tile new];
-  for (Tile *tile in frontierCells)
+  //--- taking end tile ---//
+  NSDictionary *end;
+  for (NSDictionary *tile in visitedTiles)
   {
-    if (tile.stepsFromOrigin >= end.stepsFromOrigin)
+    if ([tile[@"steps"] intValue] >= [end[@"steps"] intValue])
     {
       end = tile;
     }
   }
-  self.maze[end.x][end.y] = MTEnd;
+  self.maze[[end[@"x"] intValue]][[end[@"y"] intValue]] = MTEnd;
   
+  //--- giving the answer ---//
   if (completion)
   {
     completion(self.maze);
   }
 }
 
-@end
-
-@implementation Tile
 @end

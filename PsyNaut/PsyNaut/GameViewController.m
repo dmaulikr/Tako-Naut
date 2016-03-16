@@ -145,7 +145,7 @@
   NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(64, 64)];
   self.player = [[UIImageView alloc] initWithFrame:CGRectMake(STARTING_Y * self.tileWidth, STARTING_X * self.tileHeight, self.tileWidth, self.tileHeight)];
   [self.player setAnimationImages:arrayWithSprites];
-  self.player.animationDuration = 0.2f;
+  self.player.animationDuration = 0.4f;
   self.player.animationRepeatCount = 0;
   [self.player startAnimating];
   [self.mazeView addSubview:self.player];
