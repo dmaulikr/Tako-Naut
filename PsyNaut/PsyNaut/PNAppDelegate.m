@@ -1,26 +1,26 @@
 //
-//  AppDelegate.m
+//  PNAppDelegate.m
 //  PsyNaut
 //
 //  Created by mugx on 22/02/16.
 //  Copyright © 2016 mugx. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "GameViewController.h"
+#import "PNAppDelegate.h"
+#import "PNGameViewController.h"
 
-@interface AppDelegate ()
+@interface PNAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation PNAppDelegate
 
-int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class])); } }
+int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(argc, argv, nil, NSStringFromClass([PNAppDelegate class])); } }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  self.window.rootViewController = [GameViewController create];
+  self.window.rootViewController = [PNGameViewController create];
   [self.window makeKeyAndVisible];
   return YES;
 }

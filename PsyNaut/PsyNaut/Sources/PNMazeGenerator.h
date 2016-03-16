@@ -7,7 +7,7 @@ typedef NS_ENUM(NSUInteger, MazeTyleType) {
   MTEnd
 };
 
-@interface MXMazeGenerator : NSObject
+@interface PNMazeGenerator : NSObject
 - (instancetype)initWithRow:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position;
 - (void)calculateMaze:(void (^)(MazeTyleType **))completion;
 @end

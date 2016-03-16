@@ -1,5 +1,5 @@
 //
-//  GameSession.h
+//  PNGameSession.h
 //  Psynaut
 //
 //  Created by mugx on 10/03/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameSession : NSObject
+@interface PNGameSession : NSObject
 
 @end

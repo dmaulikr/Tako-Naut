@@ -1,17 +1,17 @@
 //
-//  GameSession.m
+//  PNGameSession.m
 //  Psynaut
 //
 //  Created by mugx on 10/03/16.
 //  Copyright © 2016 mugx. All rights reserved.
 //
 
-#import "GameSession.h"
+#import "PNGameSession.h"
 
-@interface GameSession ()
+@interface PNGameSession ()
 
 @end
 
-@implementation GameSession
+@implementation PNGameSession
 
 @end

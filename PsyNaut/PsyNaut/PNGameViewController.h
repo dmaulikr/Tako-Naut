@@ -1,5 +1,5 @@
 //
-//  GameViewController.h
+//  PNGameViewController.h
 //  PsyNaut
 //
 
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameViewController : UIViewController
+@interface PNGameViewController : UIViewController
 + (instancetype)create;
 @end

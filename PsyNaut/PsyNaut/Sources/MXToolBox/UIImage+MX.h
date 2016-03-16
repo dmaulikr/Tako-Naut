@@ -11,4 +11,6 @@
 @interface UIImage (MX)
 - (UIImage *)imageColored:(UIColor *)color;
 - (UIImage*)scale:(CGFloat)newHeight;
+- (NSArray *)spritesWithSpriteSheetImage:(UIImage *)image spriteSize:(CGSize)size;
+- (NSArray *)spritesWithSpriteSheetImage:(UIImage *)image inRange:(NSRange)range spriteSize:(CGSize)size;
 @end

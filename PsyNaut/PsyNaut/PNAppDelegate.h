@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  PNAppDelegate.h
 //  PsyNaut
 //
 //  Created by mugx on 22/02/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface PNAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
