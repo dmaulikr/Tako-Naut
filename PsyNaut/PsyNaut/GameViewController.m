@@ -87,6 +87,8 @@
   
   //--- setup timer ---//
   self.timer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(update) userInfo:nil repeats:YES];
+  self.timer.tolerance = 0;
+  [NSThread setThreadPriority:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated
