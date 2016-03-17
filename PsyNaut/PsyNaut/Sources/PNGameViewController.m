@@ -147,7 +147,7 @@
 - (void)initPlayer
 {
   UIImage *spriteSheet = [UIImage imageNamed:@"octopus"];
-  NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(64, 64)];
+  NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(self.tileWidth, self.tileHeight)];
   self.player = [[UIImageView alloc] initWithFrame:CGRectMake(STARTING_Y * self.tileWidth, STARTING_X * self.tileHeight, self.tileWidth - 2, self.tileHeight - 2)];
   [self.player setAnimationImages:arrayWithSprites];
   self.player.animationDuration = 0.4f;

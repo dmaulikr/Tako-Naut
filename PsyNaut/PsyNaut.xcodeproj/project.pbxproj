@@ -26,7 +26,7 @@
 		1D9CB5811C9A1CCE002B52AD /* PNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */; };
 		1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5841C9A1D20002B52AD /* Assets.xcassets */; };
 		1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5871C9A1D30002B52AD /* octopus.png */; };
-		1D9CB58C1C9A1D30002B52AD /* wall.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5881C9A1D30002B52AD /* wall.PNG */; };
+		1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5881C9A1D30002B52AD /* wall.png */; };
 		1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */; };
 		1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */; };
 		1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */; };
@@ -70,7 +70,7 @@
 		1D9CB5821C9A1CF1002B52AD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		1D9CB5841C9A1D20002B52AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		1D9CB5871C9A1D30002B52AD /* octopus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = octopus.png; path = Resources/Images/octopus.png; sourceTree = "<group>"; };
-		1D9CB5881C9A1D30002B52AD /* wall.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.PNG; path = Resources/Images/wall.PNG; sourceTree = "<group>"; };
+		1D9CB5881C9A1D30002B52AD /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/Images/wall.png; sourceTree = "<group>"; };
 		1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZBrain_Walk_LefttoRight.png; path = Resources/Images/ZBrain_Walk_LefttoRight.png; sourceTree = "<group>"; };
 		1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PNGameViewController.xib; path = Sources/PNGameViewController.xib; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 				1D9C61241C993207002B258C /* 1024x1024.png */,
 				1D9CB5871C9A1D30002B52AD /* octopus.png */,
 				1D1F1C981C9A7EF60020570D /* coin.png */,
-				1D9CB5881C9A1D30002B52AD /* wall.PNG */,
+				1D9CB5881C9A1D30002B52AD /* wall.png */,
 				1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */,
 			);
 			name = Images;
@@ -314,7 +314,7 @@
 			files = (
 				1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */,
 				1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */,
-				1D9CB58C1C9A1D30002B52AD /* wall.PNG in Resources */,
+				1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
 				1D1F1C991C9A7EF60020570D /* coin.png in Resources */,
 				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
