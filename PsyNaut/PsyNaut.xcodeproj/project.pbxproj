@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1F1C991C9A7EF60020570D /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1F1C981C9A7EF60020570D /* coin.png */; };
+		1D1F1C9C1C9A80AA0020570D /* soundGoodHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */; };
+		1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F1C9F1C9A80FC0020570D /* PNPlayer.m */; };
 		1D36E0761C9147470043948F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D36E0751C9147470043948F /* Joystix.ttf */; };
 		1D36E0891C9147630043948F /* MXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0791C9147630043948F /* MXButton.m */; };
 		1D36E08A1C9147630043948F /* MXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E07B1C9147630043948F /* MXImageView.m */; };
@@ -30,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D1F1C981C9A7EF60020570D /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = Resources/Images/coin.png; sourceTree = "<group>"; };
+		1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGoodHit.caf; path = Resources/Sounds/soundGoodHit.caf; sourceTree = "<group>"; };
+		1D1F1C9E1C9A80FC0020570D /* PNPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNPlayer.h; path = Sources/PNPlayer.h; sourceTree = "<group>"; };
+		1D1F1C9F1C9A80FC0020570D /* PNPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNPlayer.m; path = Sources/PNPlayer.m; sourceTree = "<group>"; };
 		1D36E0751C9147470043948F /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Joystix.ttf; path = Resources/Joystix.ttf; sourceTree = "<group>"; };
 		1D36E0781C9147630043948F /* MXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXButton.h; path = Sources/MXToolBox/MXButton.h; sourceTree = "<group>"; };
 		1D36E0791C9147630043948F /* MXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXButton.m; path = Sources/MXToolBox/MXButton.m; sourceTree = "<group>"; };
@@ -80,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D1F1C9A1C9A809F0020570D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		1D1F1C9D1C9A80E90020570D /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				1D1F1C9E1C9A80FC0020570D /* PNPlayer.h */,
+				1D1F1C9F1C9A80FC0020570D /* PNPlayer.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
 		1D36E0741C91473A0043948F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +178,7 @@
 				1D9CB5841C9A1D20002B52AD /* Assets.xcassets */,
 				1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */,
 				1D36E0741C91473A0043948F /* Fonts */,
+				1D1F1C9A1C9A809F0020570D /* Sounds */,
 				1D7670511C7B5E0E0065F110 /* Images */,
 			);
 			name = Resources;
@@ -163,7 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				1D97147D1C921C05001894CA /* GameSession */,
-				1D9CB5781C9A1C85002B52AD /* Items */,
+				1D1F1C9D1C9A80E90020570D /* Player */,
+				1D9CB5781C9A1C85002B52AD /* Item */,
 				1D58F75A1C8D4F57006365EE /* Maze */,
 			);
 			name = Gameplay;
@@ -204,6 +230,7 @@
 			children = (
 				1D9C61241C993207002B258C /* 1024x1024.png */,
 				1D9CB5871C9A1D30002B52AD /* octopus.png */,
+				1D1F1C981C9A7EF60020570D /* coin.png */,
 				1D9CB5881C9A1D30002B52AD /* wall.PNG */,
 				1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */,
 			);
@@ -219,13 +246,13 @@
 			name = GameSession;
 			sourceTree = "<group>";
 		};
-		1D9CB5781C9A1C85002B52AD /* Items */ = {
+		1D9CB5781C9A1C85002B52AD /* Item */ = {
 			isa = PBXGroup;
 			children = (
 				1D9CB5791C9A1CAB002B52AD /* PNItem.h */,
 				1D9CB57A1C9A1CAB002B52AD /* PNItem.m */,
 			);
-			name = Items;
+			name = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,9 +316,11 @@
 				1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */,
 				1D9CB58C1C9A1D30002B52AD /* wall.PNG in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
+				1D1F1C991C9A7EF60020570D /* coin.png in Resources */,
 				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
 				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
 				1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */,
+				1D1F1C9C1C9A80AA0020570D /* soundGoodHit.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +341,7 @@
 				1D36E08D1C9147630043948F /* MXUtils.m in Sources */,
 				1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */,
 				1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */,
+				1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */,
 				1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */,
 				1D36E08A1C9147630043948F /* MXImageView.m in Sources */,
 				1D9714801C921C7F001894CA /* PNGameSession.m in Sources */,

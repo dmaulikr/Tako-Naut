@@ -30,6 +30,7 @@
 @property(nonatomic,assign) CGPoint velocity;
 @property(nonatomic,assign) NSUInteger tileWidth;
 @property(nonatomic,assign) NSUInteger tileHeight;
+@property(nonatomic,assign) MazeTyleType **maze;
 @property(nonatomic,assign) NSUInteger row;
 @property(nonatomic,assign) NSUInteger col;
 @property(nonatomic,strong) UIView *mazeView;
@@ -102,6 +103,7 @@
   [self initMaze];
   [self initPlayer];
   [self initOpponent];
+  [self initItems];
 }
 
 #pragma mark - Init Stuff
@@ -110,6 +112,7 @@
 {
   [self.mazeGenerator calculateMaze:^(MazeTyleType **maze)
    {
+     self.maze = maze;
      for (int r = 0; r < self.row ; r++)
      {
        for (int c = 0; c < self.col; c++)
@@ -152,6 +155,26 @@
   [self.player startAnimating];
   [self.mazeView addSubview:self.player];
   [self.mazeView bringSubviewToFront:self.player];
+}
+
+- (void)initItems
+{
+  for (int r = 0; r < self.row ; r++)
+  {
+    for (int c = 0; c < self.col; c++)
+    {
+      if (self.maze[r][c] == MTPath)
+      {
+        if ((arc4random() % 100) >= 80)
+        {
+          UIImageView *coin = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          coin.image = [[UIImage imageNamed:@"coin"] imageColored:[UIColor yellowColor]];
+          [self.mazeView addSubview:coin];
+          [self.mazeView sendSubviewToBack:coin];
+        }
+      }
+    }
+  }
 }
 
 - (void)initOpponent
@@ -203,6 +226,7 @@
   deltaTime = currentTime - _previousTimestamp;
   _previousTimestamp = currentTime;
   
+  //--- collision detection ---//
   CGPoint tempVelocity = self.velocity;
   tempVelocity.x += tempVelocity.x * deltaTime;
   tempVelocity.y += tempVelocity.y * deltaTime;
