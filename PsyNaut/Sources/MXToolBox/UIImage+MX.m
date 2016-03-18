@@ -37,19 +37,19 @@
   return newImage;
 }
 
-- (NSArray *)spritesWithSpriteSheetImage:(UIImage *)image spriteSize:(CGSize)size
+- (NSArray *)spritesWiteSize:(CGSize)size
 {
-  return [self spritesWithSpriteSheetImage:self inRange:NSMakeRange(0, lroundf(MAXFLOAT)) spriteSize:size];
+  return [self spritesWithSize:size inRange:NSMakeRange(0, lroundf(MAXFLOAT))];
 }
 
-- (NSArray *)spritesWithSpriteSheetImage:(UIImage *)image inRange:(NSRange)range spriteSize:(CGSize)size
+- (NSArray *)spritesWithSize:(CGSize)size inRange:(NSRange)range
 {
-  if (!image || CGSizeEqualToSize(size, CGSizeZero) || range.length == 0)
+  if (CGSizeEqualToSize(size, CGSizeZero) || range.length == 0)
   {
     return nil;
   }
   
-  CGImageRef spriteSheet = [image CGImage];
+  CGImageRef spriteSheet = [self CGImage];
   NSMutableArray *tempArray = [[NSMutableArray alloc] init];
   
   NSUInteger width = CGImageGetWidth(spriteSheet);

@@ -109,11 +109,8 @@
 
 - (void)initPlayer
 {
-  UIImage *spriteSheet = [UIImage imageNamed:@"oct"];
-  NSArray *arrayWithSprites = [spriteSheet spritesWithSpriteSheetImage:spriteSheet spriteSize:CGSizeMake(self.tileWidth, self.tileHeight)];
-  //  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING_Y * self.tileWidth, STARTING_X * self.tileHeight, self.tileWidth - 2, self.tileHeight - 2)];
   self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING_Y * self.tileWidth, STARTING_X * self.tileHeight, self.tileWidth - PLAYER_SPEED, self.tileHeight - PLAYER_SPEED)];
-  [self.player setAnimationImages:arrayWithSprites];
+  self.player.animationImages = [[UIImage imageNamed:@"oct"] spritesWiteSize:CGSizeMake(self.tileWidth, self.tileHeight)];
   self.player.animationDuration = 0.4f;
   self.player.animationRepeatCount = 0;
   [self.player startAnimating];
@@ -197,6 +194,7 @@
   else
   {
     tempVelocity.x = 0;
+    self.player.frame = CGRectMake([self getMagicNumber:self.player.frame.origin.x], self.player.frame.origin.y, self.player.frame.size.width, self.player.frame.size.height);
   }
   
   //--- walls vertical collision detection ---//
@@ -209,6 +207,7 @@
   else
   {
     tempVelocity.y = 0;
+    self.player.frame = CGRectMake(self.player.frame.origin.x, [self getMagicNumber:self.player.frame.origin.y], self.player.frame.size.width, self.player.frame.size.height);
   }
   
   if (tempVelocity.x == 0 && tempVelocity.y == 0)

@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, PlayerDirection) {
   PDWest
 };
 
-#define PLAYER_SPEED 3.5
+#define PLAYER_SPEED 1.5
 
 @interface PNPlayer : UIImageView
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
