@@ -190,10 +190,8 @@
   //--- walls horizontal collision detection ---//
   tempVelocity.x += tempVelocity.x * deltaTime;
   UIImageView *wallCollidesX = [self checkCollisionForX:tempVelocity];
-  PlayerDirection direction = self.player.lastDirectionGot;
   if (!wallCollidesX)
   {
-    self.player.lastDirectionGot = tempVelocity.x > 0 ? PDEast : PDWest;
     self.player.frame = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y, self.player.frame.size.width, self.player.frame.size.height);
   }
   else
@@ -206,17 +204,11 @@
   UIImageView *wallCollidesY = [self checkCollisionForY:tempVelocity];
   if (!wallCollidesY)
   {
-    self.player.lastDirectionGot = tempVelocity.y > 0 ? PDSouth : PDNorth;
     self.player.frame = CGRectMake(self.player.frame.origin.x, self.player.frame.origin.y + tempVelocity.y, self.player.frame.size.width, self.player.frame.size.height);
   }
   else
   {
     tempVelocity.y = 0;
-  }
-  
-  if (direction != self.player.lastDirectionGot)
-  {
-
   }
   
   if (tempVelocity.x == 0 && tempVelocity.y == 0)
@@ -231,7 +223,7 @@
   {
     if (CGRectIntersectsRect(item.frame, self.player.frame))
     {
-      //      [[MXAudioManager sharedInstance] play:STGoodHit];
+      [[MXAudioManager sharedInstance] play:STGoodHit];
       item.hidden = true;
       [array addObject:item];
       continue;

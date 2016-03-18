@@ -21,7 +21,4 @@ typedef NS_ENUM(NSUInteger, PlayerDirection) {
 @interface PNPlayer : UIImageView
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 @property(nonatomic,assign) CGPoint velocity;
-@property(nonatomic,assign) PlayerDirection horizontalDirection;
-@property(nonatomic,assign) PlayerDirection verticalDirection;
-@property(nonatomic,assign) PlayerDirection lastDirectionGot;
 @end

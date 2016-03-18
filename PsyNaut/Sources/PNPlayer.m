@@ -17,28 +17,24 @@
 {
   if (direction == UISwipeGestureRecognizerDirectionRight)
   {
-    self.horizontalDirection = PDEast;
     self.velocity = CGPointMake(PLAYER_SPEED, self.velocity.y);
     NSLog(@"UISwipeGestureRecognizerDirectionRight");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionLeft)
   {
-    self.horizontalDirection = PDWest;
     self.velocity = CGPointMake(-PLAYER_SPEED, self.velocity.y);
     NSLog(@"UISwipeGestureRecognizerDirectionLeft");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionUp)
   {
-    self.verticalDirection = PDNorth;
     self.velocity = CGPointMake(self.velocity.x, -PLAYER_SPEED);
     NSLog(@"UISwipeGestureRecognizerDirectionUp");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionDown)
   {
-    self.verticalDirection = PDSouth;
     self.velocity = CGPointMake(self.velocity.x, PLAYER_SPEED);
     NSLog(@"UISwipeGestureRecognizerDirectionDown");
   }
