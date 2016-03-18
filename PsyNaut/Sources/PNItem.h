@@ -6,8 +6,8 @@
 //  Copyright © 2016 mugx. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface PNItem : NSObject
+@interface PNItem : UIImageView
 
 @end

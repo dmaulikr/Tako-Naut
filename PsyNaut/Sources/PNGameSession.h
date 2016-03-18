@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNPlayer.h"
 
 @interface PNGameSession : NSObject
-
+- (instancetype)initWithView:(UIView *)view;
+- (void)update:(CGFloat)deltaTime;
+@property(nonatomic,strong) PNPlayer *player;
 @end

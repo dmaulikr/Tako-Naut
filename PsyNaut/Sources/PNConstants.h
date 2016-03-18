@@ -1,5 +1,5 @@
 //
-//  PNPlayer.h
+//  PNConstants.h
 //  Psynaut
 //
 //  Created by mugx on 17/03/16.
@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PNPlayer : NSObject
+#define FEEDBACK_EMAIL @"mugxware@gmail.com"
 
-@end
+typedef NS_ENUM(NSUInteger, MXAudioId) {
+  STGoodHit = 2
+} SoundType;

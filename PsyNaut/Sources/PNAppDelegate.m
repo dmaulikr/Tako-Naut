@@ -8,6 +8,9 @@
 
 #import "PNAppDelegate.h"
 #import "PNGameViewController.h"
+#import "MXToolBox.h"
+#import "PNMacros.h"
+#import <MXAudioManager/MXAudioManager.h>
 
 @interface PNAppDelegate ()
 
@@ -22,7 +25,15 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.rootViewController = [PNGameViewController create];
   [self.window makeKeyAndVisible];
+  [self prepareSounds];
   return YES;
+}
+
+- (void)prepareSounds
+{
+  [MXAudioManager sharedInstance].soundEnabled = SOUND_ENABLED;
+  [MXAudioManager sharedInstance].volume = SOUND_DEFAULT_VOLUME;
+  [[MXAudioManager sharedInstance] load:[MXUtils jsonFromFile:@"gameConfiguration.json"]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

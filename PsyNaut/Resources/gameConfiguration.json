@@ -1,0 +1,7 @@
+{
+  "audio":{
+    "sounds":[
+              {"name":"soundGoodHit.caf", "id":"2"}
+              ]
+  }
+}

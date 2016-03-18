@@ -12,6 +12,11 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 @property(nonatomic,assign) NSUInteger height;
 @property(nonatomic,assign) CGPoint start;
 @property(nonatomic,assign) MazeTyleType **maze;
+
+@property(nonatomic,assign) CFTimeInterval previousTimestamp;
+@property(nonatomic,strong) UIImageView *player;
+@property(nonatomic,strong) PNMazeGenerator *mazeGenerator;
+@property(nonatomic,strong) NSMutableArray *sceneWalls;
 @end
 
 @implementation PNMazeGenerator
