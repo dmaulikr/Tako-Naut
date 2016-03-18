@@ -33,6 +33,9 @@
 		1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */; };
 		1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */; };
 		1DEA36081C9B555100887DDC /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36071C9B555100887DDC /* gameConfiguration.json */; };
+		1DEA360A1C9BE22300887DDC /* oct.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36091C9BE22300887DDC /* oct.png */; };
+		1DEA360C1C9BE83700887DDC /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA360B1C9BE83700887DDC /* key.png */; };
+		1DEA360F1C9BE87700887DDC /* PNCollisionCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -95,6 +98,10 @@
 		1DEA36031C9B543400887DDC /* PNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNConstants.h; path = Sources/PNConstants.h; sourceTree = "<group>"; };
 		1DEA36061C9B550B00887DDC /* PNMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PNMacros.h; path = Sources/PNMacros.h; sourceTree = "<group>"; };
 		1DEA36071C9B555100887DDC /* gameConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = gameConfiguration.json; path = Resources/gameConfiguration.json; sourceTree = "<group>"; };
+		1DEA36091C9BE22300887DDC /* oct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = oct.png; path = Resources/Images/oct.png; sourceTree = "<group>"; };
+		1DEA360B1C9BE83700887DDC /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = Resources/Images/key.png; sourceTree = "<group>"; };
+		1DEA360D1C9BE87700887DDC /* PNCollisionCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNCollisionCollaborator.h; path = Sources/PNCollisionCollaborator.h; sourceTree = "<group>"; };
+		1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNCollisionCollaborator.m; path = Sources/PNCollisionCollaborator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,7 +263,9 @@
 			children = (
 				1D9C61241C993207002B258C /* 1024x1024.png */,
 				1D9CB5871C9A1D30002B52AD /* octopus.png */,
+				1DEA36091C9BE22300887DDC /* oct.png */,
 				1D1F1C981C9A7EF60020570D /* coin.png */,
+				1DEA360B1C9BE83700887DDC /* key.png */,
 				1D9CB5881C9A1D30002B52AD /* wall.png */,
 				1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */,
 			);
@@ -268,6 +277,8 @@
 			children = (
 				1D97147E1C921C7F001894CA /* PNGameSession.h */,
 				1D97147F1C921C7F001894CA /* PNGameSession.m */,
+				1DEA360D1C9BE87700887DDC /* PNCollisionCollaborator.h */,
+				1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */,
 			);
 			name = GameSession;
 			sourceTree = "<group>";
@@ -351,8 +362,10 @@
 				1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */,
 				1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */,
 				1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */,
+				1DEA360C1C9BE83700887DDC /* key.png in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
 				1DEA36081C9B555100887DDC /* gameConfiguration.json in Resources */,
+				1DEA360A1C9BE22300887DDC /* oct.png in Resources */,
 				1D1F1C991C9A7EF60020570D /* coin.png in Resources */,
 				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
 				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
@@ -377,6 +390,7 @@
 				1D9CB5811C9A1CCE002B52AD /* PNGameViewController.m in Sources */,
 				1D36E08D1C9147630043948F /* MXUtils.m in Sources */,
 				1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */,
+				1DEA360F1C9BE87700887DDC /* PNCollisionCollaborator.m in Sources */,
 				1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */,
 				1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */,
 				1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */,

@@ -8,7 +8,8 @@
 
 #import "PNPlayer.h"
 
-#define SPEED 1.5
+@interface PNPlayer()
+@end
 
 @implementation PNPlayer
 
@@ -16,22 +17,30 @@
 {
   if (direction == UISwipeGestureRecognizerDirectionRight)
   {
-    self.velocity = CGPointMake(SPEED, self.velocity.y);
+    self.horizontalDirection = PDEast;
+    self.velocity = CGPointMake(PLAYER_SPEED, self.velocity.y);
+    NSLog(@"UISwipeGestureRecognizerDirectionRight");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionLeft)
   {
-    self.velocity = CGPointMake(-SPEED, self.velocity.y);
+    self.horizontalDirection = PDWest;
+    self.velocity = CGPointMake(-PLAYER_SPEED, self.velocity.y);
+    NSLog(@"UISwipeGestureRecognizerDirectionLeft");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionUp)
   {
-    self.velocity = CGPointMake(self.velocity.x, -SPEED);
+    self.verticalDirection = PDNorth;
+    self.velocity = CGPointMake(self.velocity.x, -PLAYER_SPEED);
+    NSLog(@"UISwipeGestureRecognizerDirectionUp");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionDown)
   {
-    self.velocity = CGPointMake(self.velocity.x, SPEED);
+    self.verticalDirection = PDSouth;
+    self.velocity = CGPointMake(self.velocity.x, PLAYER_SPEED);
+    NSLog(@"UISwipeGestureRecognizerDirectionDown");
   }
 }
 
