@@ -1,2 +1,2 @@
-# Psynaut
+# PsyNaut
 w.i.p.
