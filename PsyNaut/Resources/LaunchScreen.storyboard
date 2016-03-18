@@ -16,7 +16,32 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sI-5v-wTL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1024x1024.png" translatesAutoresizingMaskIntoConstraints="NO" id="oGm-6W-quC">
+                                        <rect key="frame" x="100" y="100" width="400" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="400" id="6Y5-5Q-87M"/>
+                                            <constraint firstAttribute="height" constant="400" id="EtO-GR-GbE"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="oGm-6W-quC" firstAttribute="centerX" secondItem="0sI-5v-wTL" secondAttribute="centerX" id="hwA-l2-YL8"/>
+                                    <constraint firstItem="oGm-6W-quC" firstAttribute="centerY" secondItem="0sI-5v-wTL" secondAttribute="centerY" id="ls9-Ax-TFX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0sI-5v-wTL" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="CvP-Z2-16g"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0sI-5v-wTL" secondAttribute="bottom" id="DGp-Js-mCq"/>
+                            <constraint firstItem="0sI-5v-wTL" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="VjE-8C-Qxq"/>
+                            <constraint firstAttribute="trailing" secondItem="0sI-5v-wTL" secondAttribute="trailing" id="Wlt-6S-8P2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +49,7 @@
             <point key="canvasLocation" x="152" y="338"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1024x1024.png" width="1024" height="1024"/>
+    </resources>
 </document>
