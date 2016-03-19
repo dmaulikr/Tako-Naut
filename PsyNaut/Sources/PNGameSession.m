@@ -30,7 +30,6 @@
 @property(nonatomic,strong) PNMazeGenerator *mazeGenerator;
 @property(nonatomic,assign) NSUInteger tileWidth;
 @property(nonatomic,assign) NSUInteger tileHeight;
-@property(nonatomic,assign) MazeTyleType **maze;
 @property(nonatomic,assign) NSUInteger numRow;
 @property(nonatomic,assign) NSUInteger numCol;
 
@@ -58,7 +57,6 @@
   self.tileHeight = TILE_SIZE;
   self.numCol = 15;
   self.numRow = 15;
-  self.mazeGenerator = [[PNMazeGenerator alloc] initWithRow:self.numRow col:self.numCol startingPosition:CGPointMake(STARTING_X, STARTING_Y)];
   
   [self initMaze];
   [self initPlayer];
@@ -73,38 +71,36 @@
   [self.gameView addSubview:self.mazeView];
   [self.gameView sendSubviewToBack:self.mazeView];
   
-  [self.mazeGenerator calculateMaze:^(MazeTyleType **maze)
-   {
-     self.maze = maze;
-     for (int r = 0; r < self.numRow ; r++)
-     {
-       for (int c = 0; c < self.numCol; c++)
-       {
-         if (maze[r][c] == MTWall)
-         {
-           UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
-           [wall setImage:[[UIImage imageNamed:@"wall"] imageColored:BLUE_COLOR]];
-           [self.mazeView addSubview:wall];
-           [self.walls addObject:wall];
-           [self.mazeView sendSubviewToBack:wall];
-         }
-         else if (maze[r][c] == MTStart)
-         {
-           UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
-           wall.backgroundColor = [UIColor whiteColor];
-           [self.mazeView addSubview:wall];
-           [self.mazeView sendSubviewToBack:wall];
-         }
-         else if (maze[r][c] == MTEnd)
-         {
-           UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
-           wall.backgroundColor = GREEN_COLOR;
-           [self.mazeView addSubview:wall];
-           [self.mazeView sendSubviewToBack:wall];
-         }
-       }
-     }
-   }];
+  //--- generating the maze ---//
+  self.mazeGenerator = [[PNMazeGenerator alloc] initWithRow:self.numRow col:self.numCol startingPosition:CGPointMake(STARTING_X, STARTING_Y)];
+  for (int r = 0; r < self.numRow ; r++)
+  {
+    for (int c = 0; c < self.numCol; c++)
+    {
+      if (self.mazeGenerator.maze[r][c] == MTWall)
+      {
+        UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+        [wall setImage:[[UIImage imageNamed:@"wall"] imageColored:BLUE_COLOR]];
+        [self.mazeView addSubview:wall];
+        [self.walls addObject:wall];
+        [self.mazeView sendSubviewToBack:wall];
+      }
+      else if (self.mazeGenerator.maze[r][c] == MTStart)
+      {
+        UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+        wall.backgroundColor = [UIColor whiteColor];
+        [self.mazeView addSubview:wall];
+        [self.mazeView sendSubviewToBack:wall];
+      }
+      else if (self.mazeGenerator.maze[r][c] == MTEnd)
+      {
+        UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+        wall.backgroundColor = GREEN_COLOR;
+        [self.mazeView addSubview:wall];
+        [self.mazeView sendSubviewToBack:wall];
+      }
+    }
+  }
 }
 
 - (void)initPlayer
@@ -124,7 +120,7 @@
   {
     for (int c = 0; c < self.numCol; c++)
     {
-      if (self.maze[r][c] == MTPath)
+      if (self.self.mazeGenerator.maze[r][c] == MTPath)
       {
         if ((arc4random() % 100) >= 80)
         {
@@ -187,27 +183,33 @@
   //--- walls horizontal collision detection ---//
   tempVelocity.x += tempVelocity.x * deltaTime;
   UIImageView *wallCollidesX = [self checkCollisionForX:tempVelocity];
-  if (!wallCollidesX)
+  if (!wallCollidesX && (self.player.wantedDirection_horizontal == 1 || self.player.currentDirection_horizontal == 1))
   {
     self.player.frame = CGRectMake(self.player.frame.origin.x + tempVelocity.x, self.player.frame.origin.y, self.player.frame.size.width, self.player.frame.size.height);
+    self.player.wantedDirection_horizontal = 0;
+    self.player.currentDirection_horizontal = 1;
   }
-  else
+  else if (wallCollidesX)
   {
     tempVelocity.x = 0;
     self.player.frame = CGRectMake([self getMagicNumber:self.player.frame.origin.x], self.player.frame.origin.y, self.player.frame.size.width, self.player.frame.size.height);
+    self.player.currentDirection_horizontal = 0;
   }
   
   //--- walls vertical collision detection ---//
   tempVelocity.y += tempVelocity.y * deltaTime;
   UIImageView *wallCollidesY = [self checkCollisionForY:tempVelocity];
-  if (!wallCollidesY)
+  if (!wallCollidesY && (self.player.wantedDirection_vertical == 1 || self.player.currentDirection_vertical == 1))
   {
     self.player.frame = CGRectMake(self.player.frame.origin.x, self.player.frame.origin.y + tempVelocity.y, self.player.frame.size.width, self.player.frame.size.height);
+    self.player.wantedDirection_vertical = 0;
+    self.player.currentDirection_vertical = 1;
   }
-  else
+  else if (wallCollidesY)
   {
     tempVelocity.y = 0;
     self.player.frame = CGRectMake(self.player.frame.origin.x, [self getMagicNumber:self.player.frame.origin.y], self.player.frame.size.width, self.player.frame.size.height);
+    self.player.currentDirection_vertical = 0;
   }
   
   if (tempVelocity.x == 0 && tempVelocity.y == 0)

@@ -13,7 +13,6 @@
 
 #define GAME_CENTER_ENABLED !DEBUG
 //#define FONT_FAMILY @"C64 User"
-#define FONT_FAMILY @"Joystix"
 
 #define GREEN_COLOR [UIColor colorWithRed:0.0/255.0 green:255.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define MAGENTA_COLOR [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:255.0/255.0 alpha:1.0]

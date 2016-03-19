@@ -19,4 +19,6 @@
 
 #define LOCALIZE(k) [[MXLocalizationManager sharedInstance] localize:k]
 #define FONT_FAMILY @"Joystix"
+#define MXLog(s) if (DEBUG) NSLog(s)
+
 #endif /* MXToolBox_h */

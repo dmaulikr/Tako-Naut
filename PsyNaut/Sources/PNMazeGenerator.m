@@ -11,7 +11,6 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 @property(nonatomic,assign) NSUInteger width;
 @property(nonatomic,assign) NSUInteger height;
 @property(nonatomic,assign) CGPoint start;
-@property(nonatomic,assign) MazeTyleType **maze;
 
 @property(nonatomic,assign) CFTimeInterval previousTimestamp;
 @property(nonatomic,strong) UIImageView *player;
@@ -35,6 +34,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
     {
       _maze[r] = (MazeTyleType *)calloc(_width, sizeof(MazeTyleType));
     }
+    [self initMaze];
   }
   return self;
 }
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   free(_maze);
 }
 
-- (void)calculateMaze:(void (^)(MazeTyleType **))completion
+- (void)initMaze
 {
   int posX = (int)self.start.x;
   int posY = (int)self.start.y;
@@ -130,12 +130,6 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
     }
   }
   self.maze[[end[@"x"] intValue]][[end[@"y"] intValue]] = MTEnd;
-  
-  //--- giving the answer ---//
-  if (completion)
-  {
-    completion(self.maze);
-  }
 }
 
 @end

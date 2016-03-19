@@ -8,17 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, PlayerDirection) {
-  PDNone,
-  PDNorth,
-  PDSouth,
-  PDEast,
-  PDWest
-};
-
 #define PLAYER_SPEED 1.5
 
 @interface PNPlayer : UIImageView
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 @property(nonatomic,assign) CGPoint velocity;
+@property(nonatomic,assign) int wantedDirection_vertical;
+@property(nonatomic,assign) int currentDirection_vertical;
+@property(nonatomic,assign) int wantedDirection_horizontal;
+@property(nonatomic,assign) int currentDirection_horizontal;
 @end

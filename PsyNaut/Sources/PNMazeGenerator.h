@@ -9,5 +9,5 @@ typedef NS_ENUM(NSUInteger, MazeTyleType) {
 
 @interface PNMazeGenerator : NSObject
 - (instancetype)initWithRow:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position;
-- (void)calculateMaze:(void (^)(MazeTyleType **))completion;
+@property(nonatomic,assign) MazeTyleType **maze;
 @end

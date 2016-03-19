@@ -7,6 +7,7 @@
 //
 
 #import "PNPlayer.h"
+#import "MXToolBox.h"
 
 @interface PNPlayer()
 @end
@@ -18,25 +19,29 @@
   if (direction == UISwipeGestureRecognizerDirectionRight)
   {
     self.velocity = CGPointMake(PLAYER_SPEED, self.velocity.y);
-    NSLog(@"UISwipeGestureRecognizerDirectionRight");
+    self.wantedDirection_horizontal = 1;
+    MXLog(@"UISwipeGestureRecognizerDirectionRight");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionLeft)
   {
     self.velocity = CGPointMake(-PLAYER_SPEED, self.velocity.y);
-    NSLog(@"UISwipeGestureRecognizerDirectionLeft");
+    self.wantedDirection_horizontal = 1;
+    MXLog(@"UISwipeGestureRecognizerDirectionLeft");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionUp)
   {
     self.velocity = CGPointMake(self.velocity.x, -PLAYER_SPEED);
-    NSLog(@"UISwipeGestureRecognizerDirectionUp");
+    self.wantedDirection_vertical = 1;
+    MXLog(@"UISwipeGestureRecognizerDirectionUp");
   }
   
   if (direction == UISwipeGestureRecognizerDirectionDown)
   {
     self.velocity = CGPointMake(self.velocity.x, PLAYER_SPEED);
-    NSLog(@"UISwipeGestureRecognizerDirectionDown");
+    self.wantedDirection_vertical = 1;
+    MXLog(@"UISwipeGestureRecognizerDirectionDown");
   }
 }
 
