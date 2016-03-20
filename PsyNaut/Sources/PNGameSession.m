@@ -139,78 +139,12 @@
   }
 }
 
-- (bool)checkCollision:(CGPoint)velocity
-{
-  CGRect playerFrame = CGRectMake(self.player.frame.origin.x + velocity.x, self.player.frame.origin.y + velocity.y, self.player.frame.size.width, self.player.frame.size.height);
-  
-  for (UIImageView *wall in self.walls)
-  {
-    if (CGRectIntersectsRect(wall.frame, playerFrame))
-    {
-      return true;
-    }
-  }
-  return false;
-}
-
-- (int)getMagicNumber:(float)input
-{
-  int output;
-  int tile_size = TILE_SIZE;
-  float temp = (float)input / (float)tile_size;
-  
-  int a,b;
-  a = floorf(temp);
-  b = ceilf(temp);
-  bool bestA = fabs((tile_size * a) - input) < fabs((tile_size * b) - input);
-  output = bestA ? tile_size * a : tile_size * b;
-  return output;
-}
-
 - (void)update:(CGFloat)deltaTime
 {
-  /*
-  float velx = self.player.velocity.x + self.player.velocity.x * deltaTime;
-  bool collidesX = [self checkCollision:CGPointMake(velx, 0)];
-
-  //--- walls horizontal collision detection ---//
-  if (!collidesX && (self.player.wantedDirection_horizontal == 1 || self.player.currentDirection_horizontal == 1))
-  {
-    self.player.frame = CGRectMake(self.player.frame.origin.x + velx, self.player.frame.origin.y, self.player.frame.size.width, self.player.frame.size.height);
-    self.player.wantedDirection_horizontal = 0;
-    self.player.currentDirection_horizontal = 1;
-  }
-  else if (collidesX)
-  {
-    self.player.frame = CGRectMake([self getMagicNumber:self.player.frame.origin.x], self.player.frame.origin.y, self.player.frame.size.width, self.player.frame.size.height);
-    self.player.currentDirection_horizontal = 0;
-  }
-  
-  float vely = self.player.velocity.y + self.player.velocity.y * deltaTime;
-  bool collidesY = [self checkCollision:CGPointMake(0, vely)];
-
-  //--- walls vertical collision detection ---//
-  if (!collidesY && (self.player.wantedDirection_vertical == 1 || self.player.currentDirection_vertical == 1))
-  {
-    self.player.frame = CGRectMake(self.player.frame.origin.x, self.player.frame.origin.y + vely, self.player.frame.size.width, self.player.frame.size.height);
-    self.player.wantedDirection_vertical = 0;
-    self.player.currentDirection_vertical = 1;
-  }
-  else if (collidesY)
-  {
-    self.player.frame = CGRectMake(self.player.frame.origin.x, [self getMagicNumber:self.player.frame.origin.y], self.player.frame.size.width, self.player.frame.size.height);
-    self.player.currentDirection_vertical = 0;
-  }
-  
-  if (collidesX && collidesY)
-  {
-    self.player.velocity = CGPointMake(0, 0);
-    self.player.frame = CGRectMake([self getMagicNumber:self.player.frame.origin.x], [self getMagicNumber:self.player.frame.origin.y], self.player.frame.size.width, self.player.frame.size.height);
-  }
-  */
+  //--- checking walls collisions ---//
   [self.collisionCollaborator update:deltaTime];
   
-  //--- items collision detection ---//
+  //--- checking items collisions ---//
   NSMutableArray *array = [NSMutableArray array];
   for (PNItem *item in self.items)
   {
