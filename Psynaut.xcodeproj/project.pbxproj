@@ -220,9 +220,9 @@
 			isa = PBXGroup;
 			children = (
 				1D97147D1C921C05001894CA /* GameSession */,
+				1D58F75A1C8D4F57006365EE /* Maze */,
 				1D1F1C9D1C9A80E90020570D /* Player */,
 				1D9CB5781C9A1C85002B52AD /* Item */,
-				1D58F75A1C8D4F57006365EE /* Maze */,
 			);
 			name = Gameplay;
 			sourceTree = "<group>";

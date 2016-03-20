@@ -6,8 +6,10 @@
 //  Copyright © 2016 mugx. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "PNGameSession.h"
 
 @interface PNCollisionCollaborator : NSObject
-
+- (instancetype)init:(PNGameSession *)gameSession;
+- (void)update:(CGFloat)deltaTime;
 @end

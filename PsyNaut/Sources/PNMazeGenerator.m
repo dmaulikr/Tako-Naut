@@ -11,46 +11,28 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 @property(nonatomic,assign) NSUInteger width;
 @property(nonatomic,assign) NSUInteger height;
 @property(nonatomic,assign) CGPoint start;
-
-@property(nonatomic,assign) CFTimeInterval previousTimestamp;
-@property(nonatomic,strong) UIImageView *player;
-@property(nonatomic,strong) PNMazeGenerator *mazeGenerator;
-@property(nonatomic,strong) NSMutableArray *sceneWalls;
 @end
 
 @implementation PNMazeGenerator
 
-- (instancetype)initWithRow:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position
+- (MazeTyleType **)calculateMaze:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position
 {
-  if ((self = [super init]))
+  _width	= col;
+  _height	= row;
+  _start = position;
+  
+  //--- init maze ---//
+  MazeTyleType **maze = (MazeTyleType **)calloc(_height, sizeof(MazeTyleType *));
+  for (int r = 0; r < _height;++r)
   {
-    _width	= col;
-    _height	= row;
-    _start = position;
-    
-    //--- init maze ---//
-    _maze = (MazeTyleType **)calloc(_height, sizeof(MazeTyleType *));
-    for (int r = 0; r < _height;++r)
-    {
-      _maze[r] = (MazeTyleType *)calloc(_width, sizeof(MazeTyleType));
-    }
-    [self initMaze];
+   maze[r] = (MazeTyleType *)calloc(_width, sizeof(MazeTyleType));
   }
-  return self;
-}
 
-- (void)dealloc
-{
-  free(_maze);
-}
-
-- (void)initMaze
-{
   int posX = (int)self.start.x;
   int posY = (int)self.start.y;
 
   //--- taking start tile ---//
-  self.maze[posX][posY] = MTStart;
+  maze[posX][posY] = MTStart;
 
   NSMutableArray<NSDictionary *> *visitedTiles = [@[] mutableCopy];
   NSMutableArray *currentPath = [@[@{@"x" : @(posX), @"y" : @(posY)}] mutableCopy];
@@ -58,22 +40,22 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   {
     //--- digging in some diretions ---//
     NSMutableArray<NSNumber *> *possibleDirections = [NSMutableArray<NSNumber *> array];
-    if ((posX - 2 >= 0) && (self.maze[posX - 2][posY] == MTWall))
+    if ((posX - 2 >= 0) && (maze[posX - 2][posY] == MTWall))
     {
       [possibleDirections addObject:@(DTNorth)];
     }
     
-    if ((posX + 2 < self.height) && (self.maze[posX + 2][posY] == MTWall))
+    if ((posX + 2 < self.height) && (maze[posX + 2][posY] == MTWall))
     {
       [possibleDirections addObject:@(DTSouth)];
     }
     
-    if ((posY + 2 < self.width) && (self.maze[posX][posY + 2] == MTWall))
+    if ((posY + 2 < self.width) && (maze[posX][posY + 2] == MTWall))
     {
       [possibleDirections addObject:@(DTEast)];
     }
     
-    if ((posY - 2 >= 0) && (self.maze[posX][posY - 2] == MTWall))
+    if ((posY - 2 >= 0) && (maze[posX][posY - 2] == MTWall))
     {
       [possibleDirections addObject:@(DTWest)];
     }
@@ -84,26 +66,26 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
       switch (direction)
       {
         case DTNorth: {
-          self.maze[posX - 2][posY] = MTPath;
-          self.maze[posX - 1][posY] = MTPath;
+          maze[posX - 2][posY] = MTPath;
+          maze[posX - 1][posY] = MTPath;
           posX -= 2;
           break;
         }
         case DTSouth: {
-          self.maze[posX + 2][posY] = MTPath;
-          self.maze[posX + 1][posY] = MTPath;
+          maze[posX + 2][posY] = MTPath;
+          maze[posX + 1][posY] = MTPath;
           posX += 2;
           break;
         }
         case DTEast: {
-          self.maze[posX][posY + 2] = MTPath;
-          self.maze[posX][posY + 1] = MTPath;
+          maze[posX][posY + 2] = MTPath;
+          maze[posX][posY + 1] = MTPath;
           posY += 2;
           break;
         }
         case DTWest: {
-          self.maze[posX][posY - 2] = MTPath;
-          self.maze[posX][posY - 1] = MTPath;
+          maze[posX][posY - 2] = MTPath;
+          maze[posX][posY - 1] = MTPath;
           posY -= 2;
           break;
         }
@@ -129,7 +111,8 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
       end = tile;
     }
   }
-  self.maze[[end[@"x"] intValue]][[end[@"y"] intValue]] = MTEnd;
+  maze[[end[@"x"] intValue]][[end[@"y"] intValue]] = MTEnd;
+  return maze;
 }
 
 @end

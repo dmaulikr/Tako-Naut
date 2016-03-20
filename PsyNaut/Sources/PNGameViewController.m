@@ -43,12 +43,11 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-  [super viewDidAppear:animated];
+  [super viewWillAppear:animated];
   
   //--- setip game session ---//
   self.gameSession = [[PNGameSession alloc] initWithView:self.view];

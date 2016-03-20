@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "PNPlayer.h"
+#import "PNMazeGenerator.h"
+
+#define TILE_SIZE 32
 
 @interface PNGameSession : NSObject
 - (instancetype)initWithView:(UIView *)view;
 - (void)update:(CGFloat)deltaTime;
 @property(nonatomic,strong) PNPlayer *player;
+@property(nonatomic,assign) MazeTyleType **maze;
+@property(readonly) NSMutableArray<UIImageView *> *walls;
 @end
