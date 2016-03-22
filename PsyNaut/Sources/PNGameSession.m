@@ -109,7 +109,7 @@
 
 - (void)initPlayer
 {
-  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * self.tileWidth, STARTING.x * self.tileHeight, self.tileWidth - PLAYER_SPEED, self.tileHeight - PLAYER_SPEED)];
+  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * self.tileWidth + PLAYER_SPEED, STARTING.x * self.tileHeight + PLAYER_SPEED, self.tileWidth - PLAYER_SPEED * 2, self.tileHeight - PLAYER_SPEED * 2)];
   self.player.animationImages = [[UIImage imageNamed:@"oct"] spritesWiteSize:CGSizeMake(self.tileWidth, self.tileHeight)];
   self.player.animationDuration = 0.4f;
   self.player.animationRepeatCount = 0;
@@ -159,7 +159,7 @@
   [self.items removeObjectsInArray:array];
   
   //--- updating maze frame ---//
-  self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2 -self.player.frame.origin.x, self.mazeView.frame.size.height / 2 -self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
+  self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
 }
 
 @end

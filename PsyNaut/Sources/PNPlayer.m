@@ -8,11 +8,34 @@
 
 #import "PNPlayer.h"
 #import "MXToolBox.h"
+#import "PNGameSession.h"
 
 @interface PNPlayer()
 @end
 
 @implementation PNPlayer
+
+- (CGPoint)getNormalizedPosition
+{
+  CGPoint point;
+  point.x = [self getNormalizedNumber:self.frame.origin.x];
+  point.y = [self getNormalizedNumber:self.frame.origin.y];
+  return point;
+}
+
+- (int)getNormalizedNumber:(float)number
+{
+  int output;
+  int tile_size = TILE_SIZE;
+  float temp = (float)number / (float)tile_size;
+  
+  int a,b;
+  a = floorf(temp);
+  b = ceilf(temp);
+  bool bestA = fabs((tile_size * a) - number) < fabs((tile_size * b) - number);
+  output = bestA ? tile_size * a : tile_size * b;
+  return output;
+}
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
 {

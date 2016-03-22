@@ -12,6 +12,7 @@
 
 @interface PNPlayer : UIImageView
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
+- (CGPoint)getNormalizedPosition;
 @property(nonatomic,assign) CGPoint velocity;
 @property(nonatomic,assign) int wantedDirection_vertical;
 @property(nonatomic,assign) int currentDirection_vertical;
