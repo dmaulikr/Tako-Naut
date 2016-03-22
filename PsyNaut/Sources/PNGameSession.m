@@ -109,7 +109,7 @@
 
 - (void)initPlayer
 {
-  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * self.tileWidth + PLAYER_SPEED, STARTING.x * self.tileHeight + PLAYER_SPEED, self.tileWidth - PLAYER_SPEED * 2, self.tileHeight - PLAYER_SPEED * 2)];
+  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * self.tileWidth, STARTING.x * self.tileHeight, self.tileWidth - PLAYER_SPEED * 2, self.tileHeight - PLAYER_SPEED * 2)];
   self.player.animationImages = [[UIImage imageNamed:@"oct"] spritesWiteSize:CGSizeMake(self.tileWidth, self.tileHeight)];
   self.player.animationDuration = 0.4f;
   self.player.animationRepeatCount = 0;
