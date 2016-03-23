@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#define PLAYER_SPEED 1.5
+#define PLAYER_SPEED 2
+#define PLAYER_PADDING 1
 
 @interface PNPlayer : UIImageView
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
-- (CGPoint)getNormalizedPosition;
 @property(nonatomic,assign) CGPoint velocity;
-@property(nonatomic,assign) int wantedDirection_vertical;
-@property(nonatomic,assign) int currentDirection_vertical;
-@property(nonatomic,assign) int wantedDirection_horizontal;
-@property(nonatomic,assign) int currentDirection_horizontal;
+@property(nonatomic,assign) bool didVerticalSwipe;
+@property(nonatomic,assign) bool didHorizontalSwipe;
 @end

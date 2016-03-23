@@ -36,14 +36,12 @@
   return output;
 }
 
-- (bool)checkCollision:(CGPoint)velocity frame:(CGRect)frame
+- (bool)checkCollision:(CGRect)frame
 {
   NSArray *walls = self.gameSession.walls;
-  CGRect playerFrame = CGRectMake(frame.origin.x + velocity.x, frame.origin.y + velocity.y, frame.size.width, frame.size.height);
-  
   for (UIImageView *wall in walls)
   {
-    if (CGRectIntersectsRect(wall.frame, playerFrame))
+    if (CGRectIntersectsRect(wall.frame, frame))
     {
       return true;
     }
@@ -52,116 +50,98 @@
   return false;
 }
 
-- (int)snapToFloor:(float)number
-{
-  int output = floorf(number / TILE_SIZE);
-  return output;
-}
-
 - (MazeTyleType)getNorth
 {
-  int x = [self snapToFloor:self.gameSession.player.frame.origin.x];
-  int y = [self snapToFloor:self.gameSession.player.frame.origin.y + self.gameSession.player.frame.size.height];
-  MazeTyleType tyleType = self.gameSession.maze[y - 1][x];
-  return tyleType;
+  int x = (int)floorf(self.gameSession.player.frame.origin.x / TILE_SIZE);
+  int y = (int)floorf((self.gameSession.player.frame.origin.y + self.gameSession.player.frame.size.height) / TILE_SIZE);
+  return self.gameSession.maze[y - 1][x];
 }
 
 - (MazeTyleType)getSouth
 {
-  int x = [self snapToFloor:self.gameSession.player.frame.origin.x];
-  int y = [self snapToFloor:self.gameSession.player.frame.origin.y];
-  MazeTyleType tyleType = self.gameSession.maze[y + 1][x];
-  return tyleType;
+  int x = (int)floorf(self.gameSession.player.frame.origin.x / TILE_SIZE);
+  int y = (int)floorf(self.gameSession.player.frame.origin.y / TILE_SIZE);
+  return self.gameSession.maze[y + 1][x];
 }
 
 - (MazeTyleType)getWest
 {
-  int x = [self snapToFloor:self.gameSession.player.frame.origin.x];
-  int y = [self snapToFloor:self.gameSession.player.frame.origin.y];
-  MazeTyleType tyleType = self.gameSession.maze[y][x + 1];
-  return tyleType;
+  int x = (int)floorf(self.gameSession.player.frame.origin.x / TILE_SIZE);
+  int y = (int)floorf(self.gameSession.player.frame.origin.y / TILE_SIZE);
+  return self.gameSession.maze[y][x + 1];
 }
 
 - (MazeTyleType)getEast
 {
-  int x = [self snapToFloor:self.gameSession.player.frame.origin.x + self.gameSession.player.frame.size.width];
-  int y = [self snapToFloor:self.gameSession.player.frame.origin.y];
-  MazeTyleType tyleType = self.gameSession.maze[y][x - 1];
-  return tyleType;
-}
-
-- (void)snapToFloor_x
-{
-  PNPlayer *player = self.gameSession.player;
-  int output_x = floorf(player.frame.origin.x / TILE_SIZE) * TILE_SIZE;
-  player.frame = CGRectMake(output_x + 1, player.frame.origin.y, player.frame.size.width, player.frame.size.height);
-}
-
-- (void)snapToFloor_y
-{
-  PNPlayer *player = self.gameSession.player;
-  int output_y = floorf(player.frame.origin.y / TILE_SIZE) * TILE_SIZE;
-  player.frame = CGRectMake(player.frame.origin.x, output_y + 1, player.frame.size.width, player.frame.size.height);
+  int x = (int)floorf((self.gameSession.player.frame.origin.x + self.gameSession.player.frame.size.width) / TILE_SIZE);
+  int y = (int)floorf(self.gameSession.player.frame.origin.y / TILE_SIZE);
+  return self.gameSession.maze[y][x - 1];
 }
 
 - (void)update:(CGFloat)deltaTime
 {
   PNPlayer *player = self.gameSession.player;
-  CGRect frame = player.frame;
+  CGRect playerFrame = player.frame;
   float velx = player.velocity.x + player.velocity.x * deltaTime;
   float vely = player.velocity.y + player.velocity.y * deltaTime;
-  bool moves_vertical = false;
-  bool moves_horizontal = false;
+  bool didHorizontalMove = false;
+  bool didVerticalMove = false;
   
-  if (((velx < 0 && [self getEast] != MTWall) || (velx > 0 && [self getWest] != MTWall)) && ![self checkCollision:CGPointMake(velx, 0) frame:frame])
+  //--- checking horizontal move ---//
+  CGRect frameOnHorizontalMove = CGRectMake(playerFrame.origin.x + velx, playerFrame.origin.y, playerFrame.size.width, playerFrame.size.height);
+  if (((velx < 0 && [self getEast] != MTWall) || (velx > 0 && [self getWest] != MTWall)) && ![self checkCollision:frameOnHorizontalMove])
   {
-    player.wantedDirection_horizontal = 0;
-    int output_x1 = floorf(player.frame.origin.x / TILE_SIZE) * TILE_SIZE;
-    frame = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
-    player.frame = frame;
+    player.didHorizontalSwipe = false;
+    didHorizontalMove = true;
     
-    [UIView animateWithDuration:deltaTime animations:^{
-      int output_x2 = floorf(player.frame.origin.x / TILE_SIZE) * TILE_SIZE;
-      if (output_x1 != output_x2)
-      {
-        [self snapToFloor_y];
-      }
-    } completion:^(BOOL finished) {
-    }];
+    int oldx = floorf(playerFrame.origin.x / TILE_SIZE) * TILE_SIZE;
+    playerFrame = frameOnHorizontalMove;
+    int newx = floorf(playerFrame.origin.x / TILE_SIZE) * TILE_SIZE;
     
-    if (vely != 0 && !player.wantedDirection_vertical)
+    if (oldx != newx) // if passed on new horizontal tile
+    {
+      // then snap on vertical
+       playerFrame = CGRectMake(playerFrame.origin.x, (floorf(playerFrame.origin.y / TILE_SIZE) * TILE_SIZE) + PLAYER_PADDING, playerFrame.size.width, playerFrame.size.height);
+    }
+    
+    if (vely != 0 && !player.didVerticalSwipe)
     {
       player.velocity = CGPointMake(player.velocity.x, 0);
     }
-    player.wantedDirection_horizontal = 0;
-    moves_horizontal = true;
   }
   
-  if (((vely < 0 && [self getNorth] != MTWall) || (vely > 0 && [self getSouth] != MTWall)) && ![self checkCollision:CGPointMake(0, vely) frame:frame])
+  //--- checking vertical move ---//
+  CGRect frameOnVerticalMove = CGRectMake(playerFrame.origin.x, playerFrame.origin.y + vely, playerFrame.size.width, playerFrame.size.height);
+  if (((vely < 0 && [self getNorth] != MTWall) || (vely > 0 && [self getSouth] != MTWall)) && ![self checkCollision:frameOnVerticalMove])
   {
-    player.wantedDirection_vertical = 0;
-    int output_y1 = floorf(player.frame.origin.y / TILE_SIZE) * TILE_SIZE;
-    frame = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
-    player.frame = frame;
-    [UIView animateWithDuration:deltaTime animations:^{
-      int output_y2 = floorf(player.frame.origin.y / TILE_SIZE) * TILE_SIZE;
-      if (output_y1 != output_y2)
-      {
-        [self snapToFloor_x];
-      }
-    } completion:^(BOOL finished) {
-    }];
+    player.didVerticalSwipe = false;
+    didVerticalMove = true;
     
-    player.wantedDirection_vertical = 0;
-    moves_vertical = true;
+    int oldy = floorf(playerFrame.origin.y / TILE_SIZE) * TILE_SIZE;
+    playerFrame = frameOnVerticalMove;
+    int newy = floorf(playerFrame.origin.y / TILE_SIZE) * TILE_SIZE;
     
-    if (velx != 0 && !player.wantedDirection_horizontal)
+    if (oldy != newy) // if passed on new vertical tile
+    {
+      // then moving on horizontal snap
+      //float destx = (floorf(playerFrame.origin.x / TILE_SIZE) * TILE_SIZE) + PLAYER_PADDING;
+      //velx = destx - player.frame.origin.x;
+      //velx = (velx > 0) && (velx > PLAYER_SPEED) ? PLAYER_SPEED : velx;
+      //velx = (velx < 0) && (velx < PLAYER_SPEED) ? PLAYER_SPEED : velx;
+      playerFrame = CGRectMake(floorf(playerFrame.origin.x / TILE_SIZE) * TILE_SIZE + PLAYER_PADDING, playerFrame.origin.y, playerFrame.size.width, playerFrame.size.height);
+    }
+    
+    if (velx != 0 && !player.didHorizontalSwipe)
     {
       player.velocity = CGPointMake(0, player.velocity.y);
     }
   }
-  
-  if (!moves_vertical && !moves_horizontal)
+
+  if (didHorizontalMove || didVerticalMove)
+  {
+    player.frame = playerFrame;
+  }
+  else
   {
     player.velocity = CGPointMake(0, 0);
   }
