@@ -22,20 +22,6 @@
   return self;
 }
 
-- (int)getMagicNumber:(float)input
-{
-  int output;
-  int tile_size = TILE_SIZE;
-  float temp = (float)input / (float)tile_size;
-  
-  int a,b;
-  a = floorf(temp);
-  b = ceilf(temp);
-  bool bestA = fabs((tile_size * a) - input) < fabs((tile_size * b) - input);
-  output = bestA ? tile_size * a : tile_size * b;
-  return output;
-}
-
 - (bool)checkCollision:(CGRect)frame
 {
   NSArray *walls = self.gameSession.walls;
@@ -124,10 +110,6 @@
     if (oldy != newy) // if passed on new vertical tile
     {
       // then moving on horizontal snap
-      //float destx = (floorf(playerFrame.origin.x / TILE_SIZE) * TILE_SIZE) + PLAYER_PADDING;
-      //velx = destx - player.frame.origin.x;
-      //velx = (velx > 0) && (velx > PLAYER_SPEED) ? PLAYER_SPEED : velx;
-      //velx = (velx < 0) && (velx < PLAYER_SPEED) ? PLAYER_SPEED : velx;
       playerFrame = CGRectMake(floorf(playerFrame.origin.x / TILE_SIZE) * TILE_SIZE + PLAYER_PADDING, playerFrame.origin.y, playerFrame.size.width, playerFrame.size.height);
     }
     
