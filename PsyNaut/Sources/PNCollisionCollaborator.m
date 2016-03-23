@@ -54,18 +54,6 @@
 
 - (int)snapToFloor:(float)number
 {
-  /*
-   int output;
-   int tile_size = TILE_SIZE;
-   float temp = (float)number / (float)tile_size;
-   
-   int a,b;
-   a = floorf(temp);
-   b = ceilf(temp);
-   bool bestA = fabs((tile_size * a) - number) < fabs((tile_size * b) - number);
-   output = bestA ? tile_size * a : tile_size * b;
-   return output / TILE_SIZE;
-   */
   int output = floorf(number / TILE_SIZE);
   return output;
 }
@@ -102,6 +90,20 @@
   return tyleType;
 }
 
+- (void)snapToFloor_x
+{
+  PNPlayer *player = self.gameSession.player;
+  int output_x = floorf(player.frame.origin.x / TILE_SIZE) * TILE_SIZE;
+  player.frame = CGRectMake(output_x + 1, player.frame.origin.y, player.frame.size.width, player.frame.size.height);
+}
+
+- (void)snapToFloor_y
+{
+  PNPlayer *player = self.gameSession.player;
+  int output_y = floorf(player.frame.origin.y / TILE_SIZE) * TILE_SIZE;
+  player.frame = CGRectMake(player.frame.origin.x, output_y + 1, player.frame.size.width, player.frame.size.height);
+}
+
 - (void)update:(CGFloat)deltaTime
 {
   PNPlayer *player = self.gameSession.player;
@@ -111,43 +113,58 @@
   bool moves_vertical = false;
   bool moves_horizontal = false;
   
-  if ([self getWest] != MTWall && velx > 0 && ![self checkCollision:CGPointMake(velx, 0) frame:player.frame])
+  if (((velx < 0 && [self getEast] != MTWall) || (velx > 0 && [self getWest] != MTWall)) && ![self checkCollision:CGPointMake(velx, 0) frame:frame])
   {
+    player.wantedDirection_horizontal = 0;
+    int output_x1 = floorf(player.frame.origin.x / TILE_SIZE) * TILE_SIZE;
     frame = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
+    player.frame = frame;
+    
+    [UIView animateWithDuration:deltaTime animations:^{
+      int output_x2 = floorf(player.frame.origin.x / TILE_SIZE) * TILE_SIZE;
+      if (output_x1 != output_x2)
+      {
+        [self snapToFloor_y];
+      }
+    } completion:^(BOOL finished) {
+    }];
+    
+    if (vely != 0 && !player.wantedDirection_vertical)
+    {
+      player.velocity = CGPointMake(player.velocity.x, 0);
+    }
     player.wantedDirection_horizontal = 0;
     moves_horizontal = true;
   }
   
-  if ([self getEast] != MTWall && velx < 0 && ![self checkCollision:CGPointMake(velx, 0) frame:player.frame])
+  if (((vely < 0 && [self getNorth] != MTWall) || (vely > 0 && [self getSouth] != MTWall)) && ![self checkCollision:CGPointMake(0, vely) frame:frame])
   {
-    frame = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
-    player.wantedDirection_horizontal = 0;
-    moves_horizontal = true;
-  }
-  
-  if ([self getNorth] != MTWall && vely < 0 && ![self checkCollision:CGPointMake(0, vely) frame:player.frame])
-  {
+    player.wantedDirection_vertical = 0;
+    int output_y1 = floorf(player.frame.origin.y / TILE_SIZE) * TILE_SIZE;
     frame = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
+    player.frame = frame;
+    [UIView animateWithDuration:deltaTime animations:^{
+      int output_y2 = floorf(player.frame.origin.y / TILE_SIZE) * TILE_SIZE;
+      if (output_y1 != output_y2)
+      {
+        [self snapToFloor_x];
+      }
+    } completion:^(BOOL finished) {
+    }];
+    
     player.wantedDirection_vertical = 0;
     moves_vertical = true;
+    
+    if (velx != 0 && !player.wantedDirection_horizontal)
+    {
+      player.velocity = CGPointMake(0, player.velocity.y);
+    }
   }
   
-  if ([self getSouth] != MTWall && vely > 0 && ![self checkCollision:CGPointMake(0, vely) frame:player.frame])
-  {
-    frame = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
-    player.wantedDirection_vertical = 0;
-    moves_vertical = true;
-  }
-  
-  player.currentDirection_horizontal = moves_horizontal ? 1 : 0;
-  player.currentDirection_vertical = moves_vertical ? 1 : 0;
-  
-  if (!player.currentDirection_horizontal && !player.currentDirection_vertical)
+  if (!moves_vertical && !moves_horizontal)
   {
     player.velocity = CGPointMake(0, 0);
-//    frame = CGRectMake([self getMagicNumber:frame.origin.x], [self getMagicNumber:frame.origin.y], frame.size.width, frame.size.height);
   }
-  player.frame = frame;
 }
 
 @end
