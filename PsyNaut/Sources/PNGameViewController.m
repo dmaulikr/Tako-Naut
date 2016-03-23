@@ -104,7 +104,7 @@
 {
   CFTimeInterval currentTime = [_displayLink timestamp];
   CFTimeInterval deltaTime;
-  deltaTime = currentTime - _previousTimestamp;
+  deltaTime = currentTime - _previousTimestamp;  
   _previousTimestamp = currentTime;
 
   //--- update game session ---//

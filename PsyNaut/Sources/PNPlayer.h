@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#define PLAYER_SPEED 2
-#define PLAYER_PADDING 1
+#define PLAYER_SPEED 1.5
+#define PLAYER_PADDING 0.75
 
 @interface PNPlayer : UIImageView
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
