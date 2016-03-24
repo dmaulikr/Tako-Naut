@@ -11,9 +11,17 @@
 #import "PNGameSession.h"
 
 @interface PNPlayer()
+@property(nonatomic,weak) PNGameSession *gameSession;
 @end
 
 @implementation PNPlayer
+
+- (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession
+{
+  self = [super initWithFrame:frame];
+  _gameSession = gameSession;
+  return self;
+}
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
 {

@@ -1,8 +1,8 @@
 //
-//  PNCollisionCollaborator.h
+//  PNEnemyCollaborator.h
 //  Psynaut
 //
-//  Created by mugx on 18/03/16.
+//  Created by mugx on 23/03/16.
 //  Copyright © 2016 mugx. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 @class PNGameSession;
 
-@interface PNCollisionCollaborator : NSObject
+@interface PNEnemyCollaborator : NSObject
 - (instancetype)init:(PNGameSession *)gameSession;
-- (bool)checkCollision:(CGRect)frame;
 - (void)update:(CGFloat)deltaTime;
+@property(readonly) NSMutableArray *enemies;
 @end

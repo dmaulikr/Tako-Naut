@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNGameSession.h"
 
 #define PLAYER_SPEED 1.5
 #define PLAYER_PADDING 0.75
 
 @interface PNPlayer : UIImageView
+- (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession;
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 @property(nonatomic,assign) CGPoint velocity;
 @property(nonatomic,assign) bool didVerticalSwipe;

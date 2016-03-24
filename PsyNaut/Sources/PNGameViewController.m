@@ -89,15 +89,15 @@
 
 - (void)didSwipe:(UISwipeGestureRecognizer *)sender
 {
-  [self.gameSession.player didSwipe:sender.direction];
+  [self.gameSession didSwipe:sender.direction];
 }
 
 #pragma mark - Update Stuff
 
 - (void)refreshUI
 {
-  self.timeLabel.text = @"Time\n20";
-  self.scoreLabel.text = @"Score\n999";
+  self.timeLabel.text = [NSString stringWithFormat:@"Time\n%d", (int)roundf(self.gameSession.currentTime)];
+  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%d", self.gameSession.currentScore];
 }
 
 - (void)update
@@ -106,6 +106,7 @@
   CFTimeInterval deltaTime;
   deltaTime = currentTime - _previousTimestamp;  
   _previousTimestamp = currentTime;
+  deltaTime = deltaTime < 0.1 ? deltaTime : 0.015;
 
   //--- update game session ---//
   [self.gameSession update:deltaTime];

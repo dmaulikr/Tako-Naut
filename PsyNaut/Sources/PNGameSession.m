@@ -8,6 +8,8 @@
 
 #import "PNGameSession.h"
 #import "PNCollisionCollaborator.h"
+#import "PNEnemyCollaborator.h"
+#import "PNPlayer.h"
 #import "PNItem.h"
 #import "PNMazeGenerator.h"
 #import "MXToolBox.h"
@@ -15,15 +17,12 @@
 #import "PNMacros.h"
 #import <MXAudioManager/MXAudioManager.h>
 
-#define STARTING CGPointMake(1,1)
-
 @interface PNGameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;
 @property(nonatomic,assign,readwrite) NSUInteger currentScore;
 @property(nonatomic,assign,readwrite) CGFloat currentTime;
 @property(nonatomic,strong,readwrite) NSMutableArray<UIImageView *> *walls;
 @property(nonatomic,strong) NSMutableArray<PNItem *> *items;
-@property(nonatomic,strong) PNCollisionCollaborator *collisionCollaborator;
 
 @property(nonatomic,strong) PNMazeGenerator *mazeGenerator;
 @property(nonatomic,assign) NSUInteger tileWidth;
@@ -31,7 +30,7 @@
 @property(nonatomic,assign) NSUInteger numRow;
 @property(nonatomic,assign) NSUInteger numCol;
 
-@property(nonatomic,strong) UIView *mazeView;
+@property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
 @end
 
@@ -42,13 +41,13 @@
   free(_maze);
 }
 
-- (instancetype)initWithView:(UIView *)view
+- (instancetype)initWithView:(UIView *)gameView
 {
   self = [super init];
-  _gameView = view;
+  _gameView = gameView;
   _currentScore = 0;
+  _currentTime = 60;
   _currentLevel = 1;
-  _collisionCollaborator = [[PNCollisionCollaborator alloc] init:self];
   _walls = [NSMutableArray array];
   _items = [NSMutableArray array];
   _player = [PNPlayer new];
@@ -64,6 +63,9 @@
   [self initMaze];
   [self initPlayer];
   [self initItems];
+  
+  _collisionCollaborator = [[PNCollisionCollaborator alloc] init:self];
+  _enemyCollaborator = [[PNEnemyCollaborator alloc] init:self];
   
   return self;
 }
@@ -109,7 +111,7 @@
 
 - (void)initPlayer
 {
-  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * self.tileWidth + PLAYER_PADDING, STARTING.x * self.tileHeight + PLAYER_PADDING, self.tileWidth - PLAYER_SPEED, self.tileHeight - PLAYER_SPEED)];
+  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * self.tileWidth + PLAYER_PADDING, STARTING.x * self.tileHeight + PLAYER_PADDING, self.tileWidth - PLAYER_SPEED, self.tileHeight - PLAYER_SPEED) withGameSession:self];
   self.player.animationImages = [[UIImage imageNamed:@"oct"] spritesWiteSize:CGSizeMake(self.tileWidth, self.tileHeight)];
   self.player.animationDuration = 0.4f;
   self.player.animationRepeatCount = 0;
@@ -139,8 +141,18 @@
   }
 }
 
+- (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
+{
+  [self.player didSwipe:direction];
+}
+
 - (void)update:(CGFloat)deltaTime
 {
+  self.currentTime -=deltaTime;
+
+  //--- updating enemies stuff ---//
+  [self.enemyCollaborator update:deltaTime];
+
   //--- checking walls collisions ---//
   [self.collisionCollaborator update:deltaTime];
   
@@ -153,6 +165,7 @@
       [[MXAudioManager sharedInstance] play:STGoodHit];
       item.hidden = true;
       [array addObject:item];
+      self.currentScore += 100;
       continue;
     }
   }

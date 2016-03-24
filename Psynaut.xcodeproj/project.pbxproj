@@ -28,10 +28,12 @@
 		1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9CB57D1C9A1CCE002B52AD /* PNAppDelegate.m */; };
 		1D9CB5811C9A1CCE002B52AD /* PNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */; };
 		1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5841C9A1D20002B52AD /* Assets.xcassets */; };
-		1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5871C9A1D30002B52AD /* octopus.png */; };
 		1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5881C9A1D30002B52AD /* wall.png */; };
 		1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */; };
 		1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */; };
+		1DD1010F1CA3420300D83A9A /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD1010E1CA3420300D83A9A /* enemy.png */; };
+		1DD101121CA3423B00D83A9A /* PNEnemyCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD101111CA3423B00D83A9A /* PNEnemyCollaborator.m */; };
+		1DD101161CA3439C00D83A9A /* PNEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD101151CA3439C00D83A9A /* PNEnemy.m */; };
 		1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */; };
 		1DEA36081C9B555100887DDC /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36071C9B555100887DDC /* gameConfiguration.json */; };
 		1DEA360A1C9BE22300887DDC /* oct.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36091C9BE22300887DDC /* oct.png */; };
@@ -91,10 +93,14 @@
 		1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNGameViewController.m; path = Sources/PNGameViewController.m; sourceTree = "<group>"; };
 		1D9CB5821C9A1CF1002B52AD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		1D9CB5841C9A1D20002B52AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		1D9CB5871C9A1D30002B52AD /* octopus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = octopus.png; path = Resources/Images/octopus.png; sourceTree = "<group>"; };
 		1D9CB5881C9A1D30002B52AD /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/Images/wall.png; sourceTree = "<group>"; };
 		1D9CB5891C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZBrain_Walk_LefttoRight.png; path = Resources/Images/ZBrain_Walk_LefttoRight.png; sourceTree = "<group>"; };
 		1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1DD1010E1CA3420300D83A9A /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = Resources/Images/enemy.png; sourceTree = "<group>"; };
+		1DD101101CA3423B00D83A9A /* PNEnemyCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNEnemyCollaborator.h; path = Sources/PNEnemyCollaborator.h; sourceTree = "<group>"; };
+		1DD101111CA3423B00D83A9A /* PNEnemyCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNEnemyCollaborator.m; path = Sources/PNEnemyCollaborator.m; sourceTree = "<group>"; };
+		1DD101141CA3439C00D83A9A /* PNEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNEnemy.h; path = Sources/PNEnemy.h; sourceTree = "<group>"; };
+		1DD101151CA3439C00D83A9A /* PNEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNEnemy.m; path = Sources/PNEnemy.m; sourceTree = "<group>"; };
 		1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PNGameViewController.xib; path = Sources/PNGameViewController.xib; sourceTree = "<group>"; };
 		1DEA36031C9B543400887DDC /* PNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNConstants.h; path = Sources/PNConstants.h; sourceTree = "<group>"; };
 		1DEA36061C9B550B00887DDC /* PNMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PNMacros.h; path = Sources/PNMacros.h; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 				1D97147D1C921C05001894CA /* GameSession */,
 				1D58F75A1C8D4F57006365EE /* Maze */,
 				1D1F1C9D1C9A80E90020570D /* Player */,
+				1DD101131CA3423E00D83A9A /* Enemy */,
 				1D9CB5781C9A1C85002B52AD /* Item */,
 			);
 			name = Gameplay;
@@ -263,8 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				1D9C61241C993207002B258C /* 1024x1024.png */,
-				1D9CB5871C9A1D30002B52AD /* octopus.png */,
 				1DEA36091C9BE22300887DDC /* oct.png */,
+				1DD1010E1CA3420300D83A9A /* enemy.png */,
 				1D1F1C981C9A7EF60020570D /* coin.png */,
 				1DEA360B1C9BE83700887DDC /* key.png */,
 				1D9CB5881C9A1D30002B52AD /* wall.png */,
@@ -299,6 +306,17 @@
 				1D9CB57A1C9A1CAB002B52AD /* PNItem.m */,
 			);
 			name = Item;
+			sourceTree = "<group>";
+		};
+		1DD101131CA3423E00D83A9A /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				1DD101101CA3423B00D83A9A /* PNEnemyCollaborator.h */,
+				1DD101111CA3423B00D83A9A /* PNEnemyCollaborator.m */,
+				1DD101141CA3439C00D83A9A /* PNEnemy.h */,
+				1DD101151CA3439C00D83A9A /* PNEnemy.m */,
+			);
+			name = Enemy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,7 +379,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */,
-				1D9CB58B1C9A1D30002B52AD /* octopus.png in Resources */,
 				1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */,
 				1DEA360C1C9BE83700887DDC /* key.png in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
@@ -372,6 +389,7 @@
 				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
 				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
 				1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */,
+				1DD1010F1CA3420300D83A9A /* enemy.png in Resources */,
 				1D1F1C9C1C9A80AA0020570D /* soundGoodHit.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD101121CA3423B00D83A9A /* PNEnemyCollaborator.m in Sources */,
 				1D58F75D1C8D4F65006365EE /* PNMazeGenerator.m in Sources */,
 				1D36E08C1C9147630043948F /* MXLocalizationManager.m in Sources */,
 				1D36E0891C9147630043948F /* MXButton.m in Sources */,
@@ -394,6 +413,7 @@
 				1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */,
 				1DEA360F1C9BE87700887DDC /* PNCollisionCollaborator.m in Sources */,
 				1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */,
+				1DD101161CA3439C00D83A9A /* PNEnemy.m in Sources */,
 				1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */,
 				1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */,
 				1D36E08A1C9147630043948F /* MXImageView.m in Sources */,
