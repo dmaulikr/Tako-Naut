@@ -36,7 +36,7 @@
 		1DD101161CA3439C00D83A9A /* PNEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD101151CA3439C00D83A9A /* PNEnemy.m */; };
 		1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */; };
 		1DEA36081C9B555100887DDC /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36071C9B555100887DDC /* gameConfiguration.json */; };
-		1DEA360A1C9BE22300887DDC /* oct.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36091C9BE22300887DDC /* oct.png */; };
+		1DEA360A1C9BE22300887DDC /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36091C9BE22300887DDC /* player.png */; };
 		1DEA360C1C9BE83700887DDC /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA360B1C9BE83700887DDC /* key.png */; };
 		1DEA360F1C9BE87700887DDC /* PNCollisionCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */; };
 /* End PBXBuildFile section */
@@ -105,7 +105,7 @@
 		1DEA36031C9B543400887DDC /* PNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNConstants.h; path = Sources/PNConstants.h; sourceTree = "<group>"; };
 		1DEA36061C9B550B00887DDC /* PNMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PNMacros.h; path = Sources/PNMacros.h; sourceTree = "<group>"; };
 		1DEA36071C9B555100887DDC /* gameConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = gameConfiguration.json; path = Resources/gameConfiguration.json; sourceTree = "<group>"; };
-		1DEA36091C9BE22300887DDC /* oct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = oct.png; path = Resources/Images/oct.png; sourceTree = "<group>"; };
+		1DEA36091C9BE22300887DDC /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/Images/player.png; sourceTree = "<group>"; };
 		1DEA360B1C9BE83700887DDC /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = Resources/Images/key.png; sourceTree = "<group>"; };
 		1DEA360D1C9BE87700887DDC /* PNCollisionCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNCollisionCollaborator.h; path = Sources/PNCollisionCollaborator.h; sourceTree = "<group>"; };
 		1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNCollisionCollaborator.m; path = Sources/PNCollisionCollaborator.m; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				1D9C61241C993207002B258C /* 1024x1024.png */,
-				1DEA36091C9BE22300887DDC /* oct.png */,
+				1DEA36091C9BE22300887DDC /* player.png */,
 				1DD1010E1CA3420300D83A9A /* enemy.png */,
 				1D1F1C981C9A7EF60020570D /* coin.png */,
 				1DEA360B1C9BE83700887DDC /* key.png */,
@@ -383,7 +383,7 @@
 				1DEA360C1C9BE83700887DDC /* key.png in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
 				1DEA36081C9B555100887DDC /* gameConfiguration.json in Resources */,
-				1DEA360A1C9BE22300887DDC /* oct.png in Resources */,
+				1DEA360A1C9BE22300887DDC /* player.png in Resources */,
 				1D339D7B1C9C4F43005124AE /* 1024x1024.png in Resources */,
 				1D1F1C991C9A7EF60020570D /* coin.png in Resources */,
 				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
