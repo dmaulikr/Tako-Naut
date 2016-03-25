@@ -52,7 +52,23 @@
   if (self.enemyTimeAccumulator > 3)
   {
     self.enemyTimeAccumulator = 0;
-    [self spawnEnemy];
+    
+    CGRect initFrame = CGRectMake(STARTING.y * TILE_SIZE + ENEMY_PADDING, STARTING.x * TILE_SIZE + ENEMY_PADDING, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED);
+    bool canRespawn = true;
+    for (PNEnemy *enemy in self.enemies)
+    {
+      int manhattanDistance = abs((int)(enemy.frame.origin.x - initFrame.origin.x)) + abs((int)(enemy.frame.origin.y - initFrame.origin.y));
+      if (manhattanDistance < TILE_SIZE * 2)
+      {
+        canRespawn = false;
+        break;
+      }
+    }
+    
+    if (canRespawn)
+    {
+      [self spawnEnemy];
+    }
   }
   
   for (PNEnemy *enemy in self.enemies)

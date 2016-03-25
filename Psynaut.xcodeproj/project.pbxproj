@@ -21,6 +21,7 @@
 		1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0861C9147630043948F /* UIImage+MX.m */; };
 		1D36E0901C9147630043948F /* UIView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0881C9147630043948F /* UIView+MX.m */; };
 		1D58F75D1C8D4F65006365EE /* PNMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */; };
+		1D676D941CA486BB004DD4FB /* soundGameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D676D931CA486B9004DD4FB /* soundGameOver.caf */; };
 		1D9714801C921C7F001894CA /* PNGameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D97147F1C921C7F001894CA /* PNGameSession.m */; };
 		1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; };
 		1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -80,6 +81,7 @@
 		1D36E0881C9147630043948F /* UIView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+MX.m"; path = "Sources/MXToolBox/UIView+MX.m"; sourceTree = "<group>"; };
 		1D58F75B1C8D4F65006365EE /* PNMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMazeGenerator.h; path = Sources/PNMazeGenerator.h; sourceTree = "<group>"; };
 		1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMazeGenerator.m; path = Sources/PNMazeGenerator.m; sourceTree = "<group>"; };
+		1D676D931CA486B9004DD4FB /* soundGameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGameOver.caf; path = Resources/Sounds/soundGameOver.caf; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* Psynaut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psynaut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D97147E1C921C7F001894CA /* PNGameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNGameSession.h; path = Sources/PNGameSession.h; sourceTree = "<group>"; };
 		1D97147F1C921C7F001894CA /* PNGameSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNGameSession.m; path = Sources/PNGameSession.m; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */,
+				1D676D931CA486B9004DD4FB /* soundGameOver.caf */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
 				1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */,
 				1DD1010F1CA3420300D83A9A /* enemy.png in Resources */,
+				1D676D941CA486BB004DD4FB /* soundGameOver.caf in Resources */,
 				1D1F1C9C1C9A80AA0020570D /* soundGoodHit.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

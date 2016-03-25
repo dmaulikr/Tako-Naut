@@ -1,7 +1,8 @@
 {
   "audio":{
     "sounds":[
-              {"name":"soundGoodHit.caf", "id":"2"}
+              {"name":"soundGoodHit.caf", "id":"2"},
+              {"name":"soundGameOver.caf", "id":"3"}
               ]
   }
 }

@@ -8,8 +8,10 @@
 
 #import "PNGameViewController.h"
 #import "PNGameSession.h"
+#import "PNConstants.h"
+#import <MXAudioManager/MXAudioManager.h>
 
-@interface PNGameViewController()
+@interface PNGameViewController() <PNGameSessionDelegate>
 @property(nonatomic,strong) PNGameSession *gameSession;
 @property(nonatomic,strong) CADisplayLink *displayLink;
 @property(nonatomic,assign) CFTimeInterval previousTimestamp;
@@ -26,6 +28,10 @@
 @property IBOutlet UILabel *secondCharLabel;
 @property IBOutlet UILabel *thirdCharLabel;
 @property IBOutlet UILabel *fourthCharLabel;
+
+// game over
+@property IBOutlet UIView *gameOverView;
+@property IBOutlet UILabel *scoreLabel_inGameOver;
 @end
 
 @implementation PNGameViewController
@@ -51,6 +57,8 @@
   
   //--- setip game session ---//
   self.gameSession = [[PNGameSession alloc] initWithView:self.view];
+  self.gameSession.delegate = self;
+  [self.gameSession startLevel:1];
   
   //--- setup swipes ---//
   self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
@@ -72,7 +80,9 @@
   //--- setup timer ---//
   self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
   [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-
+  
+  //--- game over view ---//
+  self.gameOverView.hidden = YES;
 }
 
 #pragma mark - Init Stuff
@@ -92,12 +102,43 @@
   [self.gameSession didSwipe:sender.direction];
 }
 
+#pragma mark - IBActions
+
+- (IBAction)gameOverTouched:(id)sender
+{
+  [self.gameOverView setHidden:YES];
+  [self.gameSession startLevel:1];
+  
+  //--- setup timer ---//
+  self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
+  [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+
+#pragma mark - Observer stuff
+
+- (void)didGameOver:(PNGameSession *)session
+{
+  [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+  [[MXAudioManager sharedInstance] play:STGameOver];
+  
+  [self.view bringSubviewToFront:self.gameOverView];
+  [self.gameOverView setHidden:NO];
+  self.gameOverView.alpha = 0.0f;
+  self.scoreLabel_inGameOver.text = self.scoreLabel.text;
+  
+  [UIView animateWithDuration:1.0f animations:^{
+    self.gameOverView.alpha = 1.0f;
+  } completion:^(BOOL finished) {
+//    [CYHighScoresViewController saveScore:session.currentScore];
+  }];
+}
+
 #pragma mark - Update Stuff
 
 - (void)refreshUI
 {
   self.timeLabel.text = [NSString stringWithFormat:@"Time\n%d", (int)roundf(self.gameSession.currentTime)];
-  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%d", self.gameSession.currentScore];
+  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%d", (int)self.gameSession.currentScore];
 }
 
 - (void)update

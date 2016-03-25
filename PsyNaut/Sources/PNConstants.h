@@ -10,6 +10,7 @@
 
 #define FEEDBACK_EMAIL @"mugxware@gmail.com"
 
-typedef NS_ENUM(NSUInteger, MXAudioId) {
-  STGoodHit = 2
-} SoundType;
+typedef NS_ENUM(NSUInteger, SoundType) {
+  STGoodHit = 2,
+  STGameOver = 3
+};

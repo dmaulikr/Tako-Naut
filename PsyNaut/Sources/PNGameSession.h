@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "PNMazeGenerator.h"
 #import "PNCollisionCollaborator.h"
 #import "PNEnemyCollaborator.h"
@@ -16,10 +17,14 @@
 #define TILE_SIZE 32
 #define STARTING CGPointMake(1,1)
 
+@protocol PNGameSessionDelegate;
+
 @interface PNGameSession : NSObject
 - (instancetype)initWithView:(UIView *)gameView;
+- (void)startLevel:(NSUInteger)levelNumber;
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 - (void)update:(CGFloat)deltaTime;
+@property(nonatomic,assign) id <PNGameSessionDelegate> delegate;
 @property(readonly) NSUInteger currentLevel;
 @property(readonly) NSUInteger currentScore;
 @property(readonly) CGFloat currentTime;
@@ -29,4 +34,11 @@
 @property(readonly) UIView *mazeView;
 @property(nonatomic,strong) PNCollisionCollaborator *collisionCollaborator;
 @property(nonatomic,strong) PNEnemyCollaborator *enemyCollaborator;
+@end
+
+@protocol PNGameSessionDelegate <NSObject>
+//- (void)didUpdate:(PNGameSession *)session;
+//- (void)didHurryUp:(PNGameSession *)session;
+//- (void)didLevelComplete:(PNGameSession *)session;
+- (void)didGameOver:(PNGameSession *)session;
 @end

@@ -12,14 +12,16 @@
 #import "PNPlayer.h"
 #import "PNItem.h"
 #import "PNMazeGenerator.h"
+#import "PNEnemy.h"
 #import "MXToolBox.h"
-#import "PNConstants.h"
 #import "PNMacros.h"
+#import "PNConstants.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface PNGameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;
 @property(nonatomic,assign,readwrite) NSUInteger currentScore;
+@property(nonatomic,assign,readwrite) CGFloat currentLives;
 @property(nonatomic,assign,readwrite) CGFloat currentTime;
 @property(nonatomic,strong,readwrite) NSMutableArray<UIImageView *> *walls;
 @property(nonatomic,strong) NSMutableArray<PNItem *> *items;
@@ -45,14 +47,30 @@
 {
   self = [super init];
   _gameView = gameView;
-  _currentScore = 0;
-  _currentTime = 60;
-  _currentLevel = 1;
-  _walls = [NSMutableArray array];
-  _items = [NSMutableArray array];
-  _player = [PNPlayer new];
+  return self;
+}
+
+- (void)clearSession
+{
+  for (UIView *view in self.mazeView.subviews)
+  {
+    [view removeFromSuperview];
+  }
+}
+
+- (void)startLevel:(NSUInteger)levelNumber
+{
+  [self clearSession];
   
-  self.walls = [NSMutableArray array];
+  //--- setup gameplay varables ---//
+  if (levelNumber == 1)
+  {
+    self.currentScore = 0;
+    self.currentLives = 1;
+  }
+  
+  self.currentTime = 60;
+  self.currentLevel = levelNumber;
   
   //--- setup maze ---//
   self.tileWidth = TILE_SIZE;
@@ -60,18 +78,19 @@
   self.numCol = 15;
   self.numRow = 15;
   
+  //--- init scene elems ---//
   [self initMaze];
   [self initPlayer];
   [self initItems];
   
-  _collisionCollaborator = [[PNCollisionCollaborator alloc] init:self];
-  _enemyCollaborator = [[PNEnemyCollaborator alloc] init:self];
-  
-  return self;
+  ///--- setup collaborator ---//
+  self.collisionCollaborator = [[PNCollisionCollaborator alloc] init:self];
+  self.enemyCollaborator = [[PNEnemyCollaborator alloc] init:self];
 }
 
 - (void)initMaze
 {
+  self.walls = [NSMutableArray array];
   self.mazeView = [[UIView alloc] initWithFrame:self.gameView.frame];
   [self.gameView addSubview:self.mazeView];
   [self.gameView sendSubviewToBack:self.mazeView];
@@ -122,6 +141,7 @@
 
 - (void)initItems
 {
+  self.items = [NSMutableArray array];
   for (int r = 0; r < self.numRow ; r++)
   {
     for (int c = 0; c < self.numCol; c++)
@@ -149,10 +169,10 @@
 - (void)update:(CGFloat)deltaTime
 {
   self.currentTime -=deltaTime;
-
+  
   //--- updating enemies stuff ---//
   [self.enemyCollaborator update:deltaTime];
-
+  
   //--- checking walls collisions ---//
   [self.collisionCollaborator update:deltaTime];
   
@@ -173,6 +193,22 @@
   
   //--- updating maze frame ---//
   self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
+  
+  
+  ///--- collision enemy vs player ---//
+  for (PNEnemy *enemy in self.enemyCollaborator.enemies)
+  {
+    if (CGRectIntersectsRect(enemy.frame, self.player.frame))
+    {
+      self.currentLives = self.currentLives - 1;
+      break;
+    }
+  }
+  
+  if (self.currentLives == 0)
+  {
+    [self.delegate performSelector:@selector(didGameOver:) withObject:self];
+  }
 }
 
 @end

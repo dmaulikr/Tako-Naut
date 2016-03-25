@@ -9,7 +9,9 @@
             <connections>
                 <outlet property="firstCharLabel" destination="2Z9-M1-K2M" id="AQx-Fx-4UN"/>
                 <outlet property="fourthCharLabel" destination="4wb-aG-zdX" id="tnb-vr-hNs"/>
+                <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
                 <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
+                <outlet property="scoreLabel_inGameOver" destination="97j-1B-XvH" id="7Tb-bY-S7z"/>
                 <outlet property="secondCharLabel" destination="ek0-uA-nqt" id="YZ5-A6-aQz"/>
                 <outlet property="thirdCharLabel" destination="0hz-Ly-S0H" id="xwT-s5-Jmo"/>
                 <outlet property="timeLabel" destination="u2o-2h-dwV" id="3nl-zu-grV"/>
@@ -130,10 +132,72 @@
                         <constraint firstItem="fSb-Cf-DVA" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="yni-a6-CWA"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymd-dG-TYh" userLabel="game over view">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w3-7q-5iu" userLabel="game over panel">
+                            <rect key="frame" x="175" y="250" width="250" height="100"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bke-90-Cvh">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <action selector="gameOverTouched:" destination="-1" eventType="touchUpInside" id="IHD-uW-cL5"/>
+                                    </connections>
+                                </button>
+                                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-zn-YNu" customClass="MXLabel">
+                                    <rect key="frame" x="75" y="18" width="101" height="24"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="cyyc.game.game_over"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 5000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97j-1B-XvH" userLabel="label score" customClass="MXLabel">
+                                    <rect key="frame" x="82" y="61" width="85" height="18"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.20000000000000001" green="1" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="bke-90-Cvh" secondAttribute="trailing" id="25a-N8-jY7"/>
+                                <constraint firstItem="IBP-zn-YNu" firstAttribute="centerX" secondItem="9w3-7q-5iu" secondAttribute="centerX" id="3hp-tp-gXC"/>
+                                <constraint firstAttribute="height" constant="100" id="6rd-7W-t2b"/>
+                                <constraint firstItem="bke-90-Cvh" firstAttribute="leading" secondItem="9w3-7q-5iu" secondAttribute="leading" id="7UJ-Bj-box"/>
+                                <constraint firstItem="IBP-zn-YNu" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" constant="-20" id="Ies-xh-lgz"/>
+                                <constraint firstAttribute="bottom" secondItem="bke-90-Cvh" secondAttribute="bottom" id="ccr-S8-0go"/>
+                                <constraint firstItem="97j-1B-XvH" firstAttribute="centerX" secondItem="9w3-7q-5iu" secondAttribute="centerX" id="lBE-fb-ShC"/>
+                                <constraint firstItem="97j-1B-XvH" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" constant="20" id="qpL-sH-pd4"/>
+                                <constraint firstItem="bke-90-Cvh" firstAttribute="top" secondItem="9w3-7q-5iu" secondAttribute="top" id="udk-Wj-QC2"/>
+                                <constraint firstAttribute="width" constant="250" id="vwC-VM-9ox"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="9w3-7q-5iu" firstAttribute="centerY" secondItem="ymd-dG-TYh" secondAttribute="centerY" id="alD-o8-dbo"/>
+                        <constraint firstItem="9w3-7q-5iu" firstAttribute="centerX" secondItem="ymd-dG-TYh" secondAttribute="centerX" id="fST-sY-cdd"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ymd-dG-TYh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4ji-qm-jfa"/>
+                <constraint firstAttribute="trailing" secondItem="ymd-dG-TYh" secondAttribute="trailing" id="HrT-oC-fN6"/>
+                <constraint firstItem="ymd-dG-TYh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NWa-gK-5ci"/>
                 <constraint firstAttribute="trailing" secondItem="1KW-Gi-fUg" secondAttribute="trailing" id="QDs-qa-js8"/>
+                <constraint firstAttribute="bottom" secondItem="ymd-dG-TYh" secondAttribute="bottom" id="S1y-f0-0vz"/>
                 <constraint firstItem="1KW-Gi-fUg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YT0-Du-K9I"/>
                 <constraint firstItem="1KW-Gi-fUg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="x7u-E5-CZ6"/>
             </constraints>
