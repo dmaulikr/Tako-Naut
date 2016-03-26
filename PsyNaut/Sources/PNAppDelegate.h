@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, ScreenType) {
+  STMenu,
+  STNewGame,
+  STResumeGame,
+  STSettings,
+  STHighScores,
+  STAchievements,
+  STCredits
+};
+
 @interface PNAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-
++ (PNAppDelegate *)sharedInstance;
+- (void)selectScreen:(ScreenType)screenType;
+@property(nonatomic,strong) UIWindow *window;
 @end
-

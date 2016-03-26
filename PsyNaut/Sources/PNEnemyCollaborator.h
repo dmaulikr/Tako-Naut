@@ -10,6 +10,9 @@
 
 @class PNGameSession;
 
+#define ENEMY_SPEED 1.0
+#define ENEMY_PADDING 0.5
+
 @interface PNEnemyCollaborator : NSObject
 - (instancetype)init:(PNGameSession *)gameSession;
 - (void)update:(CGFloat)deltaTime;

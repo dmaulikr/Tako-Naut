@@ -1,6 +1,6 @@
 //
 //  UIView+MX.m
-//  CyyC
+//  MXToolBox
 //
 //  Created by mugx on 02/03/16.
 //  Copyright © 2016 mugx. All rights reserved.

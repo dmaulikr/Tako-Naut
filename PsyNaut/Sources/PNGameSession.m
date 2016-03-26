@@ -32,8 +32,10 @@
 @property(nonatomic,assign) NSUInteger numRow;
 @property(nonatomic,assign) NSUInteger numCol;
 
+@property(nonatomic,assign) int bkgColorIndex;
 @property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
+@property(nonatomic,weak) UIView *endMazeTile;
 @end
 
 @implementation PNGameSession
@@ -95,6 +97,11 @@
   [self.gameView addSubview:self.mazeView];
   [self.gameView sendSubviewToBack:self.mazeView];
   
+  //--- current bkg color ---//
+  //--- updating the background color ---//
+  NSArray *colors = @[GREEN_COLOR, CYAN_COLOR, BLUE_COLOR, RED_COLOR, YELLOW_COLOR];
+  self.bkgColorIndex = arc4random() % colors.count;
+  
   //--- generating the maze ---//
   PNMazeGenerator *mazeGenerator = [PNMazeGenerator new];
   self.maze = [mazeGenerator calculateMaze:self.numRow col:self.numCol startingPosition:STARTING];
@@ -105,7 +112,7 @@
       if (self.maze[r][c] == MTWall)
       {
         UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
-        [wall setImage:[[UIImage imageNamed:@"wall"] imageColored:BLUE_COLOR]];
+        [wall setImage:[[UIImage imageNamed:@"wall"] imageColored:colors[self.bkgColorIndex]]];
         [self.mazeView addSubview:wall];
         [self.walls addObject:wall];
         [self.mazeView sendSubviewToBack:wall];
@@ -119,10 +126,11 @@
       }
       else if (self.maze[r][c] == MTEnd)
       {
-        UIImageView *wall = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
-        wall.backgroundColor = GREEN_COLOR;
-        [self.mazeView addSubview:wall];
-        [self.mazeView sendSubviewToBack:wall];
+        UIImageView *tile = [[UIImageView alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+        tile.backgroundColor = GREEN_COLOR;
+        [self.mazeView addSubview:tile];
+        [self.mazeView sendSubviewToBack:tile];
+        self.endMazeTile = tile;
       }
     }
   }
@@ -148,13 +156,21 @@
     {
       if (self.self.maze[r][c] == MTPath)
       {
-        if ((arc4random() % 100) >= 80)
+        if ((arc4random() % 100) >= 50)
         {
           PNItem *coin = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
           coin.image = [[UIImage imageNamed:@"coin"] imageColored:[UIColor yellowColor]];
           [self.mazeView addSubview:coin];
           [self.mazeView sendSubviewToBack:coin];
           [self.items addObject:coin];
+        }
+        else if ((arc4random() % 100) >= 95)
+        {
+          PNItem *minion = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          minion.image = [[UIImage imageNamed:@"minion"] imageColored:[UIColor whiteColor]];
+          [self.mazeView addSubview:minion];
+          [self.mazeView sendSubviewToBack:minion];
+          [self.items addObject:minion];
         }
       }
     }
@@ -169,6 +185,7 @@
 - (void)update:(CGFloat)deltaTime
 {
   self.currentTime -=deltaTime;
+  [self.delegate didUpdateTime:self.currentTime];
   
   //--- updating enemies stuff ---//
   [self.enemyCollaborator update:deltaTime];
@@ -185,7 +202,8 @@
       [[MXAudioManager sharedInstance] play:STGoodHit];
       item.hidden = true;
       [array addObject:item];
-      self.currentScore += 100;
+      self.currentScore += 5;
+      [self.delegate didUpdateScore:self.currentScore];
       continue;
     }
   }
@@ -203,6 +221,12 @@
       self.currentLives = self.currentLives - 1;
       break;
     }
+  }
+  
+  //--- collision player vs end maze---//
+  if (CGRectIntersectsRect(self.player.frame, self.endMazeTile.frame))
+  {
+    [self startLevel:self.currentLevel + 1];
   }
   
   if (self.currentLives == 0)

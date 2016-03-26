@@ -10,13 +10,13 @@
 #import "PNEnemy.h"
 #import "MXToolBox.h"
 
-#define ENEMY_SPEED 1
-#define ENEMY_PADDING 0.5
+#define MAX_ENEMIES 300
 
 @interface PNEnemyCollaborator()
 @property(nonatomic,weak) PNGameSession *gameSession;
 @property(nonatomic,assign) float enemyTimeAccumulator;
 @property(nonatomic,strong,readwrite) NSMutableArray *enemies;
+@property(nonatomic,strong,readwrite) NSMutableArray *spawnableEnemies;
 @end
 
 @implementation PNEnemyCollaborator
@@ -25,31 +25,14 @@
 {
   self = [super init];
   _gameSession = gameSession;
-  _enemies = [NSMutableArray array];
+  [self _initEnemies];
   return self;
-}
-
-- (void)spawnEnemy
-{
-  PNEnemy *enemy = [[PNEnemy alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + ENEMY_PADDING, STARTING.x * TILE_SIZE + ENEMY_PADDING, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED) withGameSession:self.gameSession];
-  enemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
-  enemy.animationDuration = 0.4f;
-  enemy.animationRepeatCount = 0;
-  [enemy startAnimating];
-  enemy.alpha = 0.0;
-  [self.gameSession.mazeView addSubview:enemy];
-  [self.gameSession.mazeView bringSubviewToFront:enemy];
-  [self.enemies addObject:enemy];
-  
-  [UIView animateWithDuration:1.0 animations:^{
-    enemy.alpha = 1.0;
-  }];
 }
 
 - (void)update:(CGFloat)deltaTime
 {
   self.enemyTimeAccumulator += deltaTime;
-  if (self.enemyTimeAccumulator > 3)
+  if (self.enemyTimeAccumulator > 2)
   {
     self.enemyTimeAccumulator = 0;
     
@@ -67,7 +50,7 @@
     
     if (canRespawn)
     {
-      [self spawnEnemy];
+      [self _spawnEnemy];
     }
   }
   
@@ -76,5 +59,54 @@
     [enemy update:deltaTime];
   }
 }
+
+#pragma mark - Private Functions
+
+- (void)_initEnemies
+{
+  self.enemies = [NSMutableArray array];
+  self.spawnableEnemies = [NSMutableArray array];
+  for (int i = 0;i < MAX_ENEMIES;++i)
+  {
+    PNEnemy *enemy = [[PNEnemy alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + ENEMY_PADDING, STARTING.x * TILE_SIZE + ENEMY_PADDING, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED) withGameSession:self.gameSession];
+    enemy.animationDuration = 0.4f;
+    enemy.animationRepeatCount = 0;
+    enemy.alpha = 0.0;
+    enemy.hidden = YES;
+    [self.gameSession.mazeView addSubview:enemy];
+    [self.gameSession.mazeView bringSubviewToFront:enemy];
+    [self.spawnableEnemies addObject:enemy];
+  }
+}
+
+- (void)_spawnEnemy
+{
+  for (PNEnemy *enemy in self.spawnableEnemies)
+  {
+    if (enemy.hidden)
+    {
+      enemy.hidden = NO;
+      enemy.tag = (arc4random() % 100) < 80 ? 0 : 1;
+      if (enemy.tag == 0)
+      {
+        enemy.speed = ENEMY_SPEED;
+        enemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+      }
+      else
+      {
+        enemy.speed = ENEMY_SPEED / 4;
+        enemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+      }
+      [enemy startAnimating];
+      [self.spawnableEnemies removeObject:enemy];
+      [self.enemies addObject:enemy];
+      [UIView animateWithDuration:1.0 animations:^{
+        enemy.alpha = 1.0;
+      }];
+      break;
+    }
+  }
+}
+
 
 @end

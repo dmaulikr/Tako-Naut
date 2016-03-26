@@ -12,4 +12,5 @@
 @interface PNEnemy : UIImageView
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession;
 - (void)update:(CGFloat)deltaTime;
+@property(nonatomic,assign) float speed;
 @end

@@ -25,20 +25,24 @@
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 - (void)update:(CGFloat)deltaTime;
 @property(nonatomic,assign) id <PNGameSessionDelegate> delegate;
+
 @property(readonly) NSUInteger currentLevel;
 @property(readonly) NSUInteger currentScore;
 @property(readonly) CGFloat currentTime;
-@property(nonatomic,strong) PNPlayer *player;
+
 @property(nonatomic,assign) MazeTyleType **maze;
 @property(readonly) NSMutableArray<UIImageView *> *walls;
 @property(readonly) UIView *mazeView;
 @property(nonatomic,strong) PNCollisionCollaborator *collisionCollaborator;
 @property(nonatomic,strong) PNEnemyCollaborator *enemyCollaborator;
+@property(nonatomic,strong) PNPlayer *player;
 @end
 
 @protocol PNGameSessionDelegate <NSObject>
 //- (void)didUpdate:(PNGameSession *)session;
 //- (void)didHurryUp:(PNGameSession *)session;
 //- (void)didLevelComplete:(PNGameSession *)session;
+- (void)didUpdateScore:(NSUInteger)score;
+- (void)didUpdateTime:(NSUInteger)time;
 - (void)didGameOver:(PNGameSession *)session;
 @end

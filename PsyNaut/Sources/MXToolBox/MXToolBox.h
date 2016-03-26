@@ -1,6 +1,6 @@
 //
 //  MXToolBox.h
-//  CyyC
+//  MXToolBox
 //
 //  Created by mugx on 13/01/16.
 //  Copyright © 2016 mugx. All rights reserved.
@@ -11,6 +11,7 @@
 
 #import "MXUtils.h"
 #import "MXLocalizationManager.h"
+#import "MXGameCenterManager.h"
 #import "MXLabel.h"
 #import "MXButton.h"
 #import "MXImageView.h"

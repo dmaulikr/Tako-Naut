@@ -22,7 +22,7 @@
 #define RED_COLOR [UIColor redColor]
 #define BLUE_COLOR [UIColor blueColor]
 
-#define SOUND_ENABLED true
+#define SOUND_ENABLED false
 #define SOUND_DEFAULT_VOLUME 0.5
 
 #endif /* PNMacros_h */

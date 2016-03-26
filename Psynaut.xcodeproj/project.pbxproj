@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1D1F1C991C9A7EF60020570D /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1F1C981C9A7EF60020570D /* coin.png */; };
-		1D1F1C9C1C9A80AA0020570D /* soundGoodHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */; };
 		1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F1C9F1C9A80FC0020570D /* PNPlayer.m */; };
 		1D339D7B1C9C4F43005124AE /* 1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9C61241C993207002B258C /* 1024x1024.png */; };
 		1D36E0761C9147470043948F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D36E0751C9147470043948F /* Joystix.ttf */; };
@@ -20,8 +19,24 @@
 		1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0841C9147630043948F /* UIColor+MX.m */; };
 		1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0861C9147630043948F /* UIImage+MX.m */; };
 		1D36E0901C9147630043948F /* UIView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36E0881C9147630043948F /* UIView+MX.m */; };
+		1D47026C1CA581C900EF2BBB /* soundBomb.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4702581CA581BC00EF2BBB /* soundBomb.caf */; };
+		1D47026D1CA581C900EF2BBB /* soundCyyc.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4702591CA581BC00EF2BBB /* soundCyyc.caf */; };
+		1D47026E1CA581C900EF2BBB /* soundLevelChange.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D47025C1CA581BC00EF2BBB /* soundLevelChange.caf */; };
+		1D47026F1CA581C900EF2BBB /* soundSelectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D47025D1CA581BC00EF2BBB /* soundSelectItem.caf */; };
+		1D4702701CA581C900EF2BBB /* soundStartGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D47025E1CA581BC00EF2BBB /* soundStartGame.caf */; };
+		1D4702711CA581C900EF2BBB /* soundSuperWeapon.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D47025F1CA581BC00EF2BBB /* soundSuperWeapon.caf */; };
+		1D4702721CA581C900EF2BBB /* soundTimeBonus.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4702601CA581BC00EF2BBB /* soundTimeBonus.caf */; };
+		1D4702731CA581C900EF2BBB /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4702611CA581BC00EF2BBB /* soundTimeOver.caf */; };
+		1D4702741CA581C900EF2BBB /* soundWrongHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4702621CA581BC00EF2BBB /* soundWrongHit.caf */; };
+		1D4702751CA581C900EF2BBB /* soundGoodHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */; };
+		1D4702761CA581C900EF2BBB /* soundGameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D676D931CA486B9004DD4FB /* soundGameOver.caf */; };
+		1D4702781CA5947D00EF2BBB /* enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D4702771CA5947D00EF2BBB /* enemy2.png */; };
+		1D47027A1CA5A3A300EF2BBB /* minion.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D4702791CA5A3A300EF2BBB /* minion.png */; };
+		1D492DF71CA5712700C515B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D492DF91CA5712700C515B5 /* Localizable.strings */; };
+		1D492E001CA5723000C515B5 /* PNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D492DFE1CA5723000C515B5 /* PNMenuViewController.m */; };
+		1D492E011CA5723000C515B5 /* PNMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D492DFF1CA5723000C515B5 /* PNMenuViewController.xib */; };
+		1D492E041CA5729B00C515B5 /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D492E031CA5729B00C515B5 /* MXGameCenterManager.m */; };
 		1D58F75D1C8D4F65006365EE /* PNMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */; };
-		1D676D941CA486BB004DD4FB /* soundGameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D676D931CA486B9004DD4FB /* soundGameOver.caf */; };
 		1D9714801C921C7F001894CA /* PNGameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D97147F1C921C7F001894CA /* PNGameSession.m */; };
 		1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; };
 		1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -79,6 +94,24 @@
 		1D36E0861C9147630043948F /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MX.m"; path = "Sources/MXToolBox/UIImage+MX.m"; sourceTree = "<group>"; };
 		1D36E0871C9147630043948F /* UIView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+MX.h"; path = "Sources/MXToolBox/UIView+MX.h"; sourceTree = "<group>"; };
 		1D36E0881C9147630043948F /* UIView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+MX.m"; path = "Sources/MXToolBox/UIView+MX.m"; sourceTree = "<group>"; };
+		1D4702581CA581BC00EF2BBB /* soundBomb.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundBomb.caf; path = Resources/Sounds/soundBomb.caf; sourceTree = "<group>"; };
+		1D4702591CA581BC00EF2BBB /* soundCyyc.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundCyyc.caf; path = Resources/Sounds/soundCyyc.caf; sourceTree = "<group>"; };
+		1D47025C1CA581BC00EF2BBB /* soundLevelChange.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundLevelChange.caf; path = Resources/Sounds/soundLevelChange.caf; sourceTree = "<group>"; };
+		1D47025D1CA581BC00EF2BBB /* soundSelectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundSelectItem.caf; path = Resources/Sounds/soundSelectItem.caf; sourceTree = "<group>"; };
+		1D47025E1CA581BC00EF2BBB /* soundStartGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundStartGame.caf; path = Resources/Sounds/soundStartGame.caf; sourceTree = "<group>"; };
+		1D47025F1CA581BC00EF2BBB /* soundSuperWeapon.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundSuperWeapon.caf; path = Resources/Sounds/soundSuperWeapon.caf; sourceTree = "<group>"; };
+		1D4702601CA581BC00EF2BBB /* soundTimeBonus.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundTimeBonus.caf; path = Resources/Sounds/soundTimeBonus.caf; sourceTree = "<group>"; };
+		1D4702611CA581BC00EF2BBB /* soundTimeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundTimeOver.caf; path = Resources/Sounds/soundTimeOver.caf; sourceTree = "<group>"; };
+		1D4702621CA581BC00EF2BBB /* soundWrongHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundWrongHit.caf; path = Resources/Sounds/soundWrongHit.caf; sourceTree = "<group>"; };
+		1D4702771CA5947D00EF2BBB /* enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy2.png; path = Resources/Images/enemy2.png; sourceTree = "<group>"; };
+		1D4702791CA5A3A300EF2BBB /* minion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minion.png; path = Resources/Images/minion.png; sourceTree = "<group>"; };
+		1D492DF81CA5712700C515B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1D492DFA1CA5715D00C515B5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1D492DFD1CA5723000C515B5 /* PNMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMenuViewController.h; path = Sources/PNMenuViewController.h; sourceTree = "<group>"; };
+		1D492DFE1CA5723000C515B5 /* PNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMenuViewController.m; path = Sources/PNMenuViewController.m; sourceTree = "<group>"; };
+		1D492DFF1CA5723000C515B5 /* PNMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PNMenuViewController.xib; path = Sources/PNMenuViewController.xib; sourceTree = "<group>"; };
+		1D492E021CA5729B00C515B5 /* MXGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXGameCenterManager.h; path = Sources/MXToolBox/MXGameCenterManager.h; sourceTree = "<group>"; };
+		1D492E031CA5729B00C515B5 /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXGameCenterManager.m; path = Sources/MXToolBox/MXGameCenterManager.m; sourceTree = "<group>"; };
 		1D58F75B1C8D4F65006365EE /* PNMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMazeGenerator.h; path = Sources/PNMazeGenerator.h; sourceTree = "<group>"; };
 		1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMazeGenerator.m; path = Sources/PNMazeGenerator.m; sourceTree = "<group>"; };
 		1D676D931CA486B9004DD4FB /* soundGameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGameOver.caf; path = Resources/Sounds/soundGameOver.caf; sourceTree = "<group>"; };
@@ -128,6 +161,15 @@
 		1D1F1C9A1C9A809F0020570D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				1D4702581CA581BC00EF2BBB /* soundBomb.caf */,
+				1D4702591CA581BC00EF2BBB /* soundCyyc.caf */,
+				1D47025C1CA581BC00EF2BBB /* soundLevelChange.caf */,
+				1D47025D1CA581BC00EF2BBB /* soundSelectItem.caf */,
+				1D47025E1CA581BC00EF2BBB /* soundStartGame.caf */,
+				1D47025F1CA581BC00EF2BBB /* soundSuperWeapon.caf */,
+				1D4702601CA581BC00EF2BBB /* soundTimeBonus.caf */,
+				1D4702611CA581BC00EF2BBB /* soundTimeOver.caf */,
+				1D4702621CA581BC00EF2BBB /* soundWrongHit.caf */,
 				1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */,
 				1D676D931CA486B9004DD4FB /* soundGameOver.caf */,
 			);
@@ -165,6 +207,8 @@
 				1D36E0821C9147630043948F /* MXUtils.m */,
 				1D36E07E1C9147630043948F /* MXLocalizationManager.h */,
 				1D36E07F1C9147630043948F /* MXLocalizationManager.m */,
+				1D492E021CA5729B00C515B5 /* MXGameCenterManager.h */,
+				1D492E031CA5729B00C515B5 /* MXGameCenterManager.m */,
 				1D36E0831C9147630043948F /* UIColor+MX.h */,
 				1D36E0841C9147630043948F /* UIColor+MX.m */,
 				1D36E0851C9147630043948F /* UIImage+MX.h */,
@@ -173,6 +217,26 @@
 				1D36E0881C9147630043948F /* UIView+MX.m */,
 			);
 			name = MXToolBox;
+			sourceTree = "<group>";
+		};
+		1D492DFB1CA5718800C515B5 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				1D9CB57E1C9A1CCE002B52AD /* PNGameViewController.h */,
+				1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */,
+				1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		1D492DFC1CA5719400C515B5 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1D492DFD1CA5723000C515B5 /* PNMenuViewController.h */,
+				1D492DFE1CA5723000C515B5 /* PNMenuViewController.m */,
+				1D492DFF1CA5723000C515B5 /* PNMenuViewController.xib */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		1D58F75A1C8D4F57006365EE /* Maze */ = {
@@ -218,6 +282,7 @@
 				1D9CB5841C9A1D20002B52AD /* Assets.xcassets */,
 				1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */,
 				1DEA36071C9B555100887DDC /* gameConfiguration.json */,
+				1D492DF91CA5712700C515B5 /* Localizable.strings */,
 				1D36E0741C91473A0043948F /* Fonts */,
 				1D1F1C9A1C9A809F0020570D /* Sounds */,
 				1D7670511C7B5E0E0065F110 /* Images */,
@@ -251,9 +316,8 @@
 		1D76704D1C7B5C590065F110 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
-				1D9CB57E1C9A1CCE002B52AD /* PNGameViewController.h */,
-				1D9CB57F1C9A1CCE002B52AD /* PNGameViewController.m */,
-				1DDD42571C7C3CDF004E65D3 /* PNGameViewController.xib */,
+				1D492DFC1CA5719400C515B5 /* Menu */,
+				1D492DFB1CA5718800C515B5 /* Game */,
 			);
 			name = Gui;
 			sourceTree = "<group>";
@@ -274,7 +338,9 @@
 			children = (
 				1D9C61241C993207002B258C /* 1024x1024.png */,
 				1DEA36091C9BE22300887DDC /* player.png */,
+				1D4702791CA5A3A300EF2BBB /* minion.png */,
 				1DD1010E1CA3420300D83A9A /* enemy.png */,
+				1D4702771CA5947D00EF2BBB /* enemy2.png */,
 				1D1F1C981C9A7EF60020570D /* coin.png */,
 				1DEA360B1C9BE83700887DDC /* key.png */,
 				1D9CB5881C9A1D30002B52AD /* wall.png */,
@@ -364,7 +430,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				es,
 			);
 			mainGroup = 1D7670251C7B5B050065F110;
 			productRefGroup = 1D76702F1C7B5B050065F110 /* Products */;
@@ -383,18 +449,31 @@
 			files = (
 				1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */,
 				1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */,
+				1D4702701CA581C900EF2BBB /* soundStartGame.caf in Resources */,
 				1DEA360C1C9BE83700887DDC /* key.png in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
+				1D47027A1CA5A3A300EF2BBB /* minion.png in Resources */,
 				1DEA36081C9B555100887DDC /* gameConfiguration.json in Resources */,
+				1D4702741CA581C900EF2BBB /* soundWrongHit.caf in Resources */,
 				1DEA360A1C9BE22300887DDC /* player.png in Resources */,
+				1D47026D1CA581C900EF2BBB /* soundCyyc.caf in Resources */,
+				1D47026E1CA581C900EF2BBB /* soundLevelChange.caf in Resources */,
+				1D492DF71CA5712700C515B5 /* Localizable.strings in Resources */,
 				1D339D7B1C9C4F43005124AE /* 1024x1024.png in Resources */,
 				1D1F1C991C9A7EF60020570D /* coin.png in Resources */,
+				1D4702721CA581C900EF2BBB /* soundTimeBonus.caf in Resources */,
+				1D47026F1CA581C900EF2BBB /* soundSelectItem.caf in Resources */,
+				1D492E011CA5723000C515B5 /* PNMenuViewController.xib in Resources */,
 				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
 				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
+				1D4702761CA581C900EF2BBB /* soundGameOver.caf in Resources */,
+				1D4702731CA581C900EF2BBB /* soundTimeOver.caf in Resources */,
+				1D4702781CA5947D00EF2BBB /* enemy2.png in Resources */,
 				1D9CB58D1C9A1D30002B52AD /* ZBrain_Walk_LefttoRight.png in Resources */,
+				1D47026C1CA581C900EF2BBB /* soundBomb.caf in Resources */,
+				1D4702711CA581C900EF2BBB /* soundSuperWeapon.caf in Resources */,
 				1DD1010F1CA3420300D83A9A /* enemy.png in Resources */,
-				1D676D941CA486BB004DD4FB /* soundGameOver.caf in Resources */,
-				1D1F1C9C1C9A80AA0020570D /* soundGoodHit.caf in Resources */,
+				1D4702751CA581C900EF2BBB /* soundGoodHit.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,9 +492,11 @@
 				1D36E0901C9147630043948F /* UIView+MX.m in Sources */,
 				1D9CB57B1C9A1CAB002B52AD /* PNItem.m in Sources */,
 				1D9CB5811C9A1CCE002B52AD /* PNGameViewController.m in Sources */,
+				1D492E041CA5729B00C515B5 /* MXGameCenterManager.m in Sources */,
 				1D36E08D1C9147630043948F /* MXUtils.m in Sources */,
 				1D36E08E1C9147630043948F /* UIColor+MX.m in Sources */,
 				1DEA360F1C9BE87700887DDC /* PNCollisionCollaborator.m in Sources */,
+				1D492E001CA5723000C515B5 /* PNMenuViewController.m in Sources */,
 				1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */,
 				1DD101161CA3439C00D83A9A /* PNEnemy.m in Sources */,
 				1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */,
@@ -426,6 +507,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1D492DF91CA5712700C515B5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D492DF81CA5712700C515B5 /* en */,
+				1D492DFA1CA5715D00C515B5 /* es */,
+			);
+			name = Localizable.strings;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D7670451C7B5B050065F110 /* Debug */ = {
@@ -534,6 +628,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=0";
 				INFOPLIST_FILE = "$(SRCROOT)/PsyNaut/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

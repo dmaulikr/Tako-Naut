@@ -1,6 +1,6 @@
 //
 //  MXLabel.h
-//  CyyC
+//  MXToolBox
 //
 //  Created by mugx on 19/11/15.
 //  Copyright © 2015 mugx. All rights reserved.

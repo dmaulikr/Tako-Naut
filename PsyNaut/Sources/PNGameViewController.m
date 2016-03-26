@@ -116,6 +116,16 @@
 
 #pragma mark - Observer stuff
 
+- (void)didUpdateScore:(NSUInteger)score
+{
+  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%ld", score];
+}
+
+- (void)didUpdateTime:(NSUInteger)time
+{
+  self.timeLabel.text = [NSString stringWithFormat:@"Time\n%ld", time];
+}
+
 - (void)didGameOver:(PNGameSession *)session
 {
   [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
@@ -129,17 +139,11 @@
   [UIView animateWithDuration:1.0f animations:^{
     self.gameOverView.alpha = 1.0f;
   } completion:^(BOOL finished) {
-//    [CYHighScoresViewController saveScore:session.currentScore];
+//    [PNHighScoresViewController saveScore:session.currentScore];
   }];
 }
 
 #pragma mark - Update Stuff
-
-- (void)refreshUI
-{
-  self.timeLabel.text = [NSString stringWithFormat:@"Time\n%d", (int)roundf(self.gameSession.currentTime)];
-  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%d", (int)self.gameSession.currentScore];
-}
 
 - (void)update
 {
@@ -151,9 +155,6 @@
 
   //--- update game session ---//
   [self.gameSession update:deltaTime];
-  
-  //--- refreshing ui ---//
-  [self refreshUI];
 }
 
 @end

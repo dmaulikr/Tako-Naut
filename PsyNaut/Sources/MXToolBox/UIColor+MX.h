@@ -1,6 +1,6 @@
 //
 //  UIColor+MX.h
-//  CyyC
+//  MXToolBox
 //
 //  Created by mugx on 13/01/16.
 //  Copyright © 2016 mugx. All rights reserved.
