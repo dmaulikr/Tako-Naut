@@ -90,12 +90,14 @@
       enemy.tag = (arc4random() % 100) < 80 ? 0 : 1;
       if (enemy.tag == 1 || !self.medusaWasOut)
       {
+        enemy.tag = 1;
         self.medusaWasOut = YES;
         enemy.speed = ENEMY_SPEED / 4;
         enemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       }
       else
       {
+        enemy.tag = 0;
         enemy.speed = ENEMY_SPEED;
         enemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       }
