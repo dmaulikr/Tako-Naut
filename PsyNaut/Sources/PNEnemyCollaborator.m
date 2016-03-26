@@ -17,6 +17,7 @@
 @property(nonatomic,assign) float enemyTimeAccumulator;
 @property(nonatomic,strong,readwrite) NSMutableArray *enemies;
 @property(nonatomic,strong,readwrite) NSMutableArray *spawnableEnemies;
+@property(nonatomic,assign) BOOL medusaWasOut;
 @end
 
 @implementation PNEnemyCollaborator
@@ -87,15 +88,16 @@
     {
       enemy.hidden = NO;
       enemy.tag = (arc4random() % 100) < 80 ? 0 : 1;
-      if (enemy.tag == 0)
+      if (enemy.tag == 1 || !self.medusaWasOut)
       {
-        enemy.speed = ENEMY_SPEED;
-        enemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+        self.medusaWasOut = YES;
+        enemy.speed = ENEMY_SPEED / 4;
+        enemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       }
       else
       {
-        enemy.speed = ENEMY_SPEED / 4;
-        enemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+        enemy.speed = ENEMY_SPEED;
+        enemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       }
       [enemy startAnimating];
       [self.spawnableEnemies removeObject:enemy];
