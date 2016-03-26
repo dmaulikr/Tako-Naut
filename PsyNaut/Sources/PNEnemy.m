@@ -123,10 +123,10 @@
     float manhattanNorth = abs((player.frame.origin.x - self.frame.origin.x) + (player.frame.origin.y - (self.frame.origin.y - self.speed)));
     float manhattanSouth = abs((player.frame.origin.x - self.frame.origin.x) + (player.frame.origin.y - (self.frame.origin.y + self.speed)));
      */
-    float manhattanEast = abs((int)(eastFrame.origin.x - player.frame.origin.x)) + abs((int)(eastFrame.origin.y - player.frame.origin.y));
-    float manhattanWest = abs((int)(westFrame.origin.x - player.frame.origin.x)) + abs((int)(westFrame.origin.y - player.frame.origin.y));
-    float manhattanNorth = abs((int)(northFrame.origin.x - player.frame.origin.x)) + abs((int)(northFrame.origin.y - player.frame.origin.y));
-    float manhattanSouth = abs((int)(southFrame.origin.x - player.frame.origin.x)) + abs((int)(southFrame.origin.y - player.frame.origin.y));
+    float manhattanEast = fabs(eastFrame.origin.x - player.frame.origin.x) + fabs(eastFrame.origin.y - player.frame.origin.y);
+    float manhattanWest = fabs(westFrame.origin.x - player.frame.origin.x) + fabs(westFrame.origin.y - player.frame.origin.y);
+    float manhattanNorth = fabs(northFrame.origin.x - player.frame.origin.x) + fabs(northFrame.origin.y - player.frame.origin.y);
+    float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
     
     BOOL collidesEast = [self checkEnemyCollision:eastFrame];
     BOOL collidesWest = [self checkEnemyCollision:westFrame];

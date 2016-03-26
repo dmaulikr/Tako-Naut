@@ -92,7 +92,7 @@
       {
         enemy.tag = 1;
         self.medusaWasOut = YES;
-        enemy.speed = ENEMY_SPEED / 4;
+        enemy.speed = ENEMY_SPEED / 6;
         enemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       }
       else
