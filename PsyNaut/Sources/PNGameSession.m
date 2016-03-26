@@ -77,8 +77,8 @@
   //--- setup maze ---//
   self.tileWidth = TILE_SIZE;
   self.tileHeight = TILE_SIZE;
-  self.numCol = 20;
-  self.numRow = 20;
+  self.numCol = 21;
+  self.numRow = 21;
   
   //--- init scene elems ---//
   [self initMaze];

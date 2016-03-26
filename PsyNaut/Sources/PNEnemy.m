@@ -117,25 +117,11 @@
     CGRect westFrame = CGRectMake(self.frame.origin.x  + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
     CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
-    /*
-    float manhattanEast = abs((player.frame.origin.x - (self.frame.origin.x - self.speed)) + (player.frame.origin.y - self.frame.origin.y));
-    float manhattanWest = abs((player.frame.origin.x - (self.frame.origin.x + self.speed)) + (player.frame.origin.y - self.frame.origin.y));
-    float manhattanNorth = abs((player.frame.origin.x - self.frame.origin.x) + (player.frame.origin.y - (self.frame.origin.y - self.speed)));
-    float manhattanSouth = abs((player.frame.origin.x - self.frame.origin.x) + (player.frame.origin.y - (self.frame.origin.y + self.speed)));
-     */
+    
     float manhattanEast = fabs(eastFrame.origin.x - player.frame.origin.x) + fabs(eastFrame.origin.y - player.frame.origin.y);
     float manhattanWest = fabs(westFrame.origin.x - player.frame.origin.x) + fabs(westFrame.origin.y - player.frame.origin.y);
     float manhattanNorth = fabs(northFrame.origin.x - player.frame.origin.x) + fabs(northFrame.origin.y - player.frame.origin.y);
     float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
-    
-    BOOL collidesEast = [self checkEnemyCollision:eastFrame];
-    BOOL collidesWest = [self checkEnemyCollision:westFrame];
-    BOOL collidesNorth =  [self checkEnemyCollision:northFrame];
-    BOOL collidesSouth =  [self checkEnemyCollision:southFrame];
-    collidesEast = NO;
-    collidesWest = NO;
-    collidesNorth = NO;
-    collidesSouth = NO;
     
     CGPoint vel = CGPointZero;
     if (manhattanEast < manhattanWest)
@@ -160,79 +146,5 @@
     self.frame = frame;
   }
 }
-
-/*
- //---- ALMOST not working Manhattan ---//
- - (BOOL)checkCollision:(CGRect)frame
- {
- for (PNEnemy *enemy in self.gameSession.enemyCollaborator.enemies)
- {
- int manhattanDistance = abs((int)(enemy.frame.origin.x - frame.origin.x)) + abs((int)(enemy.frame.origin.y - frame.origin.y));
- if (enemy != self && manhattanDistance > TILE_SIZE / 5)
- {
- if (CGRectIntersectsRect(enemy.frame, frame))
- {
- return true;
- }
- }
- }
- return false;
- }
- 
- - (void)update:(CGFloat)deltaTime
- {
- //--- manhattan distance ---//
- CGRect frame = self.frame;
- PNPlayer *player = [self.gameSession player];
- 
- CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- CGRect westFrame = CGRectMake(self.frame.origin.x  + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
- CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
- float manhattanEast = (player.frame.origin.x - (self.frame.origin.x - self.speed)) + (player.frame.origin.y - self.frame.origin.y);
- float manhattanWest = (player.frame.origin.x - (self.frame.origin.x + self.speed)) + (player.frame.origin.y - self.frame.origin.y);
- float manhattanNorth = (player.frame.origin.x - self.frame.origin.x) + (player.frame.origin.y - (self.frame.origin.y - self.speed));
- float manhattanSouth = (player.frame.origin.x - self.frame.origin.x) + (player.frame.origin.y - (self.frame.origin.y + self.speed));
- manhattanEast = manhattanEast > 0 ? manhattanEast : manhattanEast * -1;
- manhattanWest = manhattanWest > 0 ? manhattanWest : manhattanWest * -1;
- manhattanNorth = manhattanNorth > 0 ? manhattanNorth : manhattanNorth * -1;
- manhattanSouth = manhattanSouth > 0 ? manhattanSouth : manhattanSouth * -1;
- 
- BOOL collidesEast = [self getEast] == MTWall || [self checkCollision:eastFrame];
- BOOL collidesWest = [self getWest] == MTWall || [self checkCollision:westFrame];
- BOOL collidesNorth = [self getNorth] == MTWall || [self checkCollision:northFrame];
- BOOL collidesSouth = [self getSouth] == MTWall || [self checkCollision:southFrame];
- 
- if (manhattanEast <= manhattanWest && manhattanEast <= manhattanNorth && manhattanEast <= manhattanSouth && !collidesEast)
- {
- frame = eastFrame;
- }
- 
- if (manhattanWest <= manhattanEast && manhattanWest <= manhattanNorth && manhattanWest <= manhattanSouth && !collidesWest)
- {
- frame = westFrame;
- }
- 
- if (manhattanNorth <= manhattanWest && manhattanNorth <= manhattanEast && manhattanNorth <= manhattanSouth && !collidesNorth)
- {
- frame = northFrame;
- }
- 
- if (manhattanSouth <= manhattanWest && manhattanSouth <= manhattanEast && manhattanSouth <= manhattanNorth && !collidesSouth)
- {
- frame = southFrame;
- }
- 
- if (self.frame.origin.x == frame.origin.x && self.frame.origin.y == frame.origin.y)
- {
- if (!collidesEast) frame = eastFrame;
- if (!collidesWest) frame = westFrame;
- if (!collidesNorth) frame = northFrame;
- if (!collidesSouth) frame = southFrame;
- }
- 
- self.frame = frame;
- }
- */
 
 @end
