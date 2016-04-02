@@ -33,9 +33,12 @@
 @property(nonatomic,assign) NSUInteger numCol;
 
 @property(nonatomic,assign) int bkgColorIndex;
+@property(nonatomic,assign) float bkgColorTimeAccumulator;
 @property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
 @property(nonatomic,weak) UIView *endMazeTile;
+@property(nonatomic,assign) CGAffineTransform rotation;
+@property(nonatomic,assign) float rot;
 @end
 
 @implementation PNGameSession
@@ -63,6 +66,9 @@
 - (void)startLevel:(NSUInteger)levelNumber
 {
   [self clearSession];
+  
+  //--- reset random rotation ---//
+  self.gameView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, 0);
   
   //--- setup gameplay varables ---//
   if (levelNumber == 1)
@@ -191,7 +197,7 @@
   [self.enemyCollaborator update:deltaTime];
   
   //--- checking walls collisions ---//
-  [self.collisionCollaborator update:deltaTime];
+  [self.player update:deltaTime];
   
   //--- checking items collisions ---//
   NSMutableArray *array = [NSMutableArray array];
@@ -209,9 +215,29 @@
   }
   [self.items removeObjectsInArray:array];
   
+  //--- updating maze color ---//
+  if (self.bkgColorTimeAccumulator > 10)
+  {
+    //    self.rot += M_PI_2;
+    self.bkgColorTimeAccumulator = 0;
+    NSArray *colors = @[GREEN_COLOR, CYAN_COLOR, BLUE_COLOR, RED_COLOR, YELLOW_COLOR];
+    for (UIImageView *img in self.walls)
+    {
+      img.image = [img.image imageColored:colors[self.bkgColorIndex]];
+    }
+    self.bkgColorIndex = (self.bkgColorIndex + 1) % colors.count;;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
+    }];
+  }
+  else
+  {
+    self.bkgColorTimeAccumulator+=deltaTime;
+  }
+  
   //--- updating maze frame ---//
   self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
-  
   
   ///--- collision enemy vs player ---//
   for (PNEnemy *enemy in self.enemyCollaborator.enemies)

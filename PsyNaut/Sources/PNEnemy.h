@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PNGameSession.h"
+#import "PNTile.h"
 
-@interface PNEnemy : UIImageView
+#define ENEMY_SPEED 2.0
+#define ENEMY_PADDING 0.75
+
+@interface PNEnemy : PNTile
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession;
 - (void)update:(CGFloat)deltaTime;
-@property(nonatomic,assign) float speed;
 @end

@@ -10,6 +10,7 @@
                 <outlet property="firstCharLabel" destination="2Z9-M1-K2M" id="AQx-Fx-4UN"/>
                 <outlet property="fourthCharLabel" destination="4wb-aG-zdX" id="tnb-vr-hNs"/>
                 <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
+                <outlet property="gameView" destination="d4y-KC-tNG" id="1NH-DU-CFC"/>
                 <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
                 <outlet property="scoreLabel_inGameOver" destination="97j-1B-XvH" id="7Tb-bY-S7z"/>
                 <outlet property="secondCharLabel" destination="ek0-uA-nqt" id="YZ5-A6-aQz"/>
@@ -23,6 +24,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-KC-tNG">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KW-Gi-fUg" userLabel="header">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                     <subviews>
@@ -120,7 +125,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="0Ht-CS-w2t"/>
                         <constraint firstItem="u2o-2h-dwV" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="4vJ-u0-giI"/>
@@ -198,10 +203,15 @@
                 <constraint firstItem="ymd-dG-TYh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NWa-gK-5ci"/>
                 <constraint firstAttribute="trailing" secondItem="1KW-Gi-fUg" secondAttribute="trailing" id="QDs-qa-js8"/>
                 <constraint firstAttribute="bottom" secondItem="ymd-dG-TYh" secondAttribute="bottom" id="S1y-f0-0vz"/>
+                <constraint firstAttribute="trailing" secondItem="d4y-KC-tNG" secondAttribute="trailing" id="VRi-4B-hHn"/>
                 <constraint firstItem="1KW-Gi-fUg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YT0-Du-K9I"/>
+                <constraint firstAttribute="bottom" secondItem="d4y-KC-tNG" secondAttribute="bottom" id="Zof-zW-aEG"/>
+                <constraint firstItem="d4y-KC-tNG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dXL-3O-n7w"/>
+                <constraint firstItem="d4y-KC-tNG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="q5z-Qe-1ed"/>
                 <constraint firstItem="1KW-Gi-fUg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="x7u-E5-CZ6"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="546" y="228"/>
         </view>
     </objects>
 </document>

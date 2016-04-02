@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNTile.h"
 
-@interface PNItem : UIImageView
+@interface PNItem : PNTile
 
 @end

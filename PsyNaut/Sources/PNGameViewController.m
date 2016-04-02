@@ -19,7 +19,6 @@
 @property(nonatomic,strong) UISwipeGestureRecognizer *swipeLeft;
 @property(nonatomic,strong) UISwipeGestureRecognizer *swipeUp;
 @property(nonatomic,strong) UISwipeGestureRecognizer *swipeDown;
-@property(nonatomic,strong) UIView *mazeView;
 
 // HUD
 @property IBOutlet UILabel *timeLabel;
@@ -28,6 +27,9 @@
 @property IBOutlet UILabel *secondCharLabel;
 @property IBOutlet UILabel *thirdCharLabel;
 @property IBOutlet UILabel *fourthCharLabel;
+
+// game view
+@property IBOutlet UIView *gameView;
 
 // game over
 @property IBOutlet UIView *gameOverView;
@@ -51,31 +53,31 @@
   [super viewDidLoad];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-  [super viewWillAppear:animated];
+  [super viewDidAppear:animated];
   
-  //--- setip game session ---//
-  self.gameSession = [[PNGameSession alloc] initWithView:self.view];
+  //--- setup game session ---//
+  self.gameSession = [[PNGameSession alloc] initWithView:self.gameView];
   self.gameSession.delegate = self;
   [self.gameSession startLevel:1];
   
   //--- setup swipes ---//
   self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
   self.swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-  [self.view addGestureRecognizer:self.swipeRight];
+  [self.gameView addGestureRecognizer:self.swipeRight];
   
   self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
   self.swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-  [self.view addGestureRecognizer:self.swipeLeft];
+  [self.gameView addGestureRecognizer:self.swipeLeft];
   
   self.swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
   self.swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-  [self.view addGestureRecognizer:self.swipeUp];
+  [self.gameView addGestureRecognizer:self.swipeUp];
   
   self.swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
   self.swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
-  [self.view addGestureRecognizer:self.swipeDown];
+  [self.gameView addGestureRecognizer:self.swipeDown];
   
   //--- setup timer ---//
   self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];

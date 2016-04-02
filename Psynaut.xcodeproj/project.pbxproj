@@ -37,6 +37,7 @@
 		1D492E011CA5723000C515B5 /* PNMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D492DFF1CA5723000C515B5 /* PNMenuViewController.xib */; };
 		1D492E041CA5729B00C515B5 /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D492E031CA5729B00C515B5 /* MXGameCenterManager.m */; };
 		1D58F75D1C8D4F65006365EE /* PNMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */; };
+		1D5CCF371CA6748700AE8AF5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D5CCF361CA6748700AE8AF5 /* GameKit.framework */; };
 		1D9714801C921C7F001894CA /* PNGameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D97147F1C921C7F001894CA /* PNGameSession.m */; };
 		1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; };
 		1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -55,6 +56,7 @@
 		1DEA360A1C9BE22300887DDC /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA36091C9BE22300887DDC /* player.png */; };
 		1DEA360C1C9BE83700887DDC /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DEA360B1C9BE83700887DDC /* key.png */; };
 		1DEA360F1C9BE87700887DDC /* PNCollisionCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */; };
+		1DF68F651CAA43C70081B25D /* PNTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF68F641CAA43C70081B25D /* PNTile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,6 +116,7 @@
 		1D492E031CA5729B00C515B5 /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXGameCenterManager.m; path = Sources/MXToolBox/MXGameCenterManager.m; sourceTree = "<group>"; };
 		1D58F75B1C8D4F65006365EE /* PNMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMazeGenerator.h; path = Sources/PNMazeGenerator.h; sourceTree = "<group>"; };
 		1D58F75C1C8D4F65006365EE /* PNMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMazeGenerator.m; path = Sources/PNMazeGenerator.m; sourceTree = "<group>"; };
+		1D5CCF361CA6748700AE8AF5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		1D676D931CA486B9004DD4FB /* soundGameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGameOver.caf; path = Resources/Sounds/soundGameOver.caf; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* Psynaut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psynaut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D97147E1C921C7F001894CA /* PNGameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNGameSession.h; path = Sources/PNGameSession.h; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 		1DEA360B1C9BE83700887DDC /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = Resources/Images/key.png; sourceTree = "<group>"; };
 		1DEA360D1C9BE87700887DDC /* PNCollisionCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNCollisionCollaborator.h; path = Sources/PNCollisionCollaborator.h; sourceTree = "<group>"; };
 		1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNCollisionCollaborator.m; path = Sources/PNCollisionCollaborator.m; sourceTree = "<group>"; };
+		1DF68F631CAA43C70081B25D /* PNTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNTile.h; path = Sources/PNTile.h; sourceTree = "<group>"; };
+		1DF68F641CAA43C70081B25D /* PNTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNTile.m; path = Sources/PNTile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */,
+				1D5CCF371CA6748700AE8AF5 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,15 +180,6 @@
 				1D676D931CA486B9004DD4FB /* soundGameOver.caf */,
 			);
 			name = Sounds;
-			sourceTree = "<group>";
-		};
-		1D1F1C9D1C9A80E90020570D /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				1D1F1C9E1C9A80FC0020570D /* PNPlayer.h */,
-				1D1F1C9F1C9A80FC0020570D /* PNPlayer.m */,
-			);
-			name = Player;
 			sourceTree = "<group>";
 		};
 		1D36E0741C91473A0043948F /* Fonts */ = {
@@ -254,6 +251,7 @@
 				1D7670301C7B5B050065F110 /* Psynaut */,
 				1D98C7CE1C9AD67A00161EB2 /* Frameworks */,
 				1D76702F1C7B5B050065F110 /* Products */,
+				1D7670311C7B5B050065F110 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				1D76704B1C7B5C3A0065F110 /* Sources */,
-				1D7670311C7B5B050065F110 /* Resources */,
 			);
 			name = Psynaut;
 			path = PsyNaut;
@@ -288,6 +285,7 @@
 				1D7670511C7B5E0E0065F110 /* Images */,
 			);
 			name = Resources;
+			path = PsyNaut;
 			sourceTree = "<group>";
 		};
 		1D76704A1C7B5C2A0065F110 /* Gameplay */ = {
@@ -295,9 +293,7 @@
 			children = (
 				1D97147D1C921C05001894CA /* GameSession */,
 				1D58F75A1C8D4F57006365EE /* Maze */,
-				1D1F1C9D1C9A80E90020570D /* Player */,
-				1DD101131CA3423E00D83A9A /* Enemy */,
-				1D9CB5781C9A1C85002B52AD /* Item */,
+				1DF68F661CAA460E0081B25D /* Tile */,
 			);
 			name = Gameplay;
 			sourceTree = "<group>";
@@ -356,6 +352,8 @@
 				1D97147F1C921C7F001894CA /* PNGameSession.m */,
 				1DEA360D1C9BE87700887DDC /* PNCollisionCollaborator.h */,
 				1DEA360E1C9BE87700887DDC /* PNCollisionCollaborator.m */,
+				1DD101101CA3423B00D83A9A /* PNEnemyCollaborator.h */,
+				1DD101111CA3423B00D83A9A /* PNEnemyCollaborator.m */,
 			);
 			name = GameSession;
 			sourceTree = "<group>";
@@ -363,29 +361,25 @@
 		1D98C7CE1C9AD67A00161EB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D5CCF361CA6748700AE8AF5 /* GameKit.framework */,
 				1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1D9CB5781C9A1C85002B52AD /* Item */ = {
+		1DF68F661CAA460E0081B25D /* Tile */ = {
 			isa = PBXGroup;
 			children = (
+				1DF68F631CAA43C70081B25D /* PNTile.h */,
+				1DF68F641CAA43C70081B25D /* PNTile.m */,
+				1D1F1C9E1C9A80FC0020570D /* PNPlayer.h */,
+				1D1F1C9F1C9A80FC0020570D /* PNPlayer.m */,
+				1DD101141CA3439C00D83A9A /* PNEnemy.h */,
+				1DD101151CA3439C00D83A9A /* PNEnemy.m */,
 				1D9CB5791C9A1CAB002B52AD /* PNItem.h */,
 				1D9CB57A1C9A1CAB002B52AD /* PNItem.m */,
 			);
-			name = Item;
-			sourceTree = "<group>";
-		};
-		1DD101131CA3423E00D83A9A /* Enemy */ = {
-			isa = PBXGroup;
-			children = (
-				1DD101101CA3423B00D83A9A /* PNEnemyCollaborator.h */,
-				1DD101111CA3423B00D83A9A /* PNEnemyCollaborator.m */,
-				1DD101141CA3439C00D83A9A /* PNEnemy.h */,
-				1DD101151CA3439C00D83A9A /* PNEnemy.m */,
-			);
-			name = Enemy;
+			name = Tile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +415,12 @@
 				TargetAttributes = {
 					1D76702D1C7B5B050065F110 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 8XE9QV2E26;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -491,6 +491,7 @@
 				1D36E08B1C9147630043948F /* MXLabel.m in Sources */,
 				1D36E0901C9147630043948F /* UIView+MX.m in Sources */,
 				1D9CB57B1C9A1CAB002B52AD /* PNItem.m in Sources */,
+				1DF68F651CAA43C70081B25D /* PNTile.m in Sources */,
 				1D9CB5811C9A1CCE002B52AD /* PNGameViewController.m in Sources */,
 				1D492E041CA5729B00C515B5 /* MXGameCenterManager.m in Sources */,
 				1D36E08D1C9147630043948F /* MXUtils.m in Sources */,

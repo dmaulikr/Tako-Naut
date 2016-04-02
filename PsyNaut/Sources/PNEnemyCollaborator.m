@@ -30,37 +30,6 @@
   return self;
 }
 
-- (void)update:(CGFloat)deltaTime
-{
-  self.enemyTimeAccumulator += deltaTime;
-  if (self.enemyTimeAccumulator > 2)
-  {
-    self.enemyTimeAccumulator = 0;
-    
-    CGRect initFrame = CGRectMake(STARTING.y * TILE_SIZE + ENEMY_PADDING, STARTING.x * TILE_SIZE + ENEMY_PADDING, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED);
-    bool canRespawn = true;
-    for (PNEnemy *enemy in self.enemies)
-    {
-      int manhattanDistance = abs((int)(enemy.frame.origin.x - initFrame.origin.x)) + abs((int)(enemy.frame.origin.y - initFrame.origin.y));
-      if (manhattanDistance < TILE_SIZE * 2)
-      {
-        canRespawn = false;
-        break;
-      }
-    }
-    
-    if (canRespawn)
-    {
-      [self _spawnEnemy];
-    }
-  }
-  
-  for (PNEnemy *enemy in self.enemies)
-  {
-    [enemy update:deltaTime];
-  }
-}
-
 #pragma mark - Private Functions
 
 - (void)_initEnemies
@@ -88,6 +57,11 @@
     {
       enemy.hidden = NO;
       enemy.tag = (arc4random() % 100) < 80 ? 0 : 1;
+      
+      //-- temp tweak
+      enemy.tag = 0;
+      self.medusaWasOut = YES;
+      
       if (enemy.tag == 1 || !self.medusaWasOut)
       {
         enemy.tag = 1;
@@ -109,6 +83,39 @@
       }];
       break;
     }
+  }
+}
+
+#pragma mark - Public Functions
+
+- (void)update:(CGFloat)deltaTime
+{
+  self.enemyTimeAccumulator += deltaTime;
+  if (self.enemyTimeAccumulator > 3)
+  {
+    self.enemyTimeAccumulator = 0;
+    
+    CGRect initFrame = CGRectMake(STARTING.y * TILE_SIZE + ENEMY_PADDING, STARTING.x * TILE_SIZE + ENEMY_PADDING, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED);
+    bool canRespawn = true;
+    for (PNEnemy *enemy in self.enemies)
+    {
+      int manhattanDistance = abs((int)(enemy.frame.origin.x - initFrame.origin.x)) + abs((int)(enemy.frame.origin.y - initFrame.origin.y));
+      if (manhattanDistance < TILE_SIZE * 2)
+      {
+        canRespawn = false;
+        break;
+      }
+    }
+    
+    if (canRespawn)
+    {
+      [self _spawnEnemy];
+    }
+  }
+  
+  for (PNEnemy *enemy in self.enemies)
+  {
+    [enemy update:deltaTime];
   }
 }
 

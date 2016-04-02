@@ -12,6 +12,5 @@
 
 @interface PNCollisionCollaborator : NSObject
 - (instancetype)init:(PNGameSession *)gameSession;
-- (bool)checkCollision:(CGRect)frame;
 - (void)update:(CGFloat)deltaTime;
 @end
