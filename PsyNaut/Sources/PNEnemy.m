@@ -177,12 +177,12 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
       double spiny = arc4random() % 2 == 0 ? 1 : -1;
       vel = CGPointMake(spinx * (arc4random() % 2), spiny * (arc4random() % 2));
       
-      if ([self checkWallCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height)])
+      if ([self checkCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height)])
       {
         vel.x = 0;
       }
       
-      if ([self checkWallCollision:CGRectMake(self.frame.origin.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
+      if ([self checkCollision:CGRectMake(self.frame.origin.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
       {
         vel.y = 0;
       }
