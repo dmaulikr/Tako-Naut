@@ -210,6 +210,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 
 - (void)update:(CGFloat)deltaTime
 {
+  
   [self doSwipe];
   [super update:deltaTime];
   [self exploreCurrentTile];
