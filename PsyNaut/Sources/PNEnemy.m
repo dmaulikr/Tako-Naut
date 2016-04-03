@@ -11,6 +11,13 @@
 
 #define ANIM_TIME 0.5
 
+typedef NS_ENUM(NSUInteger, DirectionType) {
+  DTNorth,
+  DTSouth,
+  DTEast,
+  DTWest
+};
+
 @interface PNEnemy()
 @property(nonatomic,strong) NSMutableArray *exploredTiles;
 @end
@@ -124,7 +131,7 @@
 - (void)doSwipe
 {
   CGPoint vel = self.velocity;
-  if ([self checkCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
+  if ((vel.x == 0 && vel.y == 0) || [self checkEnemyCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
   {
     PNPlayer *player = [self.gameSession player];
     
@@ -143,39 +150,42 @@
     float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
     
     vel = CGPointZero;
-    if (manhattanEast < manhattanWest && !collidesEast && vel.x <= 0)
+    if (manhattanEast < manhattanWest && !collidesEast)
     {
       vel.x = -self.speed;
     }
-    else if (!collidesWest && vel.x >= 0)
+    
+    if (manhattanEast > manhattanWest && !collidesWest)
     {
       vel.x = +self.speed;
     }
     
-    if (manhattanNorth < manhattanSouth && !collidesNorth && vel.y <= 0)
+    if (manhattanNorth < manhattanSouth && !collidesNorth)
     {
       vel.y = -self.speed;
     }
-    else if (!collidesSouth && vel.y >= 0)
+  
+    if (manhattanNorth > manhattanSouth && !collidesSouth)
     {
       vel.y = +self.speed;
     }
-  }
-  
-  if (vel.x == 0 && vel.y == 0) // blocked
-  {
-    double spinx = arc4random() % 2 == 0 ? 1 : -1;
-    double spiny = arc4random() % 2 == 0 ? 1 : -1;
-    vel = CGPointMake(spinx * (arc4random() % 2), spiny * (arc4random() % 2));
     
-    if ([self checkCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height)])
+    if (vel.x == 0 && vel.y == 0)
     {
-      vel.x = 0;
-    }
-    
-    if ([self checkCollision:CGRectMake(self.frame.origin.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
-    {
-      vel.y = 0;
+      [self.exploredTiles removeAllObjects];
+      double spinx = arc4random() % 2 == 0 ? 1 : -1;
+      double spiny = arc4random() % 2 == 0 ? 1 : -1;
+      vel = CGPointMake(spinx * (arc4random() % 2), spiny * (arc4random() % 2));
+      
+      if ([self checkWallCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height)])
+      {
+        vel.x = 0;
+      }
+      
+      if ([self checkWallCollision:CGRectMake(self.frame.origin.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
+      {
+        vel.y = 0;
+      }
     }
   }
   
@@ -204,150 +214,5 @@
   [super update:deltaTime];
   [self exploreCurrentTile];
 }
-
-/*
- - (void)update:(CGFloat)deltaTime
- {
- if (self.tag == 0) //--- move randomly ---//
- {
- CGPoint vel = self.velocity;
- if ([self checkCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
- {
- PNPlayer *player = [self.gameSession player];
- 
- CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- CGRect westFrame = CGRectMake(self.frame.origin.x  + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
- CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
- BOOL collidesEast = [self checkCollision:eastFrame];
- BOOL collidesWest = [self checkCollision:westFrame];
- BOOL collidesNorth = [self checkCollision:northFrame];
- BOOL collidesSouth = [self checkCollision:southFrame];
- 
- float manhattanEast = fabs(eastFrame.origin.x - player.frame.origin.x) + fabs(eastFrame.origin.y - player.frame.origin.y);
- float manhattanWest = fabs(westFrame.origin.x - player.frame.origin.x) + fabs(westFrame.origin.y - player.frame.origin.y);
- float manhattanNorth = fabs(northFrame.origin.x - player.frame.origin.x) + fabs(northFrame.origin.y - player.frame.origin.y);
- float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
- 
- vel = CGPointZero;
- if (manhattanEast < manhattanWest && !collidesEast)
- {
- //vel.x = -self.speed;
- [self didSwipe:UISwipeGestureRecognizerDirectionLeft];
- }
- else if (!collidesWest)
- {
- //vel.x = +self.speed;
- [self didSwipe:UISwipeGestureRecognizerDirectionRight];
- }
- 
- if (manhattanNorth < manhattanSouth && !collidesNorth)
- {
- //vel.y = -self.speed;
- [self didSwipe:UISwipeGestureRecognizerDirectionDown];
- }
- else if (!collidesSouth)
- {
- //vel.y = +self.speed;
- [self didSwipe:UISwipeGestureRecognizerDirectionUp];
- }
- }
- 
- if (vel.x == 0 && vel.y == 0) // blocked
- {
- double spinx = arc4random() % 2 == 0 ? 1 : -1;
- double spiny = arc4random() % 2 == 0 ? 1 : -1;
- vel = CGPointMake(spinx * (arc4random() % 2), spiny * (arc4random() % 2));
- 
- if ([self checkCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height)])
- {
- vel.x = 0;
- }
- 
- if ([self checkCollision:CGRectMake(self.frame.origin.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
- {
- vel.y = 0;
- }
- }
- 
- [self exploreCurrentTile];
- self.velocity = vel;
- self.frame = CGRectMake(self.frame.origin.x + self.velocity.x, self.frame.origin.y + self.velocity.y, self.frame.size.width, self.frame.size.height);
- */
-/*
- CGPoint vel = self.velocity;
- CGRect frame = CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height);
- if ([self checkCollision:frame])
- {
- double spinx = arc4random() % 2 == 0 ? 1 : -1;
- double spiny = arc4random() % 2 == 0 ? 1 : -1;
- self.velocity = CGPointMake(spinx * (arc4random() % 2), spiny * (arc4random() % 2));
- self.velocity = [self manhattanFrame];
- }
- else
- {
- self.frame = frame;
- 
- if (vel.x == 0 && vel.y == 0)
- {
- CGRect frameOnX = CGRectMake(self.frame.origin.x + self.velocity.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- CGRect frameOnY = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.velocity.y, self.frame.size.width, self.frame.size.height);
- BOOL blocked = YES;
- if (![self checkCollision:frameOnX])
- {
- self.frame = CGRectMake(self.frame.origin.x + self.velocity.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- blocked = NO;
- }
- 
- if (![self checkCollision:frameOnY])
- {
- self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.velocity.y, self.frame.size.width, self.frame.size.height);
- blocked = NO;
- }
- }
- }
- */
-/*
- }
- else //--- move manhattan ---//
- {
- //--- manhattan distance ---//
- CGRect frame = self.frame;
- PNPlayer *player = [self.gameSession player];
- 
- CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- CGRect westFrame = CGRectMake(self.frame.origin.x + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
- CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
- CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
- 
- float manhattanEast = fabs(eastFrame.origin.x - player.frame.origin.x) + fabs(eastFrame.origin.y - player.frame.origin.y);
- float manhattanWest = fabs(westFrame.origin.x - player.frame.origin.x) + fabs(westFrame.origin.y - player.frame.origin.y);
- float manhattanNorth = fabs(northFrame.origin.x - player.frame.origin.x) + fabs(northFrame.origin.y - player.frame.origin.y);
- float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
- 
- CGPoint vel = CGPointZero;
- if (manhattanEast < manhattanWest)
- {
- vel.x = -self.speed;
- }
- else
- {
- vel.x = +self.speed;
- }
- 
- if (manhattanNorth < manhattanSouth)
- {
- vel.y = -self.speed;
- }
- else
- {
- vel.y = +self.speed;
- }
- 
- frame = CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height);
- self.frame = frame;
- }
- }
- */
 
 @end
