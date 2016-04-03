@@ -257,7 +257,7 @@
   
   if (self.currentLives == 0)
   {
-    //[self.delegate performSelector:@selector(didGameOver:) withObject:self];
+    [self.delegate performSelector:@selector(didGameOver:) withObject:self];
   }
 }
 
