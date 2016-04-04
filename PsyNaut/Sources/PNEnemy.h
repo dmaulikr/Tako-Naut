@@ -16,4 +16,5 @@
 @interface PNEnemy : PNTile
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession;
 - (void)update:(CGFloat)deltaTime;
+@property(nonatomic,assign) BOOL wantSpawn;
 @end

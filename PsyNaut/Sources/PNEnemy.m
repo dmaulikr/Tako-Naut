@@ -11,13 +11,6 @@
 
 #define ANIM_TIME 0.5
 
-typedef NS_ENUM(NSUInteger, DirectionType) {
-  DTNorth,
-  DTSouth,
-  DTEast,
-  DTWest
-};
-
 @interface PNEnemy()
 @property(nonatomic,strong) NSMutableArray *exploredTiles;
 @end
@@ -93,46 +86,18 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   return false;
 }
 
-- (CGPoint)manhattanFrame
-{
-  PNPlayer *player = [self.gameSession player];
-  
-  CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-  CGRect westFrame = CGRectMake(self.frame.origin.x  + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-  CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
-  CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
-  
-  float manhattanEast = fabs(eastFrame.origin.x - player.frame.origin.x) + fabs(eastFrame.origin.y - player.frame.origin.y);
-  float manhattanWest = fabs(westFrame.origin.x - player.frame.origin.x) + fabs(westFrame.origin.y - player.frame.origin.y);
-  float manhattanNorth = fabs(northFrame.origin.x - player.frame.origin.x) + fabs(northFrame.origin.y - player.frame.origin.y);
-  float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
-  
-  CGPoint vel = CGPointZero;
-  if (manhattanEast < manhattanWest)
-  {
-    vel.x = -self.speed;
-  }
-  else
-  {
-    vel.x = +self.speed;
-  }
-  
-  if (manhattanNorth < manhattanSouth)
-  {
-    vel.y = -self.speed;
-  }
-  else
-  {
-    vel.y = +self.speed;
-  }
-  return vel;
-}
-
 - (void)doSwipe
 {
   CGPoint vel = self.velocity;
-  if ((vel.x == 0 && vel.y == 0) || [self checkEnemyCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
+  if ([self checkEnemyCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
   {
+    self.speed = ENEMY_SPEED * 2;
+    self.padding = ENEMY_PADDING * 2;
+  }
+  else if ((vel.x == 0 && vel.y == 0) || [self checkExploredTilesCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
+  {
+    self.speed = ENEMY_SPEED;
+    self.padding = ENEMY_PADDING;
     PNPlayer *player = [self.gameSession player];
     
     CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
@@ -150,6 +115,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
     float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
     
     vel = CGPointZero;
+    bool doRandomMovement = false;
     if (manhattanEast < manhattanWest && !collidesEast)
     {
       vel.x = -self.speed;
@@ -164,15 +130,14 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
     {
       vel.y = -self.speed;
     }
-  
+    
     if (manhattanNorth > manhattanSouth && !collidesSouth)
     {
       vel.y = +self.speed;
     }
     
-    if (vel.x == 0 && vel.y == 0)
+    if ((vel.x == 0 && vel.y == 0) || doRandomMovement)
     {
-      [self.exploredTiles removeAllObjects];
       double spinx = arc4random() % 2 == 0 ? 1 : -1;
       double spiny = arc4random() % 2 == 0 ? 1 : -1;
       vel = CGPointMake(spinx * (arc4random() % 2), spiny * (arc4random() % 2));
@@ -186,7 +151,9 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
       {
         vel.y = 0;
       }
+      [self.exploredTiles removeAllObjects];
     }
+    self.wantSpawn = YES;
   }
   
   if (vel.x > 0)
@@ -210,7 +177,6 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 
 - (void)update:(CGFloat)deltaTime
 {
-  
   [self doSwipe];
   [super update:deltaTime];
   [self exploreCurrentTile];

@@ -43,12 +43,14 @@
     enemy.animationRepeatCount = 0;
     enemy.alpha = 0.0;
     enemy.hidden = YES;
+    enemy.wantSpawn = i == 0;
     [self.gameSession.mazeView addSubview:enemy];
     [self.gameSession.mazeView bringSubviewToFront:enemy];
     [self.spawnableEnemies addObject:enemy];
   }
 }
 
+/*
 - (void)_spawnEnemy
 {
   for (PNEnemy *enemy in self.spawnableEnemies)
@@ -85,6 +87,38 @@
     }
   }
 }
+*/
+
+- (void)spawnFrom:(PNEnemy *)enemy
+{
+  for (PNEnemy *currentEnemy in self.spawnableEnemies)
+  {
+    if (currentEnemy.hidden)
+    {
+      currentEnemy.hidden = NO;
+      currentEnemy.tag = enemy.tag;
+      
+      if (currentEnemy.tag == 1)
+      {
+        currentEnemy.speed = ENEMY_SPEED / 6;
+        currentEnemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+      }
+      else
+      {
+        currentEnemy.speed = ENEMY_SPEED;
+        currentEnemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+      }
+      [currentEnemy startAnimating];
+      [self.spawnableEnemies removeObject:currentEnemy];
+      [self.enemies addObject:currentEnemy];
+      [UIView animateWithDuration:1.0 animations:^{
+        currentEnemy.alpha = 1.0;
+      }];
+      currentEnemy.frame = enemy.frame;
+      break;
+    }
+  }
+}
 
 #pragma mark - Public Functions
 
@@ -94,22 +128,15 @@
   if (self.enemyTimeAccumulator > 3)
   {
     self.enemyTimeAccumulator = 0;
-    
-    CGRect initFrame = CGRectMake(STARTING.y * TILE_SIZE + ENEMY_PADDING, STARTING.x * TILE_SIZE + ENEMY_PADDING, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED);
-    bool canRespawn = true;
-    for (PNEnemy *enemy in self.enemies)
+    NSArray *enemiesArray = self.enemies.count == 0 ? self.spawnableEnemies : self.enemies;
+    for (PNEnemy *enemy in enemiesArray)
     {
-      int manhattanDistance = abs((int)(enemy.frame.origin.x - initFrame.origin.x)) + abs((int)(enemy.frame.origin.y - initFrame.origin.y));
-      if (manhattanDistance < TILE_SIZE * 2)
+      if (enemy.wantSpawn)
       {
-        canRespawn = false;
+        enemy.wantSpawn = NO;
+        [self spawnFrom:enemy];
         break;
       }
-    }
-    
-    if (canRespawn)
-    {
-      [self _spawnEnemy];
     }
   }
   

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class PNGameSession;
+@class PNEnemy;
 
 @interface PNEnemyCollaborator : NSObject
 - (instancetype)init:(PNGameSession *)gameSession;
