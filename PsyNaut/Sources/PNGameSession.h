@@ -41,9 +41,6 @@
 @end
 
 @protocol PNGameSessionDelegate <NSObject>
-//- (void)didUpdate:(PNGameSession *)session;
-//- (void)didHurryUp:(PNGameSession *)session;
-//- (void)didLevelComplete:(PNGameSession *)session;
 - (void)didUpdateScore:(NSUInteger)score;
 - (void)didUpdateTime:(NSUInteger)time;
 - (void)didGameOver:(PNGameSession *)session;

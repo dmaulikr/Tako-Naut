@@ -41,31 +41,6 @@
   }
 }
 
-/*
-- (bool)checkCollision:(CGRect)frame
-{
-  BOOL collidesWall = [self checkWallCollision:frame];
-  //BOOL collidesEnemy = NO;//[self checkEnemyCollision:frame];
-  return collidesWall;
-}
-
-- (bool)checkEnemyCollision:(CGRect)frame
-{
-  for (PNEnemy *enemy in self.gameSession.enemyCollaborator.enemies)
-  {
-    int manhattanDistance = abs((int)(enemy.frame.origin.x - frame.origin.x)) + abs((int)(enemy.frame.origin.y - frame.origin.y));
-    if (enemy != self && manhattanDistance > TILE_SIZE / 2)
-    {
-      if (enemy.tag == self.tag && CGRectIntersectsRect(enemy.frame, frame))
-      {
-        return true;
-      }
-    }
-  }
-  return false;
-}
- */
-
 - (void)search:(CGRect)targetFrame
 {
   bool playerFound = false;
