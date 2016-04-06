@@ -228,7 +228,7 @@
     self.bkgColorIndex = (self.bkgColorIndex + 1) % colors.count;;
     
     [UIView animateWithDuration:0.1 animations:^{
-        self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
+        //self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
     }];
   }
   else

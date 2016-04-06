@@ -120,12 +120,12 @@
 
 - (void)didUpdateScore:(NSUInteger)score
 {
-  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%ld", score];
+  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%ld", (unsigned long)score];
 }
 
 - (void)didUpdateTime:(NSUInteger)time
 {
-  self.timeLabel.text = [NSString stringWithFormat:@"Time\n%ld", time];
+  self.timeLabel.text = [NSString stringWithFormat:@"Time\n%ld", (unsigned long)time];
 }
 
 - (void)didGameOver:(PNGameSession *)session

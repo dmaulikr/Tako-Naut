@@ -8,6 +8,7 @@
 
 #import "PNEnemy.h"
 #import "PNPlayer.h"
+#import "PNMacros.h"
 
 #define ANIM_TIME 0.5
 
@@ -25,7 +26,7 @@
   self.gameSession = gameSession;
   self.speed = ENEMY_SPEED;
   self.padding = ENEMY_PADDING;
-  self.velocity = CGPointMake(self.speed, self.speed);
+  self.velocity = CGPointMake(0, 0);
   return self;
 }
 
@@ -40,12 +41,12 @@
   }
 }
 
+/*
 - (bool)checkCollision:(CGRect)frame
 {
   BOOL collidesWall = [self checkWallCollision:frame];
-  BOOL collidesEnemy = [self checkEnemyCollision:frame];
-  BOOL collidesExploredTiles = [self checkExploredTilesCollision:frame];
-  return collidesWall || collidesEnemy || collidesExploredTiles;
+  //BOOL collidesEnemy = NO;//[self checkEnemyCollision:frame];
+  return collidesWall;
 }
 
 - (bool)checkEnemyCollision:(CGRect)frame
@@ -63,123 +64,138 @@
   }
   return false;
 }
+ */
 
-- (bool)checkExploredTilesCollision:(CGRect)frame
+- (bool)checkWallCollision:(CGRect)frame
 {
-  int currentX = (int)floorf(self.frame.origin.x / TILE_SIZE);
-  int currentY = (int)floorf(self.frame.origin.y / TILE_SIZE);
-  
-  int x = (int)floorf(frame.origin.x / TILE_SIZE);
-  int y = (int)floorf(frame.origin.y / TILE_SIZE);
-  
-  if (currentX != x || currentY != y)
+  NSArray *walls = self.gameSession.walls;
+  for (UIImageView *wall in walls)
   {
-    for (NSValue *value in self.exploredTiles)
+    if (CGRectIntersectsRect(wall.frame, frame))
     {
-      CGPoint currentTile = [value CGPointValue];
-      if (x == currentTile.x && y == currentTile.y)
-      {
-        return true;
-      }
+      return true;
     }
   }
+  
   return false;
 }
 
-- (void)doSwipe
+- (void)searchPlayer
 {
-  CGPoint vel = self.velocity;
-  if ([self checkEnemyCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
+  bool playerFound = false;
+  CGRect oldFrame = CGRectMake((int)floorf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  CGRect currentFrame = CGRectMake((int)floorf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  float currentSpeed = TILE_SIZE;
+  float currentSize = TILE_SIZE;
+  NSMutableArray *visited = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
+  self.exploredTiles = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
+  while (!playerFound)
   {
-    self.speed = ENEMY_SPEED * 2;
-    self.padding = ENEMY_PADDING * 2;
-  }
-  else if ((vel.x == 0 && vel.y == 0) || [self checkExploredTilesCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
-  {
-    self.speed = ENEMY_SPEED;
-    self.padding = ENEMY_PADDING;
     PNPlayer *player = [self.gameSession player];
-    
-    CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-    CGRect westFrame = CGRectMake(self.frame.origin.x  + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-    CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
-    CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
-    BOOL collidesEast = [self checkCollision:eastFrame];
-    BOOL collidesWest = [self checkCollision:westFrame];
-    BOOL collidesNorth = [self checkCollision:northFrame];
-    BOOL collidesSouth = [self checkCollision:southFrame];
-    
-    float manhattanEast = fabs(eastFrame.origin.x - player.frame.origin.x) + fabs(eastFrame.origin.y - player.frame.origin.y);
-    float manhattanWest = fabs(westFrame.origin.x - player.frame.origin.x) + fabs(westFrame.origin.y - player.frame.origin.y);
-    float manhattanNorth = fabs(northFrame.origin.x - player.frame.origin.x) + fabs(northFrame.origin.y - player.frame.origin.y);
-    float manhattanSouth = fabs(southFrame.origin.x - player.frame.origin.x) + fabs(southFrame.origin.y - player.frame.origin.y);
-    
-    vel = CGPointZero;
-    bool doRandomMovement = false;
-    if (manhattanEast < manhattanWest && !collidesEast)
+    if (CGRectIntersectsRect(player.frame, currentFrame))
     {
-      vel.x = -self.speed;
+      playerFound = true;
+      [visited removeObject:[NSValue valueWithCGRect:oldFrame]];
+      self.exploredTiles = visited;
     }
-    
-    if (manhattanEast > manhattanWest && !collidesWest)
+    else
     {
-      vel.x = +self.speed;
-    }
-    
-    if (manhattanNorth < manhattanSouth && !collidesNorth)
-    {
-      vel.y = -self.speed;
-    }
-    
-    if (manhattanNorth > manhattanSouth && !collidesSouth)
-    {
-      vel.y = +self.speed;
-    }
-    
-    if ((vel.x == 0 && vel.y == 0) || doRandomMovement)
-    {
-      double spinx = arc4random() % 2 == 0 ? 1 : -1;
-      double spiny = arc4random() % 2 == 0 ? 1 : -1;
-      vel = CGPointMake(spinx * (arc4random() % 2), spiny * (arc4random() % 2));
+      CGRect eastFrame = CGRectMake(currentFrame.origin.x - currentSpeed, currentFrame.origin.y, currentSize, currentSize);
+      CGRect westFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
+      CGRect northFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
+      CGRect southFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y + currentSpeed, currentSize, currentSize);
+      BOOL collidesEast = [self getEastOf:currentFrame] == MTWall || [self.exploredTiles containsObject:[NSValue valueWithCGRect:eastFrame]];
+      BOOL collidesWest = [self getWestOf:currentFrame] == MTWall || [self.exploredTiles containsObject:[NSValue valueWithCGRect:westFrame]];
+      BOOL collidesNorth = [self getNorthOf:currentFrame] == MTWall || [self.exploredTiles containsObject:[NSValue valueWithCGRect:northFrame]];
+      BOOL collidesSouth = [self getSouthOf:currentFrame] == MTWall || [self.exploredTiles containsObject:[NSValue valueWithCGRect:southFrame]];
       
-      if ([self checkCollision:CGRectMake(self.frame.origin.x + vel.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height)])
-      {
-        vel.x = 0;
-      }
+      NSMutableArray *possibleDirections = [NSMutableArray array];
+      if (!collidesEast) [possibleDirections addObject:@('e')];
+      if (!collidesWest) [possibleDirections addObject:@('w')];
+      if (!collidesSouth) [possibleDirections addObject:@('s')];
+      if (!collidesNorth) [possibleDirections addObject:@('n')];
       
-      if ([self checkCollision:CGRectMake(self.frame.origin.x, self.frame.origin.y + vel.y, self.frame.size.width, self.frame.size.height)])
+      if (possibleDirections.count > 0)
       {
-        vel.y = 0;
+        switch([possibleDirections[arc4random() % possibleDirections.count] charValue])
+        {
+          case 'n':
+            currentFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
+            break;
+          case 's':
+            currentFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y + currentSpeed, currentSize, currentSize);
+            break;
+          case 'e':
+            currentFrame = CGRectMake(currentFrame.origin.x - currentSpeed, currentFrame.origin.y, currentSize, currentSize);
+            break;
+          case 'w':
+            currentFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
+            break;
+        }
+        
+        NSValue *currentTile = [NSValue valueWithCGRect:currentFrame];
+        if (![self.exploredTiles containsObject:currentTile])
+        {
+          [self.exploredTiles addObject:currentTile];
+          [visited addObject:currentTile];
+        }
       }
-      [self.exploredTiles removeAllObjects];
+      else
+      {
+        NSValue *currentTile = [visited lastObject];
+        if (currentTile)
+        {
+          currentFrame = [currentTile CGRectValue];
+          [visited removeLastObject];
+        }
+        else
+        {
+          NSLog(@"deadlock!");
+          [self.exploredTiles removeAllObjects];
+        }
+      }
     }
-    self.wantSpawn = YES;
-  }
-  
-  if (vel.x > 0)
-  {
-    [self didSwipe:UISwipeGestureRecognizerDirectionRight];
-  }
-  else if (vel.x < 0)
-  {
-    [self didSwipe:UISwipeGestureRecognizerDirectionLeft];
-  }
-  
-  if (vel.y > 0)
-  {
-    [self didSwipe:UISwipeGestureRecognizerDirectionDown];
-  }
-  else if (vel.y < 0)
-  {
-    [self didSwipe:UISwipeGestureRecognizerDirectionUp];
   }
 }
 
 - (void)update:(CGFloat)deltaTime
 {
-  [self doSwipe];
+  [self searchPlayer];
+  if (self.exploredTiles.count > 0)
+  {
+    CGRect nextFrame = [self.exploredTiles.firstObject CGRectValue];
+    CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    CGRect westFrame = CGRectMake(self.frame.origin.x  + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
+    CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
+    
+    float manhattanEast = fabs(eastFrame.origin.x - nextFrame.origin.x) + fabs(eastFrame.origin.y - nextFrame.origin.y);
+    float manhattanWest = fabs(westFrame.origin.x - nextFrame.origin.x) + fabs(westFrame.origin.y - nextFrame.origin.y);
+    float manhattanNorth = fabs(northFrame.origin.x - nextFrame.origin.x) + fabs(northFrame.origin.y - nextFrame.origin.y);
+    float manhattanSouth = fabs(southFrame.origin.x - nextFrame.origin.x) + fabs(southFrame.origin.y - nextFrame.origin.y);
+    
+    if (manhattanEast <= manhattanWest && manhattanEast <= manhattanNorth && manhattanEast <= manhattanSouth)
+    {
+      [self didSwipe:UISwipeGestureRecognizerDirectionLeft];
+    }
+    
+    if (manhattanWest <= manhattanEast && manhattanWest <= manhattanNorth && manhattanWest <= manhattanSouth)
+    {
+      [self didSwipe:UISwipeGestureRecognizerDirectionRight];
+    }
+    
+    if (manhattanNorth <= manhattanSouth && manhattanNorth <= manhattanEast && manhattanNorth <= manhattanWest)
+    {
+      [self didSwipe:UISwipeGestureRecognizerDirectionUp];
+    }
+    
+    if (manhattanSouth <= manhattanNorth && manhattanSouth <= manhattanEast && manhattanSouth <= manhattanWest)
+    {
+      [self didSwipe:UISwipeGestureRecognizerDirectionDown];
+    }
+  }
+  
   [super update:deltaTime];
-  [self exploreCurrentTile];
 }
 
 @end

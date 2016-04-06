@@ -11,10 +11,10 @@
 
 @interface PNTile : UIImageView
 - (bool)checkWallCollision:(CGRect)frame;
-- (MazeTyleType)getNorth;
-- (MazeTyleType)getSouth;
-- (MazeTyleType)getWest;
-- (MazeTyleType)getEast;
+- (MazeTyleType)getNorthOf:(CGRect)frame;
+- (MazeTyleType)getSouthOf:(CGRect)frame;
+- (MazeTyleType)getWestOf:(CGRect)frame;
+- (MazeTyleType)getEastOf:(CGRect)frame;
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 - (void)update:(CGFloat)updateTime;
 @property(nonatomic,assign) CGPoint velocity;

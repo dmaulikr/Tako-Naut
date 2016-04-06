@@ -32,31 +32,31 @@
   return false;
 }
 
-- (MazeTyleType)getNorth
+- (MazeTyleType)getNorthOf:(CGRect)frame
 {
-  int x = (int)floorf(self.frame.origin.x / TILE_SIZE);
-  int y = (int)floorf((self.frame.origin.y + self.frame.size.height) / TILE_SIZE);
+  int x = (int)floorf(frame.origin.x / TILE_SIZE);
+  int y = (int)floorf((frame.origin.y) / TILE_SIZE);
   return self.gameSession.maze[y - 1][x];
 }
 
-- (MazeTyleType)getSouth
+- (MazeTyleType)getSouthOf:(CGRect)frame
 {
-  int x = (int)floorf(self.frame.origin.x / TILE_SIZE);
-  int y = (int)floorf(self.frame.origin.y / TILE_SIZE);
+  int x = (int)floorf(frame.origin.x / TILE_SIZE);
+  int y = (int)floorf(frame.origin.y / TILE_SIZE);
   return self.gameSession.maze[y + 1][x];
 }
 
-- (MazeTyleType)getWest
+- (MazeTyleType)getWestOf:(CGRect)frame
 {
-  int x = (int)floorf(self.frame.origin.x / TILE_SIZE);
-  int y = (int)floorf(self.frame.origin.y / TILE_SIZE);
+  int x = (int)floorf(frame.origin.x / TILE_SIZE);
+  int y = (int)floorf(frame.origin.y / TILE_SIZE);
   return self.gameSession.maze[y][x + 1];
 }
 
-- (MazeTyleType)getEast
+- (MazeTyleType)getEastOf:(CGRect)frame
 {
-  int x = (int)floorf((self.frame.origin.x + self.frame.size.width) / TILE_SIZE);
-  int y = (int)floorf(self.frame.origin.y / TILE_SIZE);
+  int x = (int)floorf((frame.origin.x) / TILE_SIZE);
+  int y = (int)floorf(frame.origin.y / TILE_SIZE);
   return self.gameSession.maze[y][x - 1];
 }
 
@@ -97,7 +97,7 @@
   
   //--- checking horizontal move ---//
   CGRect frameOnHorizontalMove = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
-  if (((velx < 0 && [self getEast] != MTWall) || (velx > 0 && [self getWest] != MTWall)) && ![self checkWallCollision:frameOnHorizontalMove])
+  if ((velx < 0 || velx > 0) && ![self checkWallCollision:frameOnHorizontalMove])
   {
     self.didHorizontalSwipe = false;
     didHorizontalMove = true;
@@ -120,7 +120,7 @@
   
   //--- checking vertical move ---//
   CGRect frameOnVerticalMove = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
-  if (((vely < 0 && [self getNorth] != MTWall) || (vely > 0 && [self getSouth] != MTWall)) && ![self checkWallCollision:frameOnVerticalMove])
+  if ((vely < 0 || vely > 0) && ![self checkWallCollision:frameOnVerticalMove])
   {
     self.didVerticalSwipe = false;
     didVerticalMove = true;
