@@ -66,7 +66,7 @@
 }
  */
 
-- (void)searchPlayer
+- (void)search:(CGRect)targetFrame
 {
   bool playerFound = false;
   CGRect oldFrame = CGRectMake((int)floorf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
@@ -77,8 +77,7 @@
   self.exploredTiles = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
   while (!playerFound)
   {
-    PNPlayer *player = [self.gameSession player];
-    if (CGRectIntersectsRect(player.frame, currentFrame))
+    if (CGRectIntersectsRect(targetFrame, currentFrame))
     {
       playerFound = true;
       [visited removeObject:[NSValue valueWithCGRect:oldFrame]];
@@ -146,7 +145,9 @@
 
 - (void)update:(CGFloat)deltaTime
 {
-  [self searchPlayer];
+  PNPlayer *player = self.gameSession.player;
+  [self search:player.frame];
+  
   if (self.exploredTiles.count > 0)
   {
     CGRect nextFrame = [self.exploredTiles.firstObject CGRectValue];
