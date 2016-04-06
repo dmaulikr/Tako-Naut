@@ -29,8 +29,6 @@
 @property(nonatomic,strong) PNMazeGenerator *mazeGenerator;
 @property(nonatomic,assign) NSUInteger tileWidth;
 @property(nonatomic,assign) NSUInteger tileHeight;
-@property(nonatomic,assign) NSUInteger numRow;
-@property(nonatomic,assign) NSUInteger numCol;
 
 @property(nonatomic,assign) int bkgColorIndex;
 @property(nonatomic,assign) float bkgColorTimeAccumulator;

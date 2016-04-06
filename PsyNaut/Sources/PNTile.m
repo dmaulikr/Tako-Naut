@@ -36,6 +36,7 @@
 {
   int x = (int)floorf(frame.origin.x / TILE_SIZE);
   int y = (int)floorf((frame.origin.y) / TILE_SIZE);
+  if (y - 1 < 0) return MTWall;
   return self.gameSession.maze[y - 1][x];
 }
 
@@ -43,6 +44,7 @@
 {
   int x = (int)floorf(frame.origin.x / TILE_SIZE);
   int y = (int)floorf(frame.origin.y / TILE_SIZE);
+  if (y + 1 >= self.gameSession.numRow) return MTWall;
   return self.gameSession.maze[y + 1][x];
 }
 
@@ -50,6 +52,7 @@
 {
   int x = (int)floorf(frame.origin.x / TILE_SIZE);
   int y = (int)floorf(frame.origin.y / TILE_SIZE);
+  if (x + 1 >= self.gameSession.numCol) return MTWall;
   return self.gameSession.maze[y][x + 1];
 }
 
@@ -57,6 +60,7 @@
 {
   int x = (int)floorf((frame.origin.x) / TILE_SIZE);
   int y = (int)floorf(frame.origin.y / TILE_SIZE);
+  if (x - 1 < 0) return MTWall;
   return self.gameSession.maze[y][x - 1];
 }
 

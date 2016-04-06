@@ -71,13 +71,14 @@
   bool playerFound = false;
   CGRect oldFrame = CGRectMake((int)floorf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   CGRect currentFrame = CGRectMake((int)floorf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  targetFrame = CGRectMake((int)floorf(targetFrame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(targetFrame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   float currentSpeed = TILE_SIZE;
   float currentSize = TILE_SIZE;
   NSMutableArray *visited = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
   self.exploredTiles = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
   while (!playerFound)
   {
-    if (CGRectIntersectsRect(targetFrame, currentFrame))
+    if ([visited containsObject:[NSValue valueWithCGRect:targetFrame]])
     {
       playerFound = true;
       [visited removeObject:[NSValue valueWithCGRect:oldFrame]];
@@ -128,15 +129,16 @@
       else
       {
         NSValue *currentTile = [visited lastObject];
-        if (currentTile)
+        if (visited.count == 1)
+        {
+//          NSLog(@"potential deadlock");
+          [self.exploredTiles removeAllObjects];
+          return;
+        }
+        else if (currentTile)
         {
           currentFrame = [currentTile CGRectValue];
           [visited removeLastObject];
-        }
-        else
-        {
-          NSLog(@"deadlock!");
-          [self.exploredTiles removeAllObjects];
         }
       }
     }

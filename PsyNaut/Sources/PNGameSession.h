@@ -31,6 +31,8 @@
 @property(readonly) CGFloat currentTime;
 
 @property(nonatomic,assign) MazeTyleType **maze;
+@property(nonatomic,assign) NSUInteger numRow;
+@property(nonatomic,assign) NSUInteger numCol;
 @property(readonly) NSMutableArray<UIImageView *> *walls;
 @property(readonly) UIView *mazeView;
 @property(nonatomic,strong) PNCollisionCollaborator *collisionCollaborator;
