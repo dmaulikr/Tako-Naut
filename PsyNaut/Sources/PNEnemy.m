@@ -66,20 +66,6 @@
 }
  */
 
-- (bool)checkWallCollision:(CGRect)frame
-{
-  NSArray *walls = self.gameSession.walls;
-  for (UIImageView *wall in walls)
-  {
-    if (CGRectIntersectsRect(wall.frame, frame))
-    {
-      return true;
-    }
-  }
-  
-  return false;
-}
-
 - (void)searchPlayer
 {
   bool playerFound = false;
