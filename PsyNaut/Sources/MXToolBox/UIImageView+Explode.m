@@ -14,7 +14,6 @@
   //--- preparing tile stuff ---//
   CGImageRef originalImage = self.image.CGImage;
   [self setImage:nil];
-  self.userInteractionEnabled = NO;
   
   //--- preparing sub tiles ---//
   float size = self.frame.size.width / 3.0;
