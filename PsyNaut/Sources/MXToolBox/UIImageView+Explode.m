@@ -35,35 +35,35 @@
     for (int x = 0; x < fullColumns; ++x)
     {
       CGSize tileSize = imageSize;
-      if (x + 1 == fullColumns && remainderWidth > 0) // Last column
+      if (x + 1 == fullColumns && remainderWidth > 0)
       {
         tileSize.width = remainderWidth;
       }
       
-      if (y + 1 == fullRows && remainderHeight > 0) // Last row
+      if (y + 1 == fullRows && remainderHeight > 0)
       {
         tileSize.height = remainderHeight;
       }
       
-      UIImageView *img = [[UIImageView alloc] init];
-      img.layer.frame = CGRectMake(x * imageSize.width, y * imageSize.height, tileSize.width, tileSize.height);
-      CGImageRef tileImage = CGImageCreateWithImageInRect(originalImage, img.layer.frame);
-      img.layer.contents = (__bridge id)(tileImage);
+      UIImageView *subTile = [[UIImageView alloc] init];
+      subTile.layer.frame = CGRectMake(x * imageSize.width, y * imageSize.height, tileSize.width, tileSize.height);
+      CGImageRef tileImage = CGImageCreateWithImageInRect(originalImage, subTile.layer.frame);
+      subTile.layer.contents = (__bridge id)(tileImage);
       CGImageRelease(tileImage);
-      [self addSubview:img];
+      [self addSubview:subTile];
     }
   }
   
   //--- starting to animate the sub tiles ---//
-  for (UIImageView *subtile in self.subviews)
+  for (UIImageView *subTile in self.subviews)
   {
-    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
       int randx = (arc4random() % 2 == 0 ? -1 : 1) * (arc4random() % 100);
       int randy = (arc4random() % 2 == 0 ? -1 : 1) * (arc4random() % 100);
-      subtile.frame = CGRectMake(subtile.frame.origin.x + randx, subtile.frame.origin.y + randy, subtile.frame.size.width, subtile.frame.size.height);;
-      subtile.alpha = 0;
+      subTile.frame = CGRectMake(subTile.frame.origin.x + randx, subTile.frame.origin.y + randy, subTile.frame.size.width, subTile.frame.size.height);;
+      subTile.alpha = 0;
     } completion:^(BOOL finished) {
-      [subtile removeFromSuperview];
+      [subTile removeFromSuperview];
       
       if (completion && self.subviews.count == 0)
       {
