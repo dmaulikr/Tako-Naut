@@ -14,6 +14,7 @@
 
 @interface PNEnemy()
 @property(nonatomic,strong) NSMutableArray *exploredTiles;
+@property(nonatomic,assign) BOOL exploding;
 @end
 
 @implementation PNEnemy
@@ -106,7 +107,7 @@
         NSValue *currentTile = [visited lastObject];
         if (visited.count == 1)
         {
-//          NSLog(@"potential deadlock");
+          //          NSLog(@"potential deadlock");
           [self.exploredTiles removeAllObjects];
           return;
         }
@@ -124,6 +125,17 @@
 {
   PNPlayer *player = self.gameSession.player;
   [self search:player.frame];
+  
+  /*
+  if (arc4random() % 100 > 98 && !_exploding)
+  {
+    self.exploding = YES;
+    self.image = self.animationImages[0];
+    self.animationImages = nil;
+    [self lp_explode];
+    return;
+  }
+*/
   
   if (self.exploredTiles.count > 0)
   {

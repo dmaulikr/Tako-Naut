@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D00168E1CB6CD3000DD77E9 /* UIImageView+Explode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D00168D1CB6CD3000DD77E9 /* UIImageView+Explode.m */; };
 		1D1F1C991C9A7EF60020570D /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1F1C981C9A7EF60020570D /* coin.png */; };
 		1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F1C9F1C9A80FC0020570D /* PNPlayer.m */; };
 		1D339D7B1C9C4F43005124AE /* 1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9C61241C993207002B258C /* 1024x1024.png */; };
@@ -74,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D00168C1CB6CD3000DD77E9 /* UIImageView+Explode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Explode.h"; path = "Sources/UIImageView+Explode.h"; sourceTree = "<group>"; };
+		1D00168D1CB6CD3000DD77E9 /* UIImageView+Explode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Explode.m"; path = "Sources/UIImageView+Explode.m"; sourceTree = "<group>"; };
 		1D1F1C981C9A7EF60020570D /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = Resources/Images/coin.png; sourceTree = "<group>"; };
 		1D1F1C9B1C9A80AA0020570D /* soundGoodHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGoodHit.caf; path = Resources/Sounds/soundGoodHit.caf; sourceTree = "<group>"; };
 		1D1F1C9E1C9A80FC0020570D /* PNPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNPlayer.h; path = Sources/PNPlayer.h; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 				1DD101151CA3439C00D83A9A /* PNEnemy.m */,
 				1D9CB5791C9A1CAB002B52AD /* PNItem.h */,
 				1D9CB57A1C9A1CAB002B52AD /* PNItem.m */,
+				1D00168C1CB6CD3000DD77E9 /* UIImageView+Explode.h */,
+				1D00168D1CB6CD3000DD77E9 /* UIImageView+Explode.m */,
 			);
 			name = Tile;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 				1D492E001CA5723000C515B5 /* PNMenuViewController.m in Sources */,
 				1D9CB5801C9A1CCE002B52AD /* PNAppDelegate.m in Sources */,
 				1DD101161CA3439C00D83A9A /* PNEnemy.m in Sources */,
+				1D00168E1CB6CD3000DD77E9 /* UIImageView+Explode.m in Sources */,
 				1D1F1CA01C9A80FC0020570D /* PNPlayer.m in Sources */,
 				1D36E08F1C9147630043948F /* UIImage+MX.m in Sources */,
 				1D36E08A1C9147630043948F /* MXImageView.m in Sources */,

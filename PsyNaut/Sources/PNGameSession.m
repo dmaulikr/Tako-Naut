@@ -16,6 +16,7 @@
 #import "MXToolBox.h"
 #import "PNMacros.h"
 #import "PNConstants.h"
+#import "UIImageView+Explode.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface PNGameSession ()
@@ -255,7 +256,13 @@
   
   if (self.currentLives == 0)
   {
-    [self.delegate performSelector:@selector(didGameOver:) withObject:self];
+    self.player.image = self.player.animationImages[0];
+    self.player.animationImages = nil;
+    [self.player explode:^{
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate performSelector:@selector(didGameOver:) withObject:self];
+      });
+    }];
   }
 }
 
