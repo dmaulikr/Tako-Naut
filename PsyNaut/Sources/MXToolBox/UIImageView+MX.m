@@ -5,9 +5,9 @@
 //  Created by mugx on 07/04/16.
 //  Copyright © 2016 mugx. All rights reserved.
 
-#import "UIImageView+Explode.h"
+#import "UIImageView+MX.h"
 
-@implementation UIImageView (Explode)
+@implementation UIImageView (MX)
 
 - (void)explode:(void (^)())completion
 {  

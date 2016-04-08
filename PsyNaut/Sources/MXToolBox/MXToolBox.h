@@ -17,6 +17,7 @@
 #import "MXImageView.h"
 #import "UIImage+MX.h"
 #import "UIColor+MX.h"
+#import "UIImageView+MX.h"
 
 #define LOCALIZE(k) [[MXLocalizationManager sharedInstance] localize:k]
 #define FONT_FAMILY @"Joystix"

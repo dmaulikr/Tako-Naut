@@ -16,7 +16,6 @@
 #import "MXToolBox.h"
 #import "PNMacros.h"
 #import "PNConstants.h"
-#import "UIImageView+Explode.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface PNGameSession ()

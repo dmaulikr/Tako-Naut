@@ -7,6 +7,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImageView (Explode)
+@interface UIImageView (MX)
 - (void)explode:(void (^)())completion;
 @end
