@@ -138,7 +138,7 @@
   self.gameOverView.alpha = 0.0f;
   self.scoreLabel_inGameOver.text = self.scoreLabel.text;
   
-  [UIView animateWithDuration:1.0f animations:^{
+  [UIView animateWithDuration:0.5f animations:^{
     self.gameOverView.alpha = 1.0f;
   } completion:^(BOOL finished) {
 //    [PNHighScoresViewController saveScore:session.currentScore];

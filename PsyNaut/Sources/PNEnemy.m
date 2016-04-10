@@ -126,17 +126,6 @@
   PNPlayer *player = self.gameSession.player;
   [self search:player.frame];
   
-  /*
-  if (arc4random() % 100 > 98 && !_exploding)
-  {
-    self.exploding = YES;
-    self.image = self.animationImages[0];
-    self.animationImages = nil;
-    [self lp_explode];
-    return;
-  }
-*/
-  
   if (self.exploredTiles.count > 0)
   {
     CGRect nextFrame = [self.exploredTiles.firstObject CGRectValue];

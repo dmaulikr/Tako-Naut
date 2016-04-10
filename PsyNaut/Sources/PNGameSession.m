@@ -34,7 +34,7 @@
 @property(nonatomic,assign) float bkgColorTimeAccumulator;
 @property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
-@property(nonatomic,weak) UIView *endMazeTile;
+@property(nonatomic,weak) UIView *mazeGoalTile;
 @property(nonatomic,assign) CGAffineTransform rotation;
 @property(nonatomic,assign) float rot;
 @end
@@ -134,7 +134,7 @@
         tile.backgroundColor = GREEN_COLOR;
         [self.mazeView addSubview:tile];
         [self.mazeView sendSubviewToBack:tile];
-        self.endMazeTile = tile;
+        self.mazeGoalTile = tile;
       }
     }
   }
@@ -216,7 +216,6 @@
   //--- updating maze color ---//
   if (self.bkgColorTimeAccumulator > 10)
   {
-    //    self.rot += M_PI_2;
     self.bkgColorTimeAccumulator = 0;
     NSArray *colors = @[GREEN_COLOR, CYAN_COLOR, BLUE_COLOR, RED_COLOR, YELLOW_COLOR];
     for (UIImageView *img in self.walls)
@@ -226,7 +225,7 @@
     self.bkgColorIndex = (self.bkgColorIndex + 1) % colors.count;;
     
     [UIView animateWithDuration:0.1 animations:^{
-        self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
+      self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
     }];
   }
   else
@@ -237,30 +236,28 @@
   //--- updating maze frame ---//
   self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
   
-  ///--- collision enemy vs player ---//
+  ///--- collision player vs enemies ---//
   for (PNEnemy *enemy in self.enemyCollaborator.enemies)
   {
     if (CGRectIntersectsRect(enemy.frame, self.player.frame))
     {
       self.currentLives = self.currentLives - 1;
+      [enemy setHidden:YES];
       break;
     }
   }
   
-  //--- collision player vs end maze---//
-  if (CGRectIntersectsRect(self.player.frame, self.endMazeTile.frame))
+  //--- collision player vs maze goal---//
+  if (CGRectIntersectsRect(self.player.frame, self.mazeGoalTile.frame))
   {
     [self startLevel:self.currentLevel + 1];
   }
   
+  //--- collision if player is dead---//
   if (self.currentLives == 0)
   {
-    self.player.image = self.player.animationImages[0];
-    self.player.animationImages = nil;
     [self.player explode:^{
-      dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate performSelector:@selector(didGameOver:) withObject:self];
-      });
     }];
   }
 }

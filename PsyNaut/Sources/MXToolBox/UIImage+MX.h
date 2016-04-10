@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (MX)
+- (UIImage *)crop:(CGRect)rect;
 - (UIImage *)imageColored:(UIColor *)color;
 - (UIImage*)scale:(CGFloat)newHeight;
 - (NSArray *)spritesWiteSize:(CGSize)size;

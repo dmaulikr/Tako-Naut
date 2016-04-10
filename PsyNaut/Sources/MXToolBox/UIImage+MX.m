@@ -10,6 +10,16 @@
 
 @implementation UIImage (MX)
 
+- (UIImage *)crop:(CGRect)rect
+{
+  UIGraphicsBeginImageContextWithOptions(rect.size, false, [self scale]);
+  CGPoint drawPoint = CGPointMake(-rect.origin.x, -rect.origin.y);
+  [self drawAtPoint:drawPoint];
+  UIImage* croppedIMage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return croppedIMage;
+}
+
 - (UIImage *)imageColored:(UIColor *)color
 {
   UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
