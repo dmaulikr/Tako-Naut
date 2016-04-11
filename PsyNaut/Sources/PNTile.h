@@ -22,5 +22,7 @@
 @property(nonatomic,assign) float padding;
 @property(nonatomic,assign) bool didVerticalSwipe;
 @property(nonatomic,assign) bool didHorizontalSwipe;
+@property(nonatomic,assign) int x;
+@property(nonatomic,assign) int y;
 @property(nonatomic,weak) PNGameSession *gameSession;
 @end

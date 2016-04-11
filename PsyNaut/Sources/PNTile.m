@@ -25,6 +25,7 @@
   {
     if (CGRectIntersectsRect(wall.frame, frame))
     {
+      NSLog(@"check wall collision");
       return true;
     }
   }
