@@ -108,6 +108,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   self.mazeView = [[UIView alloc] initWithFrame:self.gameView.frame];
   [self.gameView addSubview:self.mazeView];
   [self.gameView sendSubviewToBack:self.mazeView];
+  self.bkgColorIndex = (self.bkgColorIndex + 1) % (BKG_COLORS.count);
   
   //--- generating the maze ---//
   PNMazeGenerator *mazeGenerator = [PNMazeGenerator new];
@@ -121,14 +122,13 @@ typedef NS_ENUM(NSUInteger, TyleType) {
         PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
         if (r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1)
         {
-          [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:RED_COLOR]];
+          [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:BKG_COLORS[self.bkgColorIndex]]];
           tile.tag = TTRedWall;
         }
         else
         {
           [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:BKG_COLORS[self.bkgColorIndex]]];
-          tile.tag = self.bkgColorIndex == BKG_COLORS.count - 1 ? TTRedWall : TTWall;
-          self.bkgColorIndex = (self.bkgColorIndex + 1) % (BKG_COLORS.count);
+          tile.tag = TTWall;
         }
         
         tile.x = r;
@@ -167,7 +167,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   NSMutableArray *coloredImages = [@[] mutableCopy];
   for (UIImage *img in images)
   {
-    [coloredImages addObject:[img imageColored:CYAN_COLOR]];
+    [coloredImages addObject:[img imageColored:MAGENTA_COLOR]];
   }
   self.player.animationImages = coloredImages;
   self.player.animationDuration = 0.4f;
@@ -204,7 +204,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
         {
           PNItem *whirlwind = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           whirlwind.tag = TTWhirlwind;
-          whirlwind.image = [[UIImage imageNamed:@"whirlwind"] imageColored:CYAN_COLOR];
+          whirlwind.image = [[UIImage imageNamed:@"whirlwind"] imageColored:BKG_COLORS[self.bkgColorIndex]];
           [self.mazeView addSubview:whirlwind];
           [self.mazeView sendSubviewToBack:whirlwind];
           [self.items addObject:whirlwind];
@@ -224,7 +224,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
         {
           PNItem *bomb = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           bomb.tag = TTTime;
-          bomb.image = [[UIImage imageNamed:@"time"] imageColored:YELLOW_COLOR];
+          bomb.image = [[UIImage imageNamed:@"time"] imageColored:MAGENTA_COLOR];
           bomb.x = c;
           bomb.y = r;
           [self.mazeView addSubview:bomb];
