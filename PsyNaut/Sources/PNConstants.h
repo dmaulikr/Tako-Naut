@@ -11,15 +11,21 @@
 #define FEEDBACK_EMAIL @"mugxware@gmail.com"
 
 typedef NS_ENUM(NSUInteger, SoundType) {
-  STSelectItem = 0,
-  STStartgame = 1,
-  STGoodHit = 2,
-  STGameOver = 3
+  STHitCoin = 1,
+  STHitWhirlwind = 2,
+  STHitBomb = 3,
+  STHitMinion = 4,
+  STHitTimeBonus = 5,
+  STStartgame = 6,
+  STGame = 7,
+  STSelectItem = 8,
+  STTimeOver = 9,
+  STGameOver = 10,
+  STLevelChange = 11
 };
 
 #define ATUsul @"ATUsul";
 #define achievement_bladeRunner @"achievement_bladeRunner"
-#define achievement_cyycColor @"achievement_cyycColor"
 #define ATLevel5 @"ATLevel5"
 #define ATLevel10 @"ATLevel10"
 #define ATLevel20 @"ATLevel20"

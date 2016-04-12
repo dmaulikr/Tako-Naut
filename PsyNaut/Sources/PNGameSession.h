@@ -43,5 +43,7 @@
 @protocol PNGameSessionDelegate <NSObject>
 - (void)didUpdateScore:(NSUInteger)score;
 - (void)didUpdateTime:(NSUInteger)time;
+- (void)didGotMinion:(NSUInteger)minionCount;
+- (void)didNextLevel:(NSUInteger)levelCount;
 - (void)didGameOver:(PNGameSession *)session;
 @end

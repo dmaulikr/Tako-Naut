@@ -23,10 +23,10 @@
 // HUD
 @property IBOutlet UILabel *timeLabel;
 @property IBOutlet UILabel *scoreLabel;
-@property IBOutlet UILabel *firstCharLabel;
-@property IBOutlet UILabel *secondCharLabel;
-@property IBOutlet UILabel *thirdCharLabel;
-@property IBOutlet UILabel *fourthCharLabel;
+@property IBOutlet UIImageView *firstItem;
+@property IBOutlet UIImageView *secondItem;
+@property IBOutlet UIImageView *thirdItem;
+@property IBOutlet UIImageView *fourthItem;
 
 // game view
 @property IBOutlet UIView *gameView;
@@ -85,16 +85,19 @@
   
   //--- game over view ---//
   self.gameOverView.hidden = YES;
+  
+  //--- init hud ---//
+  [self initHud];
 }
 
 #pragma mark - Init Stuff
 
 - (void)initHud
 {
-  self.firstCharLabel.text = [@(arc4random() % 10) description];
-  self.secondCharLabel.text = [@(arc4random() % 10) description];
-  self.thirdCharLabel.text = [@(arc4random() % 10) description];
-  self.fourthCharLabel.text = [@(arc4random() % 10) description];
+  self.firstItem.alpha = 0.2;
+  self.secondItem.alpha = 0.2;
+  self.thirdItem.alpha = 0.2;
+  self.fourthItem.alpha = 0.2;
 }
 
 #pragma mark - Gesture Recognizer Stuff
@@ -126,6 +129,19 @@
 - (void)didUpdateTime:(NSUInteger)time
 {
   self.timeLabel.text = [NSString stringWithFormat:@"Time\n%ld", (unsigned long)time];
+}
+
+- (void)didGotMinion:(NSUInteger)minionCount
+{
+  self.firstItem.alpha = minionCount == 0 ? 0.2 : 1.0;
+  self.secondItem.alpha = minionCount <= 1 ? 0.2 : 1.0;
+  self.thirdItem.alpha = minionCount <= 2 ? 0.2 : 1.0;
+  self.fourthItem.alpha = minionCount <= 3 ? 0.2 : 1.0;
+}
+
+- (void)didNextLevel:(NSUInteger)levelCount
+{
+  [self initHud];
 }
 
 - (void)didGameOver:(PNGameSession *)session

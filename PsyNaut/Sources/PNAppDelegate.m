@@ -39,7 +39,8 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
 {
   [MXAudioManager sharedInstance].soundEnabled = SOUND_ENABLED;
   [MXAudioManager sharedInstance].volume = SOUND_DEFAULT_VOLUME;
-  [[MXAudioManager sharedInstance] load:[MXUtils jsonFromFile:@"gameConfiguration.json"]];
+  id json = [MXUtils jsonFromFile:@"gameConfiguration.json"];
+  [[MXAudioManager sharedInstance] load:json];
 }
 
 #pragma mark - Select Screen

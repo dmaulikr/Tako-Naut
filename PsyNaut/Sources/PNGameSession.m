@@ -18,6 +18,17 @@
 #import "PNConstants.h"
 #import <MXAudioManager/MXAudioManager.h>
 
+typedef NS_ENUM(NSUInteger, TyleType) {
+  TTRedWall = 1,
+  TTWall = 2,
+  TTCoin = 3,
+  TTWhirlwind = 4,
+  TTBomb = 5,
+  TTTime = 6,
+  TTMinion = 7,
+  TTKey = 8
+};
+
 #define BKG_COLORS @[GREEN_COLOR, CYAN_COLOR, BLUE_COLOR, YELLOW_COLOR, RED_COLOR]
 
 @interface PNGameSession ()
@@ -29,16 +40,13 @@
 @property(nonatomic,strong) NSMutableArray<PNItem *> *items;
 
 @property(nonatomic,strong) PNMazeGenerator *mazeGenerator;
-@property(nonatomic,assign) NSUInteger tileWidth;
-@property(nonatomic,assign) NSUInteger tileHeight;
-
 @property(nonatomic,assign) int bkgColorIndex;
 @property(nonatomic,assign) float bkgColorTimeAccumulator;
 @property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
 @property(nonatomic,weak) UIView *mazeGoalTile;
-@property(nonatomic,assign) CGAffineTransform rotation;
-@property(nonatomic,assign) BOOL keyGenerated;
+@property(nonatomic,assign) float rot;
+@property(nonatomic,assign) NSUInteger minionsCount;
 @end
 
 @implementation PNGameSession
@@ -81,8 +89,6 @@
   self.currentLevel = levelNumber;
   
   //--- setup maze ---//
-  self.tileWidth = TILE_SIZE;
-  self.tileHeight = TILE_SIZE;
   self.numCol = 21;
   self.numRow = 21;
   
@@ -112,7 +118,7 @@
     {
       if (self.maze[r][c] == MTWall)
       {
-        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
         if (r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1)
         {
           [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:RED_COLOR]];
@@ -133,7 +139,7 @@
       }
       else if (self.maze[r][c] == MTStart)
       {
-        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
         tile.x = r;
         tile.y = c;
         [tile setImage:[[UIImage imageNamed:@"door"] imageColored:BLUE_COLOR]];
@@ -142,7 +148,7 @@
       }
       else if (self.maze[r][c] == MTEnd)
       {
-        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
         tile.x = r;
         tile.y = c;
         [tile setImage:[[UIImage imageNamed:@"target"] imageColored:GREEN_COLOR]];
@@ -156,8 +162,14 @@
 
 - (void)initPlayer
 {
-  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * self.tileWidth + PLAYER_PADDING, STARTING.x * self.tileHeight + PLAYER_PADDING, self.tileWidth - PLAYER_SPEED, self.tileHeight - PLAYER_SPEED) withGameSession:self];
-  self.player.animationImages = [[UIImage imageNamed:@"player"] spritesWiteSize:CGSizeMake(self.tileWidth, self.tileHeight)];
+  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + PLAYER_PADDING, STARTING.x * TILE_SIZE + PLAYER_PADDING, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
+  NSArray *images = [[UIImage imageNamed:@"player"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+  NSMutableArray *coloredImages = [@[] mutableCopy];
+  for (UIImage *img in images)
+  {
+    [coloredImages addObject:[img imageColored:CYAN_COLOR]];
+  }
+  self.player.animationImages = coloredImages;
   self.player.animationDuration = 0.4f;
   self.player.animationRepeatCount = 0;
   [self.player startAnimating];
@@ -168,6 +180,10 @@
 - (void)initItems
 {
   self.items = [NSMutableArray array];
+  self.minionsCount = 0;
+  bool keyGenerated = false;
+  int minionsGenerated = 0;
+  
   for (int r = 0; r < self.numRow ; r++)
   {
     for (int c = 0; c < self.numCol; c++)
@@ -177,25 +193,25 @@
         if ((arc4random() % 100) >= 50)
         {
           float iconSize = 20;
-          PNItem *coin = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth + (self.tileWidth - iconSize) / 2.0, r * self.tileHeight + (self.tileHeight - iconSize) / 2.0, iconSize, iconSize)];
+          PNItem *coin = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE + (TILE_SIZE - iconSize) / 2.0, r * TILE_SIZE + (TILE_SIZE - iconSize) / 2.0, iconSize, iconSize)];
           coin.tag = TTCoin;
           coin.image = [[UIImage imageNamed:@"coin"] imageColored:[UIColor yellowColor]];
           [self.mazeView addSubview:coin];
           [self.mazeView sendSubviewToBack:coin];
           [self.items addObject:coin];
         }
-        else if (!self.keyGenerated && (arc4random() % 100) >= 70)
+        else if ((arc4random() % 100) >= 70)
         {
-          PNItem *whirlwind = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          PNItem *whirlwind = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           whirlwind.tag = TTWhirlwind;
           whirlwind.image = [[UIImage imageNamed:@"whirlwind"] imageColored:CYAN_COLOR];
           [self.mazeView addSubview:whirlwind];
           [self.mazeView sendSubviewToBack:whirlwind];
           [self.items addObject:whirlwind];
         }
-        else if (!self.keyGenerated && (arc4random() % 100) >= 70)
+        else if ((arc4random() % 100) >= 70)
         {
-          PNItem *bomb = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          PNItem *bomb = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           bomb.tag = TTBomb;
           bomb.image = [[UIImage imageNamed:@"bomb"] imageColored:RED_COLOR];
           bomb.x = c;
@@ -204,9 +220,9 @@
           [self.mazeView sendSubviewToBack:bomb];
           [self.items addObject:bomb];
         }
-        else if (!self.keyGenerated && (arc4random() % 100) >= 70)
+        else if ((arc4random() % 100) >= 70)
         {
-          PNItem *bomb = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          PNItem *bomb = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           bomb.tag = TTTime;
           bomb.image = [[UIImage imageNamed:@"time"] imageColored:YELLOW_COLOR];
           bomb.x = c;
@@ -215,19 +231,20 @@
           [self.mazeView sendSubviewToBack:bomb];
           [self.items addObject:bomb];
         }
-        else if ((arc4random() % 100) >= 95)
+        else if (minionsGenerated < 4 && (arc4random() % 100) >= 95)
         {
-          PNItem *minion = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          ++minionsGenerated;
+          PNItem *minion = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           minion.tag = TTMinion;
           minion.image = [[UIImage imageNamed:@"minion"] imageColored:[UIColor whiteColor]];
           [self.mazeView addSubview:minion];
           [self.mazeView sendSubviewToBack:minion];
           [self.items addObject:minion];
         }
-        else if (!self.keyGenerated && (arc4random() % 100) >= 98)
+        else if (!keyGenerated && (arc4random() % 100) >= 98)
         {
-          self.keyGenerated = YES;
-          PNItem *key = [[PNItem alloc] initWithFrame:CGRectMake(c * self.tileWidth, r * self.tileHeight, self.tileWidth, self.tileHeight)];
+          keyGenerated = true;
+          PNItem *key = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           key.tag = TTKey;
           key.image = [[UIImage imageNamed:@"key"] imageColored:MAGENTA_COLOR];
           [self.mazeView addSubview:key];
@@ -256,19 +273,42 @@
   [self.player update:deltaTime];
   
   //--- checking items collisions ---//
-  NSMutableArray *array = [NSMutableArray array];
+  NSMutableArray *itemsToRemove = [NSMutableArray array];
   for (PNItem *item in self.items)
   {
     if (CGRectIntersectsRect(item.frame, self.player.frame))
     {
-      [[MXAudioManager sharedInstance] play:STGoodHit];
       item.hidden = true;
-      [array addObject:item];
-      self.currentScore += 5;
-      [self.delegate didUpdateScore:self.currentScore];
+      [itemsToRemove addObject:item];
       
-      if (item.tag == TTBomb)
+      if (item.tag == TTCoin)
       {
+        [[MXAudioManager sharedInstance] play:STHitCoin];
+        self.currentScore += 5;
+        [self.delegate didUpdateScore:self.currentScore];
+      }
+      else if (item.tag == TTWhirlwind)
+      {
+        [[MXAudioManager sharedInstance] play:STHitWhirlwind];
+        [UIView animateWithDuration:0.1 animations:^{
+          self.rot += M_PI_2;
+          self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
+        }];
+      }
+      else if (item.tag == TTTime)
+      {
+        [[MXAudioManager sharedInstance] play:STHitTimeBonus];
+        self.currentTime += 5;
+      }
+      else if (item.tag == TTMinion)
+      {
+        [[MXAudioManager sharedInstance] play:STHitMinion];
+        ++self.minionsCount;
+        [self.delegate didGotMinion:self.minionsCount];
+      }
+      else if (item.tag == TTBomb)
+      {
+        [[MXAudioManager sharedInstance] play:STHitBomb];
         int posx = (int)self.player.frame.origin.x;
         int posy = (int)self.player.frame.origin.y;
         int row = item.x;
@@ -276,28 +316,28 @@
         NSMutableArray *tileToRemove = [NSMutableArray array];
         for (PNTile *tile in self.walls)
         {
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx + 32, posy, 32, 32)) && tile.tag != TTRedWall)
+          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx + TILE_SIZE, posy, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
             self.maze[row + 1][col] = MTPath;
             [tile explode:nil];
             [tileToRemove addObject:tile];
           }
           
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx - 32, posy, 32, 32)) && tile.tag != TTRedWall)
+          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx - TILE_SIZE, posy, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
             self.maze[row - 1][col] = MTPath;
             [tile explode:nil];
             [tileToRemove addObject:tile];
           }
           
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx, posy + 32, 32, 32)) && tile.tag != TTRedWall)
+          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx, posy + TILE_SIZE, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
             self.maze[row][col + 1] = MTPath;
             [tile explode:nil];
             [tileToRemove addObject:tile];
           }
           
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx, posy - 32, 32, 32)) && tile.tag != TTRedWall)
+          if (CGRectIntersectsRect(tile.frame, CGRectMake(posx, posy - TILE_SIZE, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
             self.maze[row][col - 1] = MTPath;
             [tile explode:nil];
@@ -306,20 +346,10 @@
         }
         [self.walls removeObjectsInArray:tileToRemove];
       }
-      else if (item.tag == TTWhirlwind)
-      {
-        [UIView animateWithDuration:0.1 animations:^{
-          self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
-        }];
-      }
-      else if (item.tag == TTTime)
-      {
-        self.currentTime += 5;
-      }
-      continue;
     }
+    item.transform = CGAffineTransformMakeRotation(-self.rot);
   }
-  [self.items removeObjectsInArray:array];
+  [self.items removeObjectsInArray:itemsToRemove];
   
   //--- updating maze frame ---//
   self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
@@ -339,6 +369,7 @@
   if (CGRectIntersectsRect(self.player.frame, self.mazeGoalTile.frame))
   {
     [self startLevel:self.currentLevel + 1];
+    [self.delegate didNextLevel:self.currentLevel];
   }
   
   //--- collision if player is dead---//

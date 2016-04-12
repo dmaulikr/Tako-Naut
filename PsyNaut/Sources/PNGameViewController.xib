@@ -7,14 +7,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNGameViewController">
             <connections>
-                <outlet property="firstCharLabel" destination="2Z9-M1-K2M" id="AQx-Fx-4UN"/>
-                <outlet property="fourthCharLabel" destination="4wb-aG-zdX" id="tnb-vr-hNs"/>
+                <outlet property="firstItem" destination="BL1-lE-plg" id="Zj2-fn-WG7"/>
+                <outlet property="fourthItem" destination="kwY-tR-fcB" id="8cZ-R1-KRK"/>
                 <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
                 <outlet property="gameView" destination="d4y-KC-tNG" id="1NH-DU-CFC"/>
                 <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
                 <outlet property="scoreLabel_inGameOver" destination="97j-1B-XvH" id="7Tb-bY-S7z"/>
-                <outlet property="secondCharLabel" destination="ek0-uA-nqt" id="YZ5-A6-aQz"/>
-                <outlet property="thirdCharLabel" destination="0hz-Ly-S0H" id="xwT-s5-Jmo"/>
+                <outlet property="secondItem" destination="nfi-tS-L4n" id="vnE-3k-utS"/>
+                <outlet property="thirdItem" destination="EEZ-Zn-EfC" id="3fc-ES-JM7"/>
                 <outlet property="timeLabel" destination="u2o-2h-dwV" id="3nl-zu-grV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tHD-d3-Hnh"/>
             </connections>
@@ -34,82 +34,46 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6g2-wh-AAS" userLabel="word view">
                             <rect key="frame" x="220" y="0.0" width="160" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Z9-M1-K2M">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-lE-plg" userLabel="first item">
+                                    <rect key="frame" x="0.0" y="9" width="32" height="32"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="0iq-J2-ZM3"/>
-                                        <constraint firstAttribute="width" constant="40" id="OWT-Ai-UcA"/>
+                                        <constraint firstAttribute="height" constant="32" id="7yY-kt-hBe"/>
+                                        <constraint firstAttribute="width" constant="32" id="b6C-DD-YTq"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="0iq-J2-ZM3"/>
-                                        </mask>
-                                    </variation>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek0-uA-nqt" userLabel="Second Letter Char">
-                                    <rect key="frame" x="40" y="0.0" width="40" height="50"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfi-tS-L4n" userLabel="second item">
+                                    <rect key="frame" x="42" y="9" width="32" height="32"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="8aH-rM-yB0"/>
-                                        <constraint firstAttribute="width" constant="40" id="Qbm-Sj-qAB"/>
+                                        <constraint firstAttribute="width" constant="32" id="Y6U-gw-XGq"/>
+                                        <constraint firstAttribute="height" constant="32" id="wHK-9w-b09"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="8aH-rM-yB0"/>
-                                        </mask>
-                                    </variation>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hz-Ly-S0H" userLabel="Second Letter Char">
-                                    <rect key="frame" x="80" y="0.0" width="40" height="50"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="EEZ-Zn-EfC" userLabel="third item">
+                                    <rect key="frame" x="84" y="9" width="32" height="32"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="40" id="I2f-Cj-f4Y"/>
-                                        <constraint firstAttribute="height" constant="40" id="rZh-97-adW"/>
+                                        <constraint firstAttribute="height" constant="32" id="Vn4-mg-86u"/>
+                                        <constraint firstAttribute="width" constant="32" id="Xq3-hm-ZQe"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="rZh-97-adW"/>
-                                        </mask>
-                                    </variation>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wb-aG-zdX" userLabel="Second Letter Char">
-                                    <rect key="frame" x="120" y="0.0" width="40" height="50"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="kwY-tR-fcB" userLabel="fourth item">
+                                    <rect key="frame" x="126" y="9" width="32" height="32"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="40" id="cht-94-ihp"/>
-                                        <constraint firstAttribute="height" constant="40" id="ufl-PG-6LM"/>
+                                        <constraint firstAttribute="height" constant="32" id="jI9-Mg-WQ7"/>
+                                        <constraint firstAttribute="width" constant="32" id="vOF-Id-oaL"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="ufl-PG-6LM"/>
-                                        </mask>
-                                    </variation>
-                                </label>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="ek0-uA-nqt" firstAttribute="top" secondItem="6g2-wh-AAS" secondAttribute="top" id="0Ia-SL-whg"/>
-                                <constraint firstItem="4wb-aG-zdX" firstAttribute="leading" secondItem="0hz-Ly-S0H" secondAttribute="trailing" id="1IO-Y0-r3l"/>
-                                <constraint firstItem="2Z9-M1-K2M" firstAttribute="leading" secondItem="6g2-wh-AAS" secondAttribute="leading" id="B2a-tf-Yqy"/>
-                                <constraint firstAttribute="bottom" secondItem="ek0-uA-nqt" secondAttribute="bottom" id="G7y-3w-7Qm"/>
-                                <constraint firstItem="ek0-uA-nqt" firstAttribute="leading" secondItem="2Z9-M1-K2M" secondAttribute="trailing" id="Lmg-zg-1TC"/>
-                                <constraint firstItem="4wb-aG-zdX" firstAttribute="top" secondItem="6g2-wh-AAS" secondAttribute="top" id="MLa-TA-MZw"/>
-                                <constraint firstItem="0hz-Ly-S0H" firstAttribute="leading" secondItem="ek0-uA-nqt" secondAttribute="trailing" id="Rqh-aa-pXS"/>
-                                <constraint firstItem="2Z9-M1-K2M" firstAttribute="top" secondItem="6g2-wh-AAS" secondAttribute="top" id="V9L-Un-WVQ"/>
-                                <constraint firstAttribute="bottom" secondItem="0hz-Ly-S0H" secondAttribute="bottom" id="WRQ-VP-fFb"/>
-                                <constraint firstAttribute="bottom" secondItem="4wb-aG-zdX" secondAttribute="bottom" id="g8l-y7-Z07"/>
-                                <constraint firstItem="0hz-Ly-S0H" firstAttribute="top" secondItem="6g2-wh-AAS" secondAttribute="top" id="jbO-g5-sBf"/>
-                                <constraint firstAttribute="bottom" secondItem="2Z9-M1-K2M" secondAttribute="bottom" id="oaP-St-VB0"/>
-                                <constraint firstAttribute="trailing" secondItem="4wb-aG-zdX" secondAttribute="trailing" id="xGP-M2-70c"/>
+                                <constraint firstItem="BL1-lE-plg" firstAttribute="centerY" secondItem="6g2-wh-AAS" secondAttribute="centerY" id="8Qe-m0-4AW"/>
+                                <constraint firstItem="nfi-tS-L4n" firstAttribute="centerY" secondItem="BL1-lE-plg" secondAttribute="centerY" id="Q1X-Za-en8"/>
+                                <constraint firstItem="EEZ-Zn-EfC" firstAttribute="centerY" secondItem="nfi-tS-L4n" secondAttribute="centerY" id="Tah-9E-OTV"/>
+                                <constraint firstAttribute="width" constant="160" id="UJS-5j-UIX"/>
+                                <constraint firstItem="kwY-tR-fcB" firstAttribute="leading" secondItem="EEZ-Zn-EfC" secondAttribute="trailing" constant="10" id="W29-PY-8KL"/>
+                                <constraint firstItem="EEZ-Zn-EfC" firstAttribute="leading" secondItem="nfi-tS-L4n" secondAttribute="trailing" constant="10" id="Ytl-dO-j87"/>
+                                <constraint firstItem="BL1-lE-plg" firstAttribute="leading" secondItem="6g2-wh-AAS" secondAttribute="leading" id="jnU-6F-Ygc"/>
+                                <constraint firstItem="nfi-tS-L4n" firstAttribute="leading" secondItem="BL1-lE-plg" secondAttribute="trailing" constant="10" id="o1u-Od-A9e"/>
+                                <constraint firstItem="kwY-tR-fcB" firstAttribute="centerY" secondItem="EEZ-Zn-EfC" secondAttribute="centerY" id="y4R-uA-012"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2o-2h-dwV" customClass="MXLabel">
@@ -214,4 +178,7 @@
             <point key="canvasLocation" x="546" y="228"/>
         </view>
     </objects>
+    <resources>
+        <image name="minion.png" width="32" height="32"/>
+    </resources>
 </document>

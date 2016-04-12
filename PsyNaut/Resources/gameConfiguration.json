@@ -1,17 +1,17 @@
 {
   "audio":{
     "sounds":[
-              {"name":"soundCyyc.caf", "id":"1"},
-              {"name":"soundGoodHit.caf", "id":"2"},
-              {"name":"soundWrongHit.caf", "id":"3"},
-              {"name":"soundBomb.caf", "id":"4"},
-              {"name":"soundSuperWeapon.caf", "id":"5"},
-              {"name":"soundTimeBonus.caf", "id":"6"},
-              {"name":"soundSelectItem.caf", "id":"7"},
-              {"name":"soundTimeOver.caf", "id":"8"},
-              {"name":"soundGameOver.caf", "id":"9"},
-              {"name":"soundLevelChange.caf", "id":"10"},
-              {"name":"soundStartGame.caf", "id":"11"}
+              {"name":"soundHitCoin.caf", "id":"1"},
+              {"name":"soundHitWhirlwind.caf", "id":"2"},
+              {"name":"soundHitBomb.caf", "id":"3"},
+              {"name":"soundHitMinion.caf", "id":"4"},
+              {"name":"soundHitTimeBonus.caf", "id":"5"},
+              {"name":"soundStartGame.caf", "id":"6"},
+              {"name":"soundGame.caf", "id":"7"},
+              {"name":"soundSelectItem.caf", "id":"8"},
+              {"name":"soundTimeOver.caf", "id":"9"},
+              {"name":"soundGameOver.caf", "id":"10"},
+              {"name":"soundLevelChange.caf", "id":"11"}
               ]
   }
 }
