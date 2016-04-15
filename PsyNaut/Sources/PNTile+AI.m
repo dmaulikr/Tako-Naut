@@ -12,11 +12,11 @@
 
 CGFloat euclideanDistance( CGRect rect1, CGRect rect2 )
 {
-  CGPoint center1 = CGPointMake( CGRectGetMidX( rect1 ), CGRectGetMidY( rect1 ) );
-  CGPoint center2 = CGPointMake( CGRectGetMidX( rect2 ), CGRectGetMidY( rect2 ) );
-  CGFloat horizontalDistance = ( center2.x - center1.x );
-  CGFloat verticalDistance = ( center2.y - center1.y );
-  CGFloat distance = sqrt( ( horizontalDistance * horizontalDistance ) + ( verticalDistance * verticalDistance ) );
+  CGPoint center1 = CGPointMake(CGRectGetMidX(rect1), CGRectGetMidY(rect1));
+  CGPoint center2 = CGPointMake(CGRectGetMidX(rect2), CGRectGetMidY(rect2));
+  CGFloat horizontalDistance = (center2.x - center1.x);
+  CGFloat verticalDistance = (center2.y - center1.y);
+  CGFloat distance = sqrt((horizontalDistance * horizontalDistance) + (verticalDistance * verticalDistance));
   return distance;
 }
 

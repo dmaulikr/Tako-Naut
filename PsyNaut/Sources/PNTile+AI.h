@@ -9,6 +9,7 @@
 #import "PNTile.h"
 
 @interface PNTile (AI)
+- (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame;
 - (bool)collidesTarget:(CGRect)target cells:(NSArray *)cells;
 - (NSArray *)search:(CGRect)target;
 @end

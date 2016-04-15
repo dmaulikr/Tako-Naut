@@ -13,18 +13,6 @@
 
 #define ANIM_TIME 0.5
 
-typedef struct
-{
-  CGRect frame;
-  char direction;
-} PossibleDirection;
-
-typedef struct
-{
-  CGRect frame;
-  int cost;
-} Node;
-
 @interface PNEnemy()
 @property(nonatomic,assign) BOOL exploding;
 @property(nonatomic,strong) NSMutableArray *path;
@@ -32,16 +20,6 @@ typedef struct
 @end
 
 @implementation PNEnemy
-
-CGFloat distance( CGRect rect1, CGRect rect2 )
-{
-  CGPoint center1 = CGPointMake( CGRectGetMidX( rect1 ), CGRectGetMidY( rect1 ) );
-  CGPoint center2 = CGPointMake( CGRectGetMidX( rect2 ), CGRectGetMidY( rect2 ) );
-  CGFloat horizontalDistance = ( center2.x - center1.x );
-  CGFloat verticalDistance = ( center2.y - center1.y );
-  CGFloat distance = sqrt( ( horizontalDistance * horizontalDistance ) + ( verticalDistance * verticalDistance ) );
-  return distance;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession
 {
@@ -51,118 +29,6 @@ CGFloat distance( CGRect rect1, CGRect rect2 )
   self.velocity = CGPointMake(0, 0);
   return self;
 }
-
-- (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame
-{
-  CGFloat bestManhattan = FLT_MAX;
-  char bestDirection = ' ';
-  for (NSDictionary * direction in directions)
-  {
-    CGRect frame = [direction[@"frame"] CGRectValue];
-    CGFloat manhattan = distance(frame, targetFrame);
-    if (manhattan < bestManhattan)
-    {
-      bestManhattan = manhattan;
-      bestDirection = [direction[@"move"] charValue];
-    }
-  }
-  return bestDirection;
-}
-
-- (bool)isPlayerFound:(CGRect)target visited:(NSArray *)visited
-{
-  for (NSValue *val in visited)
-  {
-    if (CGRectIntersectsRect(target, [val CGRectValue]))
-    {
-      return true;
-    }
-  }
-  return false;
-}
-
-/*
- - (void)search:(CGRect)targetFrame
- {
- bool playerFound = false;
- targetFrame = CGRectMake((int)roundf(targetFrame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(targetFrame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
- CGRect oldFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
- CGRect currentFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
- CGFloat currentSpeed = TILE_SIZE;
- CGFloat currentSize = TILE_SIZE;
- char lastDirection = ' ';
- NSMutableArray *visited = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
- self.exploredTiles = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
- while (!playerFound)
- {
- playerFound = [self isPlayerFound:targetFrame visited:visited];
- if (playerFound)
- {
- [visited removeObject:[NSValue valueWithCGRect:oldFrame]];
- self.exploredTiles = visited;
- }
- else
- {
- CGRect eastFrame = CGRectMake(currentFrame.origin.x - currentSpeed, currentFrame.origin.y, currentSize, currentSize);
- CGRect westFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
- CGRect northFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
- CGRect southFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y + currentSpeed, currentSize, currentSize);
- BOOL collidesEast = [self collidesEastOf:currentFrame] || [self.exploredTiles containsObject:[NSValue valueWithCGRect:eastFrame]];
- BOOL collidesWest = [self collidesWestOf:currentFrame] || [self.exploredTiles containsObject:[NSValue valueWithCGRect:westFrame]];
- BOOL collidesNorth = [self collidesNorthOf:currentFrame] || [self.exploredTiles containsObject:[NSValue valueWithCGRect:northFrame]];
- BOOL collidesSouth = [self collidesSouthOf:currentFrame] || [self.exploredTiles containsObject:[NSValue valueWithCGRect:southFrame]];
- 
- NSMutableArray *possibleDirections = [NSMutableArray array];
- if (!collidesEast && lastDirection != 'w') [possibleDirections addObject:@{@"move":@('e'), @"frame":[NSValue valueWithCGRect:eastFrame]}];
- if (!collidesWest && lastDirection != 'e') [possibleDirections addObject:@{@"move":@('w'), @"frame":[NSValue valueWithCGRect:westFrame]}];
- if (!collidesNorth && lastDirection != 's') [possibleDirections addObject:@{@"move":@('n'), @"frame":[NSValue valueWithCGRect:northFrame]}];
- if (!collidesSouth && lastDirection != 'n') [possibleDirections addObject:@{@"move":@('s'), @"frame":[NSValue valueWithCGRect:southFrame]}];
- if (possibleDirections.count > 0)
- {
- lastDirection = [self getBestDirection:possibleDirections targetFrame:targetFrame];
- switch(lastDirection)
- {
- case 'n':
- currentFrame = northFrame;
- break;
- case 's':
- currentFrame = southFrame;
- break;
- case 'e':
- currentFrame = eastFrame;
- break;
- case 'w':
- currentFrame = westFrame;
- break;
- }
- 
- CGRect currentFrameCentered = currentFrame;
- NSValue *currentTile = [NSValue valueWithCGRect:currentFrameCentered];
- if (![self.exploredTiles containsObject:currentTile])
- {
- [self.exploredTiles addObject:currentTile];
- [visited addObject:currentTile];
- }
- }
- else
- {
- NSValue *currentTile = [visited lastObject];
- if (visited.count == 1)
- {
- //--- deadlock ---//
- [self.exploredTiles removeAllObjects];
- return;
- }
- else if (currentTile)
- {
- currentFrame = [currentTile CGRectValue];
- [visited removeLastObject];
- }
- }
- }
- }
- }
- */
 
 - (void)update:(CGFloat)deltaTime
 {
