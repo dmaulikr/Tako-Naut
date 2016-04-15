@@ -11,7 +11,6 @@
 #import "PNGameSession.h"
 
 #define PLAYER_SPEED 3.0
-#define PLAYER_PADDING 0.75
 
 @interface PNPlayer : PNTile
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession;

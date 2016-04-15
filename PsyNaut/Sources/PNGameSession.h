@@ -13,8 +13,9 @@
 #import "PNEnemyCollaborator.h"
 
 @class PNPlayer;
+@class PNTile;
 
-#define TILE_SIZE 32
+#define TILE_SIZE 32.0
 #define STARTING CGPointMake(1,1)
 
 @protocol PNGameSessionDelegate;
@@ -30,10 +31,9 @@
 @property(readonly) NSUInteger currentScore;
 @property(readonly) CGFloat currentTime;
 
-@property(nonatomic,assign) MazeTyleType **maze;
 @property(nonatomic,assign) NSUInteger numRow;
 @property(nonatomic,assign) NSUInteger numCol;
-@property(readonly) NSMutableArray<UIImageView *> *walls;
+@property(readonly) NSMutableDictionary<NSValue *, PNTile *> *wallsDictionary;
 @property(readonly) UIView *mazeView;
 @property(nonatomic,strong) PNCollisionCollaborator *collisionCollaborator;
 @property(nonatomic,strong) PNEnemyCollaborator *enemyCollaborator;

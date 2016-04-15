@@ -38,7 +38,7 @@
   self.spawnableEnemies = [NSMutableArray array];
   for (int i = 0;i < MAX_ENEMIES;++i)
   {
-    PNEnemy *enemy = [[PNEnemy alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + ENEMY_PADDING, STARTING.x * TILE_SIZE + ENEMY_PADDING, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED) withGameSession:self.gameSession];
+    PNEnemy *enemy = [[PNEnemy alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + ENEMY_SPEED / 2.0, STARTING.x * TILE_SIZE + ENEMY_SPEED / 2.0, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED) withGameSession:self.gameSession];
     enemy.animationDuration = 0.4f;
     enemy.animationRepeatCount = 0;
     enemy.alpha = 0.0;

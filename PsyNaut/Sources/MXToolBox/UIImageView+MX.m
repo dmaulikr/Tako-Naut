@@ -59,7 +59,7 @@
       subTile.alpha = 0;
     } completion:^(BOOL finished) {
       [subTile removeFromSuperview];
-      
+      self.hidden = YES;
       if (completion && self.subviews.count == 0)
       {
         completion();

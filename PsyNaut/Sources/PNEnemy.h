@@ -10,8 +10,7 @@
 #import "PNGameSession.h"
 #import "PNTile.h"
 
-#define ENEMY_SPEED 3.0
-#define ENEMY_PADDING 0.75
+#define ENEMY_SPEED 2.0
 
 @interface PNEnemy : PNTile
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(PNGameSession *)gameSession;

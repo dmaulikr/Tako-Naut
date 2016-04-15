@@ -20,48 +20,109 @@
 
 - (bool)checkWallCollision:(CGRect)frame
 {
-  NSArray *walls = self.gameSession.walls;
+  NSArray *walls = [self.gameSession.wallsDictionary allValues];
   for (UIImageView *wall in walls)
   {
-    if (CGRectIntersectsRect(wall.frame, frame))
+    if (!wall.hidden && CGRectIntersectsRect(wall.frame, frame))
     {
       return true;
     }
   }
-  
   return false;
+  
+  /*
+  PNTile *east = [self getEast];
+  PNTile *west = [self getWest];
+  PNTile *north = [self getNorth];
+  PNTile *south = [self getSouth];
+  PNTile *center = [self getCenter];
+  bool collidesEast = east && !east.hidden &&  CGRectIntersectsRect(east.frame, frame);
+  bool collidesWest = west && !west.hidden && CGRectIntersectsRect(west.frame, frame);
+  bool collidesSouth = south && !south.hidden && CGRectIntersectsRect(south.frame, frame);
+  bool collidesNorth = north && !north.hidden && CGRectIntersectsRect(north.frame, frame);
+  bool collidesItself = center && !center.hidden && CGRectIntersectsRect(center.frame, frame);
+  return collidesEast || collidesWest || collidesNorth || collidesSouth || collidesItself;
+   */
 }
 
-- (MazeTyleType)getNorthOf:(CGRect)frame
+- (PNTile *)getCenter
 {
-  int x = (int)floorf(frame.origin.x / TILE_SIZE);
-  int y = (int)floorf((frame.origin.y) / TILE_SIZE);
-  if (y - 1 < 0) return MTWall;
-  return self.gameSession.maze[y - 1][x];
+  int col = (int)floorf(self.frame.origin.x / TILE_SIZE);
+  int row = (int)floorf((self.frame.origin.y) / TILE_SIZE);
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col)]];
+  return tile;
 }
 
-- (MazeTyleType)getSouthOf:(CGRect)frame
+- (PNTile *)getNorth
 {
-  int x = (int)floorf(frame.origin.x / TILE_SIZE);
-  int y = (int)floorf(frame.origin.y / TILE_SIZE);
-  if (y + 1 >= self.gameSession.numRow) return MTWall;
-  return self.gameSession.maze[y + 1][x];
+  int col = (int)floorf(self.frame.origin.x / TILE_SIZE);
+  int row = (int)floorf((self.frame.origin.y) / TILE_SIZE);
+  if (row - 1 < 0) return nil;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row - 1, col)]];
+  return tile;
 }
 
-- (MazeTyleType)getWestOf:(CGRect)frame
+- (PNTile *)getSouth
 {
-  int x = (int)floorf(frame.origin.x / TILE_SIZE);
-  int y = (int)floorf(frame.origin.y / TILE_SIZE);
-  if (x + 1 >= self.gameSession.numCol) return MTWall;
-  return self.gameSession.maze[y][x + 1];
+  int col = (int)floorf(self.frame.origin.x / TILE_SIZE);
+  int row = (int)floorf(self.frame.origin.y / TILE_SIZE);
+  if (row + 1 >= self.gameSession.numRow) return nil;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row + 1, col)]];
+  return tile;
 }
 
-- (MazeTyleType)getEastOf:(CGRect)frame
+- (PNTile *)getEast
 {
-  int x = (int)floorf((frame.origin.x) / TILE_SIZE);
-  int y = (int)floorf(frame.origin.y / TILE_SIZE);
-  if (x - 1 < 0) return MTWall;
-  return self.gameSession.maze[y][x - 1];
+  int col = (int)floorf((self.frame.origin.x) / TILE_SIZE);
+  int row = (int)floorf(self.frame.origin.y / TILE_SIZE);
+  if (col - 1 < 0) return nil;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col - 1)]];
+  return tile;
+}
+
+- (PNTile *)getWest
+{
+  int col = (int)floorf(self.frame.origin.x / TILE_SIZE);
+  int row = (int)floorf(self.frame.origin.y / TILE_SIZE);
+  if (col + 1 >= self.gameSession.numCol) return nil;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col + 1)]];
+  return tile;
+}
+
+- (bool)collidesNorthOf:(CGRect)frame
+{
+  int col = (int)roundf(frame.origin.x / TILE_SIZE);
+  int row = (int)roundf((frame.origin.y) / TILE_SIZE);
+  if (row - 1 < 0) return YES;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row - 1, col)]];
+  return tile != nil && !tile.hidden;
+}
+
+- (bool)collidesSouthOf:(CGRect)frame
+{
+  int col = (int)roundf(frame.origin.x / TILE_SIZE);
+  int row = (int)roundf(frame.origin.y / TILE_SIZE);
+  if (row + 1 >= self.gameSession.numRow) return YES;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row + 1, col)]];
+  return tile != nil && !tile.hidden;
+}
+
+- (bool)collidesEastOf:(CGRect)frame
+{
+  int col = (int)roundf((frame.origin.x) / TILE_SIZE);
+  int row = (int)roundf(frame.origin.y / TILE_SIZE);
+  if (col - 1 < 0) return YES;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col - 1)]];
+  return tile != nil && !tile.hidden;
+}
+
+- (bool)collidesWestOf:(CGRect)frame
+{
+  int col = (int)roundf(frame.origin.x / TILE_SIZE);
+  int row = (int)roundf(frame.origin.y / TILE_SIZE);
+  if (col + 1 >= self.gameSession.numCol) return YES;
+  PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col + 1)]];
+  return tile != nil && !tile.hidden;
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
@@ -105,16 +166,7 @@
   {
     self.didHorizontalSwipe = false;
     didHorizontalMove = true;
-    
-    int oldx = floorf(frame.origin.x / TILE_SIZE) * TILE_SIZE;
     frame = frameOnHorizontalMove;
-    int newx = floorf(frame.origin.x / TILE_SIZE) * TILE_SIZE;
-    
-    if (oldx != newx) // if passed on new horizontal tile
-    {
-      // then snap on vertical
-      frame = CGRectMake(frame.origin.x, (floorf(frame.origin.y / TILE_SIZE) * TILE_SIZE) + self.padding, frame.size.width, frame.size.height);
-    }
     
     if (vely != 0 && !self.didVerticalSwipe)
     {
@@ -128,16 +180,7 @@
   {
     self.didVerticalSwipe = false;
     didVerticalMove = true;
-    
-    int oldy = floorf(frame.origin.y / TILE_SIZE) * TILE_SIZE;
     frame = frameOnVerticalMove;
-    int newy = floorf(frame.origin.y / TILE_SIZE) * TILE_SIZE;
-    
-    if (oldy != newy) // if passed on new vertical tile
-    {
-      // then moving on horizontal snap
-      frame = CGRectMake(floorf(frame.origin.x / TILE_SIZE) * TILE_SIZE + self.padding, frame.origin.y, frame.size.width, frame.size.height);
-    }
     
     if (velx != 0 && !self.didHorizontalSwipe)
     {

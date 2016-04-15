@@ -19,6 +19,7 @@
 #import <MXAudioManager/MXAudioManager.h>
 
 typedef NS_ENUM(NSUInteger, TyleType) {
+  TTDoor = 0,
   TTRedWall = 1,
   TTWall = 2,
   TTCoin = 3,
@@ -26,17 +27,19 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   TTBomb = 5,
   TTTime = 6,
   TTMinion = 7,
-  TTKey = 8
+  TTKey = 8,
+  TTMazeEnd = 9,
 };
 
-#define BKG_COLORS @[GREEN_COLOR, CYAN_COLOR, BLUE_COLOR, YELLOW_COLOR, RED_COLOR]
+#define BKG_COLORS @[BLUE_COLOR, GREEN_COLOR, CYAN_COLOR, YELLOW_COLOR, RED_COLOR]
 
 @interface PNGameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;
 @property(nonatomic,assign,readwrite) NSUInteger currentScore;
 @property(nonatomic,assign,readwrite) CGFloat currentLives;
 @property(nonatomic,assign,readwrite) CGFloat currentTime;
-@property(nonatomic,strong,readwrite) NSMutableArray<UIImageView *> *walls;
+@property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, PNTile *> *wallsDictionary;
+@property(nonatomic,assign) MazeTyleType **maze;
 @property(nonatomic,strong) NSMutableArray<PNItem *> *items;
 
 @property(nonatomic,strong) PNMazeGenerator *mazeGenerator;
@@ -45,7 +48,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
 @property(nonatomic,weak) UIView *mazeGoalTile;
-@property(nonatomic,assign) float rot;
+@property(nonatomic,assign) float mazeRotation;
 @property(nonatomic,assign) NSUInteger minionsCount;
 @end
 
@@ -94,8 +97,8 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   
   //--- init scene elems ---//
   [self initMaze];
-  [self initPlayer];
   [self initItems];
+  [self initPlayer];
   
   ///--- setup collaborator ---//
   self.collisionCollaborator = [[PNCollisionCollaborator alloc] init:self];
@@ -104,15 +107,18 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 
 - (void)initMaze
 {
-  self.walls = [NSMutableArray array];
+  self.items = [NSMutableArray array];
   self.mazeView = [[UIView alloc] initWithFrame:self.gameView.frame];
   [self.gameView addSubview:self.mazeView];
   [self.gameView sendSubviewToBack:self.mazeView];
   self.bkgColorIndex = (self.bkgColorIndex + 1) % (BKG_COLORS.count);
+  self.mazeRotation = 0;
   
   //--- generating the maze ---//
   PNMazeGenerator *mazeGenerator = [PNMazeGenerator new];
   self.maze = [mazeGenerator calculateMaze:self.numRow col:self.numCol startingPosition:STARTING];
+  self.wallsDictionary = [NSMutableDictionary dictionary];
+  
   for (int r = 0; r < self.numRow ; r++)
   {
     for (int c = 0; c < self.numCol; c++)
@@ -134,52 +140,38 @@ typedef NS_ENUM(NSUInteger, TyleType) {
         tile.x = r;
         tile.y = c;
         [self.mazeView addSubview:tile];
-        [self.walls addObject:tile];
+        [self.wallsDictionary setObject:tile forKey:[NSValue valueWithCGPoint:CGPointMake(r, c)]];
         [self.mazeView sendSubviewToBack:tile];
       }
       else if (self.maze[r][c] == MTStart)
       {
-        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+        PNItem *tile = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
         tile.x = r;
         tile.y = c;
+        tile.tag = TTDoor;
         [tile setImage:[[UIImage imageNamed:@"door"] imageColored:BLUE_COLOR]];
         [self.mazeView addSubview:tile];
         [self.mazeView sendSubviewToBack:tile];
+        [self.items addObject:tile];
       }
       else if (self.maze[r][c] == MTEnd)
       {
-        PNTile *tile = [[PNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+        PNItem *tile = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
         tile.x = r;
         tile.y = c;
+        tile.tag = TTMazeEnd;
         [tile setImage:[[UIImage imageNamed:@"target"] imageColored:GREEN_COLOR]];
         [self.mazeView addSubview:tile];
         [self.mazeView sendSubviewToBack:tile];
         self.mazeGoalTile = tile;
+        [self.items addObject:tile];
       }
     }
   }
 }
 
-- (void)initPlayer
-{
-  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + PLAYER_PADDING, STARTING.x * TILE_SIZE + PLAYER_PADDING, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
-  NSArray *images = [[UIImage imageNamed:@"player"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
-  NSMutableArray *coloredImages = [@[] mutableCopy];
-  for (UIImage *img in images)
-  {
-    [coloredImages addObject:[img imageColored:MAGENTA_COLOR]];
-  }
-  self.player.animationImages = coloredImages;
-  self.player.animationDuration = 0.4f;
-  self.player.animationRepeatCount = 0;
-  [self.player startAnimating];
-  [self.mazeView addSubview:self.player];
-  [self.mazeView bringSubviewToFront:self.player];
-}
-
 - (void)initItems
 {
-  self.items = [NSMutableArray array];
   self.minionsCount = 0;
   bool keyGenerated = false;
   int minionsGenerated = 0;
@@ -200,7 +192,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
           [self.mazeView sendSubviewToBack:coin];
           [self.items addObject:coin];
         }
-        else if ((arc4random() % 100) >= 70)
+        else if ((arc4random() % 100) >= 90)
         {
           PNItem *whirlwind = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           whirlwind.tag = TTWhirlwind;
@@ -220,7 +212,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
           [self.mazeView sendSubviewToBack:bomb];
           [self.items addObject:bomb];
         }
-        else if ((arc4random() % 100) >= 70)
+        else if ((arc4random() % 100) >= 90)
         {
           PNItem *bomb = [[PNItem alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
           bomb.tag = TTTime;
@@ -256,6 +248,23 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   }
 }
 
+- (void)initPlayer
+{
+  self.player = [[PNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
+  NSArray *images = [[UIImage imageNamed:@"player"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+  NSMutableArray *coloredImages = [@[] mutableCopy];
+  for (UIImage *img in images)
+  {
+    [coloredImages addObject:[img imageColored:MAGENTA_COLOR]];
+  }
+  self.player.animationImages = coloredImages;
+  self.player.animationDuration = 0.4f;
+  self.player.animationRepeatCount = 0;
+  [self.player startAnimating];
+  [self.mazeView addSubview:self.player];
+  [self.mazeView bringSubviewToFront:self.player];
+}
+
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
 {
   [self.player didSwipe:direction];
@@ -263,7 +272,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 
 - (void)update:(CGFloat)deltaTime
 {
-  self.currentTime -=deltaTime;
+  self.currentTime = self.currentTime - deltaTime > 0 ? self.currentTime - deltaTime : 0;
   [self.delegate didUpdateTime:self.currentTime];
   
   //--- updating enemies stuff ---//
@@ -278,76 +287,78 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   {
     if (CGRectIntersectsRect(item.frame, self.player.frame))
     {
-      item.hidden = true;
-      [itemsToRemove addObject:item];
-      
       if (item.tag == TTCoin)
       {
+        item.hidden = true;
+        [itemsToRemove addObject:item];
+        
         [[MXAudioManager sharedInstance] play:STHitCoin];
         self.currentScore += 5;
         [self.delegate didUpdateScore:self.currentScore];
       }
       else if (item.tag == TTWhirlwind)
       {
+        item.hidden = true;
+        [itemsToRemove addObject:item];
+        
         [[MXAudioManager sharedInstance] play:STHitWhirlwind];
         [UIView animateWithDuration:0.1 animations:^{
-          self.rot += M_PI_2;
-          self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
+          //self.mazeRotation += M_PI_2;
+          //self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
         }];
       }
       else if (item.tag == TTTime)
       {
+        item.hidden = true;
+        [itemsToRemove addObject:item];
+        
         [[MXAudioManager sharedInstance] play:STHitTimeBonus];
         self.currentTime += 5;
       }
       else if (item.tag == TTMinion)
       {
+        item.hidden = true;
+        [itemsToRemove addObject:item];
+        
         [[MXAudioManager sharedInstance] play:STHitMinion];
         ++self.minionsCount;
         [self.delegate didGotMinion:self.minionsCount];
       }
       else if (item.tag == TTBomb)
       {
+        continue;
+        item.hidden = true;
+        [itemsToRemove addObject:item];
+        
         [[MXAudioManager sharedInstance] play:STHitBomb];
         int posx = (int)self.player.frame.origin.x;
         int posy = (int)self.player.frame.origin.y;
-        int row = item.x;
-        int col = item.y;
-        NSMutableArray *tileToRemove = [NSMutableArray array];
-        for (PNTile *tile in self.walls)
+        for (PNTile *tile in [self.wallsDictionary allValues])
         {
           if (CGRectIntersectsRect(tile.frame, CGRectMake(posx + TILE_SIZE, posy, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
-            self.maze[row + 1][col] = MTPath;
             [tile explode:nil];
-            [tileToRemove addObject:tile];
           }
           
           if (CGRectIntersectsRect(tile.frame, CGRectMake(posx - TILE_SIZE, posy, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
-            self.maze[row - 1][col] = MTPath;
             [tile explode:nil];
-            [tileToRemove addObject:tile];
           }
           
           if (CGRectIntersectsRect(tile.frame, CGRectMake(posx, posy + TILE_SIZE, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
-            self.maze[row][col + 1] = MTPath;
             [tile explode:nil];
-            [tileToRemove addObject:tile];
           }
           
           if (CGRectIntersectsRect(tile.frame, CGRectMake(posx, posy - TILE_SIZE, TILE_SIZE, TILE_SIZE)) && tile.tag != TTRedWall)
           {
-            self.maze[row][col - 1] = MTPath;
             [tile explode:nil];
-            [tileToRemove addObject:tile];
           }
         }
-        [self.walls removeObjectsInArray:tileToRemove];
+        //[self.wallsDictionary removeObjectForKey:[NSValue valueWithCGPoint:CGPointMake(row, col)]];
       }
     }
-    item.transform = CGAffineTransformMakeRotation(-self.rot);
+    //item.transform = CGAffineTransformMakeRotation(-self.mazeRotation);
   }
   [self.items removeObjectsInArray:itemsToRemove];
   
@@ -360,7 +371,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
     if (CGRectIntersectsRect(enemy.frame, self.player.frame))
     {
       self.currentLives = self.currentLives - 1;
-      [enemy setHidden:YES];
+      // [enemy setHidden:YES];
       break;
     }
   }

@@ -20,7 +20,6 @@
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;
   self.speed = PLAYER_SPEED;
-  self.padding = PLAYER_PADDING;
   return self;
 }
 
