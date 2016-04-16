@@ -74,20 +74,17 @@
     self.velocity = CGPointMake(self.speed, self.velocity.y);
     self.didHorizontalSwipe = true;
   }
-  
-  if (direction == UISwipeGestureRecognizerDirectionLeft)
+  else if (direction == UISwipeGestureRecognizerDirectionLeft)
   {
     self.velocity = CGPointMake(-self.speed, self.velocity.y);
     self.didHorizontalSwipe = true;
   }
-  
-  if (direction == UISwipeGestureRecognizerDirectionUp)
+  else if (direction == UISwipeGestureRecognizerDirectionUp)
   {
     self.velocity = CGPointMake(self.velocity.x, -self.speed);
     self.didVerticalSwipe = true;
   }
-  
-  if (direction == UISwipeGestureRecognizerDirectionDown)
+  else if (direction == UISwipeGestureRecognizerDirectionDown)
   {
     self.velocity = CGPointMake(self.velocity.x, self.speed);
     self.didVerticalSwipe = true;

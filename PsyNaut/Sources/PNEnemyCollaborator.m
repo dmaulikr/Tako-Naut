@@ -10,7 +10,7 @@
 #import "PNEnemy.h"
 #import "MXToolBox.h"
 
-#define MAX_ENEMIES 300
+#define MAX_ENEMIES 5
 
 @interface PNEnemyCollaborator()
 @property(nonatomic,weak) PNGameSession *gameSession;
@@ -86,7 +86,7 @@
 - (void)update:(CGFloat)deltaTime
 {
   self.enemyTimeAccumulator += deltaTime;
-  if (self.enemyTimeAccumulator > 3)
+  if (self.enemyTimeAccumulator > 10)
   {
     self.enemyTimeAccumulator = 0;
     NSArray *enemiesArray = self.enemies.count == 0 ? self.spawnableEnemies : self.enemies;
@@ -95,7 +95,7 @@
       if (enemy.wantSpawn)
       {
         enemy.wantSpawn = NO;
-        [self spawnFrom:enemy];
+    //    [self spawnFrom:enemy];
         break;
       }
     }

@@ -39,23 +39,28 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
       PNPlayer *player = self.gameSession.player;
-      self.path = [NSMutableArray arrayWithArray:[self search:player.frame]];
+      NSArray *newPath = [self search:player.frame];
+      if (!self.path || self.path.count == 0 || (self.velocity.x == 0 && self.velocity.y == 0) || newPath.count < self.path.count)
+      {
+        self.path = [NSMutableArray arrayWithArray:newPath];
+      }
     });
   }
   
   if (self.path.count > 0)
   {
-    CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)floorf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     CGRect nextFrame = [self.path.firstObject CGRectValue];
     if ([self collidesTarget:originalFrame cells:self.path])
     {
       [self.path removeObject:[NSValue valueWithCGRect:originalFrame]];
     }
     
-    CGRect eastFrame = CGRectMake(self.frame.origin.x - self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-    CGRect westFrame = CGRectMake(self.frame.origin.x  + self.speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-    CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - self.speed, self.frame.size.width, self.frame.size.height);
-    CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.speed, self.frame.size.width, self.frame.size.height);
+    float speed = self.speed + self.speed * deltaTime;
+    CGRect eastFrame = CGRectMake(self.frame.origin.x - speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    CGRect westFrame = CGRectMake(self.frame.origin.x  + speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - speed, self.frame.size.width, self.frame.size.height);
+    CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + speed, self.frame.size.width, self.frame.size.height);
     BOOL collidesEast = [self checkWallCollision:eastFrame];
     BOOL collidesWest = [self checkWallCollision:westFrame];
     BOOL collidesNorth = [self checkWallCollision:northFrame];

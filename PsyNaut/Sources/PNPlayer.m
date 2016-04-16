@@ -23,4 +23,14 @@
   return self;
 }
 
+- (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
+{
+  [super didSwipe:direction];
+}
+
+- (void)update:(CGFloat)deltaTime
+{
+  [super update:deltaTime];
+}
+
 @end
