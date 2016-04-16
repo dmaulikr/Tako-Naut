@@ -303,8 +303,8 @@ typedef NS_ENUM(NSUInteger, TyleType) {
         
         [[MXAudioManager sharedInstance] play:STHitWhirlwind];
         [UIView animateWithDuration:0.1 animations:^{
-          //self.mazeRotation += M_PI_2;
-          //self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
+          self.mazeRotation += M_PI_2;
+          self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
         }];
       }
       else if (item.tag == TTTime)
@@ -326,7 +326,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
       }
       else if (item.tag == TTBomb)
       {
-        //continue;
         item.hidden = true;
         [itemsToRemove addObject:item];
         
@@ -355,10 +354,9 @@ typedef NS_ENUM(NSUInteger, TyleType) {
             [tile explode:nil];
           }
         }
-        //[self.wallsDictionary removeObjectForKey:[NSValue valueWithCGPoint:CGPointMake(row, col)]];
       }
     }
-    //item.transform = CGAffineTransformMakeRotation(-self.mazeRotation);
+    item.transform = CGAffineTransformMakeRotation(-self.mazeRotation);
   }
   [self.items removeObjectsInArray:itemsToRemove];
   

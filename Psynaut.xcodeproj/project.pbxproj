@@ -1,4 +1,3 @@
-
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
@@ -269,8 +268,8 @@
 			children = (
 				1D7670301C7B5B050065F110 /* Psynaut */,
 				1D98C7CE1C9AD67A00161EB2 /* Frameworks */,
-				1D76702F1C7B5B050065F110 /* Products */,
 				1D7670311C7B5B050065F110 /* Resources */,
+				1D76702F1C7B5B050065F110 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
