@@ -326,6 +326,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
       }
       else if (item.tag == TTBomb)
       {
+        //continue;
         item.hidden = true;
         [itemsToRemove addObject:item];
         

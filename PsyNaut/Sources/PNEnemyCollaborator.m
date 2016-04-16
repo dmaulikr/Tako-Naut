@@ -86,7 +86,7 @@
 - (void)update:(CGFloat)deltaTime
 {
   self.enemyTimeAccumulator += deltaTime;
-  if (self.enemyTimeAccumulator > 10)
+  if (self.enemyTimeAccumulator > 3)
   {
     self.enemyTimeAccumulator = 0;
     NSArray *enemiesArray = self.enemies.count == 0 ? self.spawnableEnemies : self.enemies;
@@ -95,7 +95,7 @@
       if (enemy.wantSpawn)
       {
         enemy.wantSpawn = NO;
-    //    [self spawnFrom:enemy];
+        [self spawnFrom:enemy];
         break;
       }
     }

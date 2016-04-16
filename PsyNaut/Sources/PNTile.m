@@ -10,6 +10,7 @@
 #import "MXToolBox/MXToolBox.h"
 
 @interface PNTile()
+@property(nonatomic,assign) int lastSwipe;
 @property(nonatomic,assign) BOOL facingNorth;
 @property(nonatomic,assign) BOOL facingSouth;
 @property(nonatomic,assign) BOOL facingEast;
@@ -69,22 +70,24 @@
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
 {
-  if (direction == UISwipeGestureRecognizerDirectionRight)
+  self.lastSwipe = direction;
+  
+  if (self.lastSwipe == UISwipeGestureRecognizerDirectionRight)
   {
     self.velocity = CGPointMake(self.speed, self.velocity.y);
     self.didHorizontalSwipe = true;
   }
-  else if (direction == UISwipeGestureRecognizerDirectionLeft)
+  else if (self.lastSwipe == UISwipeGestureRecognizerDirectionLeft)
   {
     self.velocity = CGPointMake(-self.speed, self.velocity.y);
     self.didHorizontalSwipe = true;
   }
-  else if (direction == UISwipeGestureRecognizerDirectionUp)
+  else if (self.lastSwipe == UISwipeGestureRecognizerDirectionUp)
   {
     self.velocity = CGPointMake(self.velocity.x, -self.speed);
     self.didVerticalSwipe = true;
   }
-  else if (direction == UISwipeGestureRecognizerDirectionDown)
+  else if (self.lastSwipe == UISwipeGestureRecognizerDirectionDown)
   {
     self.velocity = CGPointMake(self.velocity.x, self.speed);
     self.didVerticalSwipe = true;
@@ -103,7 +106,7 @@
   CGRect frameOnHorizontalMove = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
   if ((velx < 0 || velx > 0) && ![self checkWallCollision:frameOnHorizontalMove])
   {
-    self.didHorizontalSwipe = false;
+    self.didHorizontalSwipe = self.lastSwipe == UISwipeGestureRecognizerDirectionLeft || self.lastSwipe == UISwipeGestureRecognizerDirectionRight;
     didHorizontalMove = true;
     frame = frameOnHorizontalMove;
     
@@ -117,7 +120,7 @@
   CGRect frameOnVerticalMove = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
   if ((vely < 0 || vely > 0) && ![self checkWallCollision:frameOnVerticalMove])
   {
-    self.didVerticalSwipe = false;
+    self.didVerticalSwipe = self.lastSwipe == UISwipeGestureRecognizerDirectionUp || self.lastSwipe == UISwipeGestureRecognizerDirectionDown;
     didVerticalMove = true;
     frame = frameOnVerticalMove;
     
