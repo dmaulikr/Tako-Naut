@@ -17,6 +17,7 @@
 @property(nonatomic,assign) BOOL exploding;
 @property(nonatomic,strong) NSMutableArray *path;
 @property(nonatomic,assign) float timeAccumulator;
+@property(nonatomic,assign) float upatePathAccumulator;
 @end
 
 @implementation PNEnemy
@@ -25,6 +26,7 @@
 {
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;
+  self.path = [@[] mutableCopy];
   self.speed = ENEMY_SPEED;
   self.velocity = CGPointMake(0, 0);
   return self;
@@ -33,23 +35,30 @@
 - (void)update:(CGFloat)deltaTime
 {
   self.timeAccumulator += deltaTime;
-  if (self.timeAccumulator > 3 || !self.path || self.path.count == 0)
+  self.upatePathAccumulator += deltaTime;
+
+  CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  PNPlayer *player = self.gameSession.player;
+
+  if (self.timeAccumulator > 1 || self.path.count == 0)
   {
     self.timeAccumulator = 0;
+    NSArray *newPath = [self search:player.frame];
+    CGRect firstPathFrame = [self.path.firstObject CGRectValue];
+    CGRect firstNewPathFrame = [newPath.firstObject CGRectValue];
+    NSUInteger currentSteps = self.path.count;
+    NSUInteger newSteps = newPath.count;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-      PNPlayer *player = self.gameSession.player;
-      NSArray *newPath = [self search:player.frame];
-      if (!self.path || self.path.count == 0 || (self.velocity.x == 0 && self.velocity.y == 0) || newPath.count < self.path.count)
-      {
-        self.path = [NSMutableArray arrayWithArray:newPath];
-      }
-    });
+    BOOL hasToUpdatePath = currentSteps == 0 || currentSteps > newSteps || (distance(originalFrame, firstPathFrame) > distance(originalFrame, firstNewPathFrame));
+    if (hasToUpdatePath)
+    {
+      self.upatePathAccumulator = 0;
+      self.path = [NSMutableArray arrayWithArray:newPath];
+    }
   }
   
   if (self.path.count > 0)
   {
-    CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     CGRect nextFrame = [self.path.firstObject CGRectValue];
     if ([self collidesTarget:originalFrame cells:self.path])
     {

@@ -48,6 +48,7 @@
 		1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5881C9A1D30002B52AD /* wall.png */; };
 		1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */; };
 		1DAA90F81CB81957004D5A70 /* UIImageView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAA90F71CB81957004D5A70 /* UIImageView+MX.m */; };
+		1DC5A61F1CC41CB4009A3B42 /* soundEnemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC5A61E1CC41CB4009A3B42 /* soundEnemySpawn.caf */; };
 		1DCC5D2C1CBADDCF003CF0ED /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D2B1CBADDCF003CF0ED /* door.png */; };
 		1DCC5D2E1CBAEEE4003CF0ED /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D2D1CBAEEE4003CF0ED /* whirlwind.png */; };
 		1DCC5D301CBAF286003CF0ED /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D2F1CBAF286003CF0ED /* bomb.png */; };
@@ -143,6 +144,7 @@
 		1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DAA90F61CB81957004D5A70 /* UIImageView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+MX.h"; path = "Sources/MXToolBox/UIImageView+MX.h"; sourceTree = "<group>"; };
 		1DAA90F71CB81957004D5A70 /* UIImageView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+MX.m"; path = "Sources/MXToolBox/UIImageView+MX.m"; sourceTree = "<group>"; };
+		1DC5A61E1CC41CB4009A3B42 /* soundEnemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundEnemySpawn.caf; path = Resources/Sounds/soundEnemySpawn.caf; sourceTree = "<group>"; };
 		1DCC5D2B1CBADDCF003CF0ED /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = door.png; path = Resources/Images/door.png; sourceTree = "<group>"; };
 		1DCC5D2D1CBAEEE4003CF0ED /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = Resources/Images/whirlwind.png; sourceTree = "<group>"; };
 		1DCC5D2F1CBAF286003CF0ED /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb.png; path = Resources/Images/bomb.png; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		1D1F1C9A1C9A809F0020570D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				1DC5A61E1CC41CB4009A3B42 /* soundEnemySpawn.caf */,
 				1D1F1C9B1C9A80AA0020570D /* soundHitCoin.caf */,
 				1D4702621CA581BC00EF2BBB /* soundHitWhirlwind.caf */,
 				1D47025F1CA581BC00EF2BBB /* soundHitBomb.caf */,
@@ -511,6 +514,7 @@
 				1DCC5D321CBB60F4003CF0ED /* time.png in Resources */,
 				1D4702711CA581C900EF2BBB /* soundHitBomb.caf in Resources */,
 				1DD1010F1CA3420300D83A9A /* enemy.png in Resources */,
+				1DC5A61F1CC41CB4009A3B42 /* soundEnemySpawn.caf in Resources */,
 				1D4702751CA581C900EF2BBB /* soundHitCoin.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

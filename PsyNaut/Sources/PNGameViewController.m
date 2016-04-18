@@ -147,7 +147,6 @@
 - (void)didGameOver:(PNGameSession *)session
 {
   [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-  [[MXAudioManager sharedInstance] play:STGameOver];
   
   [self.view bringSubviewToFront:self.gameOverView];
   [self.gameOverView setHidden:NO];

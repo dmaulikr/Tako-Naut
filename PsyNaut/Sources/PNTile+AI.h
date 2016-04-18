@@ -9,6 +9,7 @@
 #import "PNTile.h"
 
 @interface PNTile (AI)
+CGFloat distance(CGRect rect1, CGRect rect2);
 - (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame;
 - (bool)collidesTarget:(CGRect)target cells:(NSArray *)cells;
 - (NSArray *)search:(CGRect)target;

@@ -21,7 +21,8 @@ typedef NS_ENUM(NSUInteger, SoundType) {
   STSelectItem = 8,
   STTimeOver = 9,
   STGameOver = 10,
-  STLevelChange = 11
+  STLevelChange = 11,
+  STEnemySpawn = 12,
 };
 
 #define ATUsul @"ATUsul";

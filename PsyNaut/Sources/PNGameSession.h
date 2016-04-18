@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PNMazeGenerator.h"
 #import "PNCollisionCollaborator.h"
 #import "PNEnemyCollaborator.h"
 

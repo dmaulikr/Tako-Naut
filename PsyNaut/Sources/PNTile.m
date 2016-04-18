@@ -9,12 +9,16 @@
 #import "PNTile.h"
 #import "MXToolBox/MXToolBox.h"
 
+typedef enum : NSUInteger {
+  FTNorth,
+  FTSouth,
+  FTEast,
+  FTWest
+} FacingType;
+
 @interface PNTile()
 @property(nonatomic,assign) int lastSwipe;
-@property(nonatomic,assign) BOOL facingNorth;
-@property(nonatomic,assign) BOOL facingSouth;
-@property(nonatomic,assign) BOOL facingEast;
-@property(nonatomic,assign) BOOL facingWest;
+@property(nonatomic,assign) FacingType lastFacing;
 @end
 
 @implementation PNTile
@@ -24,7 +28,7 @@
   NSArray *walls = [self.gameSession.wallsDictionary allValues];
   for (UIImageView *wall in walls)
   {
-    if (!wall.hidden && CGRectIntersectsRect(wall.frame, frame))
+    if (wall.tag != TTExplodedWall && CGRectIntersectsRect(wall.frame, frame))
     {
       return true;
     }
@@ -38,7 +42,7 @@
   int row = (int)roundf((frame.origin.y) / TILE_SIZE);
   if (row - 1 < 0) return YES;
   PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row - 1, col)]];
-  return tile != nil && !tile.hidden;
+  return tile != nil && tile.tag != TTExplodedWall;
 }
 
 - (bool)collidesSouthOf:(CGRect)frame
@@ -47,7 +51,7 @@
   int row = (int)roundf(frame.origin.y / TILE_SIZE);
   if (row + 1 >= self.gameSession.numRow) return YES;
   PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row + 1, col)]];
-  return tile != nil && !tile.hidden;
+  return tile != nil && tile.tag != TTExplodedWall;
 }
 
 - (bool)collidesEastOf:(CGRect)frame
@@ -56,7 +60,7 @@
   int row = (int)roundf(frame.origin.y / TILE_SIZE);
   if (col - 1 < 0) return YES;
   PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col - 1)]];
-  return tile != nil && !tile.hidden;
+  return tile != nil && tile.tag != TTExplodedWall;
 }
 
 - (bool)collidesWestOf:(CGRect)frame
@@ -65,7 +69,7 @@
   int row = (int)roundf(frame.origin.y / TILE_SIZE);
   if (col + 1 >= self.gameSession.numCol) return YES;
   PNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col + 1)]];
-  return tile != nil && !tile.hidden;
+  return tile != nil && tile.tag != TTExplodedWall;
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
@@ -75,22 +79,18 @@
   if (self.lastSwipe == UISwipeGestureRecognizerDirectionRight)
   {
     self.velocity = CGPointMake(self.speed, self.velocity.y);
-    self.didHorizontalSwipe = true;
   }
   else if (self.lastSwipe == UISwipeGestureRecognizerDirectionLeft)
   {
     self.velocity = CGPointMake(-self.speed, self.velocity.y);
-    self.didHorizontalSwipe = true;
   }
   else if (self.lastSwipe == UISwipeGestureRecognizerDirectionUp)
   {
     self.velocity = CGPointMake(self.velocity.x, -self.speed);
-    self.didVerticalSwipe = true;
   }
   else if (self.lastSwipe == UISwipeGestureRecognizerDirectionDown)
   {
     self.velocity = CGPointMake(self.velocity.x, self.speed);
-    self.didVerticalSwipe = true;
   }
 }
 
@@ -106,11 +106,10 @@
   CGRect frameOnHorizontalMove = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
   if ((velx < 0 || velx > 0) && ![self checkWallCollision:frameOnHorizontalMove])
   {
-    self.didHorizontalSwipe = self.lastSwipe == UISwipeGestureRecognizerDirectionLeft || self.lastSwipe == UISwipeGestureRecognizerDirectionRight;
     didHorizontalMove = true;
     frame = frameOnHorizontalMove;
     
-    if (vely != 0 && !self.didVerticalSwipe)
+    if (vely != 0 && !(self.lastSwipe == UISwipeGestureRecognizerDirectionUp || self.lastSwipe == UISwipeGestureRecognizerDirectionDown))
     {
       self.velocity = CGPointMake(self.velocity.x, 0);
     }
@@ -120,11 +119,10 @@
   CGRect frameOnVerticalMove = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
   if ((vely < 0 || vely > 0) && ![self checkWallCollision:frameOnVerticalMove])
   {
-    self.didVerticalSwipe = self.lastSwipe == UISwipeGestureRecognizerDirectionUp || self.lastSwipe == UISwipeGestureRecognizerDirectionDown;
     didVerticalMove = true;
     frame = frameOnVerticalMove;
     
-    if (velx != 0 && !self.didHorizontalSwipe)
+    if (velx != 0 && !(self.lastSwipe == UISwipeGestureRecognizerDirectionLeft || self.lastSwipe == UISwipeGestureRecognizerDirectionRight))
     {
       self.velocity = CGPointMake(0, self.velocity.y);
     }
@@ -141,47 +139,18 @@
   }
   
   //--- rotate towards ---//
-  if (self.velocity.x > 0 && didHorizontalMove && !self.facingWest)
+  if (didHorizontalMove && (self.lastFacing != FTWest || self.lastFacing != FTEast))
   {
-    self.facingNorth = NO;
-    self.facingSouth = NO;
-    self.facingWest = YES;
-    self.facingEast = NO;
+    self.lastFacing = self.velocity.x > 0 ? FTWest : FTEast;
     [UIView animateWithDuration:0.1 animations:^{
-      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_2);
+      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_2 * (self.lastFacing == FTWest ? 1 : -1));
     }];
   }
-  
-  if (self.velocity.x < 0 && didHorizontalMove && !self.facingEast)
+  else if (didVerticalMove && (self.lastFacing != FTNorth || self.lastFacing != FTSouth))
   {
-    self.facingNorth = NO;
-    self.facingSouth = NO;
-    self.facingWest = NO;
-    self.facingEast = YES;
+    self.lastFacing = self.velocity.y > 0 ? FTSouth : FTNorth;
     [UIView animateWithDuration:0.1 animations:^{
-      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, -M_PI_2);
-    }];
-  }
-  
-  if (self.velocity.y < 0 && didVerticalMove && !self.facingNorth)
-  {
-    self.facingNorth = YES;
-    self.facingSouth = NO;
-    self.facingWest = NO;
-    self.facingEast = NO;
-    [UIView animateWithDuration:0.1 animations:^{
-      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, 0);
-    }];
-  }
-  
-  if (self.velocity.y > 0 && didVerticalMove && !self.facingSouth)
-  {
-    self.facingNorth = NO;
-    self.facingSouth = YES;
-    self.facingWest = NO;
-    self.facingEast = NO;
-    [UIView animateWithDuration:0.1 animations:^{
-      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI);
+      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI * (self.lastFacing == FTNorth ? 0 : 1));
     }];
   }
 }

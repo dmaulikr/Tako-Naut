@@ -9,6 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "PNGameSession.h"
 
+typedef NS_ENUM(NSUInteger, TyleType) {
+  TTDoor,
+  TTBorderdWall,
+  TTWall,
+  TTExplodedWall,
+  TTCoin,
+  TTWhirlwind,
+  TTBomb,
+  TTTime,
+  TTMinion,
+  TTKey,
+  TTMazeEnd
+};
+
 @interface PNTile : UIImageView
 - (bool)checkWallCollision:(CGRect)frame;
 - (bool)collidesNorthOf:(CGRect)frame;

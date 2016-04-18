@@ -86,7 +86,7 @@
 - (void)update:(CGFloat)deltaTime
 {
   self.enemyTimeAccumulator += deltaTime;
-  if (self.enemyTimeAccumulator > 3)
+  if (self.enemyTimeAccumulator > 1)
   {
     self.enemyTimeAccumulator = 0;
     NSArray *enemiesArray = self.enemies.count == 0 ? self.spawnableEnemies : self.enemies;
@@ -95,7 +95,10 @@
       if (enemy.wantSpawn)
       {
         enemy.wantSpawn = NO;
-        [self spawnFrom:enemy];
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^(void){
+          [self spawnFrom:enemy];
+        });
         break;
       }
     }

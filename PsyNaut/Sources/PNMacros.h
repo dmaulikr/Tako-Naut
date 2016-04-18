@@ -25,7 +25,7 @@
 #define TICK NSDate *startTime = [NSDate date]
 #define TOCK(s) NSLog(s, -[startTime timeIntervalSinceNow])
 
-#define SOUND_ENABLED false
+#define SOUND_ENABLED true
 #define SOUND_DEFAULT_VOLUME 0.5
 
 #endif /* PNMacros_h */
