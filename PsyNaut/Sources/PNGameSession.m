@@ -18,6 +18,7 @@
 #import "PNConstants.h"
 #import <MXAudioManager/MXAudioManager.h>
 
+#define BASE_MAZE_DIMENSION 5
 #define BKG_COLORS @[BLUE_COLOR, GREEN_COLOR, CYAN_COLOR, YELLOW_COLOR, RED_COLOR]
 
 @interface PNGameSession ()
@@ -49,37 +50,39 @@
   return self;
 }
 
-- (void)clearSession
-{
-  for (UIView *view in self.mazeView.subviews)
-  {
-    [view removeFromSuperview];
-  }
-}
-
 - (void)startLevel:(NSUInteger)levelNumber
 {
-  [[MXAudioManager sharedInstance] play:STLevelChange];
-  [self clearSession];
+  //--- setup gameplay varables ---//
+  self.currentLevel = levelNumber;
+  self.currentTime = 60;
+  
+  if (levelNumber == 1)
+  {
+    //--- play start game sound ---//
+    [[MXAudioManager sharedInstance] play:STStartgame];
+    self.currentScore = 0;
+    self.currentLives = 1;
+    self.numCol = BASE_MAZE_DIMENSION;
+    self.numRow = BASE_MAZE_DIMENSION;
+  }
+  else
+  {
+    //--- play start level sound ---//
+    [[MXAudioManager sharedInstance] play:STLevelChange];
+  }
   
   //--- reset random rotation ---//
   self.gameView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, 0);
   
-  //--- setup gameplay varables ---//
-  if (levelNumber == 1)
+  //--- remove old views ---//
+  for (UIView *view in self.mazeView.subviews)
   {
-    self.currentScore = 0;
-    self.currentLives = 1;
+    [view removeFromSuperview];
   }
   
-  self.currentTime = 60;
-  self.currentLevel = levelNumber;
-  
-  //--- setup maze ---//
-  self.numCol = 21;
-  self.numRow = 21;
-  
-  //--- init scene elems ---//
+  //--- init scene elements ---//
+  self.numCol = (self.numCol + 2) < 30 ? self.numCol + 2 : self.numCol;
+  self.numRow = (self.numRow + 2) < 30 ? self.numRow + 2 : self.numRow;
   [self initMaze];
   [self initPlayer];
   
@@ -135,7 +138,6 @@
         tile.x = r;
         tile.y = c;
         tile.tag = TTDoor;
-        [tile setImage:[[UIImage imageNamed:@"door"] imageColored:BLUE_COLOR]];
         [self.mazeView addSubview:tile];
         [self.mazeView sendSubviewToBack:tile];
         [self.items addObject:tile];
@@ -146,7 +148,7 @@
         tile.x = r;
         tile.y = c;
         tile.tag = TTMazeEnd;
-        [tile setImage:[[UIImage imageNamed:@"target"] imageColored:GREEN_COLOR]];
+        [tile setImage:[[UIImage imageNamed:@"gate_close"] imageColored:MAGENTA_COLOR]];
         [self.mazeView addSubview:tile];
         [self.mazeView sendSubviewToBack:tile];
         self.mazeGoalTile = tile;
@@ -292,6 +294,9 @@
       {
         item.hidden = true;
         [itemsToRemove addObject:item];
+        [self.player blink:^{
+          
+        }];
         
         [[MXAudioManager sharedInstance] play:STHitBomb];
         int player_x = (int)self.player.frame.origin.x;
@@ -336,6 +341,7 @@
             [itemsToRemove addObject:item];
             enemy.wantSpawn = YES;
             [[MXAudioManager sharedInstance] play:STEnemySpawn];
+            break;
           }
         }
       }

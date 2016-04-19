@@ -56,7 +56,6 @@
 
 - (IBAction)newGameTouched
 {
-  [[MXAudioManager sharedInstance] play:STStartgame];
   [[PNAppDelegate sharedInstance] selectScreen:STNewGame];
 }
 

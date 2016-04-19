@@ -48,12 +48,14 @@
 		1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB5881C9A1D30002B52AD /* wall.png */; };
 		1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */; };
 		1DAA90F81CB81957004D5A70 /* UIImageView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAA90F71CB81957004D5A70 /* UIImageView+MX.m */; };
+		1DC11FEC1CC5F56E008AD0A1 /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC11FEB1CC5F56E008AD0A1 /* gate_open.png */; };
+		1DC11FEE1CC5F843008AD0A1 /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC11FED1CC5F843008AD0A1 /* gate_close.png */; };
+		1DC11FF01CC5FCB6008AD0A1 /* wall2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC11FEF1CC5FCB6008AD0A1 /* wall2.png */; };
+		1DC11FF21CC5FCF0008AD0A1 /* bomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC11FF11CC5FCF0008AD0A1 /* bomb2.png */; };
 		1DC5A61F1CC41CB4009A3B42 /* soundEnemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC5A61E1CC41CB4009A3B42 /* soundEnemySpawn.caf */; };
-		1DCC5D2C1CBADDCF003CF0ED /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D2B1CBADDCF003CF0ED /* door.png */; };
 		1DCC5D2E1CBAEEE4003CF0ED /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D2D1CBAEEE4003CF0ED /* whirlwind.png */; };
 		1DCC5D301CBAF286003CF0ED /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D2F1CBAF286003CF0ED /* bomb.png */; };
 		1DCC5D321CBB60F4003CF0ED /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D311CBB60F4003CF0ED /* time.png */; };
-		1DCC5D341CBB6283003CF0ED /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC5D331CBB6283003CF0ED /* target.png */; };
 		1DD1010F1CA3420300D83A9A /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD1010E1CA3420300D83A9A /* enemy.png */; };
 		1DD101121CA3423B00D83A9A /* PNEnemyCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD101111CA3423B00D83A9A /* PNEnemyCollaborator.m */; };
 		1DD101161CA3439C00D83A9A /* PNEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD101151CA3439C00D83A9A /* PNEnemy.m */; };
@@ -144,12 +146,14 @@
 		1D9CB58E1C9A1D3F002B52AD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DAA90F61CB81957004D5A70 /* UIImageView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+MX.h"; path = "Sources/MXToolBox/UIImageView+MX.h"; sourceTree = "<group>"; };
 		1DAA90F71CB81957004D5A70 /* UIImageView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+MX.m"; path = "Sources/MXToolBox/UIImageView+MX.m"; sourceTree = "<group>"; };
+		1DC11FEB1CC5F56E008AD0A1 /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_open.png; path = Resources/Images/gate_open.png; sourceTree = "<group>"; };
+		1DC11FED1CC5F843008AD0A1 /* gate_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_close.png; path = Resources/Images/gate_close.png; sourceTree = "<group>"; };
+		1DC11FEF1CC5FCB6008AD0A1 /* wall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall2.png; path = Resources/Images/wall2.png; sourceTree = "<group>"; };
+		1DC11FF11CC5FCF0008AD0A1 /* bomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb2.png; path = Resources/Images/bomb2.png; sourceTree = "<group>"; };
 		1DC5A61E1CC41CB4009A3B42 /* soundEnemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundEnemySpawn.caf; path = Resources/Sounds/soundEnemySpawn.caf; sourceTree = "<group>"; };
-		1DCC5D2B1CBADDCF003CF0ED /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = door.png; path = Resources/Images/door.png; sourceTree = "<group>"; };
 		1DCC5D2D1CBAEEE4003CF0ED /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = Resources/Images/whirlwind.png; sourceTree = "<group>"; };
 		1DCC5D2F1CBAF286003CF0ED /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb.png; path = Resources/Images/bomb.png; sourceTree = "<group>"; };
 		1DCC5D311CBB60F4003CF0ED /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time.png; path = Resources/Images/time.png; sourceTree = "<group>"; };
-		1DCC5D331CBB6283003CF0ED /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = target.png; path = Resources/Images/target.png; sourceTree = "<group>"; };
 		1DD1010E1CA3420300D83A9A /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = Resources/Images/enemy.png; sourceTree = "<group>"; };
 		1DD101101CA3423B00D83A9A /* PNEnemyCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNEnemyCollaborator.h; path = Sources/PNEnemyCollaborator.h; sourceTree = "<group>"; };
 		1DD101111CA3423B00D83A9A /* PNEnemyCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNEnemyCollaborator.m; path = Sources/PNEnemyCollaborator.m; sourceTree = "<group>"; };
@@ -356,16 +360,18 @@
 			children = (
 				1D9C61241C993207002B258C /* 1024x1024.png */,
 				1DEA36091C9BE22300887DDC /* player.png */,
-				1DCC5D331CBB6283003CF0ED /* target.png */,
+				1D9CB5881C9A1D30002B52AD /* wall.png */,
+				1DC11FEF1CC5FCB6008AD0A1 /* wall2.png */,
+				1DC11FED1CC5F843008AD0A1 /* gate_close.png */,
+				1DC11FEB1CC5F56E008AD0A1 /* gate_open.png */,
 				1D4702791CA5A3A300EF2BBB /* minion.png */,
 				1DD1010E1CA3420300D83A9A /* enemy.png */,
 				1D4702771CA5947D00EF2BBB /* enemy2.png */,
 				1D1F1C981C9A7EF60020570D /* coin.png */,
 				1DEA360B1C9BE83700887DDC /* key.png */,
-				1D9CB5881C9A1D30002B52AD /* wall.png */,
-				1DCC5D2B1CBADDCF003CF0ED /* door.png */,
 				1DCC5D2D1CBAEEE4003CF0ED /* whirlwind.png */,
 				1DCC5D2F1CBAF286003CF0ED /* bomb.png */,
+				1DC11FF11CC5FCF0008AD0A1 /* bomb2.png */,
 				1DCC5D311CBB60F4003CF0ED /* time.png */,
 				1DD555451CBCD18300DDB06D /* hearth.png */,
 			);
@@ -486,9 +492,9 @@
 			files = (
 				1DCC5D2E1CBAEEE4003CF0ED /* whirlwind.png in Resources */,
 				1D9CB58F1C9A1D3F002B52AD /* LaunchScreen.storyboard in Resources */,
+				1DC11FF01CC5FCB6008AD0A1 /* wall2.png in Resources */,
 				1D9CB58C1C9A1D30002B52AD /* wall.png in Resources */,
 				1D4702701CA581C900EF2BBB /* soundStartGame.caf in Resources */,
-				1DCC5D341CBB6283003CF0ED /* target.png in Resources */,
 				1DEA360C1C9BE83700887DDC /* key.png in Resources */,
 				1DCC5D301CBAF286003CF0ED /* bomb.png in Resources */,
 				1DDD42581C7C3CDF004E65D3 /* PNGameViewController.xib in Resources */,
@@ -496,6 +502,7 @@
 				1DEA36081C9B555100887DDC /* gameConfiguration.json in Resources */,
 				1D4702741CA581C900EF2BBB /* soundHitWhirlwind.caf in Resources */,
 				1DEA360A1C9BE22300887DDC /* player.png in Resources */,
+				1DC11FEE1CC5F843008AD0A1 /* gate_close.png in Resources */,
 				1D47026D1CA581C900EF2BBB /* soundGame.caf in Resources */,
 				1D47026E1CA581C900EF2BBB /* soundLevelChange.caf in Resources */,
 				1D492DF71CA5712700C515B5 /* Localizable.strings in Resources */,
@@ -503,11 +510,11 @@
 				1D1F1C991C9A7EF60020570D /* coin.png in Resources */,
 				1D4702721CA581C900EF2BBB /* soundHitTimeBonus.caf in Resources */,
 				1D47026F1CA581C900EF2BBB /* soundSelectItem.caf in Resources */,
+				1DC11FEC1CC5F56E008AD0A1 /* gate_open.png in Resources */,
 				1D492E011CA5723000C515B5 /* PNMenuViewController.xib in Resources */,
 				1D9CB5851C9A1D20002B52AD /* Assets.xcassets in Resources */,
 				1D36E0761C9147470043948F /* Joystix.ttf in Resources */,
 				1DD555441CBCD10100DDB06D /* soundHitMinion.caf in Resources */,
-				1DCC5D2C1CBADDCF003CF0ED /* door.png in Resources */,
 				1D4702761CA581C900EF2BBB /* soundGameOver.caf in Resources */,
 				1DD555461CBCD18300DDB06D /* hearth.png in Resources */,
 				1D4702731CA581C900EF2BBB /* soundTimeOver.caf in Resources */,
@@ -516,6 +523,7 @@
 				1D4702711CA581C900EF2BBB /* soundHitBomb.caf in Resources */,
 				1DD1010F1CA3420300D83A9A /* enemy.png in Resources */,
 				1DC5A61F1CC41CB4009A3B42 /* soundEnemySpawn.caf in Resources */,
+				1DC11FF21CC5FCF0008AD0A1 /* bomb2.png in Resources */,
 				1D4702751CA581C900EF2BBB /* soundHitCoin.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

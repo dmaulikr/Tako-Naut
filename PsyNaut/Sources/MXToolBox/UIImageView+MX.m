@@ -30,8 +30,6 @@
   }
   
   //--- preparing sub tiles ---//
-  float currentW = self.frame.size.width / SUB_TILE_DIVIDER_SIZE;
-  float currentH = self.frame.size.height / SUB_TILE_DIVIDER_SIZE;
   float originalW = self.image.size.width / SUB_TILE_DIVIDER_SIZE;
   float originalH = self.image.size.height / SUB_TILE_DIVIDER_SIZE;
   int cols = floorf(self.image.size.width / originalW);
@@ -43,7 +41,7 @@
     {
       CGRect frame = CGRectMake(x * originalW, y * originalH, originalW, originalH);
       UIImageView *subTile = [[UIImageView alloc] initWithImage:[self.image crop:frame]];
-      subTile.frame = CGRectMake(x * currentW, y * currentH, currentW, currentH);
+      subTile.frame = CGRectMake(x * originalW, y * originalH, originalW, originalH);
       [self addSubview:subTile];
     }
   }
@@ -66,6 +64,16 @@
       }
     }];
   }
+}
+
+- (void)blink:(void (^)())completion
+{
+  [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+    [UIView setAnimationRepeatCount:3];
+    self.alpha = 0.5;
+  } completion:^(BOOL finished) {
+    self.alpha = 1.0;
+  }];
 }
 
 @end

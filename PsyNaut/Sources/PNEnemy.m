@@ -32,6 +32,18 @@
   return self;
 }
 
+- (bool)checkEnemyCollision:(CGRect)frame
+{
+  for (PNEnemy *enemy in self.gameSession.enemyCollaborator.enemies)
+  {
+    if (enemy != self && CGRectIntersectsRect(enemy.frame, frame))
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
 - (void)update:(CGFloat)deltaTime
 {
   self.timeAccumulator += deltaTime;
@@ -60,7 +72,7 @@
   if (self.path.count > 0)
   {
     CGRect nextFrame = [self.path.firstObject CGRectValue];
-    if ([self collidesTarget:originalFrame cells:self.path])
+    if ([self collidesTarget:originalFrame path:self.path])
     {
       [self.path removeObject:[NSValue valueWithCGRect:originalFrame]];
     }

@@ -36,9 +36,9 @@ CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
    return distance;
 }
 
-- (bool)collidesTarget:(CGRect)target cells:(NSArray *)cells
+- (bool)collidesTarget:(CGRect)target path:(NSArray *)path
 {
-  for (NSValue *cell in cells)
+  for (NSValue *cell in path)
   {
     if (CGRectIntersectsRect(target, [cell CGRectValue]))
     {
@@ -72,15 +72,14 @@ CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
   CGRect currentFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   CGFloat currentSpeed = TILE_SIZE;
   CGFloat currentSize = TILE_SIZE;
-  NSMutableArray *path = [NSMutableArray array];
-  NSMutableArray *visited = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
+  NSMutableArray *path = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
   bool targetFound = false;
   do
   {
-    targetFound = [self collidesTarget:target cells:visited];
+    targetFound = [self collidesTarget:target path:path];
     if (targetFound)
     {
-      [visited removeObject:[NSValue valueWithCGRect:originalFrame]];
+      [path removeObject:[NSValue valueWithCGRect:originalFrame]];
       break;
     }
     else
@@ -89,10 +88,10 @@ CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
       CGRect westFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
       CGRect northFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
       CGRect southFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y + currentSpeed, currentSize, currentSize);
-      BOOL collidesEast = [self collidesEastOf:currentFrame] || [visited containsObject:[NSValue valueWithCGRect:eastFrame]];
-      BOOL collidesWest = [self collidesWestOf:currentFrame] || [visited containsObject:[NSValue valueWithCGRect:westFrame]];
-      BOOL collidesNorth = [self collidesNorthOf:currentFrame] || [visited containsObject:[NSValue valueWithCGRect:northFrame]];
-      BOOL collidesSouth = [self collidesSouthOf:currentFrame] || [visited containsObject:[NSValue valueWithCGRect:southFrame]];
+      BOOL collidesEast = [self collidesEastOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:eastFrame]];
+      BOOL collidesWest = [self collidesWestOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:westFrame]];
+      BOOL collidesNorth = [self collidesNorthOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:northFrame]];
+      BOOL collidesSouth = [self collidesSouthOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:southFrame]];
       
       NSMutableArray *possibleDirections = [NSMutableArray array];
       if (!collidesEast) [possibleDirections addObject:@{@"move":@('e'), @"frame":[NSValue valueWithCGRect:eastFrame]}];
@@ -118,20 +117,19 @@ CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
             currentFrame = westFrame;
             break;
         }
-        [visited addObject:[NSValue valueWithCGRect:currentFrame]];
+        [path addObject:[NSValue valueWithCGRect:currentFrame]];
       }
       else
       {
         // backtracking
-        NSInteger currentIndex = [visited indexOfObject:[NSValue valueWithCGRect:currentFrame]];
+        NSInteger currentIndex = [path indexOfObject:[NSValue valueWithCGRect:currentFrame]];
         if (currentIndex)
         {
-          currentFrame = [[visited objectAtIndex:currentIndex -1] CGRectValue];
+          currentFrame = [[path objectAtIndex:currentIndex -1] CGRectValue];
         }
       }
     }
   } while(!targetFound);
-  path = visited;
   return path;
 }
 
