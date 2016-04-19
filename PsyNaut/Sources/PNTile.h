@@ -20,7 +20,8 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   TTTime,
   TTMinion,
   TTKey,
-  TTMazeEnd
+  TTMazeEnd_close,
+  TTMazeEnd_open
 };
 
 @interface PNTile : UIImageView
