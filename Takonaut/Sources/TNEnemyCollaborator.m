@@ -9,6 +9,7 @@
 #import "TNEnemyCollaborator.h"
 #import "TNEnemy.h"
 #import "MXToolBox.h"
+#import "TNPlayer.h"
 
 #define MAX_ENEMIES 5
 
@@ -18,6 +19,7 @@
 @property(nonatomic,strong,readwrite) NSMutableArray *enemies;
 @property(nonatomic,strong,readwrite) NSMutableArray *spawnableEnemies;
 @property(nonatomic,assign) BOOL medusaWasOut;
+@property(nonatomic,assign) float speed;
 @end
 
 @implementation TNEnemyCollaborator
@@ -36,14 +38,20 @@
 {
   self.enemies = [NSMutableArray array];
   self.spawnableEnemies = [NSMutableArray array];
+  self.speed = ENEMY_SPEED + 0.1 * (self.gameSession.currentLevel - 1);
+  if (self.speed > PLAYER_SPEED)
+  {
+    self.speed = PLAYER_SPEED;
+  }
   for (int i = 0;i < MAX_ENEMIES;++i)
   {
-    TNEnemy *enemy = [[TNEnemy alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + ENEMY_SPEED / 2.0, STARTING.x * TILE_SIZE + ENEMY_SPEED / 2.0, TILE_SIZE - ENEMY_SPEED, TILE_SIZE - ENEMY_SPEED) withGameSession:self.gameSession];
+    TNEnemy *enemy = [[TNEnemy alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + self.speed / 2.0, STARTING.x * TILE_SIZE + self.speed / 2.0, TILE_SIZE - self.speed, TILE_SIZE - self.speed) withGameSession:self.gameSession];
     enemy.animationDuration = 0.4f;
     enemy.animationRepeatCount = 0;
     enemy.alpha = 0.0;
     enemy.hidden = YES;
     enemy.wantSpawn = i == 0;
+    enemy.speed = self.speed;
     [self.gameSession.mazeView addSubview:enemy];
     [self.gameSession.mazeView bringSubviewToFront:enemy];
     [self.spawnableEnemies addObject:enemy];
@@ -61,12 +69,12 @@
       
       if (currentEnemy.tag == 1)
       {
-        currentEnemy.speed = ENEMY_SPEED / 6;
+        currentEnemy.speed = self.speed / 6;
         currentEnemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       }
       else
       {
-        currentEnemy.speed = ENEMY_SPEED;
+        currentEnemy.speed = self.speed;
         currentEnemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       }
       [currentEnemy startAnimating];

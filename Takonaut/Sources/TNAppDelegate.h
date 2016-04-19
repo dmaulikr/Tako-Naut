@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, ScreenType) {
   STMenu,
+  STTutorial,
   STNewGame,
   STResumeGame,
   STSettings,

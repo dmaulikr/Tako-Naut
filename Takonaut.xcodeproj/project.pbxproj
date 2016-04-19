@@ -68,6 +68,10 @@
 		1D1FBF7C1CC6709C00A0CB0A /* 1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF7A1CC6709200A0CB0A /* 1024x1024.png */; };
 		1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; };
 		1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */; };
+		1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */; };
+		1DC52F681CC67F4200F61A47 /* swipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F671CC67F4200F61A47 /* swipe.png */; };
+		1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -171,8 +175,13 @@
 		1D1FBF671CC6708C00A0CB0A /* wall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall2.png; path = Takonaut/Resources/Images/wall2.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF681CC6708C00A0CB0A /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = Takonaut/Resources/Images/whirlwind.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF7A1CC6709200A0CB0A /* 1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024x1024.png; path = Takonaut/Resources/1024x1024.png; sourceTree = SOURCE_ROOT; };
-		1D76702E1C7B5B050065F110 /* Takonaut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Takonaut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D76702E1C7B5B050065F110 /* Tako-Naut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tako-Naut.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXAudioManager.framework; path = Carthage/Build/iOS/MXAudioManager.framework; sourceTree = "<group>"; };
+		1DC52F621CC674E900F61A47 /* TNTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNTutorialViewController.h; path = Takonaut/Sources/TNTutorialViewController.h; sourceTree = SOURCE_ROOT; };
+		1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTutorialViewController.m; path = Takonaut/Sources/TNTutorialViewController.m; sourceTree = SOURCE_ROOT; };
+		1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNTutorialViewController.xib; path = Takonaut/Sources/TNTutorialViewController.xib; sourceTree = SOURCE_ROOT; };
+		1DC52F671CC67F4200F61A47 /* swipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = swipe.png; path = Takonaut/Resources/Images/swipe.png; sourceTree = SOURCE_ROOT; };
+		1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightArrow.png; path = Takonaut/Resources/Images/rightArrow.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +257,7 @@
 				1D1FBEF61CC66EFA00A0CB0A /* TNGameViewController.h */,
 				1D1FBEF71CC66EFA00A0CB0A /* TNGameViewController.m */,
 				1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */,
+				1DC52F611CC674B100F61A47 /* Tutorial */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -284,7 +294,7 @@
 		1D76702F1C7B5B050065F110 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D76702E1C7B5B050065F110 /* Takonaut.app */,
+				1D76702E1C7B5B050065F110 /* Tako-Naut.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -377,6 +387,8 @@
 				1D1FBF661CC6708C00A0CB0A /* wall.png */,
 				1D1FBF671CC6708C00A0CB0A /* wall2.png */,
 				1D1FBF681CC6708C00A0CB0A /* whirlwind.png */,
+				1DC52F671CC67F4200F61A47 /* swipe.png */,
+				1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -409,6 +421,16 @@
 				1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1DC52F611CC674B100F61A47 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				1DC52F621CC674E900F61A47 /* TNTutorialViewController.h */,
+				1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */,
+				1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		1DF68F661CAA460E0081B25D /* Tile */ = {
@@ -445,7 +467,7 @@
 			);
 			name = Takonaut;
 			productName = PsyNaut;
-			productReference = 1D76702E1C7B5B050065F110 /* Takonaut.app */;
+			productReference = 1D76702E1C7B5B050065F110 /* Tako-Naut.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -454,7 +476,7 @@
 		1D7670261C7B5B050065F110 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = PN;
+				CLASSPREFIX = TN;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = mugx;
 				TargetAttributes = {
@@ -494,6 +516,7 @@
 			files = (
 				1D1FBF561CC6708100A0CB0A /* soundStartGame.caf in Resources */,
 				1D1FBF771CC6708C00A0CB0A /* wall.png in Resources */,
+				1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */,
 				1D1FBF6E1CC6708C00A0CB0A /* enemy2.png in Resources */,
 				1D1FBF501CC6708100A0CB0A /* soundHitCoin.caf in Resources */,
 				1D1FBF741CC6708C00A0CB0A /* old_target.png in Resources */,
@@ -502,6 +525,7 @@
 				1D1FBF3F1CC6705F00A0CB0A /* Joystix.ttf in Resources */,
 				1D1FBF4C1CC6708100A0CB0A /* soundEnemySpawn.caf in Resources */,
 				1D1FBF391CC6702000A0CB0A /* gameConfiguration.json in Resources */,
+				1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */,
 				1D1FBF3C1CC6703B00A0CB0A /* Localizable.strings in Resources */,
 				1D1FBF061CC66EFA00A0CB0A /* TNGameViewController.xib in Resources */,
 				1D1FBF571CC6708100A0CB0A /* soundTimeOver.caf in Resources */,
@@ -510,6 +534,7 @@
 				1D1FBF071CC66EFA00A0CB0A /* TNMenuViewController.xib in Resources */,
 				1D1FBF7C1CC6709C00A0CB0A /* 1024x1024.png in Resources */,
 				1D1FBF511CC6708100A0CB0A /* soundHitMinion.caf in Resources */,
+				1DC52F681CC67F4200F61A47 /* swipe.png in Resources */,
 				1D1FBF721CC6708C00A0CB0A /* key.png in Resources */,
 				1D1FBF531CC6708100A0CB0A /* soundHitWhirlwind.caf in Resources */,
 				1D1FBF6F1CC6708C00A0CB0A /* gate_close.png in Resources */,
@@ -563,6 +588,7 @@
 				1D1FBF2A1CC66FAA00A0CB0A /* MXImageView.m in Sources */,
 				1D1FBF2E1CC66FAA00A0CB0A /* UIColor+MX.m in Sources */,
 				1D1FBF2D1CC66FAA00A0CB0A /* MXUtils.m in Sources */,
+				1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */,
 				1D1FBF0D1CC66EFA00A0CB0A /* TNItem.m in Sources */,
 				1D1FBF051CC66EFA00A0CB0A /* TNGameSession.m in Sources */,
 				1D1FBF0B1CC66EFA00A0CB0A /* TNEnemyCollaborator.m in Sources */,
@@ -693,8 +719,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Takonaut/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.takonaut;
-				PRODUCT_NAME = Takonaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
+				PRODUCT_NAME = "Tako-Naut";
 			};
 			name = Debug;
 		};
@@ -711,8 +737,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Takonaut/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.takonaut;
-				PRODUCT_NAME = Takonaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
+				PRODUCT_NAME = "Tako-Naut";
 			};
 			name = Release;
 		};

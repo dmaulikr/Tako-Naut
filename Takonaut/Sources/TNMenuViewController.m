@@ -56,7 +56,8 @@
 
 - (IBAction)newGameTouched
 {
-  [[TNAppDelegate sharedInstance] selectScreen:STNewGame];
+  //[[TNAppDelegate sharedInstance] selectScreen:STNewGame];
+  [[TNAppDelegate sharedInstance] selectScreen:STTutorial];
 }
 
 - (IBAction)highScoresTouched

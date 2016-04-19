@@ -9,6 +9,7 @@
 #import "TNGameViewController.h"
 #import "TNGameSession.h"
 #import "TNConstants.h"
+#import "TNMacros.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface TNGameViewController() <TNGameSessionDelegate>
@@ -26,13 +27,13 @@
 @property IBOutlet UIImageView *firstItem;
 @property IBOutlet UIImageView *secondItem;
 @property IBOutlet UIImageView *thirdItem;
-@property IBOutlet UIImageView *fourthItem;
 
 // game view
 @property IBOutlet UIView *gameView;
 
 // game over
 @property IBOutlet UIView *gameOverView;
+@property IBOutlet UIView *gameOverPanel;
 @property IBOutlet UILabel *scoreLabel_inGameOver;
 @end
 
@@ -85,6 +86,8 @@
   
   //--- game over view ---//
   self.gameOverView.hidden = YES;
+  self.gameOverPanel.layer.borderColor = [MAGENTA_COLOR CGColor];
+  self.gameOverPanel.layer.borderWidth = 2.0;
   
   //--- init hud ---//
   [self initHud];
@@ -94,10 +97,9 @@
 
 - (void)initHud
 {
-  self.firstItem.alpha = 0.2;
-  self.secondItem.alpha = 0.2;
-  self.thirdItem.alpha = 0.2;
-  self.fourthItem.alpha = 0.2;
+  self.firstItem.alpha = 1.0;
+  self.secondItem.alpha = 1.0;
+  self.thirdItem.alpha = 1.0;
 }
 
 #pragma mark - Gesture Recognizer Stuff
@@ -131,12 +133,11 @@
   self.timeLabel.text = [NSString stringWithFormat:@"Time\n%ld", (unsigned long)time];
 }
 
-- (void)didGotMinion:(NSUInteger)minionCount
+- (void)didGotLife:(NSUInteger)livesCount
 {
-  self.firstItem.alpha = minionCount == 0 ? 0.2 : 1.0;
-  self.secondItem.alpha = minionCount <= 1 ? 0.2 : 1.0;
-  self.thirdItem.alpha = minionCount <= 2 ? 0.2 : 1.0;
-  self.fourthItem.alpha = minionCount <= 3 ? 0.2 : 1.0;
+  self.firstItem.alpha = livesCount == 0 ? 0.2 : 1.0;
+  self.secondItem.alpha = livesCount <= 1 ? 0.2 : 1.0;
+  self.thirdItem.alpha = livesCount <= 2 ? 0.2 : 1.0;
 }
 
 - (void)didNextLevel:(NSUInteger)levelCount

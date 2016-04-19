@@ -27,7 +27,6 @@
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;
   self.path = [@[] mutableCopy];
-  self.speed = ENEMY_SPEED;
   self.velocity = CGPointMake(0, 0);
   return self;
 }

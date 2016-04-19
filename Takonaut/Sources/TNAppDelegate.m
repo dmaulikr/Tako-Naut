@@ -7,8 +7,9 @@
 //
 
 #import "TNAppDelegate.h"
-#import "TNGameViewController.h"
 #import "TNMenuViewController.h"
+#import "TNTutorialViewController.h"
+#import "TNGameViewController.h"
 #import "MXToolBox.h"
 #import "TNMacros.h"
 #import <MXAudioManager/MXAudioManager.h>
@@ -50,6 +51,9 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
   switch (screenType) {
     case STMenu:
       [self transitionToViewController:[TNMenuViewController create]];
+      break;
+    case STTutorial:
+      [self transitionToViewController:[TNTutorialViewController create]];
       break;
     case STNewGame:
       [self transitionToViewController:[TNGameViewController create]];

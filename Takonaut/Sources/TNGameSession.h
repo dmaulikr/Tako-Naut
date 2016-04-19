@@ -28,6 +28,7 @@
 
 @property(readonly) NSUInteger currentLevel;
 @property(readonly) NSUInteger currentScore;
+@property(readonly) NSUInteger currentLives;
 @property(readonly) CGFloat currentTime;
 
 @property(nonatomic,assign) NSUInteger numRow;
@@ -42,7 +43,7 @@
 @protocol TNGameSessionDelegate <NSObject>
 - (void)didUpdateScore:(NSUInteger)score;
 - (void)didUpdateTime:(NSUInteger)time;
-- (void)didGotMinion:(NSUInteger)minionCount;
+- (void)didGotLife:(NSUInteger)livesCount;
 - (void)didNextLevel:(NSUInteger)levelCount;
 - (void)didGameOver:(TNGameSession *)session;
 @end

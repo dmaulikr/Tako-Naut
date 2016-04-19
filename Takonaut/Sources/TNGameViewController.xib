@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNGameViewController">
             <connections>
                 <outlet property="firstItem" destination="BL1-lE-plg" id="Zj2-fn-WG7"/>
-                <outlet property="fourthItem" destination="kwY-tR-fcB" id="8cZ-R1-KRK"/>
+                <outlet property="gameOverPanel" destination="9w3-7q-5iu" id="TLQ-E1-eUt"/>
                 <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
                 <outlet property="gameView" destination="d4y-KC-tNG" id="1NH-DU-CFC"/>
                 <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
@@ -32,7 +32,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6g2-wh-AAS" userLabel="word view">
-                            <rect key="frame" x="220" y="0.0" width="160" height="50"/>
+                            <rect key="frame" x="242" y="0.0" width="116" height="50"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-lE-plg" userLabel="first item">
                                     <rect key="frame" x="0.0" y="9" width="32" height="32"/>
@@ -55,25 +55,16 @@
                                         <constraint firstAttribute="width" constant="32" id="Xq3-hm-ZQe"/>
                                     </constraints>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="kwY-tR-fcB" userLabel="fourth item">
-                                    <rect key="frame" x="126" y="9" width="32" height="32"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="32" id="jI9-Mg-WQ7"/>
-                                        <constraint firstAttribute="width" constant="32" id="vOF-Id-oaL"/>
-                                    </constraints>
-                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="BL1-lE-plg" firstAttribute="centerY" secondItem="6g2-wh-AAS" secondAttribute="centerY" id="8Qe-m0-4AW"/>
                                 <constraint firstItem="nfi-tS-L4n" firstAttribute="centerY" secondItem="BL1-lE-plg" secondAttribute="centerY" id="Q1X-Za-en8"/>
                                 <constraint firstItem="EEZ-Zn-EfC" firstAttribute="centerY" secondItem="nfi-tS-L4n" secondAttribute="centerY" id="Tah-9E-OTV"/>
-                                <constraint firstAttribute="width" constant="160" id="UJS-5j-UIX"/>
-                                <constraint firstItem="kwY-tR-fcB" firstAttribute="leading" secondItem="EEZ-Zn-EfC" secondAttribute="trailing" constant="10" id="W29-PY-8KL"/>
+                                <constraint firstAttribute="width" constant="116" id="UJS-5j-UIX"/>
                                 <constraint firstItem="EEZ-Zn-EfC" firstAttribute="leading" secondItem="nfi-tS-L4n" secondAttribute="trailing" constant="10" id="Ytl-dO-j87"/>
                                 <constraint firstItem="BL1-lE-plg" firstAttribute="leading" secondItem="6g2-wh-AAS" secondAttribute="leading" id="jnU-6F-Ygc"/>
                                 <constraint firstItem="nfi-tS-L4n" firstAttribute="leading" secondItem="BL1-lE-plg" secondAttribute="trailing" constant="10" id="o1u-Od-A9e"/>
-                                <constraint firstItem="kwY-tR-fcB" firstAttribute="centerY" secondItem="EEZ-Zn-EfC" secondAttribute="centerY" id="y4R-uA-012"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2o-2h-dwV" customClass="MXLabel">
@@ -118,22 +109,23 @@
                                     <rect key="frame" x="75" y="18" width="101" height="24"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.game.game_over"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 5000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97j-1B-XvH" userLabel="label score" customClass="MXLabel">
-                                    <rect key="frame" x="82" y="61" width="85" height="18"/>
+                                    <rect key="frame" x="83" y="61" width="85" height="18"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                     <color key="shadowColor" red="0.20000000000000001" green="1" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="bke-90-Cvh" secondAttribute="trailing" id="25a-N8-jY7"/>
                                 <constraint firstItem="IBP-zn-YNu" firstAttribute="centerX" secondItem="9w3-7q-5iu" secondAttribute="centerX" id="3hp-tp-gXC"/>
