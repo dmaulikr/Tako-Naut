@@ -1,0 +1,13 @@
+* - whirlwind same background color
+- key ?
+- mettere roba che lampeggia
+- prendere la bomba mi fa andare in una modalita esplosiva
+- si possono accumulare le bombe?
+- rinominare da psynaut a psyko-tako oppure tako-naut ?
+- come sistemare il blink ?
+- tutorial(intro) screen:
+- tako scappa verso maze end, frecce per indicare il tragitto...
+  core animation per blendare il tutto, enemy che insegue, mettere dei momenti di pausa per dare salience alla schermata (mettere anche hurry up)
+- mettere hurry up a 10 sec dalla fine ? 
+- far apparire la medusa volante all hurry up ?
+- too much pixels inside the gate close
