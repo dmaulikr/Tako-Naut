@@ -51,7 +51,6 @@
     enemy.alpha = 0.0;
     enemy.hidden = YES;
     enemy.wantSpawn = i == 0;
-    enemy.speed = self.speed;
     [self.gameSession.mazeView addSubview:enemy];
     [self.gameSession.mazeView bringSubviewToFront:enemy];
     [self.spawnableEnemies addObject:enemy];
@@ -64,13 +63,13 @@
   {
     if (currentEnemy.hidden)
     {
-      currentEnemy.hidden = NO;
       currentEnemy.tag = enemy.tag;
       currentEnemy.animationImages = [[UIImage imageNamed:currentEnemy.tag == 1 ? @"enemy2" : @"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       [currentEnemy startAnimating];
       [self.spawnableEnemies removeObject:currentEnemy];
       [self.enemies addObject:currentEnemy];
-      [UIView animateWithDuration:2.0 animations:^{
+      [UIView animateWithDuration:0.5 delay:1.0 options:0 animations:^{
+        currentEnemy.hidden = NO;
         currentEnemy.alpha = 1.0;
       } completion:^(BOOL finished) {
         currentEnemy.speed = currentEnemy.tag == 1 ? self.speed / 6 : self.speed;
@@ -95,10 +94,7 @@
       if (enemy.wantSpawn)
       {
         enemy.wantSpawn = NO;
-        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
-        dispatch_after(time, dispatch_get_main_queue(), ^(void){
-          [self spawnFrom:enemy];
-        });
+        [self spawnFrom:enemy];
         break;
       }
     }

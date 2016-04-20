@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNGameViewController">
             <connections>
-                <outlet property="firstItem" destination="BL1-lE-plg" id="Zj2-fn-WG7"/>
+                <outlet property="currentLevelLabel" destination="U4a-5j-lL8" id="H65-Hs-DRI"/>
+                <outlet property="currentLevelPanel" destination="T9n-IL-8HW" id="ewZ-Kb-wNB"/>
+                <outlet property="currentLivesLabel" destination="0Dq-W2-Cx5" id="aNj-rF-V5m"/>
                 <outlet property="gameOverPanel" destination="9w3-7q-5iu" id="TLQ-E1-eUt"/>
                 <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
                 <outlet property="gameView" destination="d4y-KC-tNG" id="1NH-DU-CFC"/>
@@ -90,7 +92,7 @@
                                         <action selector="gameOverTouched:" destination="-1" eventType="touchUpInside" id="IHD-uW-cL5"/>
                                     </connections>
                                 </button>
-                                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-zn-YNu" customClass="MXLabel">
+                                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-zn-YNu" userLabel="Game Over label" customClass="MXLabel">
                                     <rect key="frame" x="75" y="18" width="101" height="24"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -100,7 +102,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.game.game_over"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 5000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97j-1B-XvH" userLabel="label score" customClass="MXLabel">
+                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 5000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97j-1B-XvH" userLabel="score label" customClass="MXLabel">
                                     <rect key="frame" x="83" y="61" width="85" height="18"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -136,16 +138,42 @@
                         <constraint firstItem="9w3-7q-5iu" firstAttribute="centerX" secondItem="ymd-dG-TYh" secondAttribute="centerX" id="fST-sY-cdd"/>
                     </constraints>
                 </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9n-IL-8HW" userLabel="current level panel">
+                    <rect key="frame" x="175" y="275" width="250" height="50"/>
+                    <subviews>
+                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U4a-5j-lL8" userLabel="Current Level level" customClass="MXLabel">
+                            <rect key="frame" x="102" y="13" width="47.5" height="24"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="U4a-5j-lL8" firstAttribute="centerY" secondItem="T9n-IL-8HW" secondAttribute="centerY" id="1vZ-UY-lYZ"/>
+                        <constraint firstAttribute="width" constant="250" id="8eB-Ep-FLo"/>
+                        <constraint firstAttribute="height" constant="50" id="f5S-HA-pwX"/>
+                        <constraint firstItem="U4a-5j-lL8" firstAttribute="centerX" secondItem="T9n-IL-8HW" secondAttribute="centerX" id="yc5-bG-LhK"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ymd-dG-TYh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4ji-qm-jfa"/>
+                <constraint firstItem="T9n-IL-8HW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6Qf-BA-Dhh"/>
                 <constraint firstAttribute="trailing" secondItem="ymd-dG-TYh" secondAttribute="trailing" id="HrT-oC-fN6"/>
                 <constraint firstItem="BL1-lE-plg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="JX8-y3-eqw"/>
                 <constraint firstAttribute="bottom" secondItem="BL1-lE-plg" secondAttribute="bottom" constant="10" id="KEY-cf-LZt"/>
                 <constraint firstItem="ymd-dG-TYh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NWa-gK-5ci"/>
                 <constraint firstAttribute="trailing" secondItem="1KW-Gi-fUg" secondAttribute="trailing" id="QDs-qa-js8"/>
                 <constraint firstAttribute="bottom" secondItem="ymd-dG-TYh" secondAttribute="bottom" id="S1y-f0-0vz"/>
+                <constraint firstItem="T9n-IL-8HW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SYu-Jk-EOA"/>
                 <constraint firstAttribute="trailing" secondItem="d4y-KC-tNG" secondAttribute="trailing" id="VRi-4B-hHn"/>
                 <constraint firstItem="1KW-Gi-fUg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YT0-Du-K9I"/>
                 <constraint firstAttribute="bottom" secondItem="d4y-KC-tNG" secondAttribute="bottom" id="Zof-zW-aEG"/>

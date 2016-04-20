@@ -20,8 +20,6 @@
 
 #define BASE_MAZE_DIMENSION 5
 #define BKG_COLORS @[BLUE_COLOR, GREEN_COLOR, CYAN_COLOR, YELLOW_COLOR, RED_COLOR]
-#define MAX_TIME 30
-#define MAX_LIVES 3
 
 @interface TNGameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;

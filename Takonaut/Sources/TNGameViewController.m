@@ -24,9 +24,7 @@
 // HUD
 @property IBOutlet UILabel *timeLabel;
 @property IBOutlet UILabel *scoreLabel;
-@property IBOutlet UIImageView *firstItem;
-@property IBOutlet UIImageView *secondItem;
-@property IBOutlet UIImageView *thirdItem;
+@property IBOutlet UILabel *currentLivesLabel;
 
 // game view
 @property IBOutlet UIView *gameView;
@@ -35,6 +33,10 @@
 @property IBOutlet UIView *gameOverView;
 @property IBOutlet UIView *gameOverPanel;
 @property IBOutlet UILabel *scoreLabel_inGameOver;
+
+// current level
+@property IBOutlet UIView *currentLevelPanel;
+@property IBOutlet UILabel *currentLevelLabel;
 @end
 
 @implementation TNGameViewController
@@ -62,6 +64,11 @@
   self.gameSession = [[TNGameSession alloc] initWithView:self.gameView];
   self.gameSession.delegate = self;
   [self.gameSession startLevel:1];
+  
+  //--- setup current level stuff ---//
+  self.currentLevelPanel.hidden = YES;
+  self.currentLevelPanel.layer.borderColor = MAGENTA_COLOR.CGColor;
+  self.currentLevelPanel.layer.borderWidth = 2.0;
   
   //--- setup swipes ---//
   self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
@@ -97,9 +104,7 @@
 
 - (void)initHud
 {
-  self.firstItem.alpha = 1.0;
-  self.secondItem.alpha = 1.0;
-  self.thirdItem.alpha = 1.0;
+  self.currentLivesLabel.text = [NSString stringWithFormat:@"%d", MAX_LIVES];
 }
 
 #pragma mark - Gesture Recognizer Stuff
@@ -135,14 +140,24 @@
 
 - (void)didGotLife:(NSUInteger)livesCount
 {
-  self.firstItem.alpha = livesCount == 0 ? 0.2 : 1.0;
-  self.secondItem.alpha = livesCount <= 1 ? 0.2 : 1.0;
-  self.thirdItem.alpha = livesCount <= 2 ? 0.2 : 1.0;
+  self.currentLivesLabel.text = [NSString stringWithFormat:@"x%lu", (unsigned long)livesCount];
 }
 
 - (void)didNextLevel:(NSUInteger)levelCount
 {
   [self initHud];
+  self.currentLevelPanel.hidden = NO;
+  self.currentLevelPanel.alpha = 0;
+  self.currentLevelLabel.text = [NSString stringWithFormat:@"Level %lu", levelCount];
+  [UIView animateWithDuration:0.2 animations:^{
+    self.currentLevelPanel.alpha = 1;
+  } completion:^(BOOL finished) {
+    [UIView animateWithDuration:0.2 delay:1.0 options:0 animations:^{
+      self.currentLevelPanel.alpha = 0;
+    } completion:^(BOOL finished) {
+  self.currentLevelPanel.hidden = YES;
+    }];
+  }];
 }
 
 - (void)didGameOver:(TNGameSession *)session
