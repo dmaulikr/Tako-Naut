@@ -66,22 +66,14 @@
     {
       currentEnemy.hidden = NO;
       currentEnemy.tag = enemy.tag;
-      
-      if (currentEnemy.tag == 1)
-      {
-        currentEnemy.speed = self.speed / 6;
-        currentEnemy.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
-      }
-      else
-      {
-        currentEnemy.speed = self.speed;
-        currentEnemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
-      }
+      currentEnemy.animationImages = [[UIImage imageNamed:currentEnemy.tag == 1 ? @"enemy2" : @"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       [currentEnemy startAnimating];
       [self.spawnableEnemies removeObject:currentEnemy];
       [self.enemies addObject:currentEnemy];
-      [UIView animateWithDuration:1.0 animations:^{
+      [UIView animateWithDuration:2.0 animations:^{
         currentEnemy.alpha = 1.0;
+      } completion:^(BOOL finished) {
+        currentEnemy.speed = currentEnemy.tag == 1 ? self.speed / 6 : self.speed;
       }];
       currentEnemy.frame = enemy.frame;
       break;

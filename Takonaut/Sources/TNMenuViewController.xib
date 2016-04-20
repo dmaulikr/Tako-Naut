@@ -7,9 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNMenuViewController">
             <connections>
+                <outlet property="aboutButton" destination="XDA-iL-b1u" id="5Pn-8l-2AO"/>
                 <outlet property="achievementsButton" destination="kvT-hj-GWS" id="Qql-Gu-uU1"/>
                 <outlet property="achievementsButtonBottomMargin" destination="p1u-bH-AfN" id="Scz-RP-NsW"/>
                 <outlet property="achievementsButtonHeight" destination="RYa-jM-iXY" id="mzk-68-ms5"/>
+                <outlet property="gameButton" destination="LGw-gn-cV5" id="5WV-Nw-hZe"/>
+                <outlet property="highScoresButton" destination="8hr-SH-E5C" id="8R5-l9-uFb"/>
+                <outlet property="settingsButton" destination="CWw-su-e6u" id="UNu-YA-Cj3"/>
                 <outlet property="versionLabel" destination="a7r-W9-Flp" id="ZwJ-65-jFH"/>
                 <outlet property="view" destination="iN0-l3-epB" id="0Zl-Yr-JpI"/>
             </connections>
@@ -20,10 +24,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tako-Naut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N8-iw-iCx" userLabel="Takonaut" customClass="MXLabel">
-                    <rect key="frame" x="208" y="82.5" width="184.5" height="48"/>
+                    <rect key="frame" x="207" y="80.5" width="186.5" height="50"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="2" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vx.y.z" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7r-W9-Flp" customClass="MXLabel">
                     <rect key="frame" x="284.5" y="140.5" width="31.5" height="14.5"/>
@@ -34,35 +40,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9N-Cl-cDF" userLabel="menu view">
                     <rect key="frame" x="150" y="175" width="300" height="290"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDA-iL-b1u" userLabel="Credits" customClass="MXButton">
-                            <rect key="frame" x="0.0" y="240" width="300" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Qe5-H8-7sJ"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="About">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.credits"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="aboutTouched" destination="-1" eventType="touchUpInside" id="Ir3-UB-XVz"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-gn-cV5" userLabel="Resume Game" customClass="MXButton">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="6YC-hn-739"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="New Game">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -74,35 +60,35 @@
                                 <action selector="newGameTouched" destination="-1" eventType="touchUpInside" id="uBa-rX-W5Q"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWw-su-e6u" customClass="MXButton">
-                            <rect key="frame" x="0.0" y="180" width="300" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hr-SH-E5C" customClass="MXButton">
+                            <rect key="frame" x="0.0" y="60" width="300" height="50"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="YOU-pP-urd"/>
+                                <constraint firstAttribute="height" constant="50" id="dsl-jY-h3Z"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Settings">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="High Scores">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.settings"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.high_scores"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="settingsTouched" destination="-1" eventType="touchUpInside" id="OD1-QY-hec"/>
+                                <action selector="highScoresTouched" destination="-1" eventType="touchUpInside" id="c57-gz-5yL"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvT-hj-GWS" customClass="MXButton">
                             <rect key="frame" x="0.0" y="120" width="300" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="RYa-jM-iXY"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Achievements">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -114,24 +100,44 @@
                                 <action selector="achievementsTouched" destination="-1" eventType="touchUpInside" id="9WO-Kf-aRp"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hr-SH-E5C" customClass="MXButton">
-                            <rect key="frame" x="0.0" y="60" width="300" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWw-su-e6u" customClass="MXButton">
+                            <rect key="frame" x="0.0" y="180" width="300" height="50"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="dsl-jY-h3Z"/>
+                                <constraint firstAttribute="height" constant="50" id="YOU-pP-urd"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="High Scores">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Settings">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.high_scores"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.settings"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="highScoresTouched" destination="-1" eventType="touchUpInside" id="c57-gz-5yL"/>
+                                <action selector="settingsTouched" destination="-1" eventType="touchUpInside" id="OD1-QY-hec"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDA-iL-b1u" userLabel="Credits" customClass="MXButton">
+                            <rect key="frame" x="0.0" y="240" width="300" height="50"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Qe5-H8-7sJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="About">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.credits"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="aboutTouched" destination="-1" eventType="touchUpInside" id="Ir3-UB-XVz"/>
                             </connections>
                         </button>
                     </subviews>

@@ -89,6 +89,9 @@
   ///--- setup collaborator ---//
   self.collisionCollaborator = [[TNCollisionCollaborator alloc] init:self];
   self.enemyCollaborator = [[TNEnemyCollaborator alloc] init:self];
+  
+  //--- update external delegate ---//
+  [self.delegate didUpdateScore:self.currentScore];
 }
 
 - (void)makeMaze
@@ -212,7 +215,7 @@
   else if ((arc4random() % 100) >= 98)
   {
     tag = TTMinion;
-    image = [[UIImage imageNamed:@"minion"] imageColored:[UIColor whiteColor]];
+    image = [[UIImage imageNamed:@"minion"] imageColored:MAGENTA_COLOR];
   }
   
   if (tag != -1)
@@ -225,6 +228,20 @@
     [self.mazeView addSubview:item];
     [self.mazeView sendSubviewToBack:item];
     [self.items addObject:item];
+    
+    if (tag == TTCoin)
+    {
+      [UIView animateWithDuration:0.6 delay:0.0 options:  UIViewAnimationOptionRepeat animations:^{
+        float translationFactor = -item.bounds.size.height / 2;
+        CATransform3D t = CATransform3DIdentity;
+        t = CATransform3DTranslate(t, 0, 0, translationFactor);
+        t = CATransform3DRotate(t, M_PI, 0, 1, 0);
+        t = CATransform3DTranslate(t, 0, 0, translationFactor);
+        item.layer.transform = t;
+      } completion:^(BOOL finished) {
+        
+      }];
+    }
     return item;
   }
   else

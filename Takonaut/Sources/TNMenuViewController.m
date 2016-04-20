@@ -9,12 +9,18 @@
 #import "TNMenuViewController.h"
 #import "TNAppDelegate.h"
 #import "TNConstants.h"
+#import "TNMacros.h"
 #import "MXToolBox/MXToolBox.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface TNMenuViewController()
 @property IBOutlet UILabel *versionLabel;
+@property IBOutlet UIButton *gameButton;
+@property IBOutlet UIButton *highScoresButton;
 @property IBOutlet UIButton *achievementsButton;
+@property IBOutlet UIButton *settingsButton;
+@property IBOutlet UIButton *aboutButton;
+
 @property IBOutlet NSLayoutConstraint *achievementsButtonHeight;
 @property IBOutlet NSLayoutConstraint *achievementsButtonBottomMargin;
 @end
@@ -31,6 +37,18 @@
 {
   [super viewDidLoad];
   self.versionLabel.text = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+  
+  //--- setting bordereed buttons ---//
+  self.gameButton.layer.borderColor = MAGENTA_COLOR.CGColor;
+  self.gameButton.layer.borderWidth = 2.0;
+  self.highScoresButton.layer.borderColor = MAGENTA_COLOR.CGColor;
+  self.highScoresButton.layer.borderWidth = 2.0;
+  self.achievementsButton.layer.borderColor = MAGENTA_COLOR.CGColor;
+  self.achievementsButton.layer.borderWidth = 2.0;
+  self.settingsButton.layer.borderColor = MAGENTA_COLOR.CGColor;
+  self.settingsButton.layer.borderWidth = 2.0;
+  self.aboutButton.layer.borderColor = MAGENTA_COLOR.CGColor;
+  self.aboutButton.layer.borderWidth = 2.0;
   [self refreshAchievementsButton];
   /*
   [[MXGameCenterManager sharedInstance] authenticateLocalPlayer:^(BOOL isEnabled) {
