@@ -13,7 +13,6 @@
 
 @interface TNTutorialViewController ()
 @property IBOutlet UIImageView *enemyImage;
-@property IBOutlet UIImageView *swipeImage;
 @property IBOutlet UIImageView *playerImage;
 @property IBOutlet UIImageView *goalImage;
 @property IBOutlet UIImageView *firstArrow;
@@ -75,12 +74,6 @@
   
   [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
     self.hurryupLabel.alpha = 0.4;
-  } completion:^(BOOL finished) {
-    
-  }];
-  
-  [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
-    self.swipeImage.transform = CGAffineTransformTranslate(self.hurryupLabel.transform, 80, 0);
   } completion:^(BOOL finished) {
     
   }];

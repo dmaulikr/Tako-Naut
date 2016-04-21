@@ -13,6 +13,7 @@
                 <outlet property="gameOverPanel" destination="9w3-7q-5iu" id="TLQ-E1-eUt"/>
                 <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
                 <outlet property="gameView" destination="d4y-KC-tNG" id="1NH-DU-CFC"/>
+                <outlet property="hurryUpLabel" destination="5DU-kK-RYr" id="JEY-mQ-QO8"/>
                 <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
                 <outlet property="scoreLabel_inGameOver" destination="97j-1B-XvH" id="7Tb-bY-S7z"/>
                 <outlet property="timeLabel" destination="u2o-2h-dwV" id="3nl-zu-grV"/>
@@ -29,32 +30,32 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KW-Gi-fUg" userLabel="header">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2o-2h-dwV" customClass="MXLabel">
-                            <rect key="frame" x="10" y="15" width="38" height="20.5"/>
+                            <rect key="frame" x="10" y="20" width="38" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSb-Cf-DVA" customClass="MXLabel">
-                            <rect key="frame" x="545.5" y="15" width="44.5" height="20.5"/>
+                            <rect key="frame" x="545.5" y="20" width="44.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxk-mE-9e2" userLabel="current lives view">
-                            <rect key="frame" x="249" y="9" width="100.5" height="32"/>
+                            <rect key="frame" x="249" y="20" width="100.5" height="25"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="BL1-lE-plg" userLabel="Current Life image" customClass="MXImageView">
-                                    <rect key="frame" x="20" y="0.0" width="32" height="32"/>
+                                    <rect key="frame" x="20" y="0.0" width="25" height="25"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="32" id="7yY-kt-hBe"/>
-                                        <constraint firstAttribute="width" constant="32" id="b6C-DD-YTq"/>
+                                        <constraint firstAttribute="height" constant="25" id="7yY-kt-hBe"/>
+                                        <constraint firstAttribute="width" constant="25" id="b6C-DD-YTq"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dq-W2-Cx5" customClass="MXLabel">
-                                    <rect key="frame" x="57" y="5.5" width="23.5" height="21"/>
+                                    <rect key="frame" x="50" y="2" width="23.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -63,22 +64,30 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="0Dq-W2-Cx5" firstAttribute="leading" secondItem="BL1-lE-plg" secondAttribute="trailing" constant="5" id="5jX-OT-eAz"/>
-                                <constraint firstAttribute="height" constant="32" id="Atv-Ez-bLy"/>
+                                <constraint firstAttribute="height" constant="25" id="Atv-Ez-bLy"/>
                                 <constraint firstAttribute="width" constant="100" id="ElX-d3-Nu9"/>
                                 <constraint firstItem="BL1-lE-plg" firstAttribute="centerY" secondItem="Kxk-mE-9e2" secondAttribute="centerY" id="My0-o2-TCr"/>
                                 <constraint firstItem="BL1-lE-plg" firstAttribute="leading" secondItem="Kxk-mE-9e2" secondAttribute="leading" constant="20" id="iU9-cw-pGq"/>
                                 <constraint firstItem="0Dq-W2-Cx5" firstAttribute="centerY" secondItem="BL1-lE-plg" secondAttribute="centerY" id="qCP-Cy-M1D"/>
                             </constraints>
                         </view>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DU-kK-RYr" customClass="MXLabel">
+                            <rect key="frame" x="264" y="47" width="72" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="0Ht-CS-w2t"/>
+                        <constraint firstAttribute="height" constant="60" id="0Ht-CS-w2t"/>
                         <constraint firstItem="u2o-2h-dwV" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="4vJ-u0-giI"/>
+                        <constraint firstItem="Kxk-mE-9e2" firstAttribute="top" secondItem="u2o-2h-dwV" secondAttribute="top" id="F9K-Sc-jcC"/>
+                        <constraint firstItem="5DU-kK-RYr" firstAttribute="top" secondItem="Kxk-mE-9e2" secondAttribute="bottom" constant="2" id="QuO-fP-xRm"/>
+                        <constraint firstItem="5DU-kK-RYr" firstAttribute="centerX" secondItem="1KW-Gi-fUg" secondAttribute="centerX" id="R7M-ei-975"/>
                         <constraint firstAttribute="trailing" secondItem="fSb-Cf-DVA" secondAttribute="trailing" constant="10" id="RXD-OH-UJH"/>
                         <constraint firstItem="Kxk-mE-9e2" firstAttribute="centerX" secondItem="1KW-Gi-fUg" secondAttribute="centerX" id="Txc-kI-hWM"/>
                         <constraint firstItem="u2o-2h-dwV" firstAttribute="leading" secondItem="1KW-Gi-fUg" secondAttribute="leading" constant="10" id="Xyd-8t-Cjg"/>
-                        <constraint firstItem="Kxk-mE-9e2" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="hFl-2C-bQr"/>
                         <constraint firstItem="fSb-Cf-DVA" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="yni-a6-CWA"/>
                     </constraints>
                 </view>
@@ -86,17 +95,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w3-7q-5iu" userLabel="game over panel">
-                            <rect key="frame" x="175" y="250" width="250" height="100"/>
+                            <rect key="frame" x="200" y="250" width="200" height="100"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bke-90-Cvh">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="gameOverTouched:" destination="-1" eventType="touchUpInside" id="IHD-uW-cL5"/>
                                     </connections>
                                 </button>
                                 <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-zn-YNu" userLabel="Game Over label" customClass="MXLabel">
-                                    <rect key="frame" x="75" y="18" width="101" height="24"/>
+                                    <rect key="frame" x="50" y="18" width="101" height="24"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -106,7 +115,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 5000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97j-1B-XvH" userLabel="score label" customClass="MXLabel">
-                                    <rect key="frame" x="83" y="61" width="85" height="18"/>
+                                    <rect key="frame" x="58" y="56" width="85" height="18"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,9 +133,9 @@
                                 <constraint firstItem="IBP-zn-YNu" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" constant="-20" id="Ies-xh-lgz"/>
                                 <constraint firstAttribute="bottom" secondItem="bke-90-Cvh" secondAttribute="bottom" id="ccr-S8-0go"/>
                                 <constraint firstItem="97j-1B-XvH" firstAttribute="centerX" secondItem="9w3-7q-5iu" secondAttribute="centerX" id="lBE-fb-ShC"/>
-                                <constraint firstItem="97j-1B-XvH" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" constant="20" id="qpL-sH-pd4"/>
+                                <constraint firstItem="97j-1B-XvH" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" constant="15" id="qpL-sH-pd4"/>
                                 <constraint firstItem="bke-90-Cvh" firstAttribute="top" secondItem="9w3-7q-5iu" secondAttribute="top" id="udk-Wj-QC2"/>
-                                <constraint firstAttribute="width" constant="250" id="vwC-VM-9ox"/>
+                                <constraint firstAttribute="width" constant="200" id="vwC-VM-9ox"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

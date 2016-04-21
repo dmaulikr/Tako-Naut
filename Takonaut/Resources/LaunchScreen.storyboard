@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sI-5v-wTL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1024x1024.png" translatesAutoresizingMaskIntoConstraints="NO" id="oGm-6W-quC">
+                                    <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="oGm-6W-quC">
                                         <rect key="frame" x="100" y="100" width="400" height="400"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="6Y5-5Q-87M"/>
@@ -50,6 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1024x1024.png" width="1024" height="1024"/>
+        <image name="splash.png" width="1024" height="1024"/>
     </resources>
 </document>

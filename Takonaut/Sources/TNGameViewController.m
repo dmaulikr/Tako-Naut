@@ -37,6 +37,9 @@
 // current level
 @property IBOutlet UIView *currentLevelPanel;
 @property IBOutlet UILabel *currentLevelLabel;
+
+// hurry up label
+@property IBOutlet UILabel *hurryUpLabel;
 @end
 
 @implementation TNGameViewController
@@ -59,12 +62,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  
-  //--- setup game session ---//
-  self.gameSession = [[TNGameSession alloc] initWithView:self.gameView];
-  self.gameSession.delegate = self;
-  [self.gameSession startLevel:1];
-  
+
   //--- setup current level stuff ---//
   self.currentLevelPanel.hidden = YES;
   self.currentLevelPanel.layer.borderColor = MAGENTA_COLOR.CGColor;
@@ -87,23 +85,24 @@
   self.swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
   [self.gameView addGestureRecognizer:self.swipeDown];
   
-  //--- setup timer ---//
-  self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
-  [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-  
   //--- game over view ---//
   self.gameOverView.hidden = YES;
   self.gameOverPanel.layer.borderColor = [MAGENTA_COLOR CGColor];
   self.gameOverPanel.layer.borderWidth = 2.0;
   
-  //--- init hud ---//
-  [self initHud];
-}
-
-#pragma mark - Init Stuff
-
-- (void)initHud
-{
+  //--- setup timer ---//
+  self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
+  [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+  
+  self.view.alpha = 0;
+  [UIView animateWithDuration:0.5 animations:^{
+    self.view.alpha = 1;
+  }completion:^(BOOL finished) {
+    //--- setup game session ---//
+    self.gameSession = [[TNGameSession alloc] initWithView:self.gameView];
+    self.gameSession.delegate = self;
+    [self.gameSession startLevel:1];
+  }];
 }
 
 #pragma mark - Gesture Recognizer Stuff
@@ -118,6 +117,7 @@
 - (IBAction)gameOverTouched:(id)sender
 {
   [self.gameOverView setHidden:YES];
+  self.hurryUpLabel.hidden = YES;
   [self.gameSession startLevel:1];
   
   //--- setup timer ---//
@@ -144,7 +144,7 @@
 
 - (void)didUpdateLevel:(NSUInteger)levelCount
 {
-  [self initHud];
+  self.hurryUpLabel.hidden = YES;
   self.currentLevelPanel.hidden = NO;
   self.currentLevelPanel.alpha = 0;
   self.currentLevelLabel.text = [NSString stringWithFormat:@"Level %lu", (unsigned long)levelCount];
@@ -154,14 +154,33 @@
     [UIView animateWithDuration:0.2 delay:0.5 options:0 animations:^{
       self.currentLevelPanel.alpha = 0;
     } completion:^(BOOL finished) {
-  self.currentLevelPanel.hidden = YES;
+      self.currentLevelPanel.hidden = YES;
     }];
   }];
 }
 
 - (void)didHurryUp
 {
-  
+  if (self.hurryUpLabel.hidden)
+  {
+    self.hurryUpLabel.hidden = NO;
+    self.hurryUpLabel.alpha = 0;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+      self.hurryUpLabel.alpha = 1;
+    } completion:^(BOOL finished) {
+      [[MXAudioManager sharedInstance] play:STTimeOver];
+      
+      // Add the animation
+      CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+      [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+      [animation setToValue:[NSNumber numberWithFloat:0.5]];
+      [animation setAutoreverses:YES];
+      [animation setRepeatCount:HUGE_VALF];
+      [animation setDuration:0.15f];
+      [self.hurryUpLabel.layer addAnimation:animation forKey:@"opacity"];
+    }];
+  }
 }
 
 - (void)didGameOver:(TNGameSession *)session
@@ -176,7 +195,7 @@
   [UIView animateWithDuration:0.5f animations:^{
     self.gameOverView.alpha = 1.0f;
   } completion:^(BOOL finished) {
-//    [TNHighScoresViewController saveScore:session.currentScore];
+    //    [TNHighScoresViewController saveScore:session.currentScore];
   }];
 }
 
@@ -186,10 +205,10 @@
 {
   CFTimeInterval currentTime = [_displayLink timestamp];
   CFTimeInterval deltaTime;
-  deltaTime = currentTime - _previousTimestamp;  
+  deltaTime = currentTime - _previousTimestamp;
   _previousTimestamp = currentTime;
   deltaTime = deltaTime < 0.1 ? deltaTime : 0.015;
-
+  
   //--- update game session ---//
   [self.gameSession update:deltaTime];
 }

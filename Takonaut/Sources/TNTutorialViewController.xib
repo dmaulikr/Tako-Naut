@@ -13,7 +13,6 @@
                 <outlet property="hurryupLabel" destination="MVt-XV-jvV" id="BJF-Zm-XPJ"/>
                 <outlet property="playerImage" destination="Qe5-Ke-pSO" id="MY9-CH-qCp"/>
                 <outlet property="secondArrow" destination="DlT-ev-XqM" id="UKW-FS-wns"/>
-                <outlet property="swipeImage" destination="EnW-ID-9P3" id="FXN-K9-sOQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,18 +42,6 @@
                         <constraint firstAttribute="width" constant="32" id="Ifu-cT-0MJ"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe.png" translatesAutoresizingMaskIntoConstraints="NO" id="EnW-ID-9P3" userLabel="Swipe Image" customClass="MXImageView">
-                    <rect key="frame" x="284" y="329" width="32" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="32" id="gEb-GI-T79"/>
-                        <constraint firstAttribute="height" constant="32" id="jLn-es-iie"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="mxImageColor">
-                            <color key="value" red="0.0" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlT-ev-XqM" userLabel="Swipe Image" customClass="MXImageView">
                     <rect key="frame" x="334" y="284" width="32" height="32"/>
                     <constraints>
@@ -79,14 +66,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tako-Naut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4X-u6-ujo" userLabel="Takonaut" customClass="MXLabel">
-                    <rect key="frame" x="206" y="85" width="186.5" height="49"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
-                    <size key="shadowOffset" width="2" height="1"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVt-XV-jvV" customClass="MXLabel">
                     <rect key="frame" x="263.5" y="233" width="73" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -99,20 +78,16 @@
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="DlT-ev-XqM" firstAttribute="leading" secondItem="Qe5-Ke-pSO" secondAttribute="trailing" constant="18" id="68Y-p4-b9v"/>
-                <constraint firstItem="KoU-fV-R6s" firstAttribute="top" secondItem="d4X-u6-ujo" secondAttribute="bottom" constant="150" id="Bey-Xg-iQD"/>
                 <constraint firstItem="DlT-ev-XqM" firstAttribute="centerY" secondItem="Qe5-Ke-pSO" secondAttribute="centerY" id="GoD-yr-A39"/>
                 <constraint firstItem="Qe5-Ke-pSO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LtJ-AD-bJv"/>
                 <constraint firstItem="KoU-fV-R6s" firstAttribute="leading" secondItem="9bD-2h-SzT" secondAttribute="trailing" constant="18" id="YLh-bZ-YbW"/>
                 <constraint firstItem="AVy-z7-Vx6" firstAttribute="leading" secondItem="DlT-ev-XqM" secondAttribute="trailing" constant="18" id="ZPi-Wv-U28"/>
-                <constraint firstItem="EnW-ID-9P3" firstAttribute="top" secondItem="Qe5-Ke-pSO" secondAttribute="bottom" constant="13" id="aCl-Uf-Tz1"/>
                 <constraint firstItem="KoU-fV-R6s" firstAttribute="centerY" secondItem="Qe5-Ke-pSO" secondAttribute="centerY" id="aaz-Sb-7Oc"/>
                 <constraint firstItem="9bD-2h-SzT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="fK3-uF-I5l"/>
                 <constraint firstItem="AVy-z7-Vx6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="100" id="iyc-ec-JdN"/>
                 <constraint firstItem="AVy-z7-Vx6" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jj5-K7-t0z"/>
                 <constraint firstItem="Qe5-Ke-pSO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jpq-Ym-dxI"/>
-                <constraint firstItem="EnW-ID-9P3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kMQ-4O-WdC"/>
                 <constraint firstItem="KoU-fV-R6s" firstAttribute="top" secondItem="MVt-XV-jvV" secondAttribute="bottom" constant="30" id="kwT-1o-kIX"/>
-                <constraint firstItem="d4X-u6-ujo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o9m-6c-6Mc"/>
                 <constraint firstItem="Qe5-Ke-pSO" firstAttribute="leading" secondItem="KoU-fV-R6s" secondAttribute="trailing" constant="18" id="pxj-xp-vaW"/>
                 <constraint firstItem="9bD-2h-SzT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-100" id="tiH-Ag-CJw"/>
                 <constraint firstItem="MVt-XV-jvV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wNO-zd-mNy"/>
@@ -156,6 +131,5 @@
     </objects>
     <resources>
         <image name="rightArrow.png" width="32" height="32"/>
-        <image name="swipe.png" width="32" height="32"/>
     </resources>
 </document>

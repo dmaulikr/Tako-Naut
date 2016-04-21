@@ -66,10 +66,10 @@
   }
 }
 
-- (void)blink:(void (^)())completion
+- (void)blink:(NSUInteger)duration completion:(void (^)())completion
 {
   [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionCurveLinear animations:^{
-    [UIView setAnimationRepeatCount:3];
+    [UIView setAnimationRepeatCount:duration / 0.2];
     self.alpha = 0.5;
   } completion:^(BOOL finished) {
     self.alpha = 1.0;
@@ -82,11 +82,20 @@
 
 - (void)spin
 {
-  [UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveLinear animations:^{
-    self.transform = CGAffineTransformMakeRotation(M_PI);
+  /*
+  [UIView animateWithDuration:5.0 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveLinear animations:^{
+    self.transform = CGAffineTransformMakeRotation(2 * M_PI);
   } completion:^(BOOL finished) {
-    
   }];
+   */
+  
+  CABasicAnimation *fullRotation;
+  fullRotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+  fullRotation.fromValue = [NSNumber numberWithFloat:0];
+  fullRotation.toValue = [NSNumber numberWithFloat:((360 * M_PI) / 180)];
+  fullRotation.duration = 2.0;
+  fullRotation.repeatCount = MAXFLOAT;
+  [self.layer addAnimation:fullRotation forKey:@"360"];
 }
 
 @end

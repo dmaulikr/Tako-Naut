@@ -38,5 +38,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) int x;
 @property(nonatomic,assign) int y;
 @property(nonatomic,assign) BOOL isDestroyable;
+@property(nonatomic,assign) BOOL isBlinking;
 @property(nonatomic,weak) TNGameSession *gameSession;
 @end

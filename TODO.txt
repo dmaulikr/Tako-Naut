@@ -11,3 +11,4 @@
 - mettere hurry up a 10 sec dalla fine ? 
 - far apparire la medusa volante all hurry up ?
 - too much pixels inside the gate close
+- tutorial level with just a key and a door (only the first time)
