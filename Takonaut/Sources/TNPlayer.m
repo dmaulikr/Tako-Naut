@@ -20,6 +20,7 @@
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;
   self.speed = PLAYER_SPEED;
+  self.layer.zPosition = 1;
   return self;
 }
 

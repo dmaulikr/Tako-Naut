@@ -8,9 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNTutorialViewController">
             <connections>
                 <outlet property="enemyImage" destination="9bD-2h-SzT" id="S6H-6Z-Wg7"/>
+                <outlet property="firstArrow" destination="KoU-fV-R6s" id="suj-l3-TtS"/>
                 <outlet property="goalImage" destination="AVy-z7-Vx6" id="fUA-9d-tYv"/>
                 <outlet property="hurryupLabel" destination="MVt-XV-jvV" id="BJF-Zm-XPJ"/>
                 <outlet property="playerImage" destination="Qe5-Ke-pSO" id="MY9-CH-qCp"/>
+                <outlet property="secondArrow" destination="DlT-ev-XqM" id="UKW-FS-wns"/>
                 <outlet property="swipeImage" destination="EnW-ID-9P3" id="FXN-K9-sOQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -78,18 +80,20 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tako-Naut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4X-u6-ujo" userLabel="Takonaut" customClass="MXLabel">
-                    <rect key="frame" x="206" y="84" width="186.5" height="50"/>
+                    <rect key="frame" x="206" y="85" width="186.5" height="49"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="2" height="2"/>
+                    <color key="shadowColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="2" height="1"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVt-XV-jvV" customClass="MXLabel">
-                    <rect key="frame" x="264" y="233" width="72" height="21"/>
+                    <rect key="frame" x="263.5" y="233" width="73" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="1" green="1" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

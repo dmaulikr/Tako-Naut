@@ -11,7 +11,6 @@
 
 typedef NS_ENUM(NSUInteger, TyleType) {
   TTDoor,
-  TTBorderdWall,
   TTWall,
   TTExplodedWall,
   TTCoin,
@@ -38,5 +37,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) bool didHorizontalSwipe;
 @property(nonatomic,assign) int x;
 @property(nonatomic,assign) int y;
+@property(nonatomic,assign) BOOL isDestroyable;
 @property(nonatomic,weak) TNGameSession *gameSession;
 @end

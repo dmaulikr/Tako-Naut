@@ -24,21 +24,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tako-Naut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N8-iw-iCx" userLabel="Takonaut" customClass="MXLabel">
-                    <rect key="frame" x="207" y="80.5" width="186.5" height="50"/>
+                    <rect key="frame" x="207" y="79.5" width="186.5" height="50"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="shadowColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="2" height="2"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vx.y.z" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7r-W9-Flp" customClass="MXLabel">
-                    <rect key="frame" x="284.5" y="140.5" width="31.5" height="14.5"/>
+                    <rect key="frame" x="284" y="139.5" width="32.5" height="15.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.0" green="1" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9N-Cl-cDF" userLabel="menu view">
-                    <rect key="frame" x="150" y="175" width="300" height="290"/>
+                    <rect key="frame" x="150" y="185" width="300" height="290"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-gn-cV5" userLabel="Resume Game" customClass="MXButton">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -47,8 +49,10 @@
                                 <constraint firstAttribute="height" constant="50" id="6YC-hn-739"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <size key="titleShadowOffset" width="1" height="1"/>
                             <state key="normal" title="New Game">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -67,8 +71,10 @@
                                 <constraint firstAttribute="height" constant="50" id="dsl-jY-h3Z"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <size key="titleShadowOffset" width="1" height="1"/>
                             <state key="normal" title="High Scores">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -87,8 +93,10 @@
                                 <constraint firstAttribute="height" constant="50" id="RYa-jM-iXY"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <size key="titleShadowOffset" width="1" height="1"/>
                             <state key="normal" title="Achievements">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -107,8 +115,10 @@
                                 <constraint firstAttribute="height" constant="50" id="YOU-pP-urd"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <size key="titleShadowOffset" width="1" height="1"/>
                             <state key="normal" title="Settings">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -127,8 +137,10 @@
                                 <constraint firstAttribute="height" constant="50" id="Qe5-H8-7sJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <size key="titleShadowOffset" width="1" height="1"/>
                             <state key="normal" title="About">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -165,12 +177,12 @@
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="r9N-Cl-cDF" firstAttribute="top" secondItem="a7r-W9-Flp" secondAttribute="bottom" constant="20" id="2c0-d0-SoW"/>
+                <constraint firstItem="r9N-Cl-cDF" firstAttribute="top" secondItem="a7r-W9-Flp" secondAttribute="bottom" constant="30" id="2c0-d0-SoW"/>
                 <constraint firstItem="1N8-iw-iCx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5Qr-wT-gHR"/>
                 <constraint firstItem="r9N-Cl-cDF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="L2t-HH-fab"/>
                 <constraint firstItem="a7r-W9-Flp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hZ7-nd-qNY"/>
                 <constraint firstItem="a7r-W9-Flp" firstAttribute="top" secondItem="1N8-iw-iCx" secondAttribute="bottom" constant="10" id="muF-9M-UyS"/>
-                <constraint firstItem="r9N-Cl-cDF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="20" id="mzY-v6-QPV"/>
+                <constraint firstItem="r9N-Cl-cDF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="30" id="mzY-v6-QPV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

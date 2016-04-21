@@ -18,7 +18,7 @@
 #import "TNConstants.h"
 #import <MXAudioManager/MXAudioManager.h>
 
-#define BASE_MAZE_DIMENSION 5
+#define BASE_MAZE_DIMENSION 7
 #define BKG_COLORS @[BLUE_COLOR, GREEN_COLOR, CYAN_COLOR, YELLOW_COLOR, RED_COLOR]
 
 @interface TNGameSession ()
@@ -37,6 +37,7 @@
 @property(nonatomic,weak) TNItem *mazeGoalTile;
 @property(nonatomic,assign) float mazeRotation;
 @property(nonatomic,assign) BOOL isGameOver;
+@property(nonatomic,assign) BOOL isGameStarted;
 @end
 
 @implementation TNGameSession
@@ -53,13 +54,14 @@
   //--- setup gameplay varables ---//
   self.currentLevel = levelNumber;
   self.currentTime = MAX_TIME;
+  self.isGameStarted = NO;
   
   if (levelNumber == 1)
   {
     //--- play start game sound ---//
     [[MXAudioManager sharedInstance] play:STStartgame];
     self.currentScore = 0;
-    self.currentLives = 1;
+    self.currentLives = MAX_LIVES;
     self.numCol = BASE_MAZE_DIMENSION;
     self.numRow = BASE_MAZE_DIMENSION;
   }
@@ -90,6 +92,7 @@
   
   //--- update external delegate ---//
   [self.delegate didUpdateScore:self.currentScore];
+  [self.delegate didUpdateLives:self.currentLives];
 }
 
 - (void)makeMaze
@@ -115,22 +118,14 @@
       if (maze[r][c] == MTWall)
       {
         TNTile *tile = [[TNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
-        if (r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1)
-        {
-          [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:BKG_COLORS[self.bkgColorIndex]]];
-          tile.tag = TTBorderdWall;
-        }
-        else
-        {
-          [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:BKG_COLORS[self.bkgColorIndex]]];
-          tile.tag = TTWall;
-        }
-        
+        tile.tag = TTWall;
+        [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:BKG_COLORS[self.bkgColorIndex]]];
+        [tile setImage:[[UIImage imageNamed:@"wall"] imageColored:BKG_COLORS[self.bkgColorIndex]]];
+        tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1);
         tile.x = r;
         tile.y = c;
         [self.mazeView addSubview:tile];
         [self.wallsDictionary setObject:tile forKey:[NSValue valueWithCGPoint:CGPointMake(r, c)]];
-        [self.mazeView sendSubviewToBack:tile];
       }
       else if (maze[r][c] == MTStart)
       {
@@ -138,8 +133,8 @@
         tile.x = r;
         tile.y = c;
         tile.tag = TTDoor;
+        tile.isDestroyable = NO;
         [self.mazeView addSubview:tile];
-        [self.mazeView sendSubviewToBack:tile];
         [self.items addObject:tile];
       }
       else if (maze[r][c] == MTEnd)
@@ -148,9 +143,9 @@
         tile.x = r;
         tile.y = c;
         tile.tag = TTMazeEnd_close;
+        tile.isDestroyable = NO;
         [tile setImage:[[UIImage imageNamed:@"gate_close"] imageColored:MAGENTA_COLOR]];
         [self.mazeView addSubview:tile];
-        [self.mazeView sendSubviewToBack:tile];
         [self.wallsDictionary setObject:tile forKey:[NSValue valueWithCGPoint:CGPointMake(r, c)]];
         self.mazeGoalTile = tile;
         [self.items addObject:tile];
@@ -176,7 +171,6 @@
   keyItem.tag = TTKey;
   keyItem.image = [[UIImage imageNamed:@"key"] imageColored:MAGENTA_COLOR];
   [self.mazeView addSubview:keyItem];
-  [self.mazeView sendSubviewToBack:keyItem];
   [self.items addObject:keyItem];
   
   for (int i = 0; i < self.numCol; ++i)
@@ -205,15 +199,15 @@
     tag = TTBomb;
     image = [[UIImage imageNamed:@"bomb"] imageColored:RED_COLOR];
   }
-  else if ((arc4random() % 100) >= 90)
+  else if ((arc4random() % 100) >= 96)
   {
     tag = TTTime;
     image = [[UIImage imageNamed:@"time"] imageColored:MAGENTA_COLOR];
   }
-  else if ((arc4random() % 100) >= 98)
+  else if ((arc4random() % 100) >= 99)
   {
     tag = TTMinion;
-    image = [[UIImage imageNamed:@"minion"] imageColored:MAGENTA_COLOR];
+    image = [UIImage imageNamed:@"minion"];
   }
   
   if (tag != -1)
@@ -224,18 +218,12 @@
     item.tag = tag;
     item.image = image;
     [self.mazeView addSubview:item];
-    [self.mazeView sendSubviewToBack:item];
     [self.items addObject:item];
     
     if (tag == TTCoin)
     {
-      [UIView animateWithDuration:0.6 delay:0.0 options:  UIViewAnimationOptionRepeat animations:^{
-        float translationFactor = -item.bounds.size.height / 2;
-        CATransform3D t = CATransform3DIdentity;
-        t = CATransform3DTranslate(t, 0, 0, translationFactor);
-        t = CATransform3DRotate(t, M_PI, 0, 1, 0);
-        t = CATransform3DTranslate(t, 0, 0, translationFactor);
-        item.layer.transform = t;
+      [UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState animations:^{
+        item.layer.transform = CATransform3DRotate(CATransform3DIdentity, M_PI, 0, 1, 0);
       } completion:^(BOOL finished) {
         
       }];
@@ -255,7 +243,7 @@
   NSMutableArray *coloredImages = [@[] mutableCopy];
   for (UIImage *img in images)
   {
-    [coloredImages addObject:[img imageColored:MAGENTA_COLOR]];
+    [coloredImages addObject:img];
   }
   self.player.animationImages = coloredImages;
   self.player.animationDuration = 0.4f;
@@ -267,6 +255,7 @@
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
 {
+  self.isGameStarted = YES;
   [self.player didSwipe:direction];
 }
 
@@ -276,7 +265,10 @@
   [self.delegate didUpdateTime:self.currentTime];
   
   //--- updating enemies stuff ---//
-  [self.enemyCollaborator update:deltaTime];
+  if (self.isGameStarted)
+  {
+    [self.enemyCollaborator update:deltaTime];
+  }
   
   //--- checking walls collisions ---//
   if (!self.isGameOver)
@@ -330,7 +322,7 @@
         item.hidden = true;
         [itemsToRemove addObject:item];
         self.currentLives = self.currentLives + 1 < MAX_LIVES ? self.currentLives + 1 : MAX_LIVES;
-        [self.delegate didGotLife:self.currentLives];
+        [self.delegate didUpdateLives:self.currentLives];
       }
       else if (item.tag == TTBomb)
       {
@@ -341,25 +333,24 @@
         int player_y = (int)self.player.frame.origin.y;
         for (TNTile *tile in [self.wallsDictionary allValues])
         {
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(player_x + TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)) && tile.tag != TTBorderdWall)
+          if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x + TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)))
+          {
+            [tile explode:nil];
+            tile.tag = TTExplodedWall;
+          }
+          else if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x - TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)))
           {
             [tile explode:nil];
             tile.tag = TTExplodedWall;
           }
           
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(player_x - TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)) && tile.tag != TTBorderdWall)
+          if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y + TILE_SIZE, TILE_SIZE, TILE_SIZE)))
           {
             [tile explode:nil];
             tile.tag = TTExplodedWall;
           }
           
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y + TILE_SIZE, TILE_SIZE, TILE_SIZE)) && tile.tag != TTBorderdWall)
-          {
-            [tile explode:nil];
-            tile.tag = TTExplodedWall;
-          }
-          
-          if (CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y - TILE_SIZE, TILE_SIZE, TILE_SIZE)) && tile.tag != TTBorderdWall)
+          if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y - TILE_SIZE, TILE_SIZE, TILE_SIZE)))
           {
             [tile explode:nil];
             tile.tag = TTExplodedWall;
@@ -394,10 +385,24 @@
   ///--- collision player vs enemies ---//
   for (TNEnemy *enemy in self.enemyCollaborator.enemies)
   {
-    if (CGRectIntersectsRect(enemy.frame, self.player.frame))
+    if (self.isGameStarted && self.currentLives > 0 && CGRectIntersectsRect(enemy.frame, self.player.frame))
     {
+      [[MXAudioManager sharedInstance] play:STHitPlayer];
       self.currentLives = self.currentLives - 1;
-      // [enemy setHidden:YES];
+      [self.delegate didUpdateLives:self.currentLives];
+      if (self.currentLives > 0)
+      {
+        self.isGameStarted = NO;
+        [UIView animateWithDuration:0.4 animations:^{
+          self.player.velocity = CGPointZero;
+          self.player.frame = CGRectMake(STARTING.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED);
+          self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
+        } completion:^(BOOL finished) {
+          [self.player blink:^{
+            self.isGameStarted = YES;
+          }];
+        }];
+      }
       break;
     }
   }
@@ -406,7 +411,7 @@
   if (self.mazeGoalTile.tag == TTMazeEnd_open  && CGRectIntersectsRect(self.player.frame, self.mazeGoalTile.frame))
   {
     [self startLevel:self.currentLevel + 1];
-    [self.delegate didNextLevel:self.currentLevel];
+    [self.delegate didUpdateLevel:self.currentLevel];
   }
   
   //--- collision if player is dead---//

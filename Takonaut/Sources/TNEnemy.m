@@ -26,6 +26,7 @@
 {
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;
+  self.layer.zPosition = 1;
   self.path = [@[] mutableCopy];
   self.velocity = CGPointMake(0, 0);
   return self;

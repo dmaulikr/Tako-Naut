@@ -104,7 +104,6 @@
 
 - (void)initHud
 {
-  self.currentLivesLabel.text = [NSString stringWithFormat:@"%d", MAX_LIVES];
 }
 
 #pragma mark - Gesture Recognizer Stuff
@@ -138,26 +137,31 @@
   self.timeLabel.text = [NSString stringWithFormat:@"Time\n%ld", (unsigned long)time];
 }
 
-- (void)didGotLife:(NSUInteger)livesCount
+- (void)didUpdateLives:(NSUInteger)livesCount
 {
   self.currentLivesLabel.text = [NSString stringWithFormat:@"x%lu", (unsigned long)livesCount];
 }
 
-- (void)didNextLevel:(NSUInteger)levelCount
+- (void)didUpdateLevel:(NSUInteger)levelCount
 {
   [self initHud];
   self.currentLevelPanel.hidden = NO;
   self.currentLevelPanel.alpha = 0;
-  self.currentLevelLabel.text = [NSString stringWithFormat:@"Level %lu", levelCount];
+  self.currentLevelLabel.text = [NSString stringWithFormat:@"Level %lu", (unsigned long)levelCount];
   [UIView animateWithDuration:0.2 animations:^{
     self.currentLevelPanel.alpha = 1;
   } completion:^(BOOL finished) {
-    [UIView animateWithDuration:0.2 delay:1.0 options:0 animations:^{
+    [UIView animateWithDuration:0.2 delay:0.5 options:0 animations:^{
       self.currentLevelPanel.alpha = 0;
     } completion:^(BOOL finished) {
   self.currentLevelPanel.hidden = YES;
     }];
   }];
+}
+
+- (void)didHurryUp
+{
+  
 }
 
 - (void)didGameOver:(TNGameSession *)session

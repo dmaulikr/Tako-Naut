@@ -45,7 +45,8 @@
 @protocol TNGameSessionDelegate <NSObject>
 - (void)didUpdateScore:(NSUInteger)score;
 - (void)didUpdateTime:(NSUInteger)time;
-- (void)didGotLife:(NSUInteger)livesCount;
-- (void)didNextLevel:(NSUInteger)levelCount;
+- (void)didUpdateLives:(NSUInteger)livesCount;
+- (void)didUpdateLevel:(NSUInteger)levelCount;
+- (void)didHurryUp;
 - (void)didGameOver:(TNGameSession *)session;
 @end

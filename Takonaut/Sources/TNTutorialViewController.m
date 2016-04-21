@@ -16,6 +16,8 @@
 @property IBOutlet UIImageView *swipeImage;
 @property IBOutlet UIImageView *playerImage;
 @property IBOutlet UIImageView *goalImage;
+@property IBOutlet UIImageView *firstArrow;
+@property IBOutlet UIImageView *secondArrow;
 @property IBOutlet UILabel *hurryupLabel;
 @end
 
@@ -52,6 +54,19 @@
   self.goalImage.animationDuration = 1.0f;
   self.goalImage.animationRepeatCount = 0;
   [self.goalImage startAnimating];
+  
+  //--- arrows stuff ---//
+  [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+    self.firstArrow.alpha = 0.4;
+  } completion:^(BOOL finished) {
+    self.firstArrow.alpha = 1.0;
+  }];
+  
+  [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+    self.secondArrow.alpha = 0.4;
+  } completion:^(BOOL finished) {
+    self.secondArrow.alpha = 1.0;
+  }];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -60,7 +60,6 @@
 		1D1FBF721CC6708C00A0CB0A /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF611CC6708C00A0CB0A /* key.png */; };
 		1D1FBF731CC6708C00A0CB0A /* minion.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF621CC6708C00A0CB0A /* minion.png */; };
 		1D1FBF741CC6708C00A0CB0A /* old_target.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF631CC6708C00A0CB0A /* old_target.png */; };
-		1D1FBF751CC6708C00A0CB0A /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF641CC6708C00A0CB0A /* player.png */; };
 		1D1FBF761CC6708C00A0CB0A /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF651CC6708C00A0CB0A /* time.png */; };
 		1D1FBF771CC6708C00A0CB0A /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF661CC6708C00A0CB0A /* wall.png */; };
 		1D1FBF781CC6708C00A0CB0A /* wall2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF671CC6708C00A0CB0A /* wall2.png */; };
@@ -68,6 +67,8 @@
 		1D1FBF7C1CC6709C00A0CB0A /* 1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF7A1CC6709200A0CB0A /* 1024x1024.png */; };
 		1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; };
 		1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1DB69DC71CC8054E008E5F7C /* soundHitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */; };
+		1DB69DC91CC80C80008E5F7C /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69DC81CC80C80008E5F7C /* player.png */; };
 		1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */; };
 		1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */; };
 		1DC52F681CC67F4200F61A47 /* swipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F671CC67F4200F61A47 /* swipe.png */; };
@@ -169,7 +170,6 @@
 		1D1FBF611CC6708C00A0CB0A /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = Takonaut/Resources/Images/key.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF621CC6708C00A0CB0A /* minion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minion.png; path = Takonaut/Resources/Images/minion.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF631CC6708C00A0CB0A /* old_target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = old_target.png; path = Takonaut/Resources/Images/old_target.png; sourceTree = SOURCE_ROOT; };
-		1D1FBF641CC6708C00A0CB0A /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Takonaut/Resources/Images/player.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF651CC6708C00A0CB0A /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time.png; path = Takonaut/Resources/Images/time.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF661CC6708C00A0CB0A /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Takonaut/Resources/Images/wall.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF671CC6708C00A0CB0A /* wall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall2.png; path = Takonaut/Resources/Images/wall2.png; sourceTree = SOURCE_ROOT; };
@@ -177,6 +177,8 @@
 		1D1FBF7A1CC6709200A0CB0A /* 1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024x1024.png; path = Takonaut/Resources/1024x1024.png; sourceTree = SOURCE_ROOT; };
 		1D76702E1C7B5B050065F110 /* Tako-Naut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tako-Naut.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXAudioManager.framework; path = Carthage/Build/iOS/MXAudioManager.framework; sourceTree = "<group>"; };
+		1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitPlayer.caf; path = Takonaut/Resources/Sounds/soundHitPlayer.caf; sourceTree = SOURCE_ROOT; };
+		1DB69DC81CC80C80008E5F7C /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Takonaut/Resources/Images/player.png; sourceTree = SOURCE_ROOT; };
 		1DC52F621CC674E900F61A47 /* TNTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNTutorialViewController.h; path = Takonaut/Sources/TNTutorialViewController.h; sourceTree = SOURCE_ROOT; };
 		1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTutorialViewController.m; path = Takonaut/Sources/TNTutorialViewController.m; sourceTree = SOURCE_ROOT; };
 		1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNTutorialViewController.xib; path = Takonaut/Sources/TNTutorialViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -211,6 +213,7 @@
 				1D1FBF491CC6707900A0CB0A /* soundSelectItem.caf */,
 				1D1FBF4A1CC6707900A0CB0A /* soundStartGame.caf */,
 				1D1FBF4B1CC6707900A0CB0A /* soundTimeOver.caf */,
+				1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -284,7 +287,7 @@
 		1D7670251C7B5B050065F110 = {
 			isa = PBXGroup;
 			children = (
-				1D7670301C7B5B050065F110 /* Psynaut */,
+				1D76704B1C7B5C3A0065F110 /* Sources */,
 				1D98C7CE1C9AD67A00161EB2 /* Frameworks */,
 				1D7670311C7B5B050065F110 /* Resources */,
 				1D76702F1C7B5B050065F110 /* Products */,
@@ -297,15 +300,6 @@
 				1D76702E1C7B5B050065F110 /* Tako-Naut.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1D7670301C7B5B050065F110 /* Psynaut */ = {
-			isa = PBXGroup;
-			children = (
-				1D76704B1C7B5C3A0065F110 /* Sources */,
-			);
-			name = Psynaut;
-			path = PsyNaut;
 			sourceTree = "<group>";
 		};
 		1D7670311C7B5B050065F110 /* Resources */ = {
@@ -344,6 +338,7 @@
 				1D76704E1C7B5C620065F110 /* Main */,
 			);
 			name = Sources;
+			path = PsyNaut;
 			sourceTree = "<group>";
 		};
 		1D76704D1C7B5C590065F110 /* Gui */ = {
@@ -381,8 +376,8 @@
 				1D1FBF601CC6708C00A0CB0A /* hearth.png */,
 				1D1FBF611CC6708C00A0CB0A /* key.png */,
 				1D1FBF621CC6708C00A0CB0A /* minion.png */,
+				1DB69DC81CC80C80008E5F7C /* player.png */,
 				1D1FBF631CC6708C00A0CB0A /* old_target.png */,
-				1D1FBF641CC6708C00A0CB0A /* player.png */,
 				1D1FBF651CC6708C00A0CB0A /* time.png */,
 				1D1FBF661CC6708C00A0CB0A /* wall.png */,
 				1D1FBF671CC6708C00A0CB0A /* wall2.png */,
@@ -524,10 +519,12 @@
 				1D1FBF691CC6708C00A0CB0A /* bomb_old.png in Resources */,
 				1D1FBF3F1CC6705F00A0CB0A /* Joystix.ttf in Resources */,
 				1D1FBF4C1CC6708100A0CB0A /* soundEnemySpawn.caf in Resources */,
+				1DB69DC91CC80C80008E5F7C /* player.png in Resources */,
 				1D1FBF391CC6702000A0CB0A /* gameConfiguration.json in Resources */,
 				1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */,
 				1D1FBF3C1CC6703B00A0CB0A /* Localizable.strings in Resources */,
 				1D1FBF061CC66EFA00A0CB0A /* TNGameViewController.xib in Resources */,
+				1DB69DC71CC8054E008E5F7C /* soundHitPlayer.caf in Resources */,
 				1D1FBF571CC6708100A0CB0A /* soundTimeOver.caf in Resources */,
 				1D1FBF731CC6708C00A0CB0A /* minion.png in Resources */,
 				1D1FBF791CC6708C00A0CB0A /* whirlwind.png in Resources */,
@@ -538,7 +535,6 @@
 				1D1FBF721CC6708C00A0CB0A /* key.png in Resources */,
 				1D1FBF531CC6708100A0CB0A /* soundHitWhirlwind.caf in Resources */,
 				1D1FBF6F1CC6708C00A0CB0A /* gate_close.png in Resources */,
-				1D1FBF751CC6708C00A0CB0A /* player.png in Resources */,
 				1D1FBF781CC6708C00A0CB0A /* wall2.png in Resources */,
 				1D1FBF701CC6708C00A0CB0A /* gate_open.png in Resources */,
 				1D1FBF541CC6708100A0CB0A /* soundLevelChange.caf in Resources */,

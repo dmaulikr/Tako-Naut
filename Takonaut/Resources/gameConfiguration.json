@@ -12,7 +12,8 @@
               {"name":"soundTimeOver.caf", "id":"9"},
               {"name":"soundGameOver.caf", "id":"10"},
               {"name":"soundLevelChange.caf", "id":"11"},
-              {"name":"soundEnemySpawn.caf", "id":"12"}
+              {"name":"soundEnemySpawn.caf", "id":"12"},
+              {"name":"soundHitPlayer.caf", "id":"13"}
               ]
   }
 }

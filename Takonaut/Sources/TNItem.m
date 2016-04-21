@@ -10,4 +10,11 @@
 
 @implementation TNItem
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+  self = [super initWithFrame:frame];
+  self.layer.zPosition = 0;
+  return self;
+}
+
 @end

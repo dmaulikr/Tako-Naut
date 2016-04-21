@@ -73,6 +73,10 @@
     self.alpha = 0.5;
   } completion:^(BOOL finished) {
     self.alpha = 1.0;
+    if (completion)
+    {
+      completion();
+    }
   }];
 }
 

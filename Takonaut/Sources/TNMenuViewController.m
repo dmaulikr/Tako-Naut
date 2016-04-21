@@ -74,6 +74,7 @@
 
 - (IBAction)newGameTouched
 {
+  [[MXAudioManager sharedInstance] play:STSelectItem];
   //[[TNAppDelegate sharedInstance] selectScreen:STNewGame];
   [[TNAppDelegate sharedInstance] selectScreen:STTutorial];
 }
