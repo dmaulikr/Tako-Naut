@@ -48,7 +48,6 @@
 		1D1FBF551CC6708100A0CB0A /* soundSelectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF491CC6707900A0CB0A /* soundSelectItem.caf */; };
 		1D1FBF561CC6708100A0CB0A /* soundStartGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF4A1CC6707900A0CB0A /* soundStartGame.caf */; };
 		1D1FBF571CC6708100A0CB0A /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF4B1CC6707900A0CB0A /* soundTimeOver.caf */; };
-		1D1FBF691CC6708C00A0CB0A /* bomb_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF581CC6708C00A0CB0A /* bomb_old.png */; };
 		1D1FBF6A1CC6708C00A0CB0A /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF591CC6708C00A0CB0A /* bomb.png */; };
 		1D1FBF6B1CC6708C00A0CB0A /* bomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF5A1CC6708C00A0CB0A /* bomb2.png */; };
 		1D1FBF6C1CC6708C00A0CB0A /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF5B1CC6708C00A0CB0A /* coin.png */; };
@@ -158,7 +157,6 @@
 		1D1FBF491CC6707900A0CB0A /* soundSelectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundSelectItem.caf; path = Takonaut/Resources/Sounds/soundSelectItem.caf; sourceTree = SOURCE_ROOT; };
 		1D1FBF4A1CC6707900A0CB0A /* soundStartGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundStartGame.caf; path = Takonaut/Resources/Sounds/soundStartGame.caf; sourceTree = SOURCE_ROOT; };
 		1D1FBF4B1CC6707900A0CB0A /* soundTimeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundTimeOver.caf; path = Takonaut/Resources/Sounds/soundTimeOver.caf; sourceTree = SOURCE_ROOT; };
-		1D1FBF581CC6708C00A0CB0A /* bomb_old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_old.png; path = Takonaut/Resources/Images/bomb_old.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF591CC6708C00A0CB0A /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb.png; path = Takonaut/Resources/Images/bomb.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF5A1CC6708C00A0CB0A /* bomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb2.png; path = Takonaut/Resources/Images/bomb2.png; sourceTree = SOURCE_ROOT; };
 		1D1FBF5B1CC6708C00A0CB0A /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = Takonaut/Resources/Images/coin.png; sourceTree = SOURCE_ROOT; };
@@ -365,7 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				1D1FBF7A1CC6709200A0CB0A /* 1024x1024.png */,
-				1D1FBF581CC6708C00A0CB0A /* bomb_old.png */,
 				1D1FBF591CC6708C00A0CB0A /* bomb.png */,
 				1D1FBF5A1CC6708C00A0CB0A /* bomb2.png */,
 				1D1FBF5B1CC6708C00A0CB0A /* coin.png */,
@@ -516,7 +513,6 @@
 				1D1FBF501CC6708100A0CB0A /* soundHitCoin.caf in Resources */,
 				1D1FBF741CC6708C00A0CB0A /* old_target.png in Resources */,
 				1D1FBF4E1CC6708100A0CB0A /* soundGameOver.caf in Resources */,
-				1D1FBF691CC6708C00A0CB0A /* bomb_old.png in Resources */,
 				1D1FBF3F1CC6705F00A0CB0A /* Joystix.ttf in Resources */,
 				1D1FBF4C1CC6708100A0CB0A /* soundEnemySpawn.caf in Resources */,
 				1DB69DC91CC80C80008E5F7C /* player.png in Resources */,

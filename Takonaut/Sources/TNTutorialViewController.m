@@ -50,7 +50,7 @@
   [self.playerImage startAnimating];
   
   //--- goalImage stuff ---//
-  self.goalImage.animationImages = @[[[UIImage imageNamed:@"gate_open"] imageColored:CYAN_COLOR], [[UIImage imageNamed:@"gate_close"] imageColored:CYAN_COLOR]];
+  self.goalImage.animationImages = @[[UIImage imageNamed:@"gate_open"], [UIImage imageNamed:@"gate_close"]];
   self.goalImage.animationDuration = 1.0f;
   self.goalImage.animationRepeatCount = 0;
   [self.goalImage startAnimating];

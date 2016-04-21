@@ -144,7 +144,7 @@
         tile.y = c;
         tile.tag = TTMazeEnd_close;
         tile.isDestroyable = NO;
-        [tile setImage:[[UIImage imageNamed:@"gate_close"] imageColored:MAGENTA_COLOR]];
+        [tile setImage:[UIImage imageNamed:@"gate_close"]];
         [self.mazeView addSubview:tile];
         [self.wallsDictionary setObject:tile forKey:[NSValue valueWithCGPoint:CGPointMake(r, c)]];
         self.mazeGoalTile = tile;
@@ -222,11 +222,15 @@
     
     if (tag == TTCoin)
     {
-      [UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState animations:^{
+      [UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
         item.layer.transform = CATransform3DRotate(CATransform3DIdentity, M_PI, 0, 1, 0);
       } completion:^(BOOL finished) {
         
       }];
+    }
+    else if (tag == TTWhirlwind)
+    {
+      [item spin];
     }
     return item;
   }
@@ -313,7 +317,7 @@
         item.hidden = true;
         [itemsToRemove addObject:item];
         self.mazeGoalTile.tag = TTMazeEnd_open;
-        [self.mazeGoalTile setImage:[[UIImage imageNamed:@"gate_open"] imageColored:MAGENTA_COLOR]];
+        [self.mazeGoalTile setImage:[UIImage imageNamed:@"gate_open"]];
         [self.wallsDictionary removeObjectForKey:[NSValue valueWithCGPoint:CGPointMake(self.mazeGoalTile.x, self.mazeGoalTile.y)]];
       }
       else if (item.tag == TTMinion)

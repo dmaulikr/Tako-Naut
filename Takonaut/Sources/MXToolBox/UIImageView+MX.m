@@ -68,7 +68,7 @@
 
 - (void)blink:(void (^)())completion
 {
-  [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+  [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionCurveLinear animations:^{
     [UIView setAnimationRepeatCount:3];
     self.alpha = 0.5;
   } completion:^(BOOL finished) {
@@ -77,6 +77,15 @@
     {
       completion();
     }
+  }];
+}
+
+- (void)spin
+{
+  [UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveLinear animations:^{
+    self.transform = CGAffineTransformMakeRotation(M_PI);
+  } completion:^(BOOL finished) {
+    
   }];
 }
 
