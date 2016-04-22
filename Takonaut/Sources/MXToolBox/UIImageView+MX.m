@@ -93,7 +93,7 @@
   fullRotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
   fullRotation.fromValue = [NSNumber numberWithFloat:0];
   fullRotation.toValue = [NSNumber numberWithFloat:((360 * M_PI) / 180)];
-  fullRotation.duration = 2.0;
+  fullRotation.duration = 3.0;
   fullRotation.repeatCount = MAXFLOAT;
   [self.layer addAnimation:fullRotation forKey:@"360"];
 }

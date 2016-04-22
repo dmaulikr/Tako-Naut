@@ -51,11 +51,11 @@
 
 - (void)startLevel:(NSUInteger)levelNumber
 {
-  self.gameView.alpha = 0;
+  self.gameView.hidden = YES;
   
   //--- setup gameplay varables ---//
   self.currentLevel = levelNumber;
-  self.currentTime = 15;
+  self.currentTime = MAX_TIME;
   self.isGameStarted = NO;
   
   if (levelNumber == 1)
@@ -81,6 +81,7 @@
   //--- remove old views ---//
   for (UIView *view in self.mazeView.subviews)
   {
+    view.hidden = YES;
     [view removeFromSuperview];
   }
   
@@ -98,9 +99,9 @@
   [self.delegate didUpdateScore:self.currentScore];
   [self.delegate didUpdateLives:self.currentLives];
   
-  [UIView animateWithDuration:2.0 animations:^{
-    self.gameView.alpha = 1;
-  }];
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.2), dispatch_get_main_queue(), ^{
+    self.gameView.hidden = NO;
+  });
 }
 
 - (void)makeMaze
@@ -196,7 +197,7 @@
   {
     item.tag = TTCoin;
     item.image = [[UIImage imageNamed:@"coin"] imageColored:[UIColor yellowColor]];
-    [UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
       item.layer.transform = CATransform3DRotate(CATransform3DIdentity, M_PI, 0, 1, 0);
     } completion:^(BOOL finished) {
     }];

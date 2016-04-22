@@ -62,7 +62,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-
+  
   //--- setup current level stuff ---//
   self.currentLevelPanel.hidden = YES;
   self.currentLevelPanel.layer.borderColor = MAGENTA_COLOR.CGColor;
@@ -90,19 +90,14 @@
   self.gameOverPanel.layer.borderColor = [MAGENTA_COLOR CGColor];
   self.gameOverPanel.layer.borderWidth = 2.0;
   
+  //--- setup game session ---//
+  self.gameSession = [[TNGameSession alloc] initWithView:self.gameView];
+  self.gameSession.delegate = self;
+  [self.gameSession startLevel:1];
+  
   //--- setup timer ---//
   self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
   [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-  
-  self.view.alpha = 0;
-  [UIView animateWithDuration:0.5 animations:^{
-    self.view.alpha = 1;
-  }completion:^(BOOL finished) {
-    //--- setup game session ---//
-    self.gameSession = [[TNGameSession alloc] initWithView:self.gameView];
-    self.gameSession.delegate = self;
-    [self.gameSession startLevel:1];
-  }];
 }
 
 #pragma mark - Gesture Recognizer Stuff
@@ -151,7 +146,7 @@
   [UIView animateWithDuration:0.2 animations:^{
     self.currentLevelPanel.alpha = 1;
   } completion:^(BOOL finished) {
-    [UIView animateWithDuration:0.2 delay:0.5 options:0 animations:^{
+    [UIView animateWithDuration:0.2 delay:0.7 options:0 animations:^{
       self.currentLevelPanel.alpha = 0;
     } completion:^(BOOL finished) {
       self.currentLevelPanel.hidden = YES;

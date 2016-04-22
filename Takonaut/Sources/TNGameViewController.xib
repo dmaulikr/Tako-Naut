@@ -33,13 +33,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2o-2h-dwV" customClass="MXLabel">
-                            <rect key="frame" x="10" y="20" width="38" height="20.5"/>
+                            <rect key="frame" x="161" y="20" width="38" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSb-Cf-DVA" customClass="MXLabel">
-                            <rect key="frame" x="545.5" y="20" width="44.5" height="20.5"/>
+                            <rect key="frame" x="399.5" y="20" width="44.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -81,13 +81,15 @@
                     <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="0Ht-CS-w2t"/>
+                        <constraint firstItem="Kxk-mE-9e2" firstAttribute="leading" relation="lessThanOrEqual" secondItem="u2o-2h-dwV" secondAttribute="trailing" constant="200" id="3Qw-00-QQ6"/>
                         <constraint firstItem="u2o-2h-dwV" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="4vJ-u0-giI"/>
+                        <constraint firstItem="fSb-Cf-DVA" firstAttribute="leading" secondItem="Kxk-mE-9e2" secondAttribute="trailing" constant="50" id="BPl-2x-Vf7"/>
                         <constraint firstItem="Kxk-mE-9e2" firstAttribute="top" secondItem="u2o-2h-dwV" secondAttribute="top" id="F9K-Sc-jcC"/>
+                        <constraint firstItem="fSb-Cf-DVA" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Kxk-mE-9e2" secondAttribute="trailing" constant="200" id="NQw-zz-hrP"/>
                         <constraint firstItem="5DU-kK-RYr" firstAttribute="top" secondItem="Kxk-mE-9e2" secondAttribute="bottom" constant="2" id="QuO-fP-xRm"/>
                         <constraint firstItem="5DU-kK-RYr" firstAttribute="centerX" secondItem="1KW-Gi-fUg" secondAttribute="centerX" id="R7M-ei-975"/>
-                        <constraint firstAttribute="trailing" secondItem="fSb-Cf-DVA" secondAttribute="trailing" constant="10" id="RXD-OH-UJH"/>
                         <constraint firstItem="Kxk-mE-9e2" firstAttribute="centerX" secondItem="1KW-Gi-fUg" secondAttribute="centerX" id="Txc-kI-hWM"/>
-                        <constraint firstItem="u2o-2h-dwV" firstAttribute="leading" secondItem="1KW-Gi-fUg" secondAttribute="leading" constant="10" id="Xyd-8t-Cjg"/>
+                        <constraint firstItem="Kxk-mE-9e2" firstAttribute="leading" secondItem="u2o-2h-dwV" secondAttribute="trailing" constant="50" id="lNL-Sj-bnO"/>
                         <constraint firstItem="fSb-Cf-DVA" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="yni-a6-CWA"/>
                     </constraints>
                 </view>
