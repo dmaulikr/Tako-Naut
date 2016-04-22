@@ -10,6 +10,7 @@
 #import "TNGameSession.h"
 #import "TNConstants.h"
 #import "TNMacros.h"
+#import "TNAppDelegate.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface TNGameViewController() <TNGameSessionDelegate>
@@ -63,41 +64,49 @@
 {
   [super viewDidAppear:animated];
   
-  //--- setup current level stuff ---//
-  self.currentLevelPanel.hidden = YES;
-  self.currentLevelPanel.layer.borderColor = MAGENTA_COLOR.CGColor;
-  self.currentLevelPanel.layer.borderWidth = 2.0;
-  
-  //--- setup swipes ---//
-  self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-  self.swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-  [self.gameView addGestureRecognizer:self.swipeRight];
-  
-  self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-  self.swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-  [self.gameView addGestureRecognizer:self.swipeLeft];
-  
-  self.swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-  self.swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-  [self.gameView addGestureRecognizer:self.swipeUp];
-  
-  self.swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-  self.swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
-  [self.gameView addGestureRecognizer:self.swipeDown];
-  
-  //--- game over view ---//
-  self.gameOverView.hidden = YES;
-  self.gameOverPanel.layer.borderColor = [MAGENTA_COLOR CGColor];
-  self.gameOverPanel.layer.borderWidth = 2.0;
-  
-  //--- setup game session ---//
-  self.gameSession = [[TNGameSession alloc] initWithView:self.gameView];
-  self.gameSession.delegate = self;
-  [self.gameSession startLevel:1];
-  
-  //--- setup timer ---//
-  self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
-  [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+  if (!self.gameSession)
+  {
+    //--- setup current level stuff ---//
+    self.currentLevelPanel.hidden = YES;
+    self.currentLevelPanel.layer.borderColor = MAGENTA_COLOR.CGColor;
+    self.currentLevelPanel.layer.borderWidth = 2.0;
+    
+    //--- setup swipes ---//
+    self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    self.swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.gameView addGestureRecognizer:self.swipeRight];
+    
+    self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    self.swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.gameView addGestureRecognizer:self.swipeLeft];
+    
+    self.swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    self.swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.gameView addGestureRecognizer:self.swipeUp];
+    
+    self.swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    self.swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.gameView addGestureRecognizer:self.swipeDown];
+    
+    //--- game over view ---//
+    self.gameOverView.hidden = YES;
+    self.gameOverPanel.layer.borderColor = [MAGENTA_COLOR CGColor];
+    self.gameOverPanel.layer.borderWidth = 2.0;
+    
+    //--- setup game session ---//
+    self.gameSession = [[TNGameSession alloc] initWithView:self.gameView];
+    self.gameSession.delegate = self;
+    [self.gameSession startLevel:1];
+    
+    //--- setup timer ---//
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
+    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+  }
+  else
+  {
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
+    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+  }
 }
 
 #pragma mark - Gesture Recognizer Stuff
@@ -108,6 +117,12 @@
 }
 
 #pragma mark - IBActions
+
+- (IBAction)pauseButtonTouched:(id)sender
+{
+  [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+  [[TNAppDelegate sharedInstance] selectScreen:STMenu];
+}
 
 - (IBAction)gameOverTouched:(id)sender
 {
@@ -182,7 +197,6 @@
 {
   [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
   
-  [self.view bringSubviewToFront:self.gameOverView];
   [self.gameOverView setHidden:NO];
   self.gameOverView.alpha = 0.0f;
   self.scoreLabel_inGameOver.text = self.scoreLabel.text;

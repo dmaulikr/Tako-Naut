@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 };
 
 @interface TNTile : UIImageView
-- (bool)checkWallCollision:(CGRect)frame;
+- (TNTile *)checkWallCollision:(CGRect)frame;
 - (bool)collidesNorthOf:(CGRect)frame;
 - (bool)collidesSouthOf:(CGRect)frame;
 - (bool)collidesWestOf:(CGRect)frame;
@@ -39,5 +39,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) int y;
 @property(nonatomic,assign) BOOL isDestroyable;
 @property(nonatomic,assign) BOOL isBlinking;
+@property(nonatomic,assign) BOOL isAngry;
 @property(nonatomic,weak) TNGameSession *gameSession;
 @end

@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNTutorialViewController">
             <connections>
-                <outlet property="enemyImage" destination="9bD-2h-SzT" id="S6H-6Z-Wg7"/>
+                <outlet property="enemyImage" destination="TOg-L6-Qkn" id="iSy-RR-gtE"/>
+                <outlet property="enemyImage2" destination="9bD-2h-SzT" id="3fW-lt-Pq8"/>
                 <outlet property="firstArrow" destination="KoU-fV-R6s" id="suj-l3-TtS"/>
                 <outlet property="goalImage" destination="AVy-z7-Vx6" id="fUA-9d-tYv"/>
                 <outlet property="hurryupLabel" destination="MVt-XV-jvV" id="BJF-Zm-XPJ"/>
@@ -22,10 +23,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9bD-2h-SzT">
-                    <rect key="frame" x="184" y="284" width="32" height="32"/>
+                    <rect key="frame" x="184" y="324" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="FKR-2U-y3n"/>
                         <constraint firstAttribute="height" constant="32" id="gEK-nt-Xns"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TOg-L6-Qkn">
+                    <rect key="frame" x="184" y="244" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="HVe-Bn-Bqa"/>
+                        <constraint firstAttribute="height" constant="32" id="Nnn-J8-Wcu"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-Ke-pSO" userLabel="Player Image">
@@ -67,7 +75,7 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVt-XV-jvV" customClass="MXLabel">
-                    <rect key="frame" x="263.5" y="233" width="73" height="21"/>
+                    <rect key="frame" x="263.5" y="203" width="73" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -83,12 +91,14 @@
                 <constraint firstItem="KoU-fV-R6s" firstAttribute="leading" secondItem="9bD-2h-SzT" secondAttribute="trailing" constant="18" id="YLh-bZ-YbW"/>
                 <constraint firstItem="AVy-z7-Vx6" firstAttribute="leading" secondItem="DlT-ev-XqM" secondAttribute="trailing" constant="18" id="ZPi-Wv-U28"/>
                 <constraint firstItem="KoU-fV-R6s" firstAttribute="centerY" secondItem="Qe5-Ke-pSO" secondAttribute="centerY" id="aaz-Sb-7Oc"/>
-                <constraint firstItem="9bD-2h-SzT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="fK3-uF-I5l"/>
+                <constraint firstItem="9bD-2h-SzT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="40" id="fK3-uF-I5l"/>
                 <constraint firstItem="AVy-z7-Vx6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="100" id="iyc-ec-JdN"/>
                 <constraint firstItem="AVy-z7-Vx6" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jj5-K7-t0z"/>
                 <constraint firstItem="Qe5-Ke-pSO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jpq-Ym-dxI"/>
-                <constraint firstItem="KoU-fV-R6s" firstAttribute="top" secondItem="MVt-XV-jvV" secondAttribute="bottom" constant="30" id="kwT-1o-kIX"/>
+                <constraint firstItem="KoU-fV-R6s" firstAttribute="top" secondItem="MVt-XV-jvV" secondAttribute="bottom" constant="60" id="kwT-1o-kIX"/>
+                <constraint firstItem="TOg-L6-Qkn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-40" id="mDV-Gh-7nD"/>
                 <constraint firstItem="Qe5-Ke-pSO" firstAttribute="leading" secondItem="KoU-fV-R6s" secondAttribute="trailing" constant="18" id="pxj-xp-vaW"/>
+                <constraint firstItem="TOg-L6-Qkn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-100" id="qW0-6H-e4g"/>
                 <constraint firstItem="9bD-2h-SzT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-100" id="tiH-Ag-CJw"/>
                 <constraint firstItem="MVt-XV-jvV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wNO-zd-mNy"/>
             </constraints>

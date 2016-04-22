@@ -26,22 +26,10 @@
 {
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;
-  self.layer.zPosition = 1;
+  self.layer.zPosition = 10;
   self.path = [@[] mutableCopy];
   self.velocity = CGPointMake(0, 0);
   return self;
-}
-
-- (bool)checkEnemyCollision:(CGRect)frame
-{
-  for (TNEnemy *enemy in self.gameSession.enemyCollaborator.enemies)
-  {
-    if (enemy != self && CGRectIntersectsRect(enemy.frame, frame))
-    {
-      return true;
-    }
-  }
-  return false;
 }
 
 - (void)update:(CGFloat)deltaTime
@@ -82,10 +70,10 @@
     CGRect westFrame = CGRectMake(self.frame.origin.x  + speed, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     CGRect northFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y - speed, self.frame.size.width, self.frame.size.height);
     CGRect southFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + speed, self.frame.size.width, self.frame.size.height);
-    BOOL collidesEast = [self checkWallCollision:eastFrame];
-    BOOL collidesWest = [self checkWallCollision:westFrame];
-    BOOL collidesNorth = [self checkWallCollision:northFrame];
-    BOOL collidesSouth = [self checkWallCollision:southFrame];
+    BOOL collidesEast = [self checkWallCollision:eastFrame] != nil;
+    BOOL collidesWest = [self checkWallCollision:westFrame] != nil;
+    BOOL collidesNorth = [self checkWallCollision:northFrame] != nil;
+    BOOL collidesSouth = [self checkWallCollision:southFrame] != nil;
     
     NSMutableArray *possibleDirections = [NSMutableArray array];
     if (!collidesEast) [possibleDirections addObject:@{@"move":@('e'), @"frame":[NSValue valueWithCGRect:eastFrame]}];

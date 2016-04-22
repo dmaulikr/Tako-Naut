@@ -52,7 +52,6 @@
     enemy.hidden = YES;
     enemy.wantSpawn = i == 0;
     [self.gameSession.mazeView addSubview:enemy];
-    [self.gameSession.mazeView bringSubviewToFront:enemy];
     [self.spawnableEnemies addObject:enemy];
   }
 }
@@ -63,7 +62,8 @@
   {
     if (currentEnemy.hidden)
     {
-      currentEnemy.tag = enemy.tag;
+      //currentEnemy.tag = enemy.tag;
+      currentEnemy.tag = arc4random() % 2;
       currentEnemy.animationImages = [[UIImage imageNamed:currentEnemy.tag == 1 ? @"enemy2" : @"enemy"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
       [currentEnemy startAnimating];
       [self.spawnableEnemies removeObject:currentEnemy];
@@ -72,7 +72,8 @@
         currentEnemy.hidden = NO;
         currentEnemy.alpha = 1.0;
       } completion:^(BOOL finished) {
-        currentEnemy.speed = currentEnemy.tag == 1 ? self.speed / 6 : self.speed;
+        //currentEnemy.speed = currentEnemy.tag == 1 ? self.speed / 6 : self.speed;
+        currentEnemy.speed = self.speed;
       }];
       currentEnemy.frame = enemy.frame;
       break;

@@ -23,17 +23,30 @@ typedef enum : NSUInteger {
 
 @implementation TNTile
 
-- (bool)checkWallCollision:(CGRect)frame
+- (TNTile *)checkWallCollision:(CGRect)frame
+{
+  NSArray *walls = [self.gameSession.wallsDictionary allValues];
+  for (TNTile *wall in walls)
+  {
+    if (wall.tag != TTExplodedWall && CGRectIntersectsRect(wall.frame, frame))
+    {
+      return wall;
+    }
+  }
+  return nil;
+}
+
+- (CGRect)wallCollision:(CGRect)frame
 {
   NSArray *walls = [self.gameSession.wallsDictionary allValues];
   for (UIImageView *wall in walls)
   {
     if (wall.tag != TTExplodedWall && CGRectIntersectsRect(wall.frame, frame))
     {
-      return true;
+      return CGRectIntersection(wall.frame, frame);
     }
   }
-  return false;
+  return CGRectZero;
 }
 
 - (bool)collidesNorthOf:(CGRect)frame
@@ -101,34 +114,59 @@ typedef enum : NSUInteger {
   float vely = self.velocity.y + self.velocity.y * deltaTime;
   bool didHorizontalMove = false;
   bool didVerticalMove = false;
+  bool didExplosion = false;
   
   //--- checking horizontal move ---//
   CGRect frameOnHorizontalMove = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
-  if ((velx < 0 || velx > 0) && ![self checkWallCollision:frameOnHorizontalMove])
+  if (velx < 0 || velx > 0)
   {
-    didHorizontalMove = true;
-    frame = frameOnHorizontalMove;
-    
-    if (vely != 0 && !(self.lastSwipe == UISwipeGestureRecognizerDirectionUp || self.lastSwipe == UISwipeGestureRecognizerDirectionDown))
+    TNTile *collidedWall = [self checkWallCollision:frameOnHorizontalMove];
+    if (!collidedWall)
     {
-      self.velocity = CGPointMake(self.velocity.x, 0);
+      didHorizontalMove = true;
+      frame = frameOnHorizontalMove;
+      
+      if (vely != 0 && !(self.lastSwipe == UISwipeGestureRecognizerDirectionUp || self.lastSwipe == UISwipeGestureRecognizerDirectionDown))
+      {
+        self.velocity = CGPointMake(self.velocity.x, 0);
+      }
+    }
+    
+    if (collidedWall && self.isAngry && collidedWall.tag == TTWall && collidedWall.isDestroyable)
+    {
+      [collidedWall explode:nil];
+      collidedWall.tag = TTExplodedWall;
+      [self setIsAngry:NO];
+      didExplosion = YES;
     }
   }
   
   //--- checking vertical move ---//
   CGRect frameOnVerticalMove = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
-  if ((vely < 0 || vely > 0) && ![self checkWallCollision:frameOnVerticalMove])
+  if (vely < 0 || vely > 0)
   {
-    didVerticalMove = true;
-    frame = frameOnVerticalMove;
-    
-    if (velx != 0 && !(self.lastSwipe == UISwipeGestureRecognizerDirectionLeft || self.lastSwipe == UISwipeGestureRecognizerDirectionRight))
+    TNTile *collidedWall = [self checkWallCollision:frameOnVerticalMove];
+    if (!collidedWall)
     {
-      self.velocity = CGPointMake(0, self.velocity.y);
+      didVerticalMove = true;
+      frame = frameOnVerticalMove;
+      
+      if (velx != 0 && !(self.lastSwipe == UISwipeGestureRecognizerDirectionLeft || self.lastSwipe == UISwipeGestureRecognizerDirectionRight))
+      {
+        self.velocity = CGPointMake(0, self.velocity.y);
+      }
+    }
+    
+    if (collidedWall && self.isAngry && collidedWall.tag == TTWall && collidedWall.isDestroyable)
+    {
+      [collidedWall explode:nil];
+      collidedWall.tag = TTExplodedWall;
+      [self setIsAngry:NO];
+      didExplosion = YES;
     }
   }
   
-  if (didHorizontalMove || didVerticalMove)
+  if (didHorizontalMove || didVerticalMove || didExplosion)
   {
     self.frame = frame;
   }

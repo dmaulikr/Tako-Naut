@@ -13,6 +13,7 @@
 
 @interface TNTutorialViewController ()
 @property IBOutlet UIImageView *enemyImage;
+@property IBOutlet UIImageView *enemyImage2;
 @property IBOutlet UIImageView *playerImage;
 @property IBOutlet UIImageView *goalImage;
 @property IBOutlet UIImageView *firstArrow;
@@ -41,6 +42,11 @@
   self.enemyImage.animationDuration = 0.4f;
   self.enemyImage.animationRepeatCount = 0;
   [self.enemyImage startAnimating];
+  
+  self.enemyImage2.animationImages = [[UIImage imageNamed:@"enemy2"] spritesWiteSize:CGSizeMake(32, 32)];
+  self.enemyImage2.animationDuration = 0.4f;
+  self.enemyImage2.animationRepeatCount = 0;
+  [self.enemyImage2 startAnimating];
   
   //--- playerImage stuff ---//
   self.playerImage.animationImages = [[UIImage imageNamed:@"player"] spritesWiteSize:CGSizeMake(32, 32)];

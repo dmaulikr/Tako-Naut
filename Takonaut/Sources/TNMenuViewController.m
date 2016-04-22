@@ -51,10 +51,16 @@
   self.aboutButton.layer.borderWidth = 2.0;
   [self refreshAchievementsButton];
   /*
-  [[MXGameCenterManager sharedInstance] authenticateLocalPlayer:^(BOOL isEnabled) {
-    [self refreshAchievementsButton];
-  }];
+   [[MXGameCenterManager sharedInstance] authenticateLocalPlayer:^(BOOL isEnabled) {
+   [self refreshAchievementsButton];
+   }];
    */
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  [self.gameButton setTitle:![TNAppDelegate sharedInstance].gameVc ? @"New Game" : @"Resume Game" forState:UIControlStateNormal];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -75,8 +81,14 @@
 - (IBAction)newGameTouched
 {
   [[MXAudioManager sharedInstance] play:STSelectItem];
-  //[[TNAppDelegate sharedInstance] selectScreen:STNewGame];
-  [[TNAppDelegate sharedInstance] selectScreen:STTutorial];
+  if (![TNAppDelegate sharedInstance].gameVc)
+  {
+    [[TNAppDelegate sharedInstance] selectScreen:STTutorial];
+  }
+  else
+  {
+    [[TNAppDelegate sharedInstance] selectScreen:STResumeGame];
+  }
 }
 
 - (IBAction)highScoresTouched

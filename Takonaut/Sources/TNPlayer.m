@@ -14,14 +14,23 @@
 @end
 
 @implementation TNPlayer
+@synthesize isAngry = _isAngry;
 
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(TNGameSession *)gameSession
 {
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;
   self.speed = PLAYER_SPEED;
-  self.layer.zPosition = 1;
+  self.layer.zPosition = 10;
   return self;
+}
+
+- (void)setIsAngry:(BOOL)isAngry
+{
+  _isAngry = isAngry;
+  
+  self.animationImages = [[UIImage imageNamed:isAngry ? @"player_angry" : @"player"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+  [self startAnimating];
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction

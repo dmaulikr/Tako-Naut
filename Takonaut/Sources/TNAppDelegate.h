@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TNGameViewController.h"
 
 typedef NS_ENUM(NSUInteger, ScreenType) {
   STMenu,
@@ -23,4 +24,5 @@ typedef NS_ENUM(NSUInteger, ScreenType) {
 + (TNAppDelegate *)sharedInstance;
 - (void)selectScreen:(ScreenType)screenType;
 @property(nonatomic,strong) UIWindow *window;
+@property(nonatomic,strong) TNGameViewController *gameVc;
 @end

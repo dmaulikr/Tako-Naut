@@ -15,7 +15,6 @@
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface TNAppDelegate ()
-
 @end
 
 @implementation TNAppDelegate
@@ -56,7 +55,11 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
       [self transitionToViewController:[TNTutorialViewController create]];
       break;
     case STNewGame:
-      [self transitionToViewController:[TNGameViewController create]];
+      self.gameVc = [TNGameViewController create];
+      [self transitionToViewController:self.gameVc];
+      break;
+    case STResumeGame:
+      [self transitionToViewController:self.gameVc];
       break;
     case STHighScores:
       if ([[MXGameCenterManager sharedInstance] gameCenterEnabled])
