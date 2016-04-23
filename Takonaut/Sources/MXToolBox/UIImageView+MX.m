@@ -68,9 +68,9 @@
 
 - (void)blink:(NSUInteger)duration completion:(void (^)())completion
 {
-  [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionCurveLinear animations:^{
-    [UIView setAnimationRepeatCount:duration / 0.2];
-    self.alpha = 0.5;
+  [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView setAnimationRepeatCount:duration / 0.3];
+    self.alpha = 0.2;
   } completion:^(BOOL finished) {
     self.alpha = 1.0;
     if (completion)

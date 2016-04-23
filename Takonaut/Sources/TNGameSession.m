@@ -18,7 +18,7 @@
 #import <MXAudioManager/MXAudioManager.h>
 
 #define BASE_MAZE_DIMENSION 7
-#define BKG_COLORS @[BLUE_COLOR, GREEN_COLOR, CYAN_COLOR, YELLOW_COLOR, RED_COLOR]
+#define BKG_COLORS @[MAGENTA_COLOR, BLUE_COLOR, GREEN_COLOR, CYAN_COLOR, YELLOW_COLOR, RED_COLOR]
 
 @interface TNGameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;
@@ -50,7 +50,7 @@
 
 - (void)startLevel:(NSUInteger)levelNumber
 {
-  self.gameView.hidden = YES;
+  self.gameView.alpha = 0;
   
   //--- setup gameplay varables ---//
   self.currentLevel = levelNumber;
@@ -98,9 +98,11 @@
   [self.delegate didUpdateScore:self.currentScore];
   [self.delegate didUpdateLives:self.currentLives];
   
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.2), dispatch_get_main_queue(), ^{
-    self.gameView.hidden = NO;
-  });
+  [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    self.gameView.alpha = 1;
+  } completion:^(BOOL finished) {
+      [self.delegate didUpdateLevel:self.currentLevel];
+  }];
 }
 
 - (void)makeMaze
@@ -195,7 +197,8 @@
   {
     item.tag = TTCoin;
     item.image = [[UIImage imageNamed:@"coin"] imageColored:[UIColor yellowColor]];
-    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
+    
+    [UIView animateWithDuration:0.8 delay:RAND(0.5, 1.0) options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
       item.layer.transform = CATransform3DRotate(CATransform3DIdentity, M_PI, 0, 1, 0);
     } completion:^(BOOL finished) {
     }];
@@ -211,17 +214,19 @@
     item.tag = TTBomb;
     item.image = [[UIImage imageNamed:@"bomb"] imageColored:RED_COLOR];
   }
-  else if ((arc4random() % 100) >= 98)
+  else if ((arc4random() % 100) >= 40)
   {
     item.tag = TTTime;
-    item.image = [[UIImage imageNamed:@"time"] imageColored:MAGENTA_COLOR];
+    item.animationImages = [[UIImage imageNamed:@"time"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
+    item.animationDuration = 1;
+    [item startAnimating];
   }
   else if ((arc4random() % 100) >= 99)
   {
     int minionSize = TILE_SIZE;
     item = [[TNTile alloc] initWithFrame:CGRectMake(col * minionSize, row * minionSize, minionSize, minionSize)];
     item.tag = TTMinion;
-    item.image = [UIImage imageNamed:@"hearth"];
+    item.image = [UIImage imageNamed:@"minion"];
   }
   
   if (item.tag != -1)
@@ -428,7 +433,6 @@
   {
     [self startLevel:self.currentLevel + 1];
     self.currentScore += 100;
-    [self.delegate didUpdateLevel:self.currentLevel];
   }
   
   //--- collision if player is dead---//

@@ -127,6 +127,7 @@
 - (IBAction)gameOverTouched:(id)sender
 {
   [self.gameOverView setHidden:YES];
+  [self.view sendSubviewToBack:self.gameOverView];
   self.hurryUpLabel.hidden = YES;
   [self.gameSession startLevel:1];
   
@@ -198,6 +199,7 @@
   [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
   
   [self.gameOverView setHidden:NO];
+  [self.view bringSubviewToFront:self.gameOverView];
   self.gameOverView.alpha = 0.0f;
   self.scoreLabel_inGameOver.text = self.scoreLabel.text;
   
