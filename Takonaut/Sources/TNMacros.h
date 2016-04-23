@@ -16,6 +16,7 @@
 
 #define WHITE_COLOR [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]
 #define GREEN_COLOR [UIColor colorWithRed:0.0/255.0 green:255.0/255.0 blue:0.0/255.0 alpha:1.0]
+#define ELECTRIC_COLOR [UIColor colorWithRed:100.0/255.0 green:0.0/255.0 blue:100.0/255.0 alpha:1.0]
 #define MAGENTA_COLOR [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:255.0/255.0 alpha:1.0]
 #define CYAN_COLOR [UIColor colorWithRed:0.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]
 #define BLACK_COLOR [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0]
