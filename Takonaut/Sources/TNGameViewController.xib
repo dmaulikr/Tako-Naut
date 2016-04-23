@@ -96,14 +96,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPd-uN-w2V">
-                            <rect key="frame" x="285" y="10.5" width="30" height="30"/>
+                            <rect key="frame" x="287.5" y="13" width="25" height="25"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="Nok-w0-dQ8"/>
-                                <constraint firstAttribute="height" constant="30" id="dog-ek-alo"/>
+                                <constraint firstAttribute="width" constant="25" id="Nok-w0-dQ8"/>
+                                <constraint firstAttribute="height" constant="25" id="dog-ek-alo"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                            <state key="normal" title="||">
+                            <state key="normal" title="II">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
