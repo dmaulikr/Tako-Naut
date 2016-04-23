@@ -214,7 +214,7 @@
     item.tag = TTBomb;
     item.image = [[UIImage imageNamed:@"bomb"] imageColored:RED_COLOR];
   }
-  else if ((arc4random() % 100) >= 40)
+  else if ((arc4random() % 100) >= 98)
   {
     item.tag = TTTime;
     item.animationImages = [[UIImage imageNamed:@"time"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
