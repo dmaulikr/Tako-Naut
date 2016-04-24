@@ -66,7 +66,7 @@
          }];
         
         // loading achievements
-        [self loadAchievements];
+        //[self loadAchievements];
       }
       else
       {

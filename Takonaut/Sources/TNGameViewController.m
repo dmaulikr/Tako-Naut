@@ -11,6 +11,7 @@
 #import "TNConstants.h"
 #import "TNMacros.h"
 #import "TNAppDelegate.h"
+#import "MXToolBox.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 @interface TNGameViewController() <TNGameSessionDelegate>
@@ -206,7 +207,7 @@
   [UIView animateWithDuration:0.5f animations:^{
     self.gameOverView.alpha = 1.0f;
   } completion:^(BOOL finished) {
-    //    [TNHighScoresViewController saveScore:session.currentScore];
+      [[MXGameCenterManager sharedInstance] saveScore:session.currentScore];
   }];
 }
 

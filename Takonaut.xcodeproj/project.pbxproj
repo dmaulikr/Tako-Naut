@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D01BB4D1CCA10980088336D /* player_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D01BB4C1CCA10980088336D /* player_angry.png */; };
+		1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D07BEE81CCD36E80062EFE6 /* GameKit.framework */; };
 		1D1FBF051CC66EFA00A0CB0A /* TNGameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEE91CC66EFA00A0CB0A /* TNGameSession.m */; };
 		1D1FBF061CC66EFA00A0CB0A /* TNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */; };
 		1D1FBF071CC66EFA00A0CB0A /* TNMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBEEB1CC66EFA00A0CB0A /* TNMenuViewController.xib */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		1D01BB4C1CCA10980088336D /* player_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_angry.png; path = Takonaut/Resources/Images/player_angry.png; sourceTree = SOURCE_ROOT; };
+		1D07BEE81CCD36E80062EFE6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		1D1FBEE91CC66EFA00A0CB0A /* TNGameSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNGameSession.m; path = Takonaut/Sources/TNGameSession.m; sourceTree = SOURCE_ROOT; };
 		1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNGameViewController.xib; path = Takonaut/Sources/TNGameViewController.xib; sourceTree = SOURCE_ROOT; };
 		1D1FBEEB1CC66EFA00A0CB0A /* TNMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNMenuViewController.xib; path = Takonaut/Sources/TNMenuViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -181,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */,
+				1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +401,7 @@
 		1D98C7CE1C9AD67A00161EB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D07BEE81CCD36E80062EFE6 /* GameKit.framework */,
 				1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */,
 			);
 			name = Frameworks;
@@ -463,7 +467,7 @@
 						DevelopmentTeam = 8XE9QV2E26;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
