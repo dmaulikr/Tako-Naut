@@ -42,28 +42,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9N-Cl-cDF" userLabel="menu view">
                     <rect key="frame" x="150" y="185" width="300" height="290"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-gn-cV5" userLabel="Resume Game" customClass="MXButton">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="6YC-hn-739"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <size key="titleShadowOffset" width="1" height="1"/>
-                            <state key="normal" title="New Game">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.new_game"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="newGameTouched" destination="-1" eventType="touchUpInside" id="uBa-rX-W5Q"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hr-SH-E5C" customClass="MXButton">
                             <rect key="frame" x="0.0" y="60" width="300" height="50"/>
                             <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
@@ -150,6 +128,28 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="aboutTouched" destination="-1" eventType="touchUpInside" id="Ir3-UB-XVz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-gn-cV5" userLabel="Resume Game" customClass="MXButton">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="6YC-hn-739"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <size key="titleShadowOffset" width="1" height="1"/>
+                            <state key="normal" title="New Game">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.menu.new_game"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="newGameTouched" destination="-1" eventType="touchUpInside" id="uBa-rX-W5Q"/>
                             </connections>
                         </button>
                     </subviews>

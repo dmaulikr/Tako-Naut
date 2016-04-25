@@ -120,8 +120,8 @@ typedef enum : NSUInteger {
   CGRect frameOnHorizontalMove = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
   if (velx < 0 || velx > 0)
   {
-    TNTile *collidedWall = [self checkWallCollision:frameOnHorizontalMove];
-    if (!collidedWall)
+    self.collidedWall = [self checkWallCollision:frameOnHorizontalMove];
+    if (!self.collidedWall)
     {
       didHorizontalMove = true;
       frame = frameOnHorizontalMove;
@@ -132,10 +132,10 @@ typedef enum : NSUInteger {
       }
     }
     
-    if (collidedWall && self.isAngry && collidedWall.tag == TTWall && collidedWall.isDestroyable)
+    if (self.collidedWall && self.isAngry && self.collidedWall.tag == TTWall && self.collidedWall.isDestroyable)
     {
-      [collidedWall explode:nil];
-      collidedWall.tag = TTExplodedWall;
+      [self.collidedWall explode:nil];
+      self.collidedWall.tag = TTExplodedWall;
       [self setIsAngry:NO];
       didExplosion = YES;
     }
@@ -145,8 +145,8 @@ typedef enum : NSUInteger {
   CGRect frameOnVerticalMove = CGRectMake(frame.origin.x, frame.origin.y + vely, frame.size.width, frame.size.height);
   if (vely < 0 || vely > 0)
   {
-    TNTile *collidedWall = [self checkWallCollision:frameOnVerticalMove];
-    if (!collidedWall)
+    self.collidedWall = [self checkWallCollision:frameOnVerticalMove];
+    if (!self.collidedWall)
     {
       didVerticalMove = true;
       frame = frameOnVerticalMove;
@@ -157,10 +157,10 @@ typedef enum : NSUInteger {
       }
     }
     
-    if (collidedWall && self.isAngry && collidedWall.tag == TTWall && collidedWall.isDestroyable)
+    if (self.collidedWall && self.isAngry && self.collidedWall.tag == TTWall && self.collidedWall.isDestroyable)
     {
-      [collidedWall explode:nil];
-      collidedWall.tag = TTExplodedWall;
+      [self.collidedWall explode:nil];
+      self.collidedWall.tag = TTExplodedWall;
       [self setIsAngry:NO];
       didExplosion = YES;
     }

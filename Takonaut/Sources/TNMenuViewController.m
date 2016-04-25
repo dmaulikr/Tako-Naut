@@ -20,7 +20,6 @@
 @property IBOutlet UIButton *achievementsButton;
 @property IBOutlet UIButton *settingsButton;
 @property IBOutlet UIButton *aboutButton;
-
 @property IBOutlet NSLayoutConstraint *achievementsButtonHeight;
 @property IBOutlet NSLayoutConstraint *achievementsButtonBottomMargin;
 @end
@@ -33,12 +32,17 @@
   return menuViewController;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+  return YES;
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   self.versionLabel.text = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
   
-  //--- setting bordereed buttons ---//
+  //--- setting buttons ---//
   self.gameButton.layer.borderColor = MAGENTA_COLOR.CGColor;
   self.gameButton.layer.borderWidth = 2.0;
   self.highScoresButton.layer.borderColor = MAGENTA_COLOR.CGColor;
@@ -51,21 +55,16 @@
   self.aboutButton.layer.borderWidth = 2.0;
   [self refreshAchievementsButton];
   
-  [[MXGameCenterManager sharedInstance] authenticateLocalPlayer:^(BOOL isEnabled) {
+  //[[MXGameCenterManager sharedInstance] authenticateLocalPlayer:^(BOOL isEnabled) {
     //--- actually we don't have achievements ---//
     //[self refreshAchievementsButton];
-  }];
+  //}];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  [self.gameButton setTitle:![TNAppDelegate sharedInstance].gameVc ? @"New Game" : @"Resume Game" forState:UIControlStateNormal];
-}
-
-- (BOOL)prefersStatusBarHidden
-{
-  return YES;
+  [self.gameButton setTitle:![TNAppDelegate sharedInstance].gameVc ? LOCALIZE(@"takonaut.menu.new_game") : LOCALIZE(@"takonaut.menu.resume_game") forState:UIControlStateNormal];
 }
 
 - (void)refreshAchievementsButton

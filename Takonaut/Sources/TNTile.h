@@ -40,5 +40,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) BOOL isDestroyable;
 @property(nonatomic,assign) BOOL isBlinking;
 @property(nonatomic,assign) BOOL isAngry;
+@property(nonatomic,weak) TNTile *collidedWall;
 @property(nonatomic,weak) TNGameSession *gameSession;
 @end

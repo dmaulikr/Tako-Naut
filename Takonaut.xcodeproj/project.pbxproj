@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D01BB4D1CCA10980088336D /* player_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D01BB4C1CCA10980088336D /* player_angry.png */; };
 		1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D07BEE81CCD36E80062EFE6 /* GameKit.framework */; };
+		1D092D311CCE0CC900396071 /* TNSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D092D301CCE0CC900396071 /* TNSettingsViewController.m */; };
+		1D092D331CCE0EC300396071 /* TNSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D092D321CCE0EC300396071 /* TNSettingsViewController.xib */; };
 		1D1FBF051CC66EFA00A0CB0A /* TNGameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEE91CC66EFA00A0CB0A /* TNGameSession.m */; };
 		1D1FBF061CC66EFA00A0CB0A /* TNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */; };
 		1D1FBF071CC66EFA00A0CB0A /* TNMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBEEB1CC66EFA00A0CB0A /* TNMenuViewController.xib */; };
@@ -35,7 +37,6 @@
 		1D1FBF351CC6700900A0CB0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF341CC6700900A0CB0A /* Assets.xcassets */; };
 		1D1FBF371CC6701100A0CB0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF361CC6701100A0CB0A /* LaunchScreen.storyboard */; };
 		1D1FBF391CC6702000A0CB0A /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF381CC6702000A0CB0A /* gameConfiguration.json */; };
-		1D1FBF3C1CC6703B00A0CB0A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF3A1CC6703B00A0CB0A /* Localizable.strings */; };
 		1D1FBF3F1CC6705F00A0CB0A /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF3E1CC6705B00A0CB0A /* Joystix.ttf */; };
 		1D1FBF4C1CC6708100A0CB0A /* soundEnemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF401CC6707900A0CB0A /* soundEnemySpawn.caf */; };
 		1D1FBF4D1CC6708100A0CB0A /* soundGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF411CC6707900A0CB0A /* soundGame.caf */; };
@@ -69,6 +70,22 @@
 		1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */; };
 		1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */; };
 		1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */; };
+		1DE6B3781CCE95A500DC92AC /* iconLeftArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B36E1CCE95A500DC92AC /* iconLeftArrow@2x.png */; };
+		1DE6B3791CCE95A500DC92AC /* iconMugSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */; };
+		1DE6B37A1CCE95A500DC92AC /* iconPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3701CCE95A500DC92AC /* iconPause@2x.png */; };
+		1DE6B37B1CCE95A500DC92AC /* iconRightArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3711CCE95A500DC92AC /* iconRightArrow@2x.png */; };
+		1DE6B37C1CCE95A500DC92AC /* iconSwitchOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */; };
+		1DE6B37D1CCE95A500DC92AC /* iconSwitchOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */; };
+		1DE6B37E1CCE95A500DC92AC /* iconVolumeHigh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */; };
+		1DE6B37F1CCE95A500DC92AC /* iconVolumeLow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3751CCE95A500DC92AC /* iconVolumeLow@2x.png */; };
+		1DE6B3801CCE95A500DC92AC /* iconVolumeMid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3761CCE95A500DC92AC /* iconVolumeMid@2x.png */; };
+		1DE6B3811CCE95A500DC92AC /* iconVolumeMute@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3771CCE95A500DC92AC /* iconVolumeMute@2x.png */; };
+		1DE6B3841CCE962300DC92AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3821CCE962300DC92AC /* Localizable.strings */; };
+		1DE6B38A1CCE9F7C00DC92AC /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3891CCE9F7C00DC92AC /* leftArrow.png */; };
+		1DE6B38F1CCEACA700DC92AC /* TNCreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6B38D1CCEACA700DC92AC /* TNCreditsViewController.m */; };
+		1DE6B3901CCEACA700DC92AC /* TNCreditsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B38E1CCEACA700DC92AC /* TNCreditsViewController.xib */; };
+		1DE6B3951CCEB98D00DC92AC /* TNHighScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6B3931CCEB98D00DC92AC /* TNHighScoresViewController.m */; };
+		1DE6B3961CCEB98D00DC92AC /* TNHighScoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3941CCEB98D00DC92AC /* TNHighScoresViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,6 +105,9 @@
 /* Begin PBXFileReference section */
 		1D01BB4C1CCA10980088336D /* player_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_angry.png; path = Takonaut/Resources/Images/player_angry.png; sourceTree = SOURCE_ROOT; };
 		1D07BEE81CCD36E80062EFE6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		1D092D2F1CCE0CC900396071 /* TNSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNSettingsViewController.h; path = Takonaut/Sources/TNSettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		1D092D301CCE0CC900396071 /* TNSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNSettingsViewController.m; path = Takonaut/Sources/TNSettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		1D092D321CCE0EC300396071 /* TNSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNSettingsViewController.xib; path = Takonaut/Sources/TNSettingsViewController.xib; sourceTree = SOURCE_ROOT; };
 		1D1FBEE91CC66EFA00A0CB0A /* TNGameSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNGameSession.m; path = Takonaut/Sources/TNGameSession.m; sourceTree = SOURCE_ROOT; };
 		1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNGameViewController.xib; path = Takonaut/Sources/TNGameViewController.xib; sourceTree = SOURCE_ROOT; };
 		1D1FBEEB1CC66EFA00A0CB0A /* TNMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNMenuViewController.xib; path = Takonaut/Sources/TNMenuViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -139,8 +159,6 @@
 		1D1FBF341CC6700900A0CB0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Takonaut/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		1D1FBF361CC6701100A0CB0A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Takonaut/Resources/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		1D1FBF381CC6702000A0CB0A /* gameConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = gameConfiguration.json; path = Takonaut/Resources/gameConfiguration.json; sourceTree = SOURCE_ROOT; };
-		1D1FBF3B1CC6703B00A0CB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Takonaut/Resources/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
-		1D1FBF3D1CC6704000A0CB0A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Takonaut/Resources/es.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		1D1FBF3E1CC6705B00A0CB0A /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Joystix.ttf; path = Takonaut/Resources/Fonts/Joystix.ttf; sourceTree = SOURCE_ROOT; };
 		1D1FBF401CC6707900A0CB0A /* soundEnemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundEnemySpawn.caf; path = Takonaut/Resources/Sounds/soundEnemySpawn.caf; sourceTree = SOURCE_ROOT; };
 		1D1FBF411CC6707900A0CB0A /* soundGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGame.caf; path = Takonaut/Resources/Sounds/soundGame.caf; sourceTree = SOURCE_ROOT; };
@@ -175,6 +193,27 @@
 		1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTutorialViewController.m; path = Takonaut/Sources/TNTutorialViewController.m; sourceTree = SOURCE_ROOT; };
 		1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNTutorialViewController.xib; path = Takonaut/Sources/TNTutorialViewController.xib; sourceTree = SOURCE_ROOT; };
 		1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightArrow.png; path = Takonaut/Resources/Images/rightArrow.png; sourceTree = SOURCE_ROOT; };
+		1DE6B36E1CCE95A500DC92AC /* iconLeftArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconLeftArrow@2x.png"; path = "Takonaut/Resources/Icons/iconLeftArrow@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconMugSmall@2x.png"; path = "Takonaut/Resources/Icons/iconMugSmall@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3701CCE95A500DC92AC /* iconPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconPause@2x.png"; path = "Takonaut/Resources/Icons/iconPause@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3711CCE95A500DC92AC /* iconRightArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconRightArrow@2x.png"; path = "Takonaut/Resources/Icons/iconRightArrow@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconSwitchOff@2x.png"; path = "Takonaut/Resources/Icons/iconSwitchOff@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconSwitchOn@2x.png"; path = "Takonaut/Resources/Icons/iconSwitchOn@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeHigh@2x.png"; path = "Takonaut/Resources/Icons/iconVolumeHigh@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3751CCE95A500DC92AC /* iconVolumeLow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeLow@2x.png"; path = "Takonaut/Resources/Icons/iconVolumeLow@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3761CCE95A500DC92AC /* iconVolumeMid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeMid@2x.png"; path = "Takonaut/Resources/Icons/iconVolumeMid@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3771CCE95A500DC92AC /* iconVolumeMute@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeMute@2x.png"; path = "Takonaut/Resources/Icons/iconVolumeMute@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3831CCE962300DC92AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Takonaut/Resources/Localizations/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1DE6B3851CCE962800DC92AC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Takonaut/Resources/Localizations/es.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1DE6B3871CCE962D00DC92AC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Takonaut/Resources/Localizations/it.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1DE6B3881CCE963300DC92AC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Takonaut/Resources/Localizations/zh-Hans.lproj/Localizable.strings"; sourceTree = SOURCE_ROOT; };
+		1DE6B3891CCE9F7C00DC92AC /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftArrow.png; path = Takonaut/Resources/Images/leftArrow.png; sourceTree = SOURCE_ROOT; };
+		1DE6B38C1CCEACA700DC92AC /* TNCreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNCreditsViewController.h; path = Takonaut/Sources/TNCreditsViewController.h; sourceTree = SOURCE_ROOT; };
+		1DE6B38D1CCEACA700DC92AC /* TNCreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNCreditsViewController.m; path = Takonaut/Sources/TNCreditsViewController.m; sourceTree = SOURCE_ROOT; };
+		1DE6B38E1CCEACA700DC92AC /* TNCreditsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNCreditsViewController.xib; path = Takonaut/Sources/TNCreditsViewController.xib; sourceTree = SOURCE_ROOT; };
+		1DE6B3921CCEB98D00DC92AC /* TNHighScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNHighScoresViewController.h; path = Takonaut/Sources/TNHighScoresViewController.h; sourceTree = SOURCE_ROOT; };
+		1DE6B3931CCEB98D00DC92AC /* TNHighScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNHighScoresViewController.m; path = Takonaut/Sources/TNHighScoresViewController.m; sourceTree = SOURCE_ROOT; };
+		1DE6B3941CCEB98D00DC92AC /* TNHighScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNHighScoresViewController.xib; path = Takonaut/Sources/TNHighScoresViewController.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +229,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D092D2E1CCE0CB200396071 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1D092D2F1CCE0CC900396071 /* TNSettingsViewController.h */,
+				1D092D301CCE0CC900396071 /* TNSettingsViewController.m */,
+				1D092D321CCE0EC300396071 /* TNSettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		1D1F1C9A1C9A809F0020570D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,9 +350,10 @@
 				1D1FBF341CC6700900A0CB0A /* Assets.xcassets */,
 				1D1FBF361CC6701100A0CB0A /* LaunchScreen.storyboard */,
 				1D1FBF381CC6702000A0CB0A /* gameConfiguration.json */,
-				1D1FBF3A1CC6703B00A0CB0A /* Localizable.strings */,
+				1DE6B3821CCE962300DC92AC /* Localizable.strings */,
 				1D36E0741C91473A0043948F /* Fonts */,
 				1D1F1C9A1C9A809F0020570D /* Sounds */,
+				1DE6B36D1CCE959300DC92AC /* Icons */,
 				1D7670511C7B5E0E0065F110 /* Images */,
 			);
 			name = Resources;
@@ -337,6 +387,9 @@
 			isa = PBXGroup;
 			children = (
 				1D492DFC1CA5719400C515B5 /* Menu */,
+				1DE6B3911CCEB96900DC92AC /* HighScores */,
+				1D092D2E1CCE0CB200396071 /* Settings */,
+				1DE6B38B1CCEAC1900DC92AC /* Credits */,
 				1D492DFB1CA5718800C515B5 /* Game */,
 			);
 			name = Gui;
@@ -372,6 +425,7 @@
 				1D1FBF661CC6708C00A0CB0A /* wall.png */,
 				1D1FBF681CC6708C00A0CB0A /* whirlwind.png */,
 				1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */,
+				1DE6B3891CCE9F7C00DC92AC /* leftArrow.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -415,6 +469,43 @@
 				1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */,
 			);
 			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		1DE6B36D1CCE959300DC92AC /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				1DE6B36E1CCE95A500DC92AC /* iconLeftArrow@2x.png */,
+				1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */,
+				1DE6B3701CCE95A500DC92AC /* iconPause@2x.png */,
+				1DE6B3711CCE95A500DC92AC /* iconRightArrow@2x.png */,
+				1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */,
+				1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */,
+				1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */,
+				1DE6B3751CCE95A500DC92AC /* iconVolumeLow@2x.png */,
+				1DE6B3761CCE95A500DC92AC /* iconVolumeMid@2x.png */,
+				1DE6B3771CCE95A500DC92AC /* iconVolumeMute@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		1DE6B38B1CCEAC1900DC92AC /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				1DE6B38C1CCEACA700DC92AC /* TNCreditsViewController.h */,
+				1DE6B38D1CCEACA700DC92AC /* TNCreditsViewController.m */,
+				1DE6B38E1CCEACA700DC92AC /* TNCreditsViewController.xib */,
+			);
+			name = Credits;
+			sourceTree = "<group>";
+		};
+		1DE6B3911CCEB96900DC92AC /* HighScores */ = {
+			isa = PBXGroup;
+			children = (
+				1DE6B3921CCEB98D00DC92AC /* TNHighScoresViewController.h */,
+				1DE6B3931CCEB98D00DC92AC /* TNHighScoresViewController.m */,
+				1DE6B3941CCEB98D00DC92AC /* TNHighScoresViewController.xib */,
+			);
+			name = HighScores;
 			sourceTree = "<group>";
 		};
 		1DF68F661CAA460E0081B25D /* Tile */ = {
@@ -480,6 +571,8 @@
 			knownRegions = (
 				en,
 				es,
+				it,
+				"zh-Hans",
 			);
 			mainGroup = 1D7670251C7B5B050065F110;
 			productRefGroup = 1D76702F1C7B5B050065F110 /* Products */;
@@ -497,26 +590,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D01BB4D1CCA10980088336D /* player_angry.png in Resources */,
+				1DE6B37A1CCE95A500DC92AC /* iconPause@2x.png in Resources */,
 				1D1FBF561CC6708100A0CB0A /* soundStartGame.caf in Resources */,
 				1D1FBF771CC6708C00A0CB0A /* wall.png in Resources */,
 				1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */,
 				1D1FBF6E1CC6708C00A0CB0A /* enemy2.png in Resources */,
 				1D1FBF501CC6708100A0CB0A /* soundHitCoin.caf in Resources */,
 				1D1FBF4E1CC6708100A0CB0A /* soundGameOver.caf in Resources */,
+				1DE6B37E1CCE95A500DC92AC /* iconVolumeHigh@2x.png in Resources */,
+				1DE6B37D1CCE95A500DC92AC /* iconSwitchOn@2x.png in Resources */,
 				1D1FBF3F1CC6705F00A0CB0A /* Joystix.ttf in Resources */,
 				1D1FBF4C1CC6708100A0CB0A /* soundEnemySpawn.caf in Resources */,
 				1DB69DC91CC80C80008E5F7C /* player.png in Resources */,
+				1DE6B3841CCE962300DC92AC /* Localizable.strings in Resources */,
 				1D1FBF391CC6702000A0CB0A /* gameConfiguration.json in Resources */,
 				1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */,
-				1D1FBF3C1CC6703B00A0CB0A /* Localizable.strings in Resources */,
+				1D092D331CCE0EC300396071 /* TNSettingsViewController.xib in Resources */,
+				1DE6B3901CCEACA700DC92AC /* TNCreditsViewController.xib in Resources */,
 				1D1FBF061CC66EFA00A0CB0A /* TNGameViewController.xib in Resources */,
+				1DE6B38A1CCE9F7C00DC92AC /* leftArrow.png in Resources */,
 				1DB69DC71CC8054E008E5F7C /* soundHitPlayer.caf in Resources */,
 				1D1FBF571CC6708100A0CB0A /* soundTimeOver.caf in Resources */,
+				1DE6B37F1CCE95A500DC92AC /* iconVolumeLow@2x.png in Resources */,
 				1D1FBF731CC6708C00A0CB0A /* minion.png in Resources */,
 				1D1FBF791CC6708C00A0CB0A /* whirlwind.png in Resources */,
 				1D1FBF071CC66EFA00A0CB0A /* TNMenuViewController.xib in Resources */,
 				1D1FBF7C1CC6709C00A0CB0A /* splash.png in Resources */,
 				1D1FBF511CC6708100A0CB0A /* soundHitMinion.caf in Resources */,
+				1DE6B3961CCEB98D00DC92AC /* TNHighScoresViewController.xib in Resources */,
 				1D1FBF721CC6708C00A0CB0A /* key.png in Resources */,
 				1D1FBF531CC6708100A0CB0A /* soundHitWhirlwind.caf in Resources */,
 				1D1FBF6F1CC6708C00A0CB0A /* gate_close.png in Resources */,
@@ -526,12 +627,18 @@
 				1D1FBF521CC6708100A0CB0A /* soundHitTimeBonus.caf in Resources */,
 				1D1FBF761CC6708C00A0CB0A /* time.png in Resources */,
 				1D1FBF351CC6700900A0CB0A /* Assets.xcassets in Resources */,
+				1DE6B3801CCE95A500DC92AC /* iconVolumeMid@2x.png in Resources */,
 				1D1FBF6A1CC6708C00A0CB0A /* bomb.png in Resources */,
+				1DE6B37C1CCE95A500DC92AC /* iconSwitchOff@2x.png in Resources */,
 				1D1FBF4F1CC6708100A0CB0A /* soundHitBomb.caf in Resources */,
 				1D1FBF371CC6701100A0CB0A /* LaunchScreen.storyboard in Resources */,
 				1D1FBF6C1CC6708C00A0CB0A /* coin.png in Resources */,
+				1DE6B3791CCE95A500DC92AC /* iconMugSmall@2x.png in Resources */,
 				1D1FBF4D1CC6708100A0CB0A /* soundGame.caf in Resources */,
+				1DE6B37B1CCE95A500DC92AC /* iconRightArrow@2x.png in Resources */,
 				1D1FBF6D1CC6708C00A0CB0A /* enemy.png in Resources */,
+				1DE6B3781CCE95A500DC92AC /* iconLeftArrow@2x.png in Resources */,
+				1DE6B3811CCE95A500DC92AC /* iconVolumeMute@2x.png in Resources */,
 				1D1FBF711CC6708C00A0CB0A /* hearth.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,10 +675,12 @@
 				1D1FBF2E1CC66FAA00A0CB0A /* UIColor+MX.m in Sources */,
 				1D1FBF2D1CC66FAA00A0CB0A /* MXUtils.m in Sources */,
 				1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */,
+				1DE6B3951CCEB98D00DC92AC /* TNHighScoresViewController.m in Sources */,
 				1D1FBF051CC66EFA00A0CB0A /* TNGameSession.m in Sources */,
 				1D1FBF0B1CC66EFA00A0CB0A /* TNEnemyCollaborator.m in Sources */,
 				1D1FBF2B1CC66FAA00A0CB0A /* MXLabel.m in Sources */,
 				1D1FBF311CC66FAA00A0CB0A /* UIView+MX.m in Sources */,
+				1D092D311CCE0CC900396071 /* TNSettingsViewController.m in Sources */,
 				1D1FBF0A1CC66EFA00A0CB0A /* TNEnemy.m in Sources */,
 				1D1FBF081CC66EFA00A0CB0A /* TNAppDelegate.m in Sources */,
 				1D1FBF0F1CC66EFA00A0CB0A /* TNMenuViewController.m in Sources */,
@@ -580,6 +689,7 @@
 				1D1FBF281CC66FAA00A0CB0A /* MXButton.m in Sources */,
 				1D1FBF0C1CC66EFA00A0CB0A /* TNGameViewController.m in Sources */,
 				1D1FBF291CC66FAA00A0CB0A /* MXGameCenterManager.m in Sources */,
+				1DE6B38F1CCEACA700DC92AC /* TNCreditsViewController.m in Sources */,
 				1D1FBF091CC66EFA00A0CB0A /* TNCollisionCollaborator.m in Sources */,
 				1D1FBF0E1CC66EFA00A0CB0A /* TNMazeGenerator.m in Sources */,
 			);
@@ -588,11 +698,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1D1FBF3A1CC6703B00A0CB0A /* Localizable.strings */ = {
+		1DE6B3821CCE962300DC92AC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1D1FBF3B1CC6703B00A0CB0A /* en */,
-				1D1FBF3D1CC6704000A0CB0A /* es */,
+				1DE6B3831CCE962300DC92AC /* en */,
+				1DE6B3851CCE962800DC92AC /* es */,
+				1DE6B3871CCE962D00DC92AC /* it */,
+				1DE6B3881CCE963300DC92AC /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

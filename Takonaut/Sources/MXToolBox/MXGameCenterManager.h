@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
 
+#define SAVE_KEY_HIGH_SCORES @"highScores"
+#define MAX_HIGH_SCORES_COUNT 10
+
 @interface MXGameCenterManager : NSObject <GKGameCenterControllerDelegate>
 + (instancetype)sharedInstance;
 - (void)authenticateLocalPlayer:(void (^)(BOOL isEnabled))completion;

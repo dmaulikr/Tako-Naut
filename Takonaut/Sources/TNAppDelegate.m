@@ -10,6 +10,9 @@
 #import "TNMenuViewController.h"
 #import "TNTutorialViewController.h"
 #import "TNGameViewController.h"
+#import "TNSettingsViewController.h"
+#import "TNHighScoresViewController.h"
+#import "TNCreditsViewController.h"
 #import "MXToolBox.h"
 #import "TNMacros.h"
 #import <MXAudioManager/MXAudioManager.h>
@@ -68,7 +71,7 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
       }
       else
       {
-//        [self transitionToViewController:[CYHighScoresViewController create]];
+        [self transitionToViewController:[TNHighScoresViewController create]];
       }
       break;
     case STAchievements:
@@ -84,10 +87,10 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
       }
       break;
     case STSettings:
-      //[self transitionToViewController:[CYSettingsViewController create]];
+      [self transitionToViewController:[TNSettingsViewController create]];
       break;
     case STCredits:
-      //[self transitionToViewController:[CYCreditsViewController create]];
+      [self transitionToViewController:[TNCreditsViewController create]];
       break;
     default:
       break;

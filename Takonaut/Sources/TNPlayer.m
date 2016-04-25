@@ -41,6 +41,17 @@
 - (void)update:(CGFloat)deltaTime
 {
   [super update:deltaTime];
+  
+  if (self.collidedWall)
+  {
+    CGRect intersection = CGRectIntersection(self.collidedWall.frame, self.frame);
+    if (intersection.size.width < 3 && intersection.size.height)
+    {
+      self.collidedWall.tag = TTExplodedWall;
+      [self.collidedWall explode:nil];
+    }
+    self.collidedWall = nil;
+  }
 }
 
 @end

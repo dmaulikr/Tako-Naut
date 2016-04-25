@@ -1,13 +1,14 @@
-/* 
-  localizable.strings
-  Takonaut
-
-  Created by mugx on 25/03/16.
-  Copyright © 2016 mugx. All rights reserved.
-*/
+/*
+ localizable.strings
+ Takonaut
+ 
+ Created by mugx on 25/03/16.
+ Copyright © 2016 mugx. All rights reserved.
+ */
 
 "takonaut.menu.back" = "Back";
 "takonaut.menu.new_game"="New Game!";
+"takonaut.menu.resume_game"="Resume Game";
 "takonaut.menu.settings"="Settings";
 "takonaut.menu.high_scores"="High Scores";
 "takonaut.menu.achievements"="Achievements";

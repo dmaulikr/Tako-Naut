@@ -79,18 +79,36 @@
 
 - (void)saveScore:(int64_t)score
 {
-  if (!self.gameCenterEnabled) return;
+  if (score <= 0)
+  {
+    return;
+  }
   
-  GKScore *leaderboardSore = [[GKScore alloc] initWithLeaderboardIdentifier:self.leaderboardIdentifier];
-  leaderboardSore.value = score;
-  
-  [GKScore reportScores:@[leaderboardSore] withCompletionHandler:^(NSError *error)
-   {
-     if (error != nil)
+  if (self.gameCenterEnabled)
+  {
+    GKScore *leaderboardSore = [[GKScore alloc] initWithLeaderboardIdentifier:self.leaderboardIdentifier];
+    leaderboardSore.value = score;
+    
+    [GKScore reportScores:@[leaderboardSore] withCompletionHandler:^(NSError *error)
      {
-       NSLog(@"%@", [error localizedDescription]);
-     }
-   }];
+       if (error != nil)
+       {
+         NSLog(@"%@", [error localizedDescription]);
+       }
+     }];
+  }
+  else
+  {
+    NSMutableArray *highScores = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:SAVE_KEY_HIGH_SCORES]];
+    [highScores addObject:[NSNumber numberWithLongLong:score]];
+    highScores = [NSMutableArray arrayWithArray:[highScores sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"self" ascending: NO]]]];
+    if (highScores.count > MAX_HIGH_SCORES_COUNT)
+    {
+      [highScores removeObjectAtIndex:highScores.count - 1];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:highScores forKey:SAVE_KEY_HIGH_SCORES];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+  }
 }
 
 #pragma mark - Achievements
