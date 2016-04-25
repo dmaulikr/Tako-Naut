@@ -53,7 +53,7 @@
   self.settingsButton.layer.borderWidth = 2.0;
   self.aboutButton.layer.borderColor = MAGENTA_COLOR.CGColor;
   self.aboutButton.layer.borderWidth = 2.0;
-  [self refreshAchievementsButton];
+  //[self refreshAchievementsButton];
   
   [[MXGameCenterManager sharedInstance] authenticateLocalPlayer:^(BOOL isEnabled) {
     //--- actually we don't have achievements ---//
