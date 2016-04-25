@@ -61,7 +61,7 @@
     [emailController setMailComposeDelegate:self];
  		[emailController setToRecipients:[NSArray arrayWithObject:FEEDBACK_EMAIL]];
     [emailController setMessageBody:@"" isHTML:false];
- 		[emailController setSubject:@"Feedback TNyC"];
+ 		[emailController setSubject:@"Feedback Tako-Naut"];
     [emailController setTitle:@"Feedback"];
     
     [self presentViewController:emailController animated:YES completion:nil];
