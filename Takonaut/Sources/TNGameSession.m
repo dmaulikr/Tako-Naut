@@ -197,7 +197,7 @@
     item.tag = TTCoin;
     item.image = [[UIImage imageNamed:@"coin"] imageColored:[UIColor yellowColor]];
     
-    [UIView animateWithDuration:0.8 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:0.8 delay:RAND(0.5, 1.0) options:UIViewAnimationOptionRepeat | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
       item.layer.transform = CATransform3DRotate(CATransform3DIdentity, M_PI, 0, 1, 0);
     } completion:^(BOOL finished) {
     }];

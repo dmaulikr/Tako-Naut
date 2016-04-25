@@ -121,15 +121,25 @@
                         <constraint firstAttribute="height" constant="50" id="0Ht-CS-w2t"/>
                         <constraint firstItem="u2o-2h-dwV" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="4vJ-u0-giI"/>
                         <constraint firstItem="nPd-uN-w2V" firstAttribute="centerY" secondItem="u2o-2h-dwV" secondAttribute="centerY" id="9Kz-N5-3qd"/>
+                        <constraint firstItem="fSb-Cf-DVA" firstAttribute="leading" secondItem="nPd-uN-w2V" secondAttribute="trailing" constant="100" id="IBF-LE-oZS"/>
                         <constraint firstAttribute="trailing" secondItem="fSb-Cf-DVA" secondAttribute="trailing" constant="20" id="O3X-sy-UbA"/>
                         <constraint firstItem="nPd-uN-w2V" firstAttribute="centerX" secondItem="1KW-Gi-fUg" secondAttribute="centerX" id="Y87-5H-D9E"/>
                         <constraint firstItem="fSb-Cf-DVA" firstAttribute="top" secondItem="u2o-2h-dwV" secondAttribute="top" id="c6c-Tu-xmK"/>
+                        <constraint firstItem="nPd-uN-w2V" firstAttribute="leading" secondItem="u2o-2h-dwV" secondAttribute="trailing" constant="100" id="tIB-an-nNE"/>
                         <constraint firstItem="u2o-2h-dwV" firstAttribute="leading" secondItem="1KW-Gi-fUg" secondAttribute="leading" constant="20" id="v47-ag-QFe"/>
                         <constraint firstItem="fSb-Cf-DVA" firstAttribute="centerY" secondItem="1KW-Gi-fUg" secondAttribute="centerY" id="yni-a6-CWA"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="tIB-an-nNE"/>
+                            <exclude reference="IBF-LE-oZS"/>
+                        </mask>
+                    </variation>
                     <variation key="heightClass=regular-widthClass=regular">
                         <mask key="constraints">
                             <exclude reference="v47-ag-QFe"/>
+                            <include reference="tIB-an-nNE"/>
+                            <include reference="IBF-LE-oZS"/>
                             <exclude reference="O3X-sy-UbA"/>
                         </mask>
                     </variation>
@@ -174,17 +184,17 @@
                     <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGV-vI-g6I">
-                            <rect key="frame" x="250" y="-4.5" width="100" height="50"/>
+                            <rect key="frame" x="250" y="-5" width="100" height="50"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minion.png" translatesAutoresizingMaskIntoConstraints="NO" id="CBe-6T-T1J" userLabel="Current Life image" customClass="MXImageView">
-                                    <rect key="frame" x="20" y="12.5" width="25" height="25"/>
+                                    <rect key="frame" x="20" y="12" width="25" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="25" id="W6y-by-W8b"/>
                                         <constraint firstAttribute="height" constant="25" id="rqv-WJ-YGZ"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-Kr-d01" customClass="MXLabel">
-                                    <rect key="frame" x="50" y="14.5" width="23.5" height="21"/>
+                                    <rect key="frame" x="50" y="14" width="23.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
