@@ -70,10 +70,8 @@
 		1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */; };
 		1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */; };
 		1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */; };
-		1DE6B3781CCE95A500DC92AC /* iconLeftArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B36E1CCE95A500DC92AC /* iconLeftArrow@2x.png */; };
 		1DE6B3791CCE95A500DC92AC /* iconMugSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */; };
 		1DE6B37A1CCE95A500DC92AC /* iconPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3701CCE95A500DC92AC /* iconPause@2x.png */; };
-		1DE6B37B1CCE95A500DC92AC /* iconRightArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3711CCE95A500DC92AC /* iconRightArrow@2x.png */; };
 		1DE6B37C1CCE95A500DC92AC /* iconSwitchOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */; };
 		1DE6B37D1CCE95A500DC92AC /* iconSwitchOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */; };
 		1DE6B37E1CCE95A500DC92AC /* iconVolumeHigh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */; };
@@ -193,10 +191,8 @@
 		1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTutorialViewController.m; path = Takonaut/Sources/TNTutorialViewController.m; sourceTree = SOURCE_ROOT; };
 		1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNTutorialViewController.xib; path = Takonaut/Sources/TNTutorialViewController.xib; sourceTree = SOURCE_ROOT; };
 		1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightArrow.png; path = Takonaut/Resources/Images/rightArrow.png; sourceTree = SOURCE_ROOT; };
-		1DE6B36E1CCE95A500DC92AC /* iconLeftArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconLeftArrow@2x.png"; path = "Takonaut/Resources/Icons/iconLeftArrow@2x.png"; sourceTree = SOURCE_ROOT; };
 		1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconMugSmall@2x.png"; path = "Takonaut/Resources/Icons/iconMugSmall@2x.png"; sourceTree = SOURCE_ROOT; };
 		1DE6B3701CCE95A500DC92AC /* iconPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconPause@2x.png"; path = "Takonaut/Resources/Icons/iconPause@2x.png"; sourceTree = SOURCE_ROOT; };
-		1DE6B3711CCE95A500DC92AC /* iconRightArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconRightArrow@2x.png"; path = "Takonaut/Resources/Icons/iconRightArrow@2x.png"; sourceTree = SOURCE_ROOT; };
 		1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconSwitchOff@2x.png"; path = "Takonaut/Resources/Icons/iconSwitchOff@2x.png"; sourceTree = SOURCE_ROOT; };
 		1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconSwitchOn@2x.png"; path = "Takonaut/Resources/Icons/iconSwitchOn@2x.png"; sourceTree = SOURCE_ROOT; };
 		1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeHigh@2x.png"; path = "Takonaut/Resources/Icons/iconVolumeHigh@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -474,10 +470,8 @@
 		1DE6B36D1CCE959300DC92AC /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				1DE6B36E1CCE95A500DC92AC /* iconLeftArrow@2x.png */,
 				1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */,
 				1DE6B3701CCE95A500DC92AC /* iconPause@2x.png */,
-				1DE6B3711CCE95A500DC92AC /* iconRightArrow@2x.png */,
 				1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */,
 				1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */,
 				1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */,
@@ -635,9 +629,7 @@
 				1D1FBF6C1CC6708C00A0CB0A /* coin.png in Resources */,
 				1DE6B3791CCE95A500DC92AC /* iconMugSmall@2x.png in Resources */,
 				1D1FBF4D1CC6708100A0CB0A /* soundGame.caf in Resources */,
-				1DE6B37B1CCE95A500DC92AC /* iconRightArrow@2x.png in Resources */,
 				1D1FBF6D1CC6708C00A0CB0A /* enemy.png in Resources */,
-				1DE6B3781CCE95A500DC92AC /* iconLeftArrow@2x.png in Resources */,
 				1DE6B3811CCE95A500DC92AC /* iconVolumeMute@2x.png in Resources */,
 				1D1FBF711CC6708C00A0CB0A /* hearth.png in Resources */,
 			);
