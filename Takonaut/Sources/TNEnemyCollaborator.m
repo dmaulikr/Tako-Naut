@@ -45,7 +45,7 @@
   }
   for (int i = 0;i < MAX_ENEMIES;++i)
   {
-    TNEnemy *enemy = [[TNEnemy alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + self.speed / 2.0, STARTING.x * TILE_SIZE + self.speed / 2.0, TILE_SIZE - self.speed, TILE_SIZE - self.speed) withGameSession:self.gameSession];
+    TNEnemy *enemy = [[TNEnemy alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + self.speed / 2.0, STARTING_CELL.x * TILE_SIZE + self.speed / 2.0, TILE_SIZE - self.speed, TILE_SIZE - self.speed) withGameSession:self.gameSession];
     enemy.animationDuration = 0.4f;
     enemy.animationRepeatCount = 0;
     enemy.alpha = 0.0;

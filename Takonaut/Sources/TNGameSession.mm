@@ -14,8 +14,7 @@
 #import "MXToolBox.h"
 #import "TNMacros.h"
 #import "TNConstants.h"
-#import "TNMazeGenerator_old.h"
-#import "TNMazeGenerator.h"
+#import "TNMazeGenerator.hpp"
 #import <MXAudioManager/MXAudioManager.h>
 
 #define BASE_MAZE_DIMENSION 7
@@ -114,8 +113,8 @@
   self.isGameOver = NO;
   
   //--- generating the maze ---//
-  TNMazeGenerator_old *mazeGenerator = [TNMazeGenerator_old new];
-  MazeTyleType **maze = [mazeGenerator calculateMaze:self.numRow col:self.numCol startingPosition:STARTING];
+  TNMazeGenerator *mazeGenerator = new TNMazeGenerator();
+  MazeTyleType **maze = mazeGenerator->calculateMaze(static_cast<int>(STARTING_CELL.x), static_cast<int>(STARTING_CELL.y), static_cast<int>(self.numCol), static_cast<int>(self.numRow));
   self.wallsDictionary = [NSMutableDictionary dictionary];
   
   NSMutableArray *freeTiles = [NSMutableArray array];
@@ -244,7 +243,7 @@
 
 - (void)makePlayer
 {
-  self.player = [[TNPlayer alloc] initWithFrame:CGRectMake(STARTING.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
+  self.player = [[TNPlayer alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
   self.player.animationImages = [[UIImage imageNamed:@"player"] spritesWiteSize:CGSizeMake(TILE_SIZE, TILE_SIZE)];
   self.player.animationDuration = 0.4f;
   self.player.animationRepeatCount = 0;
@@ -405,7 +404,7 @@
           self.player.isBlinking = YES;
           [UIView animateWithDuration:0.4 animations:^{
             self.player.velocity = CGPointZero;
-            self.player.frame = CGRectMake(STARTING.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED);
+            self.player.frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED);
             self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
           } completion:^(BOOL finished) {
             [self.player blink:2.0 completion:^{
@@ -418,7 +417,7 @@
       {
         [UIView animateWithDuration:0.4 animations:^{
           enemy.velocity = CGPointZero;
-          enemy.frame = CGRectMake(STARTING.y * TILE_SIZE + enemy.speed / 2.0, STARTING.x * TILE_SIZE + enemy.speed / 2.0, TILE_SIZE - enemy.speed, TILE_SIZE - enemy.speed);
+          enemy.frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + enemy.speed / 2.0, STARTING_CELL.x * TILE_SIZE + enemy.speed / 2.0, TILE_SIZE - enemy.speed, TILE_SIZE - enemy.speed);
         } completion:^(BOOL finished) {
           self.player.isAngry = NO;
         }];

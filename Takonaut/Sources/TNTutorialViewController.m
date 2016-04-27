@@ -28,11 +28,6 @@
   return [[TNTutorialViewController alloc] initWithNibName:@"TNTutorialViewController" bundle:nil];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-  return YES;
-}
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];

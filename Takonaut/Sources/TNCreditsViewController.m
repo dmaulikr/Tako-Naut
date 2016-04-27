@@ -27,11 +27,6 @@
   return aboutViewController;
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-  return YES;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];

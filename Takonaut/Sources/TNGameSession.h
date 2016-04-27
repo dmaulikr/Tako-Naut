@@ -15,7 +15,7 @@
 @class TNTile;
 
 #define TILE_SIZE 32.0
-#define STARTING CGPointMake(1,1)
+#define STARTING_CELL CGPointMake(1,1)
 #define MAX_TIME 60
 #define MAX_LIVES 3
 

@@ -13,16 +13,16 @@
 
 typedef enum
 {
-  CTWall,
-  CTPath,
-  CTStart,
-  CTEnd
-} CellType;
+  MTWall,
+  MTPath,
+  MTStart,
+  MTEnd
+} MazeTyleType;
 
 class TNMazeGenerator
 {
 public:
-  //- (MazeTyleType **)calculateMaze:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position;
-  //CellType** calculateMaze(int row, int col, int startingPosition);
+  MazeTyleType** calculateMaze(int startX, int startY, int width, int height);
 };
-#endif /* TNMazeGenerator_hpp */
+
+#endif

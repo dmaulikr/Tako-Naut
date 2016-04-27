@@ -31,6 +31,9 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  //--- hiding status bar ---//
+  [application setStatusBarHidden:YES];
+  
   //--- Load Splash View Controller first ---//
   self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
@@ -41,6 +44,7 @@ int main(int argc, char * argv[]) { @autoreleasepool { return UIApplicationMain(
   //-- prepare sounds ---//
   [self prepareSounds];
   
+  //-- load the menu ---//
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
     self.window.rootViewController = [TNMenuViewController create];
   });

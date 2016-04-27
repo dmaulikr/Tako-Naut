@@ -51,11 +51,6 @@
   return [[TNGameViewController alloc] initWithNibName:@"TNGameViewController" bundle:nil];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-  return YES;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
@@ -136,12 +131,12 @@
 
 - (void)didUpdateScore:(NSUInteger)score
 {
-  self.scoreLabel.text = [NSString stringWithFormat:@"Score\n%ld", (unsigned long)score];
+  self.scoreLabel.text = [NSString stringWithFormat:@"%@\n%ld", LOCALIZE(@"takonaut.game.score"), (unsigned long)score];
 }
 
 - (void)didUpdateTime:(NSUInteger)time
 {
-  self.timeLabel.text = [NSString stringWithFormat:@"Time\n%ld", (unsigned long)time];
+  self.timeLabel.text = [NSString stringWithFormat:@"%@\n%ld", LOCALIZE(@"takonaut.game.time"), (unsigned long)time];
 }
 
 - (void)didUpdateLives:(NSUInteger)livesCount
@@ -154,7 +149,7 @@
   self.hurryUpLabel.hidden = YES;
   self.currentLevelPanel.hidden = NO;
   self.currentLevelPanel.alpha = 0;
-  self.currentLevelLabel.text = [NSString stringWithFormat:@"Level %lu", (unsigned long)levelCount];
+  self.currentLevelLabel.text = [NSString stringWithFormat:@"%@ %lu", LOCALIZE(@"takonaut.game.level"), (unsigned long)levelCount];
   [UIView animateWithDuration:0.2 animations:^{
     self.currentLevelPanel.alpha = 1;
   } completion:^(BOOL finished) {

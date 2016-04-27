@@ -43,11 +43,6 @@ typedef NS_ENUM(NSUInteger, VolumeType) {
   return [[TNSettingsViewController alloc] initWithNibName:[[self class] description] bundle:nil];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-  return YES;
-}
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];
