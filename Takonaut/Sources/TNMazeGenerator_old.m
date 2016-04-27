@@ -1,4 +1,4 @@
-#import "TNMazeGenerator.h"
+#import "TNMazeGenerator_old.h"
 
 typedef NS_ENUM(NSUInteger, DirectionType) {
   DTNorth,
@@ -7,13 +7,13 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
   DTWest
 };
 
-@interface TNMazeGenerator()
+@interface TNMazeGenerator_old()
 @property(nonatomic,assign) NSUInteger width;
 @property(nonatomic,assign) NSUInteger height;
 @property(nonatomic,assign) CGPoint start;
 @end
 
-@implementation TNMazeGenerator
+@implementation TNMazeGenerator_old
 
 - (MazeTyleType **)calculateMaze:(NSUInteger)row col:(NSUInteger)col startingPosition:(CGPoint)position
 {

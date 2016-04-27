@@ -1,0 +1,4 @@
+BUG TO FIX
+
+- status bar icon during the app launch
+- 'fin del juego' in spanish collides the panel's borders (che also other languages)

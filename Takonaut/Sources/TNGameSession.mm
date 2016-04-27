@@ -10,11 +10,12 @@
 #import "TNCollisionCollaborator.h"
 #import "TNEnemyCollaborator.h"
 #import "TNPlayer.h"
-#import "TNMazeGenerator.h"
 #import "TNEnemy.h"
 #import "MXToolBox.h"
 #import "TNMacros.h"
 #import "TNConstants.h"
+#import "TNMazeGenerator_old.h"
+#import "TNMazeGenerator.h"
 #import <MXAudioManager/MXAudioManager.h>
 
 #define BASE_MAZE_DIMENSION 7
@@ -28,7 +29,6 @@
 @property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, TNTile *> *wallsDictionary;
 @property(nonatomic,strong) NSMutableArray<TNTile *> *items;
 
-@property(nonatomic,strong) TNMazeGenerator *mazeGenerator;
 @property(nonatomic,assign) int bkgColorIndex;
 @property(nonatomic,assign) float bkgColorTimeAccumulator;
 @property(nonatomic,strong,readwrite) UIView *mazeView;
@@ -114,7 +114,7 @@
   self.isGameOver = NO;
   
   //--- generating the maze ---//
-  TNMazeGenerator *mazeGenerator = [TNMazeGenerator new];
+  TNMazeGenerator_old *mazeGenerator = [TNMazeGenerator_old new];
   MazeTyleType **maze = [mazeGenerator calculateMaze:self.numRow col:self.numCol startingPosition:STARTING];
   self.wallsDictionary = [NSMutableDictionary dictionary];
   
