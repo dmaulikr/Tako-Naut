@@ -18,32 +18,27 @@ struct Tile {
   unsigned int y;
   unsigned long steps;
   
-  Tile()
+  Tile(unsigned int x = 0, unsigned int y = 0, unsigned long steps = 0)
   {
-    x = 0;
-    y = 0;
-    steps = 0;
+    this->x = x;
+    this->y = y;
+    this->steps = steps;
   }
 };
 
-MazeTyleType** TNMazeGenerator::calculateMaze(int startX, int startY, int width, int height)
+MazeTyleType** TNMazeGenerator::calculateMaze(int posX, int posY, int width, int height)
 {
   //--- init maze ---//
   MazeTyleType **maze = (MazeTyleType **)calloc(height, sizeof(MazeTyleType *));
-  for (int r = 0; r < height;++r)
+  for (int i = 0; i < height;++i)
   {
-    maze[r] = (MazeTyleType *)calloc(width, sizeof(MazeTyleType));
+    maze[i] = (MazeTyleType *)calloc(width, sizeof(MazeTyleType));
   }
   
   //--- taking start tile ---//
-  int posX = startX;
-  int posY = startY;
-  maze[startX][startY] = MTStart;
-  Tile initialTile;
-  initialTile.x = startX;
-  initialTile.y = startY;
+  maze[posX][posY] = MTStart;
   std::list<Tile> visitedTiles;
-  std::list<Tile> currentPath = {initialTile};
+  std::list<Tile> currentPath = { Tile(posX, posY) };
   
   while (currentPath.size())
   {
@@ -98,10 +93,7 @@ MazeTyleType** TNMazeGenerator::calculateMaze(int startX, int startY, int width,
           break;
         }
       }
-      Tile tile;
-      tile.x = posX;
-      tile.y = posY;
-      tile.steps = currentPath.size() * 2;
+      Tile tile(posX, posY, currentPath.size() * 2);
       currentPath.push_back(tile);
       visitedTiles.push_back(tile);
     }

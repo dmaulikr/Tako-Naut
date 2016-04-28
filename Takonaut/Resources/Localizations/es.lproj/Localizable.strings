@@ -17,7 +17,7 @@
 "takonaut.menu.send_a_feedback"="Enviar el mensaje";
 
 "takonaut.settings.language" = "Idioma";
-"takonaut.settings.sound" = "Sound";
+"takonaut.settings.sound" = "Sonido";
 "takonaut.settings.enabled" = "Permitido";
 "takonaut.settings.disabled" = "Apagado";
 "takonaut.settings.volume"= "Volumen";

@@ -26,8 +26,8 @@
 "takonaut.settings.volume_low"= "Basso";
 "takonaut.settings.volume_mute"= "Muto";
 
-"takonaut.game.time"="Tempo";
-"takonaut.game.score"="Punteggio";
+"takonaut.game.time"="Time";
+"takonaut.game.score"="Score";
 "takonaut.game.game_over"="Game Over";
 "takonaut.game.level"="Livello";
 "takonaut.game.enable_game_center"="Per favore abilita il Game Center";

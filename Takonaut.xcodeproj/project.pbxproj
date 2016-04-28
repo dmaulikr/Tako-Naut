@@ -121,8 +121,6 @@
 		1D1FBEF61CC66EFA00A0CB0A /* TNGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNGameViewController.h; path = Takonaut/Sources/TNGameViewController.h; sourceTree = SOURCE_ROOT; };
 		1D1FBEF71CC66EFA00A0CB0A /* TNGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNGameViewController.m; path = Takonaut/Sources/TNGameViewController.m; sourceTree = SOURCE_ROOT; };
 		1D1FBEFA1CC66EFA00A0CB0A /* TNMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNMacros.h; path = Takonaut/Sources/TNMacros.h; sourceTree = SOURCE_ROOT; };
-		1D1FBEFB1CC66EFA00A0CB0A /* TNMazeGenerator_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNMazeGenerator_old.h; path = Takonaut/Sources/TNMazeGenerator_old.h; sourceTree = SOURCE_ROOT; };
-		1D1FBEFC1CC66EFA00A0CB0A /* TNMazeGenerator_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNMazeGenerator_old.m; path = Takonaut/Sources/TNMazeGenerator_old.m; sourceTree = SOURCE_ROOT; };
 		1D1FBEFD1CC66EFA00A0CB0A /* TNMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNMenuViewController.h; path = Takonaut/Sources/TNMenuViewController.h; sourceTree = SOURCE_ROOT; };
 		1D1FBEFE1CC66EFA00A0CB0A /* TNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNMenuViewController.m; path = Takonaut/Sources/TNMenuViewController.m; sourceTree = SOURCE_ROOT; };
 		1D1FBEFF1CC66EFA00A0CB0A /* TNPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNPlayer.h; path = Takonaut/Sources/TNPlayer.h; sourceTree = SOURCE_ROOT; };
@@ -315,8 +313,6 @@
 		1D58F75A1C8D4F57006365EE /* Maze */ = {
 			isa = PBXGroup;
 			children = (
-				1D1FBEFB1CC66EFA00A0CB0A /* TNMazeGenerator_old.h */,
-				1D1FBEFC1CC66EFA00A0CB0A /* TNMazeGenerator_old.m */,
 				1D5491FC1CD089A6000C0975 /* TNMazeGenerator.hpp */,
 				1D5491FB1CD089A6000C0975 /* TNMazeGenerator.cpp */,
 			);
