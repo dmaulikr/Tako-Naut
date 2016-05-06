@@ -1,0 +1,864 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D01BB4D1CCA10980088336D /* player_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D01BB4C1CCA10980088336D /* player_angry.png */; };
+		1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D07BEE81CCD36E80062EFE6 /* GameKit.framework */; };
+		1D092D311CCE0CC900396071 /* TNSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D092D301CCE0CC900396071 /* TNSettingsViewController.m */; };
+		1D092D331CCE0EC300396071 /* TNSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D092D321CCE0EC300396071 /* TNSettingsViewController.xib */; };
+		1D1FBF051CC66EFA00A0CB0A /* TNGameSession.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEE91CC66EFA00A0CB0A /* TNGameSession.mm */; };
+		1D1FBF061CC66EFA00A0CB0A /* TNGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */; };
+		1D1FBF071CC66EFA00A0CB0A /* TNMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBEEB1CC66EFA00A0CB0A /* TNMenuViewController.xib */; };
+		1D1FBF081CC66EFA00A0CB0A /* TNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEED1CC66EFA00A0CB0A /* TNAppDelegate.m */; };
+		1D1FBF091CC66EFA00A0CB0A /* TNCollisionCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEEF1CC66EFA00A0CB0A /* TNCollisionCollaborator.m */; };
+		1D1FBF0A1CC66EFA00A0CB0A /* TNEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEF21CC66EFA00A0CB0A /* TNEnemy.m */; };
+		1D1FBF0B1CC66EFA00A0CB0A /* TNEnemyCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEF41CC66EFA00A0CB0A /* TNEnemyCollaborator.m */; };
+		1D1FBF0C1CC66EFA00A0CB0A /* TNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEF71CC66EFA00A0CB0A /* TNGameViewController.m */; };
+		1D1FBF0F1CC66EFA00A0CB0A /* TNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBEFE1CC66EFA00A0CB0A /* TNMenuViewController.m */; };
+		1D1FBF101CC66EFA00A0CB0A /* TNPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF001CC66EFA00A0CB0A /* TNPlayer.m */; };
+		1D1FBF111CC66EFA00A0CB0A /* TNTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF021CC66EFA00A0CB0A /* TNTile.m */; };
+		1D1FBF121CC66EFA00A0CB0A /* TNTile+AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF041CC66EFA00A0CB0A /* TNTile+AI.m */; };
+		1D1FBF281CC66FAA00A0CB0A /* MXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF141CC66FAA00A0CB0A /* MXButton.m */; };
+		1D1FBF291CC66FAA00A0CB0A /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF161CC66FAA00A0CB0A /* MXGameCenterManager.m */; };
+		1D1FBF2A1CC66FAA00A0CB0A /* MXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF181CC66FAA00A0CB0A /* MXImageView.m */; };
+		1D1FBF2B1CC66FAA00A0CB0A /* MXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF1A1CC66FAA00A0CB0A /* MXLabel.m */; };
+		1D1FBF2C1CC66FAA00A0CB0A /* MXLocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF1C1CC66FAA00A0CB0A /* MXLocalizationManager.m */; };
+		1D1FBF2D1CC66FAA00A0CB0A /* MXUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF1F1CC66FAA00A0CB0A /* MXUtils.m */; };
+		1D1FBF2E1CC66FAA00A0CB0A /* UIColor+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF211CC66FAA00A0CB0A /* UIColor+MX.m */; };
+		1D1FBF2F1CC66FAA00A0CB0A /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF231CC66FAA00A0CB0A /* UIImage+MX.m */; };
+		1D1FBF301CC66FAA00A0CB0A /* UIImageView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF251CC66FAA00A0CB0A /* UIImageView+MX.m */; };
+		1D1FBF311CC66FAA00A0CB0A /* UIView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBF271CC66FAA00A0CB0A /* UIView+MX.m */; };
+		1D1FBF351CC6700900A0CB0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF341CC6700900A0CB0A /* Assets.xcassets */; };
+		1D1FBF371CC6701100A0CB0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF361CC6701100A0CB0A /* LaunchScreen.storyboard */; };
+		1D1FBF391CC6702000A0CB0A /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF381CC6702000A0CB0A /* gameConfiguration.json */; };
+		1D1FBF3F1CC6705F00A0CB0A /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF3E1CC6705B00A0CB0A /* Joystix.ttf */; };
+		1D1FBF4C1CC6708100A0CB0A /* soundEnemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF401CC6707900A0CB0A /* soundEnemySpawn.caf */; };
+		1D1FBF4D1CC6708100A0CB0A /* soundGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF411CC6707900A0CB0A /* soundGame.caf */; };
+		1D1FBF4E1CC6708100A0CB0A /* soundGameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF421CC6707900A0CB0A /* soundGameOver.caf */; };
+		1D1FBF4F1CC6708100A0CB0A /* soundHitBomb.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF431CC6707900A0CB0A /* soundHitBomb.caf */; };
+		1D1FBF501CC6708100A0CB0A /* soundHitCoin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF441CC6707900A0CB0A /* soundHitCoin.caf */; };
+		1D1FBF511CC6708100A0CB0A /* soundHitMinion.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF451CC6707900A0CB0A /* soundHitMinion.caf */; };
+		1D1FBF521CC6708100A0CB0A /* soundHitTimeBonus.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF461CC6707900A0CB0A /* soundHitTimeBonus.caf */; };
+		1D1FBF531CC6708100A0CB0A /* soundHitWhirlwind.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF471CC6707900A0CB0A /* soundHitWhirlwind.caf */; };
+		1D1FBF541CC6708100A0CB0A /* soundLevelChange.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF481CC6707900A0CB0A /* soundLevelChange.caf */; };
+		1D1FBF551CC6708100A0CB0A /* soundSelectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF491CC6707900A0CB0A /* soundSelectItem.caf */; };
+		1D1FBF561CC6708100A0CB0A /* soundStartGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF4A1CC6707900A0CB0A /* soundStartGame.caf */; };
+		1D1FBF571CC6708100A0CB0A /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF4B1CC6707900A0CB0A /* soundTimeOver.caf */; };
+		1D1FBF6A1CC6708C00A0CB0A /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF591CC6708C00A0CB0A /* bomb.png */; };
+		1D1FBF6C1CC6708C00A0CB0A /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF5B1CC6708C00A0CB0A /* coin.png */; };
+		1D1FBF6D1CC6708C00A0CB0A /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF5C1CC6708C00A0CB0A /* enemy.png */; };
+		1D1FBF6E1CC6708C00A0CB0A /* enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF5D1CC6708C00A0CB0A /* enemy2.png */; };
+		1D1FBF6F1CC6708C00A0CB0A /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF5E1CC6708C00A0CB0A /* gate_close.png */; };
+		1D1FBF701CC6708C00A0CB0A /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF5F1CC6708C00A0CB0A /* gate_open.png */; };
+		1D1FBF711CC6708C00A0CB0A /* hearth.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF601CC6708C00A0CB0A /* hearth.png */; };
+		1D1FBF721CC6708C00A0CB0A /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF611CC6708C00A0CB0A /* key.png */; };
+		1D1FBF731CC6708C00A0CB0A /* minion.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF621CC6708C00A0CB0A /* minion.png */; };
+		1D1FBF761CC6708C00A0CB0A /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF651CC6708C00A0CB0A /* time.png */; };
+		1D1FBF771CC6708C00A0CB0A /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF661CC6708C00A0CB0A /* wall.png */; };
+		1D1FBF791CC6708C00A0CB0A /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF681CC6708C00A0CB0A /* whirlwind.png */; };
+		1D1FBF7C1CC6709C00A0CB0A /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBF7A1CC6709200A0CB0A /* splash.png */; };
+		1D5491FD1CD089A6000C0975 /* TNMazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D5491FB1CD089A6000C0975 /* TNMazeGenerator.cpp */; };
+		1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; };
+		1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1DB69DC71CC8054E008E5F7C /* soundHitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */; };
+		1DB69DC91CC80C80008E5F7C /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69DC81CC80C80008E5F7C /* player.png */; };
+		1DBC3CCB1CDC786900992C71 /* TNGameOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC3CCA1CDC786900992C71 /* TNGameOverView.m */; };
+		1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */; };
+		1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */; };
+		1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */; };
+		1DE6B3791CCE95A500DC92AC /* iconMugSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */; };
+		1DE6B37C1CCE95A500DC92AC /* iconSwitchOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */; };
+		1DE6B37D1CCE95A500DC92AC /* iconSwitchOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */; };
+		1DE6B37E1CCE95A500DC92AC /* iconVolumeHigh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */; };
+		1DE6B37F1CCE95A500DC92AC /* iconVolumeLow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3751CCE95A500DC92AC /* iconVolumeLow@2x.png */; };
+		1DE6B3801CCE95A500DC92AC /* iconVolumeMid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3761CCE95A500DC92AC /* iconVolumeMid@2x.png */; };
+		1DE6B3811CCE95A500DC92AC /* iconVolumeMute@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3771CCE95A500DC92AC /* iconVolumeMute@2x.png */; };
+		1DE6B3841CCE962300DC92AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3821CCE962300DC92AC /* Localizable.strings */; };
+		1DE6B38A1CCE9F7C00DC92AC /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3891CCE9F7C00DC92AC /* leftArrow.png */; };
+		1DE6B38F1CCEACA700DC92AC /* TNCreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6B38D1CCEACA700DC92AC /* TNCreditsViewController.m */; };
+		1DE6B3901CCEACA700DC92AC /* TNCreditsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B38E1CCEACA700DC92AC /* TNCreditsViewController.xib */; };
+		1DE6B3951CCEB98D00DC92AC /* TNHighScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6B3931CCEB98D00DC92AC /* TNHighScoresViewController.m */; };
+		1DE6B3961CCEB98D00DC92AC /* TNHighScoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE6B3941CCEB98D00DC92AC /* TNHighScoresViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1D98C7D31C9AD71100161EB2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1D01BB4C1CCA10980088336D /* player_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_angry.png; path = "Tako-Naut/Resources/Images/player_angry.png"; sourceTree = SOURCE_ROOT; };
+		1D07BEE81CCD36E80062EFE6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		1D092D2F1CCE0CC900396071 /* TNSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNSettingsViewController.h; path = "Tako-Naut/Sources/TNSettingsViewController.h"; sourceTree = SOURCE_ROOT; };
+		1D092D301CCE0CC900396071 /* TNSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNSettingsViewController.m; path = "Tako-Naut/Sources/TNSettingsViewController.m"; sourceTree = SOURCE_ROOT; };
+		1D092D321CCE0EC300396071 /* TNSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNSettingsViewController.xib; path = "Tako-Naut/Sources/TNSettingsViewController.xib"; sourceTree = SOURCE_ROOT; };
+		1D1FBEE91CC66EFA00A0CB0A /* TNGameSession.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TNGameSession.mm; path = "Tako-Naut/Sources/TNGameSession.mm"; sourceTree = SOURCE_ROOT; };
+		1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNGameViewController.xib; path = "Tako-Naut/Sources/TNGameViewController.xib"; sourceTree = SOURCE_ROOT; };
+		1D1FBEEB1CC66EFA00A0CB0A /* TNMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNMenuViewController.xib; path = "Tako-Naut/Sources/TNMenuViewController.xib"; sourceTree = SOURCE_ROOT; };
+		1D1FBEEC1CC66EFA00A0CB0A /* TNAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNAppDelegate.h; path = "Tako-Naut/Sources/TNAppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEED1CC66EFA00A0CB0A /* TNAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNAppDelegate.m; path = "Tako-Naut/Sources/TNAppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBEEE1CC66EFA00A0CB0A /* TNCollisionCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNCollisionCollaborator.h; path = "Tako-Naut/Sources/TNCollisionCollaborator.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEEF1CC66EFA00A0CB0A /* TNCollisionCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNCollisionCollaborator.m; path = "Tako-Naut/Sources/TNCollisionCollaborator.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF01CC66EFA00A0CB0A /* TNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNConstants.h; path = "Tako-Naut/Sources/TNConstants.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF11CC66EFA00A0CB0A /* TNEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNEnemy.h; path = "Tako-Naut/Sources/TNEnemy.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF21CC66EFA00A0CB0A /* TNEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNEnemy.m; path = "Tako-Naut/Sources/TNEnemy.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF31CC66EFA00A0CB0A /* TNEnemyCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNEnemyCollaborator.h; path = "Tako-Naut/Sources/TNEnemyCollaborator.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF41CC66EFA00A0CB0A /* TNEnemyCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNEnemyCollaborator.m; path = "Tako-Naut/Sources/TNEnemyCollaborator.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF51CC66EFA00A0CB0A /* TNGameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNGameSession.h; path = "Tako-Naut/Sources/TNGameSession.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF61CC66EFA00A0CB0A /* TNGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNGameViewController.h; path = "Tako-Naut/Sources/TNGameViewController.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEF71CC66EFA00A0CB0A /* TNGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNGameViewController.m; path = "Tako-Naut/Sources/TNGameViewController.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBEFA1CC66EFA00A0CB0A /* TNMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNMacros.h; path = "Tako-Naut/Sources/TNMacros.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEFD1CC66EFA00A0CB0A /* TNMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNMenuViewController.h; path = "Tako-Naut/Sources/TNMenuViewController.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBEFE1CC66EFA00A0CB0A /* TNMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNMenuViewController.m; path = "Tako-Naut/Sources/TNMenuViewController.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBEFF1CC66EFA00A0CB0A /* TNPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNPlayer.h; path = "Tako-Naut/Sources/TNPlayer.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF001CC66EFA00A0CB0A /* TNPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNPlayer.m; path = "Tako-Naut/Sources/TNPlayer.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF011CC66EFA00A0CB0A /* TNTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNTile.h; path = "Tako-Naut/Sources/TNTile.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF021CC66EFA00A0CB0A /* TNTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTile.m; path = "Tako-Naut/Sources/TNTile.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF031CC66EFA00A0CB0A /* TNTile+AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TNTile+AI.h"; path = "Tako-Naut/Sources/TNTile+AI.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF041CC66EFA00A0CB0A /* TNTile+AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TNTile+AI.m"; path = "Tako-Naut/Sources/TNTile+AI.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF131CC66FAA00A0CB0A /* MXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXButton.h; path = "Tako-Naut/Sources/MXToolBox/MXButton.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF141CC66FAA00A0CB0A /* MXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXButton.m; path = "Tako-Naut/Sources/MXToolBox/MXButton.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF151CC66FAA00A0CB0A /* MXGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXGameCenterManager.h; path = "Tako-Naut/Sources/MXToolBox/MXGameCenterManager.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF161CC66FAA00A0CB0A /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXGameCenterManager.m; path = "Tako-Naut/Sources/MXToolBox/MXGameCenterManager.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF171CC66FAA00A0CB0A /* MXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXImageView.h; path = "Tako-Naut/Sources/MXToolBox/MXImageView.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF181CC66FAA00A0CB0A /* MXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXImageView.m; path = "Tako-Naut/Sources/MXToolBox/MXImageView.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF191CC66FAA00A0CB0A /* MXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXLabel.h; path = "Tako-Naut/Sources/MXToolBox/MXLabel.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF1A1CC66FAA00A0CB0A /* MXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXLabel.m; path = "Tako-Naut/Sources/MXToolBox/MXLabel.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF1B1CC66FAA00A0CB0A /* MXLocalizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXLocalizationManager.h; path = "Tako-Naut/Sources/MXToolBox/MXLocalizationManager.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF1C1CC66FAA00A0CB0A /* MXLocalizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXLocalizationManager.m; path = "Tako-Naut/Sources/MXToolBox/MXLocalizationManager.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF1D1CC66FAA00A0CB0A /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXToolBox.h; path = "Tako-Naut/Sources/MXToolBox/MXToolBox.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF1E1CC66FAA00A0CB0A /* MXUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXUtils.h; path = "Tako-Naut/Sources/MXToolBox/MXUtils.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF1F1CC66FAA00A0CB0A /* MXUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXUtils.m; path = "Tako-Naut/Sources/MXToolBox/MXUtils.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF201CC66FAA00A0CB0A /* UIColor+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+MX.h"; path = "Tako-Naut/Sources/MXToolBox/UIColor+MX.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF211CC66FAA00A0CB0A /* UIColor+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MX.m"; path = "Tako-Naut/Sources/MXToolBox/UIColor+MX.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF221CC66FAA00A0CB0A /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MX.h"; path = "Tako-Naut/Sources/MXToolBox/UIImage+MX.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF231CC66FAA00A0CB0A /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MX.m"; path = "Tako-Naut/Sources/MXToolBox/UIImage+MX.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF241CC66FAA00A0CB0A /* UIImageView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+MX.h"; path = "Tako-Naut/Sources/MXToolBox/UIImageView+MX.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF251CC66FAA00A0CB0A /* UIImageView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+MX.m"; path = "Tako-Naut/Sources/MXToolBox/UIImageView+MX.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF261CC66FAA00A0CB0A /* UIView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+MX.h"; path = "Tako-Naut/Sources/MXToolBox/UIView+MX.h"; sourceTree = SOURCE_ROOT; };
+		1D1FBF271CC66FAA00A0CB0A /* UIView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+MX.m"; path = "Tako-Naut/Sources/MXToolBox/UIView+MX.m"; sourceTree = SOURCE_ROOT; };
+		1D1FBF341CC6700900A0CB0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Tako-Naut/Resources/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		1D1FBF361CC6701100A0CB0A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "Tako-Naut/Resources/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
+		1D1FBF381CC6702000A0CB0A /* gameConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = gameConfiguration.json; path = "Tako-Naut/Resources/gameConfiguration.json"; sourceTree = SOURCE_ROOT; };
+		1D1FBF3E1CC6705B00A0CB0A /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Joystix.ttf; path = "Tako-Naut/Resources/Fonts/Joystix.ttf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF401CC6707900A0CB0A /* soundEnemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundEnemySpawn.caf; path = "Tako-Naut/Resources/Sounds/soundEnemySpawn.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF411CC6707900A0CB0A /* soundGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGame.caf; path = "Tako-Naut/Resources/Sounds/soundGame.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF421CC6707900A0CB0A /* soundGameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGameOver.caf; path = "Tako-Naut/Resources/Sounds/soundGameOver.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF431CC6707900A0CB0A /* soundHitBomb.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitBomb.caf; path = "Tako-Naut/Resources/Sounds/soundHitBomb.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF441CC6707900A0CB0A /* soundHitCoin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitCoin.caf; path = "Tako-Naut/Resources/Sounds/soundHitCoin.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF451CC6707900A0CB0A /* soundHitMinion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitMinion.caf; path = "Tako-Naut/Resources/Sounds/soundHitMinion.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF461CC6707900A0CB0A /* soundHitTimeBonus.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitTimeBonus.caf; path = "Tako-Naut/Resources/Sounds/soundHitTimeBonus.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF471CC6707900A0CB0A /* soundHitWhirlwind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitWhirlwind.caf; path = "Tako-Naut/Resources/Sounds/soundHitWhirlwind.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF481CC6707900A0CB0A /* soundLevelChange.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundLevelChange.caf; path = "Tako-Naut/Resources/Sounds/soundLevelChange.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF491CC6707900A0CB0A /* soundSelectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundSelectItem.caf; path = "Tako-Naut/Resources/Sounds/soundSelectItem.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF4A1CC6707900A0CB0A /* soundStartGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundStartGame.caf; path = "Tako-Naut/Resources/Sounds/soundStartGame.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF4B1CC6707900A0CB0A /* soundTimeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundTimeOver.caf; path = "Tako-Naut/Resources/Sounds/soundTimeOver.caf"; sourceTree = SOURCE_ROOT; };
+		1D1FBF591CC6708C00A0CB0A /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb.png; path = "Tako-Naut/Resources/Images/bomb.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF5B1CC6708C00A0CB0A /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = "Tako-Naut/Resources/Images/coin.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF5C1CC6708C00A0CB0A /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = "Tako-Naut/Resources/Images/enemy.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF5D1CC6708C00A0CB0A /* enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy2.png; path = "Tako-Naut/Resources/Images/enemy2.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF5E1CC6708C00A0CB0A /* gate_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_close.png; path = "Tako-Naut/Resources/Images/gate_close.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF5F1CC6708C00A0CB0A /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_open.png; path = "Tako-Naut/Resources/Images/gate_open.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF601CC6708C00A0CB0A /* hearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hearth.png; path = "Tako-Naut/Resources/Images/hearth.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF611CC6708C00A0CB0A /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = "Tako-Naut/Resources/Images/key.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF621CC6708C00A0CB0A /* minion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minion.png; path = "Tako-Naut/Resources/Images/minion.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF651CC6708C00A0CB0A /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time.png; path = "Tako-Naut/Resources/Images/time.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF661CC6708C00A0CB0A /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = "Tako-Naut/Resources/Images/wall.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF681CC6708C00A0CB0A /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = "Tako-Naut/Resources/Images/whirlwind.png"; sourceTree = SOURCE_ROOT; };
+		1D1FBF7A1CC6709200A0CB0A /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.png; path = "Tako-Naut/Resources/splash.png"; sourceTree = SOURCE_ROOT; };
+		1D5491FB1CD089A6000C0975 /* TNMazeGenerator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = TNMazeGenerator.cpp; path = "Tako-Naut/Sources/TNMazeGenerator.cpp"; sourceTree = SOURCE_ROOT; };
+		1D5491FC1CD089A6000C0975 /* TNMazeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TNMazeGenerator.hpp; path = "Tako-Naut/Sources/TNMazeGenerator.hpp"; sourceTree = SOURCE_ROOT; };
+		1D76702E1C7B5B050065F110 /* Tako-Naut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tako-Naut.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXAudioManager.framework; path = Carthage/Build/iOS/MXAudioManager.framework; sourceTree = "<group>"; };
+		1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitPlayer.caf; path = "Tako-Naut/Resources/Sounds/soundHitPlayer.caf"; sourceTree = SOURCE_ROOT; };
+		1DB69DC81CC80C80008E5F7C /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = "Tako-Naut/Resources/Images/player.png"; sourceTree = SOURCE_ROOT; };
+		1DBC3CC91CDC786900992C71 /* TNGameOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNGameOverView.h; path = "Tako-Naut/Sources/TNGameOverView.h"; sourceTree = SOURCE_ROOT; };
+		1DBC3CCA1CDC786900992C71 /* TNGameOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNGameOverView.m; path = "Tako-Naut/Sources/TNGameOverView.m"; sourceTree = SOURCE_ROOT; };
+		1DBC3CCD1CDC78F400992C71 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tako-Naut/Resources/Info.plist"; sourceTree = SOURCE_ROOT; };
+		1DBC3CCF1CDC795B00992C71 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "Tako-Naut/Resources/Localizations/ja.lproj/Localizable.strings"; sourceTree = SOURCE_ROOT; };
+		1DC52F621CC674E900F61A47 /* TNTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNTutorialViewController.h; path = "Tako-Naut/Sources/TNTutorialViewController.h"; sourceTree = SOURCE_ROOT; };
+		1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTutorialViewController.m; path = "Tako-Naut/Sources/TNTutorialViewController.m"; sourceTree = SOURCE_ROOT; };
+		1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNTutorialViewController.xib; path = "Tako-Naut/Sources/TNTutorialViewController.xib"; sourceTree = SOURCE_ROOT; };
+		1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightArrow.png; path = "Tako-Naut/Resources/Images/rightArrow.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconMugSmall@2x.png"; path = "Tako-Naut/Resources/Icons/iconMugSmall@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconSwitchOff@2x.png"; path = "Tako-Naut/Resources/Icons/iconSwitchOff@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconSwitchOn@2x.png"; path = "Tako-Naut/Resources/Icons/iconSwitchOn@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeHigh@2x.png"; path = "Tako-Naut/Resources/Icons/iconVolumeHigh@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3751CCE95A500DC92AC /* iconVolumeLow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeLow@2x.png"; path = "Tako-Naut/Resources/Icons/iconVolumeLow@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3761CCE95A500DC92AC /* iconVolumeMid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeMid@2x.png"; path = "Tako-Naut/Resources/Icons/iconVolumeMid@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3771CCE95A500DC92AC /* iconVolumeMute@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconVolumeMute@2x.png"; path = "Tako-Naut/Resources/Icons/iconVolumeMute@2x.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B3831CCE962300DC92AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Tako-Naut/Resources/Localizations/en.lproj/Localizable.strings"; sourceTree = SOURCE_ROOT; };
+		1DE6B3851CCE962800DC92AC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "Tako-Naut/Resources/Localizations/es.lproj/Localizable.strings"; sourceTree = SOURCE_ROOT; };
+		1DE6B3871CCE962D00DC92AC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = "Tako-Naut/Resources/Localizations/it.lproj/Localizable.strings"; sourceTree = SOURCE_ROOT; };
+		1DE6B3881CCE963300DC92AC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Tako-Naut/Resources/Localizations/zh-Hans.lproj/Localizable.strings"; sourceTree = SOURCE_ROOT; };
+		1DE6B3891CCE9F7C00DC92AC /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftArrow.png; path = "Tako-Naut/Resources/Images/leftArrow.png"; sourceTree = SOURCE_ROOT; };
+		1DE6B38C1CCEACA700DC92AC /* TNCreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNCreditsViewController.h; path = "Tako-Naut/Sources/TNCreditsViewController.h"; sourceTree = SOURCE_ROOT; };
+		1DE6B38D1CCEACA700DC92AC /* TNCreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNCreditsViewController.m; path = "Tako-Naut/Sources/TNCreditsViewController.m"; sourceTree = SOURCE_ROOT; };
+		1DE6B38E1CCEACA700DC92AC /* TNCreditsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNCreditsViewController.xib; path = "Tako-Naut/Sources/TNCreditsViewController.xib"; sourceTree = SOURCE_ROOT; };
+		1DE6B3921CCEB98D00DC92AC /* TNHighScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNHighScoresViewController.h; path = "Tako-Naut/Sources/TNHighScoresViewController.h"; sourceTree = SOURCE_ROOT; };
+		1DE6B3931CCEB98D00DC92AC /* TNHighScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNHighScoresViewController.m; path = "Tako-Naut/Sources/TNHighScoresViewController.m"; sourceTree = SOURCE_ROOT; };
+		1DE6B3941CCEB98D00DC92AC /* TNHighScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TNHighScoresViewController.xib; path = "Tako-Naut/Sources/TNHighScoresViewController.xib"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D76702B1C7B5B050065F110 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D98C7D11C9AD71000161EB2 /* MXAudioManager.framework in Frameworks */,
+				1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D092D2E1CCE0CB200396071 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1D092D2F1CCE0CC900396071 /* TNSettingsViewController.h */,
+				1D092D301CCE0CC900396071 /* TNSettingsViewController.m */,
+				1D092D321CCE0EC300396071 /* TNSettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		1D1F1C9A1C9A809F0020570D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBF401CC6707900A0CB0A /* soundEnemySpawn.caf */,
+				1D1FBF411CC6707900A0CB0A /* soundGame.caf */,
+				1D1FBF421CC6707900A0CB0A /* soundGameOver.caf */,
+				1D1FBF431CC6707900A0CB0A /* soundHitBomb.caf */,
+				1D1FBF441CC6707900A0CB0A /* soundHitCoin.caf */,
+				1D1FBF451CC6707900A0CB0A /* soundHitMinion.caf */,
+				1D1FBF461CC6707900A0CB0A /* soundHitTimeBonus.caf */,
+				1D1FBF471CC6707900A0CB0A /* soundHitWhirlwind.caf */,
+				1D1FBF481CC6707900A0CB0A /* soundLevelChange.caf */,
+				1D1FBF491CC6707900A0CB0A /* soundSelectItem.caf */,
+				1D1FBF4A1CC6707900A0CB0A /* soundStartGame.caf */,
+				1D1FBF4B1CC6707900A0CB0A /* soundTimeOver.caf */,
+				1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		1D36E0741C91473A0043948F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBF3E1CC6705B00A0CB0A /* Joystix.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		1D36E0771C9147500043948F /* MXToolBox */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBF1D1CC66FAA00A0CB0A /* MXToolBox.h */,
+				1D1FBF151CC66FAA00A0CB0A /* MXGameCenterManager.h */,
+				1D1FBF161CC66FAA00A0CB0A /* MXGameCenterManager.m */,
+				1D1FBF1B1CC66FAA00A0CB0A /* MXLocalizationManager.h */,
+				1D1FBF1C1CC66FAA00A0CB0A /* MXLocalizationManager.m */,
+				1D1FBF1E1CC66FAA00A0CB0A /* MXUtils.h */,
+				1D1FBF1F1CC66FAA00A0CB0A /* MXUtils.m */,
+				1D1FBF131CC66FAA00A0CB0A /* MXButton.h */,
+				1D1FBF141CC66FAA00A0CB0A /* MXButton.m */,
+				1D1FBF171CC66FAA00A0CB0A /* MXImageView.h */,
+				1D1FBF181CC66FAA00A0CB0A /* MXImageView.m */,
+				1D1FBF191CC66FAA00A0CB0A /* MXLabel.h */,
+				1D1FBF1A1CC66FAA00A0CB0A /* MXLabel.m */,
+				1D1FBF201CC66FAA00A0CB0A /* UIColor+MX.h */,
+				1D1FBF211CC66FAA00A0CB0A /* UIColor+MX.m */,
+				1D1FBF221CC66FAA00A0CB0A /* UIImage+MX.h */,
+				1D1FBF231CC66FAA00A0CB0A /* UIImage+MX.m */,
+				1D1FBF241CC66FAA00A0CB0A /* UIImageView+MX.h */,
+				1D1FBF251CC66FAA00A0CB0A /* UIImageView+MX.m */,
+				1D1FBF261CC66FAA00A0CB0A /* UIView+MX.h */,
+				1D1FBF271CC66FAA00A0CB0A /* UIView+MX.m */,
+			);
+			name = MXToolBox;
+			sourceTree = "<group>";
+		};
+		1D492DFB1CA5718800C515B5 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBEF61CC66EFA00A0CB0A /* TNGameViewController.h */,
+				1D1FBEF71CC66EFA00A0CB0A /* TNGameViewController.m */,
+				1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */,
+				1DBC3CC81CDC783E00992C71 /* GameOver */,
+				1DC52F611CC674B100F61A47 /* Tutorial */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		1D492DFC1CA5719400C515B5 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBEFD1CC66EFA00A0CB0A /* TNMenuViewController.h */,
+				1D1FBEFE1CC66EFA00A0CB0A /* TNMenuViewController.m */,
+				1D1FBEEB1CC66EFA00A0CB0A /* TNMenuViewController.xib */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		1D58F75A1C8D4F57006365EE /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				1D5491FC1CD089A6000C0975 /* TNMazeGenerator.hpp */,
+				1D5491FB1CD089A6000C0975 /* TNMazeGenerator.cpp */,
+			);
+			name = Maze;
+			sourceTree = "<group>";
+		};
+		1D7670251C7B5B050065F110 = {
+			isa = PBXGroup;
+			children = (
+				1D76704B1C7B5C3A0065F110 /* Sources */,
+				1D98C7CE1C9AD67A00161EB2 /* Frameworks */,
+				1D7670311C7B5B050065F110 /* Resources */,
+				1D76702F1C7B5B050065F110 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D76702F1C7B5B050065F110 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D76702E1C7B5B050065F110 /* Tako-Naut.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D7670311C7B5B050065F110 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1DBC3CCD1CDC78F400992C71 /* Info.plist */,
+				1D1FBF341CC6700900A0CB0A /* Assets.xcassets */,
+				1D1FBF361CC6701100A0CB0A /* LaunchScreen.storyboard */,
+				1D1FBF381CC6702000A0CB0A /* gameConfiguration.json */,
+				1DE6B3821CCE962300DC92AC /* Localizable.strings */,
+				1D36E0741C91473A0043948F /* Fonts */,
+				1D1F1C9A1C9A809F0020570D /* Sounds */,
+				1DE6B36D1CCE959300DC92AC /* Icons */,
+				1D7670511C7B5E0E0065F110 /* Images */,
+			);
+			name = Resources;
+			path = PsyNaut;
+			sourceTree = "<group>";
+		};
+		1D76704A1C7B5C2A0065F110 /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+				1D97147D1C921C05001894CA /* GameSession */,
+				1D58F75A1C8D4F57006365EE /* Maze */,
+				1DF68F661CAA460E0081B25D /* Tile */,
+				1D90C50B1CC0CC4300B256AE /* AI */,
+			);
+			name = Gameplay;
+			sourceTree = "<group>";
+		};
+		1D76704B1C7B5C3A0065F110 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1D36E0771C9147500043948F /* MXToolBox */,
+				1D76704A1C7B5C2A0065F110 /* Gameplay */,
+				1D76704D1C7B5C590065F110 /* Gui */,
+				1D76704E1C7B5C620065F110 /* Main */,
+			);
+			name = Sources;
+			path = PsyNaut;
+			sourceTree = "<group>";
+		};
+		1D76704D1C7B5C590065F110 /* Gui */ = {
+			isa = PBXGroup;
+			children = (
+				1D492DFC1CA5719400C515B5 /* Menu */,
+				1DE6B3911CCEB96900DC92AC /* HighScores */,
+				1D092D2E1CCE0CB200396071 /* Settings */,
+				1DE6B38B1CCEAC1900DC92AC /* Credits */,
+				1D492DFB1CA5718800C515B5 /* Game */,
+			);
+			name = Gui;
+			sourceTree = "<group>";
+		};
+		1D76704E1C7B5C620065F110 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBEFA1CC66EFA00A0CB0A /* TNMacros.h */,
+				1D1FBEF01CC66EFA00A0CB0A /* TNConstants.h */,
+				1D1FBEEC1CC66EFA00A0CB0A /* TNAppDelegate.h */,
+				1D1FBEED1CC66EFA00A0CB0A /* TNAppDelegate.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		1D7670511C7B5E0E0065F110 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1D01BB4C1CCA10980088336D /* player_angry.png */,
+				1D1FBF7A1CC6709200A0CB0A /* splash.png */,
+				1D1FBF591CC6708C00A0CB0A /* bomb.png */,
+				1D1FBF5B1CC6708C00A0CB0A /* coin.png */,
+				1D1FBF5C1CC6708C00A0CB0A /* enemy.png */,
+				1D1FBF5D1CC6708C00A0CB0A /* enemy2.png */,
+				1D1FBF5E1CC6708C00A0CB0A /* gate_close.png */,
+				1D1FBF5F1CC6708C00A0CB0A /* gate_open.png */,
+				1D1FBF601CC6708C00A0CB0A /* hearth.png */,
+				1D1FBF611CC6708C00A0CB0A /* key.png */,
+				1D1FBF621CC6708C00A0CB0A /* minion.png */,
+				1DB69DC81CC80C80008E5F7C /* player.png */,
+				1D1FBF651CC6708C00A0CB0A /* time.png */,
+				1D1FBF661CC6708C00A0CB0A /* wall.png */,
+				1D1FBF681CC6708C00A0CB0A /* whirlwind.png */,
+				1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */,
+				1DE6B3891CCE9F7C00DC92AC /* leftArrow.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		1D90C50B1CC0CC4300B256AE /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBF031CC66EFA00A0CB0A /* TNTile+AI.h */,
+				1D1FBF041CC66EFA00A0CB0A /* TNTile+AI.m */,
+			);
+			name = AI;
+			sourceTree = "<group>";
+		};
+		1D97147D1C921C05001894CA /* GameSession */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBEF51CC66EFA00A0CB0A /* TNGameSession.h */,
+				1D1FBEE91CC66EFA00A0CB0A /* TNGameSession.mm */,
+				1D1FBEEE1CC66EFA00A0CB0A /* TNCollisionCollaborator.h */,
+				1D1FBEEF1CC66EFA00A0CB0A /* TNCollisionCollaborator.m */,
+				1D1FBEF31CC66EFA00A0CB0A /* TNEnemyCollaborator.h */,
+				1D1FBEF41CC66EFA00A0CB0A /* TNEnemyCollaborator.m */,
+			);
+			name = GameSession;
+			sourceTree = "<group>";
+		};
+		1D98C7CE1C9AD67A00161EB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D07BEE81CCD36E80062EFE6 /* GameKit.framework */,
+				1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1DBC3CC81CDC783E00992C71 /* GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				1DBC3CC91CDC786900992C71 /* TNGameOverView.h */,
+				1DBC3CCA1CDC786900992C71 /* TNGameOverView.m */,
+			);
+			name = GameOver;
+			sourceTree = "<group>";
+		};
+		1DC52F611CC674B100F61A47 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				1DC52F621CC674E900F61A47 /* TNTutorialViewController.h */,
+				1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */,
+				1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		1DE6B36D1CCE959300DC92AC /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				1DE6B36F1CCE95A500DC92AC /* iconMugSmall@2x.png */,
+				1DE6B3721CCE95A500DC92AC /* iconSwitchOff@2x.png */,
+				1DE6B3731CCE95A500DC92AC /* iconSwitchOn@2x.png */,
+				1DE6B3741CCE95A500DC92AC /* iconVolumeHigh@2x.png */,
+				1DE6B3751CCE95A500DC92AC /* iconVolumeLow@2x.png */,
+				1DE6B3761CCE95A500DC92AC /* iconVolumeMid@2x.png */,
+				1DE6B3771CCE95A500DC92AC /* iconVolumeMute@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		1DE6B38B1CCEAC1900DC92AC /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				1DE6B38C1CCEACA700DC92AC /* TNCreditsViewController.h */,
+				1DE6B38D1CCEACA700DC92AC /* TNCreditsViewController.m */,
+				1DE6B38E1CCEACA700DC92AC /* TNCreditsViewController.xib */,
+			);
+			name = Credits;
+			sourceTree = "<group>";
+		};
+		1DE6B3911CCEB96900DC92AC /* HighScores */ = {
+			isa = PBXGroup;
+			children = (
+				1DE6B3921CCEB98D00DC92AC /* TNHighScoresViewController.h */,
+				1DE6B3931CCEB98D00DC92AC /* TNHighScoresViewController.m */,
+				1DE6B3941CCEB98D00DC92AC /* TNHighScoresViewController.xib */,
+			);
+			name = HighScores;
+			sourceTree = "<group>";
+		};
+		1DF68F661CAA460E0081B25D /* Tile */ = {
+			isa = PBXGroup;
+			children = (
+				1D1FBF011CC66EFA00A0CB0A /* TNTile.h */,
+				1D1FBF021CC66EFA00A0CB0A /* TNTile.m */,
+				1D1FBEFF1CC66EFA00A0CB0A /* TNPlayer.h */,
+				1D1FBF001CC66EFA00A0CB0A /* TNPlayer.m */,
+				1D1FBEF11CC66EFA00A0CB0A /* TNEnemy.h */,
+				1D1FBEF21CC66EFA00A0CB0A /* TNEnemy.m */,
+			);
+			name = Tile;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D76702D1C7B5B050065F110 /* Tako-Naut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D7670471C7B5B050065F110 /* Build configuration list for PBXNativeTarget "Tako-Naut" */;
+			buildPhases = (
+				1D76702A1C7B5B050065F110 /* Sources */,
+				1D76702B1C7B5B050065F110 /* Frameworks */,
+				1D76702C1C7B5B050065F110 /* Resources */,
+				1D98C7D31C9AD71100161EB2 /* Embed Frameworks */,
+				1DE663941CC4B24F0010CAD2 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tako-Naut";
+			productName = PsyNaut;
+			productReference = 1D76702E1C7B5B050065F110 /* Tako-Naut.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D7670261C7B5B050065F110 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TN;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = mugx;
+				TargetAttributes = {
+					1D76702D1C7B5B050065F110 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 8XE9QV2E26;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 1D7670291C7B5B050065F110 /* Build configuration list for PBXProject "Tako-Naut" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				es,
+				it,
+				"zh-Hans",
+				ja,
+			);
+			mainGroup = 1D7670251C7B5B050065F110;
+			productRefGroup = 1D76702F1C7B5B050065F110 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D76702D1C7B5B050065F110 /* Tako-Naut */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D76702C1C7B5B050065F110 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D01BB4D1CCA10980088336D /* player_angry.png in Resources */,
+				1D1FBF561CC6708100A0CB0A /* soundStartGame.caf in Resources */,
+				1D1FBF771CC6708C00A0CB0A /* wall.png in Resources */,
+				1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */,
+				1D1FBF6E1CC6708C00A0CB0A /* enemy2.png in Resources */,
+				1D1FBF501CC6708100A0CB0A /* soundHitCoin.caf in Resources */,
+				1D1FBF4E1CC6708100A0CB0A /* soundGameOver.caf in Resources */,
+				1DE6B37E1CCE95A500DC92AC /* iconVolumeHigh@2x.png in Resources */,
+				1DE6B37D1CCE95A500DC92AC /* iconSwitchOn@2x.png in Resources */,
+				1D1FBF3F1CC6705F00A0CB0A /* Joystix.ttf in Resources */,
+				1D1FBF4C1CC6708100A0CB0A /* soundEnemySpawn.caf in Resources */,
+				1DB69DC91CC80C80008E5F7C /* player.png in Resources */,
+				1DE6B3841CCE962300DC92AC /* Localizable.strings in Resources */,
+				1D1FBF391CC6702000A0CB0A /* gameConfiguration.json in Resources */,
+				1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */,
+				1D092D331CCE0EC300396071 /* TNSettingsViewController.xib in Resources */,
+				1DE6B3901CCEACA700DC92AC /* TNCreditsViewController.xib in Resources */,
+				1D1FBF061CC66EFA00A0CB0A /* TNGameViewController.xib in Resources */,
+				1DE6B38A1CCE9F7C00DC92AC /* leftArrow.png in Resources */,
+				1DB69DC71CC8054E008E5F7C /* soundHitPlayer.caf in Resources */,
+				1D1FBF571CC6708100A0CB0A /* soundTimeOver.caf in Resources */,
+				1DE6B37F1CCE95A500DC92AC /* iconVolumeLow@2x.png in Resources */,
+				1D1FBF731CC6708C00A0CB0A /* minion.png in Resources */,
+				1D1FBF791CC6708C00A0CB0A /* whirlwind.png in Resources */,
+				1D1FBF071CC66EFA00A0CB0A /* TNMenuViewController.xib in Resources */,
+				1D1FBF7C1CC6709C00A0CB0A /* splash.png in Resources */,
+				1D1FBF511CC6708100A0CB0A /* soundHitMinion.caf in Resources */,
+				1DE6B3961CCEB98D00DC92AC /* TNHighScoresViewController.xib in Resources */,
+				1D1FBF721CC6708C00A0CB0A /* key.png in Resources */,
+				1D1FBF531CC6708100A0CB0A /* soundHitWhirlwind.caf in Resources */,
+				1D1FBF6F1CC6708C00A0CB0A /* gate_close.png in Resources */,
+				1D1FBF701CC6708C00A0CB0A /* gate_open.png in Resources */,
+				1D1FBF541CC6708100A0CB0A /* soundLevelChange.caf in Resources */,
+				1D1FBF551CC6708100A0CB0A /* soundSelectItem.caf in Resources */,
+				1D1FBF521CC6708100A0CB0A /* soundHitTimeBonus.caf in Resources */,
+				1D1FBF761CC6708C00A0CB0A /* time.png in Resources */,
+				1D1FBF351CC6700900A0CB0A /* Assets.xcassets in Resources */,
+				1DE6B3801CCE95A500DC92AC /* iconVolumeMid@2x.png in Resources */,
+				1D1FBF6A1CC6708C00A0CB0A /* bomb.png in Resources */,
+				1DE6B37C1CCE95A500DC92AC /* iconSwitchOff@2x.png in Resources */,
+				1D1FBF4F1CC6708100A0CB0A /* soundHitBomb.caf in Resources */,
+				1D1FBF371CC6701100A0CB0A /* LaunchScreen.storyboard in Resources */,
+				1D1FBF6C1CC6708C00A0CB0A /* coin.png in Resources */,
+				1DE6B3791CCE95A500DC92AC /* iconMugSmall@2x.png in Resources */,
+				1D1FBF4D1CC6708100A0CB0A /* soundGame.caf in Resources */,
+				1D1FBF6D1CC6708C00A0CB0A /* enemy.png in Resources */,
+				1DE6B3811CCE95A500DC92AC /* iconVolumeMute@2x.png in Resources */,
+				1D1FBF711CC6708C00A0CB0A /* hearth.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1DE663941CC4B24F0010CAD2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/MXAudioManager.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D76702A1C7B5B050065F110 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D5491FD1CD089A6000C0975 /* TNMazeGenerator.cpp in Sources */,
+				1D1FBF2C1CC66FAA00A0CB0A /* MXLocalizationManager.m in Sources */,
+				1D1FBF111CC66EFA00A0CB0A /* TNTile.m in Sources */,
+				1D1FBF301CC66FAA00A0CB0A /* UIImageView+MX.m in Sources */,
+				1D1FBF2F1CC66FAA00A0CB0A /* UIImage+MX.m in Sources */,
+				1D1FBF2A1CC66FAA00A0CB0A /* MXImageView.m in Sources */,
+				1DBC3CCB1CDC786900992C71 /* TNGameOverView.m in Sources */,
+				1D1FBF2E1CC66FAA00A0CB0A /* UIColor+MX.m in Sources */,
+				1D1FBF2D1CC66FAA00A0CB0A /* MXUtils.m in Sources */,
+				1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */,
+				1DE6B3951CCEB98D00DC92AC /* TNHighScoresViewController.m in Sources */,
+				1D1FBF051CC66EFA00A0CB0A /* TNGameSession.mm in Sources */,
+				1D1FBF0B1CC66EFA00A0CB0A /* TNEnemyCollaborator.m in Sources */,
+				1D1FBF2B1CC66FAA00A0CB0A /* MXLabel.m in Sources */,
+				1D1FBF311CC66FAA00A0CB0A /* UIView+MX.m in Sources */,
+				1D092D311CCE0CC900396071 /* TNSettingsViewController.m in Sources */,
+				1D1FBF0A1CC66EFA00A0CB0A /* TNEnemy.m in Sources */,
+				1D1FBF081CC66EFA00A0CB0A /* TNAppDelegate.m in Sources */,
+				1D1FBF0F1CC66EFA00A0CB0A /* TNMenuViewController.m in Sources */,
+				1D1FBF121CC66EFA00A0CB0A /* TNTile+AI.m in Sources */,
+				1D1FBF101CC66EFA00A0CB0A /* TNPlayer.m in Sources */,
+				1D1FBF281CC66FAA00A0CB0A /* MXButton.m in Sources */,
+				1D1FBF0C1CC66EFA00A0CB0A /* TNGameViewController.m in Sources */,
+				1D1FBF291CC66FAA00A0CB0A /* MXGameCenterManager.m in Sources */,
+				1DE6B38F1CCEACA700DC92AC /* TNCreditsViewController.m in Sources */,
+				1D1FBF091CC66EFA00A0CB0A /* TNCollisionCollaborator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1DE6B3821CCE962300DC92AC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DE6B3831CCE962300DC92AC /* en */,
+				1DE6B3851CCE962800DC92AC /* es */,
+				1DE6B3871CCE962D00DC92AC /* it */,
+				1DE6B3881CCE963300DC92AC /* zh-Hans */,
+				1DBC3CCF1CDC795B00992C71 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D7670451C7B5B050065F110 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BITCODE_GENERATION_MODE = bitcode;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Debug;
+		};
+		1D7670461C7B5B050065F110 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BITCODE_GENERATION_MODE = bitcode;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D7670481C7B5B050065F110 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Tako-Naut/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
+				PRODUCT_NAME = "Tako-Naut";
+			};
+			name = Debug;
+		};
+		1D7670491C7B5B050065F110 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=0";
+				INFOPLIST_FILE = "$(SRCROOT)/Tako-Naut/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
+				PRODUCT_NAME = "Tako-Naut";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D7670291C7B5B050065F110 /* Build configuration list for PBXProject "Tako-Naut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D7670451C7B5B050065F110 /* Debug */,
+				1D7670461C7B5B050065F110 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D7670471C7B5B050065F110 /* Build configuration list for PBXNativeTarget "Tako-Naut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D7670481C7B5B050065F110 /* Debug */,
+				1D7670491C7B5B050065F110 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1D7670261C7B5B050065F110 /* Project object */;
+}

@@ -1,0 +1,33 @@
+/*
+ localizable.strings
+ Takonaut
+ 
+ Created by mugx on 25/03/16.
+ Copyright © 2016 mugx. All rights reserved.
+ */
+
+"takonaut.menu.back" = "戻る";
+"takonaut.menu.new_game"="新しいゲーム!";
+"takonaut.menu.resume_game"="Resume Game";
+"takonaut.menu.settings"="設定";
+"takonaut.menu.high_scores"="ハイスコア";
+"takonaut.menu.achievements"="トロフィー";
+"takonaut.menu.game_center"="Game Center";
+"takonaut.menu.credits"="およそ";
+"takonaut.menu.send_a_feedback"="フィードバックを送信";
+
+"takonaut.settings.language" = "言語";
+"takonaut.settings.sound" = "音";
+"takonaut.settings.enabled" = "使用可能";
+"takonaut.settings.disabled" = "使用禁止";
+"takonaut.settings.volume"= "ボリューム";
+"takonaut.settings.volume_high"= "高い";
+"takonaut.settings.volume_mid"= "中";
+"takonaut.settings.volume_low"= "ロー";
+"takonaut.settings.volume_mute"= "ミュート";
+
+"takonaut.game.time"="時間";
+"takonaut.game.score"="スコア";
+"takonaut.game.game_over"="ゲームオーバー";
+"takonaut.game.level"="レベル";
+"takonaut.game.enable_game_center"="ゲームセンターを有効にしてください";
