@@ -1,0 +1,33 @@
+/*
+ localizable.strings
+ Takonaut
+ 
+ Created by mugx on 25/03/16.
+ Copyright © 2016 mugx. All rights reserved.
+ */
+
+"takonaut.menu.back" = "Volver";
+"takonaut.menu.new_game"="¡Nuevo Juego!";
+"takonaut.menu.resume_game"="Volver a jugar";
+"takonaut.menu.settings"="Ajustes";
+"takonaut.menu.high_scores"="Resultados";
+"takonaut.menu.achievements"="Trofeos";
+"takonaut.menu.game_center"="Game Center";
+"takonaut.menu.credits"="Acerca";
+"takonaut.menu.send_a_feedback"="Enviar el mensaje";
+
+"takonaut.settings.language" = "Idioma";
+"takonaut.settings.sound" = "Sonido";
+"takonaut.settings.enabled" = "Permitido";
+"takonaut.settings.disabled" = "Apagado";
+"takonaut.settings.volume"= "Volumen";
+"takonaut.settings.volume_high"= "Alto";
+"takonaut.settings.volume_mid"= "Medio";
+"takonaut.settings.volume_low"= "Bajo";
+"takonaut.settings.volume_mute"= "Mudo";
+
+"takonaut.game.time"="Time";
+"takonaut.game.score"="Score";
+"takonaut.game.game_over"="Fin del juego";
+"takonaut.game.level"="Nivel";
+"takonaut.game.enable_game_center"="Por favor, activa el Game Center";
