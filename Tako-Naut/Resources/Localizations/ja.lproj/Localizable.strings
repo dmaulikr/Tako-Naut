@@ -8,9 +8,9 @@
 
 "takonaut.menu.back" = "戻る";
 "takonaut.menu.new_game"="新しいゲーム!";
-"takonaut.menu.resume_game"="Resume Game";
+"takonaut.menu.resume_game"="再開ゲーム";
 "takonaut.menu.settings"="設定";
-"takonaut.menu.high_scores"="ハイスコア";
+"takonaut.menu.best_scores"="ハイスコア";
 "takonaut.menu.achievements"="トロフィー";
 "takonaut.menu.game_center"="Game Center";
 "takonaut.menu.credits"="およそ";
@@ -28,6 +28,7 @@
 
 "takonaut.game.time"="時間";
 "takonaut.game.score"="スコア";
+"takonaut.game.best_score"="高得点";
 "takonaut.game.game_over"="ゲームオーバー";
 "takonaut.game.level"="レベル";
 "takonaut.game.enable_game_center"="ゲームセンターを有効にしてください";

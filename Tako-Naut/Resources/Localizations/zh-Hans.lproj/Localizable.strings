@@ -10,7 +10,7 @@
 "takonaut.menu.new_game"="新游戏!";
 "takonaut.menu.resume_game"="游戏继续";
 "takonaut.menu.settings"="设置";
-"takonaut.menu.high_scores"="高分";
+"takonaut.menu.best_scores"="高分";
 "takonaut.menu.achievements"="成就";
 "takonaut.menu.game_center"="Game Center";
 "takonaut.menu.credits"="关于";
@@ -28,6 +28,7 @@
 
 "takonaut.game.time"="时间";
 "takonaut.game.score"="得分";
+"takonaut.game.best_score"="高分";
 "takonaut.game.game_over"="游戏结束";
 "takonaut.game.level"="级别";
 "takonaut.game.enable_game_center"="请启用游戏中心";

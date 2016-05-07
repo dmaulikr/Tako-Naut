@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNGameViewController">
@@ -13,9 +14,10 @@
                 <outlet property="gameOverPanel" destination="9w3-7q-5iu" id="TLQ-E1-eUt"/>
                 <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
                 <outlet property="gameView" destination="d4y-KC-tNG" id="1NH-DU-CFC"/>
+                <outlet property="highScoreValueLabel_inGameOver" destination="Zdd-tw-BnB" id="dTe-ta-mKX"/>
                 <outlet property="hurryUpLabel" destination="5DU-kK-RYr" id="JEY-mQ-QO8"/>
                 <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
-                <outlet property="scoreLabel_inGameOver" destination="97j-1B-XvH" id="7Tb-bY-S7z"/>
+                <outlet property="scoreValueLabel_inGameOver" destination="HOG-OG-2dq" id="hGT-dd-PVf"/>
                 <outlet property="timeLabel" destination="u2o-2h-dwV" id="3nl-zu-grV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tHD-d3-Hnh"/>
             </connections>
@@ -25,60 +27,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymd-dG-TYh" userLabel="game over view">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <subviews>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w3-7q-5iu" userLabel="game over panel">
-                            <rect key="frame" x="200" y="250" width="200" height="100"/>
-                            <subviews>
-                                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-zn-YNu" userLabel="Game Over label" customClass="MXLabel">
-                                    <rect key="frame" x="50" y="18" width="101" height="24"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.game.game_over"/>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 5000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97j-1B-XvH" userLabel="score label" customClass="MXLabel">
-                                    <rect key="frame" x="58" y="56" width="85" height="18"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <color key="shadowColor" red="0.20000000000000001" green="1" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                                    <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.game.score"/>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstItem="IBP-zn-YNu" firstAttribute="centerX" secondItem="9w3-7q-5iu" secondAttribute="centerX" id="3hp-tp-gXC"/>
-                                <constraint firstAttribute="height" constant="100" id="6rd-7W-t2b"/>
-                                <constraint firstItem="IBP-zn-YNu" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" constant="-20" id="Ies-xh-lgz"/>
-                                <constraint firstItem="97j-1B-XvH" firstAttribute="centerX" secondItem="9w3-7q-5iu" secondAttribute="centerX" id="lBE-fb-ShC"/>
-                                <constraint firstItem="97j-1B-XvH" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" constant="15" id="qpL-sH-pd4"/>
-                                <constraint firstAttribute="width" constant="200" id="vwC-VM-9ox"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="9w3-7q-5iu" firstAttribute="centerY" secondItem="ymd-dG-TYh" secondAttribute="centerY" id="alD-o8-dbo"/>
-                        <constraint firstItem="9w3-7q-5iu" firstAttribute="centerX" secondItem="ymd-dG-TYh" secondAttribute="centerX" id="fST-sY-cdd"/>
-                    </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="ryT-mK-y1L" appends="YES" id="bbb-UY-gay"/>
-                    </connections>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-KC-tNG">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -226,6 +174,101 @@
                         <constraint firstItem="qGV-vI-g6I" firstAttribute="centerY" secondItem="VI1-hW-CsO" secondAttribute="centerY" id="Iac-yk-In1"/>
                         <constraint firstAttribute="height" constant="40" id="iO7-Lw-2qe"/>
                     </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymd-dG-TYh" userLabel="Game over view">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w3-7q-5iu" userLabel="game over panel">
+                            <rect key="frame" x="175" y="240" width="250" height="120"/>
+                            <subviews>
+                                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-zn-YNu" userLabel="Game Over label" customClass="MXLabel">
+                                    <rect key="frame" x="5" y="17" width="240" height="24"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.game.game_over"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="97j-1B-XvH" userLabel="score label" customClass="MXLabel">
+                                    <rect key="frame" x="20" y="51" width="125" height="18"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.20000000000000001" green="1" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.game.score"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HOG-OG-2dq" userLabel="score label value" customClass="MXLabel">
+                                    <rect key="frame" x="165" y="51" width="65" height="18"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.20000000000000001" green="1" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                </label>
+                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8Vc-IO-alX" userLabel="high score label" customClass="MXLabel">
+                                    <rect key="frame" x="20" y="79" width="125" height="18"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.20000000000000001" green="1" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="takonaut.game.best_score"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zdd-tw-BnB" userLabel="high score label value" customClass="MXLabel">
+                                    <rect key="frame" x="165" y="79" width="65" height="18"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.20000000000000001" green="1" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Zdd-tw-BnB" firstAttribute="centerY" secondItem="8Vc-IO-alX" secondAttribute="centerY" id="0Zp-Y4-tQ4"/>
+                                <constraint firstItem="8Vc-IO-alX" firstAttribute="top" secondItem="97j-1B-XvH" secondAttribute="bottom" constant="10" id="3Bb-pd-TzV"/>
+                                <constraint firstAttribute="height" constant="120" id="6rd-7W-t2b"/>
+                                <constraint firstItem="8Vc-IO-alX" firstAttribute="width" secondItem="97j-1B-XvH" secondAttribute="width" id="9az-HY-VUB"/>
+                                <constraint firstItem="97j-1B-XvH" firstAttribute="top" secondItem="IBP-zn-YNu" secondAttribute="bottom" constant="10" id="9hc-lF-iCM"/>
+                                <constraint firstItem="HOG-OG-2dq" firstAttribute="centerY" secondItem="97j-1B-XvH" secondAttribute="centerY" id="FH8-B7-Xaq"/>
+                                <constraint firstAttribute="trailing" secondItem="HOG-OG-2dq" secondAttribute="trailing" constant="20" id="I5i-aX-upL"/>
+                                <constraint firstItem="Zdd-tw-BnB" firstAttribute="width" secondItem="HOG-OG-2dq" secondAttribute="width" id="PT4-E6-acc"/>
+                                <constraint firstItem="HOG-OG-2dq" firstAttribute="leading" secondItem="97j-1B-XvH" secondAttribute="trailing" constant="20" id="UMi-pl-lg6"/>
+                                <constraint firstItem="97j-1B-XvH" firstAttribute="leading" secondItem="9w3-7q-5iu" secondAttribute="leading" constant="20" id="Vtp-jS-8XR"/>
+                                <constraint firstAttribute="trailing" secondItem="IBP-zn-YNu" secondAttribute="trailing" constant="5" id="Wr3-6F-FK3"/>
+                                <constraint firstItem="IBP-zn-YNu" firstAttribute="leading" secondItem="9w3-7q-5iu" secondAttribute="leading" constant="5" id="bnJ-s0-1dn"/>
+                                <constraint firstItem="8Vc-IO-alX" firstAttribute="leading" secondItem="97j-1B-XvH" secondAttribute="leading" id="d5E-8l-kd4"/>
+                                <constraint firstItem="Zdd-tw-BnB" firstAttribute="leading" secondItem="HOG-OG-2dq" secondAttribute="leading" id="ghS-pL-aKm"/>
+                                <constraint firstItem="97j-1B-XvH" firstAttribute="width" secondItem="9w3-7q-5iu" secondAttribute="width" multiplier="0.5" id="lPq-eI-gIj"/>
+                                <constraint firstItem="97j-1B-XvH" firstAttribute="centerY" secondItem="9w3-7q-5iu" secondAttribute="centerY" id="qpL-sH-pd4"/>
+                                <constraint firstAttribute="width" constant="250" id="vwC-VM-9ox"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="9w3-7q-5iu" firstAttribute="centerY" secondItem="ymd-dG-TYh" secondAttribute="centerY" id="alD-o8-dbo"/>
+                        <constraint firstItem="9w3-7q-5iu" firstAttribute="centerX" secondItem="ymd-dG-TYh" secondAttribute="centerX" id="fST-sY-cdd"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="ryT-mK-y1L" appends="YES" id="bbb-UY-gay"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

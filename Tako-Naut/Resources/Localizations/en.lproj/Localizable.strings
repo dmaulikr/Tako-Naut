@@ -10,7 +10,7 @@
 "takonaut.menu.new_game"="New Game!";
 "takonaut.menu.resume_game"="Resume Game";
 "takonaut.menu.settings"="Settings";
-"takonaut.menu.high_scores"="High Scores";
+"takonaut.menu.best_scores"="Best Scores";
 "takonaut.menu.achievements"="Achievements";
 "takonaut.menu.game_center"="Game Center";
 "takonaut.menu.credits"="Credits";
@@ -28,6 +28,7 @@
 
 "takonaut.game.time"="Time";
 "takonaut.game.score"="Score";
+"takonaut.game.best_score"="Best Score";
 "takonaut.game.game_over"="Game Over";
 "takonaut.game.level"="Level";
 "takonaut.game.enable_game_center"="Please enable the Game Center";

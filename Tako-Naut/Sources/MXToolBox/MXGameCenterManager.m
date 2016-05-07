@@ -62,6 +62,19 @@
              self.gameCenterEnabled = YES;
              self.leaderboardIdentifier = leaderboardIdentifier;
              if (completion) completion(self.gameCenterEnabled);
+             
+             GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+             if (leaderboardRequest != nil)
+             {
+               leaderboardRequest.identifier = self.leaderboardIdentifier;
+               [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray<GKScore *> *scores, NSError *error) {
+                 if (error == nil && scores && scores.count > 0)
+                 {
+                   GKScore *highestScore = [scores objectAtIndex:0];
+                   self.highestScore = highestScore.value;
+                 }
+               }];
+             }
            }
          }];
         

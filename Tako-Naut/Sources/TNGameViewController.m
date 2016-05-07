@@ -34,7 +34,8 @@
 // game over
 @property IBOutlet UIView *gameOverView;
 @property IBOutlet UIView *gameOverPanel;
-@property IBOutlet UILabel *scoreLabel_inGameOver;
+@property IBOutlet UILabel *scoreValueLabel_inGameOver;
+@property IBOutlet UILabel *highScoreValueLabel_inGameOver;
 
 // current level
 @property IBOutlet UIView *currentLevelPanel;
@@ -132,6 +133,7 @@
 - (void)didUpdateScore:(NSUInteger)score
 {
   self.scoreLabel.text = [NSString stringWithFormat:@"%@\n%ld", LOCALIZE(@"takonaut.game.score"), (unsigned long)score];
+  self.scoreValueLabel_inGameOver.text = [NSString stringWithFormat:@"%ld", (unsigned long)score];
 }
 
 - (void)didUpdateTime:(NSUInteger)time
@@ -192,12 +194,19 @@
   [self.gameOverView setHidden:NO];
   [self.view bringSubviewToFront:self.gameOverView];
   self.gameOverView.alpha = 0.0f;
-  self.scoreLabel_inGameOver.text = self.scoreLabel.text;
+  if ([MXGameCenterManager sharedInstance].gameCenterEnabled)
+  {
+    self.highScoreValueLabel_inGameOver.text = [NSString stringWithFormat:@"%ld", (unsigned long)[MXGameCenterManager sharedInstance].highestScore];
+  }
+  else
+  {
+    self.highScoreValueLabel_inGameOver.text = self.scoreValueLabel_inGameOver.text;
+  }
   
   [UIView animateWithDuration:0.5f animations:^{
     self.gameOverView.alpha = 1.0f;
   } completion:^(BOOL finished) {
-      [[MXGameCenterManager sharedInstance] saveScore:session.currentScore];
+    [[MXGameCenterManager sharedInstance] saveScore:session.currentScore];
   }];
 }
 

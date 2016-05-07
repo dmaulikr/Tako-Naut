@@ -21,4 +21,5 @@
 - (void)resetAchievements;
 - (void)showAchievements;
 @property(nonatomic,assign) BOOL gameCenterEnabled;
+@property(nonatomic,assign) int64_t highestScore;
 @end

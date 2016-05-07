@@ -67,7 +67,6 @@
 		1D98C7D21C9AD71000161EB2 /* MXAudioManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DB69DC71CC8054E008E5F7C /* soundHitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */; };
 		1DB69DC91CC80C80008E5F7C /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69DC81CC80C80008E5F7C /* player.png */; };
-		1DBC3CCB1CDC786900992C71 /* TNGameOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC3CCA1CDC786900992C71 /* TNGameOverView.m */; };
 		1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC52F631CC674E900F61A47 /* TNTutorialViewController.m */; };
 		1DC52F661CC674E900F61A47 /* TNTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC52F641CC674E900F61A47 /* TNTutorialViewController.xib */; };
 		1DC8A83F1CC6BF5B006BC0B7 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DC8A83E1CC6BF5B006BC0B7 /* rightArrow.png */; };
@@ -186,8 +185,6 @@
 		1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXAudioManager.framework; path = Carthage/Build/iOS/MXAudioManager.framework; sourceTree = "<group>"; };
 		1DB69DC61CC8054E008E5F7C /* soundHitPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitPlayer.caf; path = "Tako-Naut/Resources/Sounds/soundHitPlayer.caf"; sourceTree = SOURCE_ROOT; };
 		1DB69DC81CC80C80008E5F7C /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = "Tako-Naut/Resources/Images/player.png"; sourceTree = SOURCE_ROOT; };
-		1DBC3CC91CDC786900992C71 /* TNGameOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNGameOverView.h; path = "Tako-Naut/Sources/TNGameOverView.h"; sourceTree = SOURCE_ROOT; };
-		1DBC3CCA1CDC786900992C71 /* TNGameOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNGameOverView.m; path = "Tako-Naut/Sources/TNGameOverView.m"; sourceTree = SOURCE_ROOT; };
 		1DBC3CCD1CDC78F400992C71 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tako-Naut/Resources/Info.plist"; sourceTree = SOURCE_ROOT; };
 		1DBC3CCF1CDC795B00992C71 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "Tako-Naut/Resources/Localizations/ja.lproj/Localizable.strings"; sourceTree = SOURCE_ROOT; };
 		1DC52F621CC674E900F61A47 /* TNTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNTutorialViewController.h; path = "Tako-Naut/Sources/TNTutorialViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -299,7 +296,6 @@
 				1D1FBEF61CC66EFA00A0CB0A /* TNGameViewController.h */,
 				1D1FBEF71CC66EFA00A0CB0A /* TNGameViewController.m */,
 				1D1FBEEA1CC66EFA00A0CB0A /* TNGameViewController.xib */,
-				1DBC3CC81CDC783E00992C71 /* GameOver */,
 				1DC52F611CC674B100F61A47 /* Tutorial */,
 			);
 			name = Game;
@@ -458,15 +454,6 @@
 				1D98C7CF1C9AD68900161EB2 /* MXAudioManager.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1DBC3CC81CDC783E00992C71 /* GameOver */ = {
-			isa = PBXGroup;
-			children = (
-				1DBC3CC91CDC786900992C71 /* TNGameOverView.h */,
-				1DBC3CCA1CDC786900992C71 /* TNGameOverView.m */,
-			);
-			name = GameOver;
 			sourceTree = "<group>";
 		};
 		1DC52F611CC674B100F61A47 /* Tutorial */ = {
@@ -676,7 +663,6 @@
 				1D1FBF301CC66FAA00A0CB0A /* UIImageView+MX.m in Sources */,
 				1D1FBF2F1CC66FAA00A0CB0A /* UIImage+MX.m in Sources */,
 				1D1FBF2A1CC66FAA00A0CB0A /* MXImageView.m in Sources */,
-				1DBC3CCB1CDC786900992C71 /* TNGameOverView.m in Sources */,
 				1D1FBF2E1CC66FAA00A0CB0A /* UIColor+MX.m in Sources */,
 				1D1FBF2D1CC66FAA00A0CB0A /* MXUtils.m in Sources */,
 				1DC52F651CC674E900F61A47 /* TNTutorialViewController.m in Sources */,
