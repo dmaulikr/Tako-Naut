@@ -159,22 +159,22 @@ typedef NS_ENUM(NSUInteger, VolumeType) {
 
 - (IBAction)soundVolumeTouched
 {
-  switch ((int)([MXAudioManager sharedInstance].volume * 10))
+  switch ((int)([MXAudioManager sharedInstance].volume * 10.0))
   {
     case VMute:
-      [MXAudioManager sharedInstance].volume = (float)VLow / 10;
+      [MXAudioManager sharedInstance].volume = (float)VLow / 10.0;
       [self.volumeButton setImage:[UIImage imageNamed:@"iconVolumeLow"] forState:UIControlStateNormal];
       break;
     case VLow:
-      [MXAudioManager sharedInstance].volume = (float)VMid / 10;
+      [MXAudioManager sharedInstance].volume = (float)VMid / 10.0;
       [self.volumeButton setImage:[UIImage imageNamed:@"iconVolumeMid"] forState:UIControlStateNormal];
       break;
     case VMid:
-      [MXAudioManager sharedInstance].volume = (float)VHigh / 10;
+      [MXAudioManager sharedInstance].volume = (float)VHigh / 10.0;
       [self.volumeButton setImage:[UIImage imageNamed:@"iconVolumeHigh"] forState:UIControlStateNormal];
       break;
     case VHigh:
-      [MXAudioManager sharedInstance].volume = (float)VMute / 10;;
+      [MXAudioManager sharedInstance].volume = (float)VMute / 10.0;
       [self.volumeButton setImage:[UIImage imageNamed:@"iconVolumeMute"] forState:UIControlStateNormal];
       break;
   }
